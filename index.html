@@ -646,7 +646,7 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);}
       <div class="terrain-body">
         <p>Le point de ralliement de la section. Toutes les séances collectives partent et reviennent ici. La piste d'athlétisme est présente mais on ne l'utilise pas — le tour des stades de rugby autour du stade, par contre, est parfait pour les 30/30.</p>
         <div class="terrain-uses">
-          <span class="terrain-use use-both">RDV mardi & jeudi 19h</span>
+          <span class="terrain-use use-both">RDV mardi & jeudi 18h15</span>
           <span class="terrain-use use-route">30"/30" autour des stades rugby</span>
         </div>
       </div>
@@ -1050,8 +1050,8 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);}
       <div class="info-card-icon">📅</div>
       <h3>Horaires des séances</h3>
       <ul>
-        <li><strong style="color:var(--text)">Mardi</strong> : 19h00 — séance qualité</li>
-        <li><strong style="color:var(--text)">Jeudi</strong> : 19h00 — séance terrain</li>
+        <li><strong style="color:var(--text)">Mardi</strong> : 18h15 — séance qualité</li>
+        <li><strong style="color:var(--text)">Jeudi</strong> : 18h15 — séance terrain</li>
         <li><strong style="color:var(--text)">Sorties weekend</strong> : proposées dans le calendrier</li>
         <li><strong style="color:var(--text)">Montagne mensuelle</strong> : 1 jeudi/mois (voir calendrier)</li>
       </ul>
@@ -1655,7 +1655,7 @@ function renderAccueilGrid(){
           <div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.3rem">📅 ${fmtM}</div>
           <div style="font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_mardi.titre}${modM}</div>
           <span class="tag tag-sky" style="font-size:.56rem">${tM.icon} ${tM.label}</span>
-          <span class="tag tag-blue" style="font-size:.56rem">19h · La Floride</span>
+          <span class="tag tag-blue" style="font-size:.56rem">18h15 · La Floride</span>
           ${nivDetails(s_mardi.titre, accNiveau)}
           <div style="font-size:.73rem;color:var(--muted);line-height:1.65;margin-top:.4rem">${detM.length>120?detM.substring(0,120)+'…':detM}</div>
           ${ppgM?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgM.length>100?ppgM.substring(0,100)+'…':ppgM}</div>`:''}
@@ -1664,7 +1664,7 @@ function renderAccueilGrid(){
           <div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mousse);margin-bottom:.3rem">📅 ${fmtJ}</div>
           <div style="font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_jeudi.titre}${modJ}</div>
           <span class="tag tag-green" style="font-size:.56rem">${tJ.icon} ${tJ.label}</span>
-          <span class="tag tag-sky" style="font-size:.56rem">19h · La Floride</span>
+          <span class="tag tag-sky" style="font-size:.56rem">18h15 · La Floride</span>
           ${nivDetails(s_jeudi.titre, accNiveau)}
           <div style="font-size:.73rem;color:var(--muted);line-height:1.65;margin-top:.4rem">${detJ.length>120?detJ.substring(0,120)+'…':detJ}</div>
           ${ppgJ?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgJ.length>100?ppgJ.substring(0,100)+'…':ppgJ}</div>`:''}
