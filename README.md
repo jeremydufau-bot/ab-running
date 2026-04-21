@@ -1,77 +1,115 @@
 # AB Running Loisir — Aviron Bayonnais Athlétisme
 
-Site de la nouvelle section Running Loisir du club AB Athlétisme.
+Site de la section Running Loisir du club AB Athlétisme — affilié FFA.
 
-## Structure du site
+## Structure
 
-- **`index.html`** — page publique (tous les membres)
-- **`admin.html`** — espace coach (édition du contenu, publication sur GitHub)
-- **`data.js`** — toutes les données modifiables (programme, séances, infos club, etc.)
+- **`index.html`** — page publique
+- **`admin.html`** — espace coach (édition, publication GitHub)
+- **`data.js`** — toutes les données modifiables
 - **`app.js`** — logique JavaScript (rendering, calculateur, difficulté)
 - **`logo_ab.avif`** — logo du club
 
-## Nouveautés de cette refonte
+## Programme 52 semaines — Saison 2025/2026
 
-### 1. Bandeau Infos Club sur la page d'accueil
-Sous le hero, un bandeau dynamique affiche les messages de l'encadrement (infos, événements, urgences). Les messages ont une date de fin optionnelle — ils disparaissent automatiquement quand la date est dépassée. **Éditable via l'admin, onglet "📢 Infos club".**
+Construit selon le *Guide de l'Entraîneur AB Running Loisir* et la méthode Foster (UA/RPE).
 
-### 2. Pastilles de difficulté sur le programme
-Chaque séance du programme affiche désormais une pastille de couleur type piste de ski :
-- 🟢 **Vert** — facile (UA ≤ 280)
-- 🔵 **Bleu** — modéré (UA ≤ 380)
-- 🟠 **Orange** — soutenu (UA ≤ 480)
-- 🔴 **Rouge** — difficile (UA ≤ 600)
-- ⚫ **Noir** — très difficile (UA > 600)
+### Architecture annuelle
 
-Le calcul se fait automatiquement à partir du titre de séance (RPE × durée estimée, incluant échauffement 30min + PPG 15min). **Les seuils sont modifiables via l'admin, onglet "📊 Calculateur".**
+| Période | Phase | Thème | UA sem. moy. |
+|---|---|---|---|
+| Sept | Reprise | Foncier doux | ~790 |
+| Oct | Foncier | Endurance + côtes | ~835 |
+| Nov | VMA courte | 30/30, fractions 400m | ~870 |
+| Déc | VMA longue + trêve | 1000m, pyramide | ~970 |
+| Janv | Seuil | Tempo, 1000-2000m | ~750 |
+| Fév | Seuil+ | Allure objectif | ~870 |
+| Mars | Spécifique route | Allures marathon/semi | ~855 |
+| Avril | Compétitions route | Affûtage + semi | ~520 |
+| Mai | Transition trail | Dénivelé, excentrique | ~830 |
+| Juin | Trail compétition | Trail des Colombes | ~640 |
+| Juillet | Relâche Fêtes | Fêtes de Bayonne | ~540 |
+| Août | Pré-reprise | Retour progressif | ~650 |
 
-### 3. Page Calculateur de charge
-Nouvelle page dans la navigation qui permet à chaque coureur de :
-- Comprendre ce qu'est le RPE et l'UA (textes éditables par l'admin)
-- Saisir durée + RPE pour les 7 jours × 4 semaines
-- Voir sa charge hebdomadaire avec badge couleur (léger / normal / chargé / surcharge)
-- Obtenir l'analyse de son bloc 4 semaines (progression S1→S3, ratio récup S4/S3)
+### Règle PPG (spécificité AB)
 
-Les données ne sont **pas enregistrées** — c'est un outil indicatif qui se réinitialise à chaque rechargement.
+**La PPG n'est JAMAIS faite sur séances plat (halage, piste, intramuros, Chiberta, plage).**
 
-### 4. Refonte visuelle générale
-- Nouvelle palette respectant les couleurs officielles AB (bleu ciel + marine)
-- Logo AB intégré dans le hero
-- Typographie et espacement revus
-- Page Terrains repensée avec cartes descriptives
+Raison biomécanique : pré-fatiguer les quadriceps/mollets avant un fractionné plat :
+- Détruit la raideur tendineuse nécessaire au rebond de foulée → risque de blessure (périostite, tendinopathie d'Achille)
+- Épuise le glycogène intramusculaire → impossible d'atteindre sa VMA
 
-## Administration
+**La PPG est INTÉGRÉE sur les séances côte** (Floride, Voulgre, VW, VVF, escaliers, Girouettes, Douves, montagne).
 
-L'admin dispose désormais de **6 onglets** :
+Raison : en côte, la vitesse est lente et les chocs articulaires minimes. La fatigue musculaire déjà installée permet de recruter les fibres profondes quand on enchaîne avec 8-10 squats en haut. C'est un **entraînement en contraste** — spécificité trail parfaite.
+
+Dans le programme, on voit bien le pattern : toutes les séances côte se terminent par `🏋 PPG en haut de côte — ...`, et les séances plat se terminent par `⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité.`
+
+### Bloc 3:1
+
+Chaque mois suit le schéma guide :
+- **S1-S2-S3** : montée progressive (650 / 750 / 900 UA cibles)
+- **S4 décharge** : -40% pour surcompensation (≤ 500 UA)
+
+15 semaines de décharge réparties sur l'année.
+
+### Règles d'or respectées
+
+✅ Jamais plus de 1050 UA sur une semaine
+✅ Jamais 2 séances Rouge/Noir dans la même semaine
+✅ Décharges en Vert/Bleu (≤ 500 UA)
+✅ Affûtages 2 semaines avant semi-marathon et Trail des Colombes
+✅ Trêve Noël (S16-17) et Fêtes de Bayonne (S44) intégrés culturellement
+
+### Événements marqués dans le programme
+
+- **S17** 🎄 Trêve de Noël
+- **S32** 🏁 Semi-Marathon
+- **S41** 🏔 Trail des Colombes
+- **S44** 🎊 Fêtes de Bayonne
+- **S52** 🏆 Bilan de saison
+
+## Fonctionnalités
+
+### Pages publiques
+
+- **🏠 Accueil** — hero + bandeau Infos Club + 3 prochaines semaines
+- **📅 Programme** — 52 semaines avec pastilles difficulté type piste de ski
+- **📊 Calculateur** — 4 semaines vierges pour tester sa charge hebdo (RPE × durée)
+- **🗓 Sorties** — calendrier + sorties membres
+- **🗺 Terrains** — les lieux d'entraînement
+- **💡 Idées** — boîte à propositions
+- **💪 Renforcement** — séances PPG vendredi
+- **🌅 Routines** — routines matin
+- **ℹ️ Infos** — infos pratiques
+
+### Pastilles de difficulté (5 niveaux, type piste de ski)
+
+Calculées automatiquement à partir du titre de séance :
+
+| Pastille | Niveau | UA |
+|---|---|---|
+| 🟢 Vert | Facile | ≤ 280 |
+| 🔵 Bleu | Modéré | ≤ 380 |
+| 🟠 Orange | Soutenu | ≤ 480 |
+| 🔴 Rouge | Difficile | ≤ 600 |
+| ⚫ Noir | Très difficile | > 600 |
+
+Les séances en décharge sont automatiquement plafonnées à Vert/Bleu.
+
+### Admin — 6 onglets
 
 | Onglet | Fonction |
 |---|---|
-| 📅 Programme | Modifier les 48 semaines annuelles |
-| 📋 Séances | Bibliothèque des types de séances |
-| 📢 Infos club | **NOUVEAU** — Messages du bandeau accueil |
-| 📊 Calculateur | **NOUVEAU** — Textes RPE/UA + seuils difficulté & charge |
+| 📅 Programme | Modifier les 52 semaines |
+| 📋 Séances | Bibliothèque des types |
+| 📢 Infos club | Messages bandeau accueil |
+| 📊 Calculateur | Textes RPE/UA + seuils |
 | 🗓 Calendrier | Sorties et événements |
-| ⚙️ Configuration | Connexion GitHub pour publier |
+| ⚙️ Configuration | Connexion GitHub |
 
-Le bouton **"📤 Publier"** pousse toutes les modifications (y compris les nouvelles structures) vers le dépôt GitHub, et les membres voient les changements dans 1-2 minutes.
+Le bouton **📤 Publier** pousse toutes les modifications vers GitHub.
 
-## Règles de charge (référence)
+---
 
-Chaque séance club (mardi/jeudi) a une charge fixe de **150 UA** avant la séance principale :
-- Échauffement : 30min × RPE 3 = 90 UA
-- PPG : 15min × RPE 4 = 60 UA
-
-La charge totale = 150 + (durée séance × RPE séance).
-
-**Référentiel semaine** (configurable via admin) :
-- < 400 UA : très légère
-- 400-600 UA : débutant
-- 600-800 UA : intermédiaire standard
-- 800-1050 UA : chargée
-- \> 1050 UA : surcharge
-
-**Référentiel bloc 4 semaines** :
-- S1 = base
-- S2 = S1 × 1.10 à 1.15
-- S3 = S1 × 1.20 à 1.25 (pic)
-- S4 = S3 × 0.55 à 0.65 (récupération)
+*Saison 2025/2026 — Aviron Bayonnais Athlétisme — Affilié FFA*

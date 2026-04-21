@@ -657,209 +657,1054 @@ const typeCls = {
 };
 
 const programme = [
-  {sem:1,mois:'Sept',phase:'Reprise',phaseClass:'phase-reprise',
-   mardi:{titre:'Footing + \u00E9ducatifs + 6\u00D730s vif',terrain:'halage',detail:'\u00C9chauffement 15min. \u00C9ducatifs de course : mont\u00E9es genoux, talons fesses, jambes tendues. 6 r\u00E9p\u00E9titions de 30s \u00E0 allure vive, 1min30 r\u00E9cup march\u00E9e. Retour calme 10min. S\u00E9ance identique pour tous niveaux \u2014 le rythme personnel diff\u00E8re, pas la structure. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D730s \u00B7 C\u00F4te La Floride',terrain:'floride',detail:'8 mont\u00E9es de 30s sur la c\u00F4te La Floride ou c\u00F4te VW. Descente trottin\u00E9e. Objectif : r\u00E9veiller les appuis, pas s\'\u00E9puiser. Pas de chrono \u2014 sensations. Pour les routards : m\u00EAme s\u00E9ance, excellent cardio. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de chaque c\u00F4te pendant la r\u00E9cup : \uD83D\uDFE2 8 squats poids corps lents (3s descente) \u2014 fessiers, genoux dans l\'axe \u00B7 \uD83D\uDD35 10 squats + 5 fentes avant chaque jambe \u2014 amplitude maximale \u00B7 \uD83D\uDD34 10 squats saut\u00E9s r\u00E9ception souple + 8 fentes bulgares poids corps. Dur\u00E9e totale PPG : ~90s par r\u00E9cup. La s\u00E9ance allonge de 10 min.'},
-   g0:'1h footing route souple',g1:'1h20 trail facile',g2:'2h trail ais\u00E9',decharge:false},
-  {sem:2,mois:'Sept',phase:'Reprise',phaseClass:'phase-reprise',
-   mardi:{titre:'Footing + 8\u00D730s vif',terrain:'halage',detail:'8 r\u00E9p\u00E9titions de 30s vif sur le halage, r\u00E9cup 1min15. On prend les rep\u00E8res, on \u00E9value son niveau de forme. Allure : chacun g\u00E8re selon ses sensations. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'10\u00D730s \u00B7 C\u00F4te La Floride',terrain:'floride',detail:'10 mont\u00E9es, focus technique : genoux hauts, bras actifs, regard devant. Descente march\u00E9e ou trottin\u00E9e. Total ~1h. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de chaque c\u00F4te pendant la r\u00E9cup : \uD83D\uDFE2 8 squats poids corps lents (3s descente) \u2014 fessiers, genoux dans l\'axe \u00B7 \uD83D\uDD35 10 squats + 5 fentes avant chaque jambe \u2014 amplitude maximale \u00B7 \uD83D\uDD34 10 squats saut\u00E9s r\u00E9ception souple + 8 fentes bulgares poids corps. Dur\u00E9e totale PPG : ~90s par r\u00E9cup. La s\u00E9ance allonge de 10 min.'},
-   g0:'1h10 route ais\u00E9e',g1:'1h20 trail facile',g2:'2h trail avec D+',decharge:false},
-  {sem:3,mois:'Sept',phase:'Reprise',phaseClass:'phase-reprise',
-   mardi:{titre:'6\u00D71min vif + 4\u00D730s finishers',terrain:'halage',detail:'6 r\u00E9p\u00E9titions de 1min \u00E0 allure soutenue (Z4), r\u00E9cup 2min. Puis 4\u00D730s \u00E0 fond. Retour calme 10min. Les finishers testent la r\u00E9sistance \u00E0 la fatigue. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Fartlek \u00B7 Les Douves \u00B7 45min',terrain:'douves',detail:'Fartlek libre dans Bayonne intra-muros : acc\u00E9l\u00E9rations sur les lignes droites, effort dans les mont\u00E9es des remparts, r\u00E9cup dans les descentes et les portions techniques. 45min hors \u00E9chauffement. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min en fin de s\u00E9ance sur le terrain : \uD83D\uDFE2 10 squats + 10 fentes + 30s planche + 20s gainage lat\u00E9ral \u00B7 \uD83D\uDD35 10 squats saut\u00E9s + 8 step-down (3s) + planche lat\u00E9rale 30s + clamshell 10 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (5s) + 8 fentes bulgares + gainage lat\u00E9ral dynamique. Terrain \u00E9clair\u00E9 = possibilit\u00E9 de faire les exercices au sol sans risque.'},
-   g0:'1h15 route',g1:'1h30 trail facile',g2:'2h15 trail D+',decharge:false},
-  {sem:4,mois:'Sept',phase:'Reprise',phaseClass:'phase-reprise',
-   mardi:{titre:'Footing r\u00E9cup + 4\u00D730s allumage',terrain:'intramuros',detail:'Semaine de d\u00E9charge. Footing confortable 40min, puis 4 acc\u00E9l\u00E9rations de 30s pour entretenir la vivacit\u00E9. Pas d\'\u00E9puisement.'},
-   jeudi:{titre:'Footing souple 50min',terrain:'intramuros',detail:'Sortie en endurance fondamentale sur terrain vari\u00E9. Allure conversation obligatoire. On consolide les 3 semaines de reprise.'},
-   g0:'50min route r\u00E9cup',g1:'1h trail r\u00E9cup',g2:'1h40 trail',decharge:true},
-
-  {sem:5,mois:'Oct',phase:'Base endurance',phaseClass:'phase-base',
-   mardi:{titre:'8\u00D71min Z4 \u00B7 Halage',terrain:'halage',detail:'8 r\u00E9p\u00E9titions de 1min \u00E0 85-90% FC max. R\u00E9cup 2min. Sur le halage : id\u00E9al pour une allure constante et contr\u00F4lable. Cherchez \u00E0 garder la m\u00EAme allure sur les 8 r\u00E9p\u00E9titions. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'10\u00D71min c\u00F4te \u00B7 Puissance',terrain:'voulgre',detail:'10 mont\u00E9es de 1min sur Mousserolles. R\u00E9cup descente trottin\u00E9e (~2min). D\u00E9veloppe la puissance en mont\u00E9e pour les traileurs, le cardio pour les routards. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Entre chaque r\u00E9p\u00E9tition de la Voulgre : \uD83D\uDFE2 10 squats lents + 8 fentes avant + 5 glute bridge unilat\u00E9ral \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 8 fentes bulgares + 10 clamshell \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares + 8 squats saut\u00E9s + planche lat\u00E9rale 30s.'},
-   g0:'1h20 route',g1:'1h30 trail',g2:'2h30 trail D+',decharge:false},
-  {sem:6,mois:'Oct',phase:'Base endurance',phaseClass:'phase-base',
-   mardi:{titre:'10\u00D71min Z4 \u00B7 Halage',terrain:'halage',detail:'On monte \u00E0 10 r\u00E9p\u00E9titions. R\u00E9cup 1min45. Si les derni\u00E8res r\u00E9p\u00E9titions se d\u00E9gradent : normal. L\'objectif est de tenir l\'allure le plus longtemps possible. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D71min30 \u00B7 C\u00F4te VW',terrain:'vw',detail:'8 mont\u00E9es de 1min30. La dur\u00E9e cl\u00E9 des c\u00F4tes VW / Voulgre / La Floride. R\u00E9cup descente. Allure soutenue mais pas maximale \u2014 on peut souffler en haut. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Pendant la r\u00E9cup descente en bas de c\u00F4te : \uD83D\uDFE2 8 fentes avant altern\u00E9es + 8 glute bridge au sol \u00B7 \uD83D\uDD35 10 fentes bulgares + 8 step-down contr\u00F4l\u00E9 (3s descente) sur bordure \u00B7 \uD83D\uDD34 8 step-down excentriques (4s descente) + 8 fentes saut\u00E9es + gainage lat\u00E9ral 30s. Le step-down excentrique est l\'exercice cl\u00E9 anti-douleur genou en descente trail.'},
-   g0:'1h30 route',g1:'1h30 trail +D',g2:'2h30 trail gros D+',decharge:false},
-  {sem:7,mois:'Oct',phase:'Base endurance',phaseClass:'phase-base',
-   mardi:{titre:'Fartlek 6\u00D7(2min vif / 2min r\u00E9cup)',terrain:'halage',detail:'Fartlek structur\u00E9 : 2min \u00E0 allure soutenue, 2min au trot. 6 cycles. Pour les routards : simulation d\'allures en course. Pour les traileurs : adaptation terrain naturel. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Circuit intra-muros : c\u00F4tes + remparts',terrain:'intramuros',detail:'Circuit Bayonne intra-muros : mont\u00E9es des remparts, plat des quais, techniques des rues pav\u00E9es. Fartlek naturel dict\u00E9 par le terrain. 50min hors \u00E9chauffement.'},
-   g0:'1h40 route progressive',g1:'1h45 trail',g2:'3h trail pyr\u00E9n\u00E9en',decharge:false},
-  {sem:8,mois:'Oct',phase:'Base endurance',phaseClass:'phase-base',
-   mardi:{titre:'Footing + 4\u00D71min allumage',terrain:'intramuros',detail:'D\u00E9charge. Footing 35min, quelques acc\u00E9l\u00E9rations l\u00E9g\u00E8res. Volume r\u00E9duit. Le corps absorbe les 3 semaines de travail.'},
-   jeudi:{titre:'Footing terrain souple 50min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration active sur terrain vari\u00E9. Allure conversation. On ne force rien.'},
-   g0:'1h route r\u00E9cup',g1:'1h20 r\u00E9cup trail',g2:'2h trail l\u00E9ger',decharge:true},
-
-  {sem:9,mois:'Nov',phase:'D\u00E9veloppement',phaseClass:'phase-dev',
-   mardi:{titre:'5\u00D73min seuil \u00B7 Halage',terrain:'halage',detail:'Introduction au travail seuil. 5 r\u00E9p\u00E9titions de 3min \u00E0 80-85% FCmax \u2014 on peut parler par mots, pas par phrases. R\u00E9cup 3min. Pour les routards : allure l\u00E9g\u00E8rement plus rapide que l\'EF. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'6\u00D72min \u00B7 C\u00F4te Voulgre',terrain:'voulgre',detail:'6 c\u00F4tes de 2min en mode force \u2014 effort soutenu, non maximal. Apr\u00E8s : 10min d\'exercices de force debout (fentes, squats unipodaux). Ancrage dans le renforcement sp\u00E9cifique trail et route. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'1h40 route cadenc\u00E9e',g1:'1h40 trail',g2:'2h45 trail',decharge:false},
-  {sem:10,mois:'Nov',phase:'D\u00E9veloppement',phaseClass:'phase-dev',
-   mardi:{titre:'6\u00D73min seuil \u00B7 Halage',terrain:'halage',detail:'6 r\u00E9p\u00E9titions de 3min. La fatigue s\'accumule sur les derni\u00E8res \u2014 c\'est normal et voulu. R\u00E9cup 2min30. La base de tout bon plan marathon ou trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D71min30 \u00B7 C\u00F4te VW',terrain:'vw',detail:'8 c\u00F4tes intenses. R\u00E9cup descente en trottinant. Focus : maintenir la cadence de pas en fin de r\u00E9p\u00E9tition. Mont\u00E9e et r\u00E9cup : les deux se travaillent. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Pendant la r\u00E9cup descente en bas de c\u00F4te : \uD83D\uDFE2 8 fentes avant altern\u00E9es + 8 glute bridge au sol \u00B7 \uD83D\uDD35 10 fentes bulgares + 8 step-down contr\u00F4l\u00E9 (3s descente) sur bordure \u00B7 \uD83D\uDD34 8 step-down excentriques (4s descente) + 8 fentes saut\u00E9es + gainage lat\u00E9ral 30s. Le step-down excentrique est l\'exercice cl\u00E9 anti-douleur genou en descente trail.'},
-   g0:'1h45 route',g1:'1h40 trail',g2:'2h45 trail',decharge:false},
-  {sem:11,mois:'Nov',phase:'D\u00E9veloppement',phaseClass:'phase-dev',
-   mardi:{titre:'4\u00D75min seuil \u00B7 Halage',terrain:'halage',detail:'Allongement des efforts : 4\u00D75min \u00E0 80-85% FCmax. R\u00E9cup 3min. Plus long = plus dur mentalement. Tenez l\'allure sur toute la dur\u00E9e. S\u00E9ance cl\u00E9 pour route et trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Escaliers Biarritz \u00B7 Introduction',terrain:'escaliers',detail:'S\u00E9ance sp\u00E9ciale mensuelle : escaliers de la C\u00F4te des Basques (~200 marches). 3 blocs de 3 allers-retours. Mont\u00E9e : genoux hauts, bras actifs. Descente : march\u00E9e. Total 45min. Ceux qui ne viennent pas : c\u00F4tes VW \u00E0 Bayonne. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Au pied des escaliers entre chaque mont\u00E9e compl\u00E8te : \uD83D\uDFE2 8 squats poids corps lents \u2014 jambes fatigu\u00E9es, aller sur l\'amplitude \u00B7 \uD83D\uDD35 10 fentes avant + 8 calf raises unilat\u00E9raux sur marche du bas \u00B7 \uD83D\uDD34 8 step-down excentriques (5s) sur la marche du bas + foul\u00E9es bondissantes 15s. La descente des escaliers est d\u00E9j\u00E0 un travail excentrique intense \u2014 adapter le volume PPG en cons\u00E9quence.'},
-   g0:'1h50 route',g1:'1h45 trail',g2:'3h trail',decharge:false},
-  {sem:12,mois:'Nov',phase:'D\u00E9veloppement',phaseClass:'phase-dev',
-   mardi:{titre:'Footing + 4\u00D71min30 vivants',terrain:'intramuros',detail:'D\u00E9charge. Footing confortable, 4 acc\u00E9l\u00E9rations de 1min30 sur portions planes. Pas d\'\u00E9puisement.'},
-   jeudi:{titre:'Footing r\u00E9cup terrain 45min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration active sur terrain vari\u00E9. Allure tr\u00E8s douce. Pas de chrono.'},
-   g0:'1h30 route r\u00E9cup',g1:'1h30 trail r\u00E9cup',g2:'2h20 trail',decharge:true},
-
-  {sem:13,mois:'D\u00E9c',phase:'Force / D+',phaseClass:'phase-force',
-   mardi:{titre:'10\u00D71min vif \u00B7 Halage',terrain:'halage',detail:'Volume de fractionn\u00E9 augment\u00E9. 10 r\u00E9p\u00E9titions de 1min \u00E0 88-92% FCmax. R\u00E9cup 1min30. Court et intense : \u00E9l\u00E9vation de la VMA. B\u00E9n\u00E9fique pour route et trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D72min \u00B7 C\u00F4te Voulgre',terrain:'voulgre',detail:'8 c\u00F4tes de 2min en mode puissance. Bras tr\u00E8s actifs. Descente en marchant pour r\u00E9cup\u00E9rer pleinement. Apr\u00E8s : 5min de foul\u00E9es bondissantes. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'1h45 route sp\u00E9cifique',g1:'1h45 trail D+',g2:'3h trail gros D+',decharge:false},
-  {sem:14,mois:'D\u00E9c',phase:'Force / D+',phaseClass:'phase-force',
-   mardi:{titre:'6\u00D72min seuil + 4\u00D745s vif',terrain:'halage',detail:'Deux blocs : 6\u00D72min seuil (r\u00E9cup 2min) puis apr\u00E8s 5min, 4\u00D745s \u00E0 fond. Double stimulus endurance + vivacit\u00E9. S\u00E9ance incontournable marathon et trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'5\u00D7mont\u00E9e \u00B7 Escaliers Biarritz',terrain:'escaliers',detail:'S\u00E9ance sp\u00E9ciale mensuelle. 5 mont\u00E9es compl\u00E8tes des escaliers (~200 marches). Descente march\u00E9e, r\u00E9cup 3min. ~90s \u00E0 2min par mont\u00E9e. Apr\u00E8s : 10min foul\u00E9es bondissantes. Alternative Mousserolles pour ceux qui restent. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Au pied des escaliers entre chaque mont\u00E9e compl\u00E8te : \uD83D\uDFE2 8 squats poids corps lents \u2014 jambes fatigu\u00E9es, aller sur l\'amplitude \u00B7 \uD83D\uDD35 10 fentes avant + 8 calf raises unilat\u00E9raux sur marche du bas \u00B7 \uD83D\uDD34 8 step-down excentriques (5s) sur la marche du bas + foul\u00E9es bondissantes 15s. La descente des escaliers est d\u00E9j\u00E0 un travail excentrique intense \u2014 adapter le volume PPG en cons\u00E9quence.'},
-   g0:'1h50 route',g1:'1h50 trail D+',g2:'3h trail',decharge:false},
-  {sem:15,mois:'D\u00E9c',phase:'Force / D+',phaseClass:'phase-force',
-   mardi:{titre:'3\u00D710min seuil \u00B7 Halage',terrain:'halage',detail:'Longues r\u00E9p\u00E9titions au seuil : 3\u00D710min \u00E0 80-85% FC. R\u00E9cup 4min. Exigeant mentalement \u2014 tenez l\'allure sur les 10 derni\u00E8res minutes de chaque bloc. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Sortie montagne mensuelle \u00B7 Mondarrain',terrain:'montagne',detail:'Sortie montagne du mois : Mondarrain ou Ursuya. 4 \u00E0 6 mont\u00E9es longues de 3-5min, descente r\u00E9cup. Total 1h30-2h. Groupe B : s\u00E9ance c\u00F4tes normale \u00E0 Mousserolles. Retrouvailles apr\u00E8s pour un verre ensemble. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Le terrain fait d\u00E9j\u00E0 80% du travail. Ajouter entre 2 mont\u00E9es : \uD83D\uDFE2 8 squats lents sur terrain plat + marche active dans la descente \u00B7 \uD83D\uDD35 8 step-down sur rocher plat (4s) + 8 fentes en descente + gainage 30s \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares sur le terrain + clamshell 10 chaque c\u00F4t\u00E9. Les descentes techniques sur sentier = travail excentrique intense pour les quadriceps.'},
-   g0:'2h route longue',g1:'2h trail D+',g2:'3h30 trail',decharge:false},
-  {sem:16,mois:'D\u00E9c',phase:'Force / D+',phaseClass:'phase-force',
-   mardi:{titre:'Footing festif + 6\u00D730s allumage',terrain:'intramuros',detail:'Semaine de No\u00EBl. On s\'entra\u00EEne en mode plaisir dans Bayonne. Footing tranquille, 6 petites acc\u00E9l\u00E9rations. L\'essentiel c\'est de bouger.'},
-   jeudi:{titre:'Footing + \u00E9ducatifs 40min',terrain:'intramuros',detail:'D\u00E9charge de fin d\'ann\u00E9e. Sortie l\u00E9g\u00E8re, technique. Pas d\'intensit\u00E9. Rechargez les batteries pour janvier.'},
-   g0:'1h30 route r\u00E9cup',g1:'1h30 trail r\u00E9cup',g2:'2h30 l\u00E9ger',decharge:true},
-
-  {sem:17,mois:'Jan',phase:'Pr\u00E9pa trail / route',phaseClass:'phase-prepa',
-   mardi:{titre:'4\u00D76min seuil \u00B7 Halage',terrain:'halage',detail:'Reprise intensive de janvier. 4\u00D76min au seuil (80-83% FC). R\u00E9cup 3min30. Maintenez une allure constante sur chaque r\u00E9p\u00E9tition. Tr\u00E8s sp\u00E9cifique marathon et semi. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D72min \u00B7 C\u00F4te Voulgre',terrain:'voulgre',detail:'8 c\u00F4tes de 2min en puissance. Force sp\u00E9cifique trail et c\u00F4tes de route. Apr\u00E8s 4 c\u00F4tes : 2min de r\u00E9cup compl\u00E8te. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'2h route en endurance',g1:'2h trail avec D+',g2:'3h30 trail gros D+',decharge:false},
-  {sem:18,mois:'Jan',phase:'Pr\u00E9pa trail / route',phaseClass:'phase-prepa',
-   mardi:{titre:'5\u00D76min seuil progressif',terrain:'halage',detail:'5 r\u00E9p\u00E9titions. La 5e sera difficile \u2014 c\'est intentionnel. Allure l\u00E9g\u00E8rement plus haute sur les premi\u00E8res. On construit la r\u00E9sistance \u00E0 la fatigue. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Parc Les Girouettes \u00B7 Fartlek nature 55min',terrain:'girouettes',detail:'Sortie sp\u00E9ciale mensuelle sur Anglet : parc Les Girouettes ou boucle plage + Chiberta. Fartlek naturel 55min. Terrain vari\u00E9, sortie ressour\u00E7ante. Un des plus beaux circuits de la section. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG de 5 min \u00E0 la fin du fartlek avant retour : \uD83D\uDFE2 10 squats + 10 fentes + 30s planche frontale + 30s gainage lat\u00E9ral chaque \u00B7 \uD83D\uDD35 10 squats saut\u00E9s (r\u00E9ception souple) + 10 step-down (3s) + planche lat\u00E9rale dynamique 30s \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + gainage lat\u00E9ral + clamshell 10. Se fait debout, sur le terrain \u2014 pas besoin de s\'allonger.'},
-   g0:'2h route longue progressive',g1:'2h trail',g2:'3h30 trail',decharge:false},
-  {sem:19,mois:'Jan',phase:'Pr\u00E9pa trail / route',phaseClass:'phase-prepa',
-   mardi:{titre:'2\u00D715min seuil \u00B7 Halage',terrain:'halage',detail:'Deux longues plages au seuil, r\u00E9cup 5min entre. Tr\u00E8s exigeant, tr\u00E8s efficace. La s\u00E9ance reine pour d\u00E9velopper l\'endurance de course. Route comme trail en b\u00E9n\u00E9ficient autant. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'10\u00D72min \u00B7 C\u00F4te Voulgre + descente',terrain:'voulgre',detail:'10 c\u00F4tes de 2min. Descente travaill\u00E9e : petits pas rapides, genoux fl\u00E9chis, regard loin. 50% mont\u00E9e / 50% descente technique. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'2h10 route',g1:'2h trail',g2:'3h30 trail',decharge:false},
-  {sem:20,mois:'Jan',phase:'Pr\u00E9pa trail / route',phaseClass:'phase-prepa',
-   mardi:{titre:'Footing 45min + 6\u00D71min souple',terrain:'halage',detail:'D\u00E9charge. Footing facile avec 6 acc\u00E9l\u00E9rations l\u00E9g\u00E8res. Entretien de la vivacit\u00E9 sans fatigue. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Footing terrain souple 50min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration active sur terrain vari\u00E9. Allure tr\u00E8s douce.'},
-   g0:'1h30 route r\u00E9cup',g1:'1h30 r\u00E9cup trail',g2:'2h30 l\u00E9ger',decharge:true},
-
-  {sem:21,mois:'F\u00E9v',phase:'Pr\u00E9-comp\u00E9tition',phaseClass:'phase-precomp',
-   mardi:{titre:'3\u00D78min allure course \u00B7 Halage',terrain:'halage',detail:'Simulation allure course pour les routards (semi/marathon), allure cible trail pour les traileurs. 3 blocs de 8min. R\u00E9cup 4min. Tr\u00E8s sp\u00E9cifique selon l\'objectif de chacun. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Fartlek 10\u00D71min \u00B7 Intra-muros',terrain:'intramuros',detail:'10 acc\u00E9l\u00E9rations d\'1min sur terrain vari\u00E9 dans le vieux Bayonne. R\u00E9cup 1min30 trottin\u00E9e. D\u00E9veloppe la capacit\u00E9 \u00E0 relancer, g\u00E9rer les changements de rythme.'},
-   g0:'2h route allure marathon',g1:'2h trail D+',g2:'4h trail pyr\u00E9n\u00E9en',decharge:false},
-  {sem:22,mois:'F\u00E9v',phase:'Pr\u00E9-comp\u00E9tition',phaseClass:'phase-precomp',
-   mardi:{titre:'4\u00D78min allure course',terrain:'halage',detail:'4 r\u00E9p\u00E9titions. R\u00E9cup 3min30. R\u00E9gularit\u00E9 > vitesse. Si la 4e ne tient pas : l\'allure des 3 premi\u00E8res \u00E9tait trop \u00E9lev\u00E9e. On ajuste, on ne force pas. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Sortie montagne mensuelle \u00B7 Ursuya',terrain:'montagne',detail:'Sortie montagne du mois : Ursuya (678m). Mont\u00E9es longues de 5-8min, descente r\u00E9cup. Tr\u00E8s sp\u00E9cifique pour les traileurs pr\u00E9-comp\u00E9tition. Groupe B : s\u00E9ance c\u00F4tes normales + fartlek \u00E0 Bayonne. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Le terrain fait d\u00E9j\u00E0 80% du travail. Ajouter entre 2 mont\u00E9es : \uD83D\uDFE2 8 squats lents sur terrain plat + marche active dans la descente \u00B7 \uD83D\uDD35 8 step-down sur rocher plat (4s) + 8 fentes en descente + gainage 30s \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares sur le terrain + clamshell 10 chaque c\u00F4t\u00E9. Les descentes techniques sur sentier = travail excentrique intense pour les quadriceps.'},
-   g0:'2h route semi-marathon',g1:'3h trail D+',g2:'4h trail',decharge:false},
-  {sem:23,mois:'F\u00E9v',phase:'Pr\u00E9-comp\u00E9tition',phaseClass:'phase-precomp',
-   mardi:{titre:'5\u00D76min allure + acc\u00E9l\u00E9ration finale',terrain:'halage',detail:'5\u00D76min avec les 2 derni\u00E8res minutes de chaque bloc l\u00E9g\u00E8rement plus rapides. On apprend \u00E0 finir fort \u2014 capital pour les fins de marathon et de trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Fartlek trail 55min \u00B7 Intra-muros',terrain:'intramuros',detail:'Fartlek naturel avec accent sur les mont\u00E9es des remparts. Chaque mont\u00E9e est franchie fort. R\u00E9cup dans les descentes et les plats. 55min sans chrono sur les efforts.'},
-   g0:'2h route tempo',g1:'2h trail',g2:'4h trail',decharge:false},
-  {sem:24,mois:'F\u00E9v',phase:'Pr\u00E9-comp\u00E9tition',phaseClass:'phase-precomp',
-   mardi:{titre:'Footing + 6\u00D745s vivants',terrain:'halage',detail:'D\u00E9charge. Footing facile avec 6 acc\u00E9l\u00E9rations courtes et vives. Entretien de la vivacit\u00E9 sans fatigue.'},
-   jeudi:{titre:'Footing l\u00E9ger + \u00E9ducatifs 40min',terrain:'intramuros',detail:'S\u00E9ance l\u00E9g\u00E8re. \u00C9ducatifs de course, foul\u00E9es bondissantes douces. Pas d\'intensit\u00E9. Semaine de soufflage.'},
-   g0:'1h30 route r\u00E9cup',g1:'1h30 trail r\u00E9cup',g2:'2h30 l\u00E9ger',decharge:true},
-
-  {sem:25,mois:'Mars',phase:'Objectifs printemps',phaseClass:'phase-senpereko',
-   mardi:{titre:'6\u00D71min dynamiques + \u00E9ducatifs',terrain:'vw',detail:'S\u00E9ance de maintien. 6 r\u00E9p\u00E9titions vives avec focus technique. \u00C9ducatifs de course. On garde les jambes \u00E9veill\u00E9es avant les premi\u00E8res courses de printemps. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Apr\u00E8s chaque descente, avant de repartir : \uD83D\uDFE2 8 fentes altern\u00E9es lentes + 30s \u00E9quilibre unipodal \u00B7 \uD83D\uDD35 10 fentes altern\u00E9es + 8 calf raises unilat\u00E9raux sur bordure \u00B7 \uD83D\uDD34 8 fentes bulgares (pied arri\u00E8re sur\u00E9lev\u00E9) + 10 calf raises excentrique (3s descente). Bloc final commun : 2\u00D730s planche frontale apr\u00E8s la derni\u00E8re c\u00F4te.'},
-   jeudi:{titre:'Footing l\u00E9g\u00E8rement vallonn\u00E9 40min',terrain:'intramuros',detail:'Sortie de fra\u00EEcheur. Allure conversation. Quelques petites mont\u00E9es pour rappeler aux jambes ce qui les attend.'},
-   g0:'Semi ou 10km local \uD83C\uDFC1',g1:'1h30 trail l\u00E9ger',g2:'2h30 trail',event:'Courses de printemps \u2014 mars/avril',decharge:false},
-  {sem:26,mois:'Mars',phase:'Objectifs printemps',phaseClass:'phase-senpereko',
-   mardi:{titre:'Footing + 4\u00D730s allumage',terrain:'intramuros',detail:'S-1 avant une course ou semaine de gestion. Footing tr\u00E8s facile avec 4 acc\u00E9l\u00E9rations l\u00E9g\u00E8res. Maximum 40min.'},
-   jeudi:{titre:'Fartlek trail intra-muros 45min',terrain:'intramuros',detail:'Fartlek dans Bayonne. Plaisir de courir dans la ville. Allure selon les sensations.'},
-   g0:'Course route locale \uD83C\uDFC1 ou 2h route',g1:'Trail local \uD83C\uDFC1 ou 2h trail',g2:'Trail D+ \uD83C\uDFC1 ou 3h trail',decharge:false},
-  {sem:27,mois:'Mars',phase:'Objectifs printemps',phaseClass:'phase-senpereko',
-   mardi:{titre:'Reprise qualit\u00E9 5\u00D73min seuil',terrain:'halage',detail:'On reprend l\'intensit\u00E9 apr\u00E8s une course ou une semaine all\u00E9g\u00E9e. 5\u00D73min au seuil pour relancer la machine. \u00C9valuez les sensations. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D71min30 \u00B7 C\u00F4te VW \u00B7 Retour force',terrain:'vw',detail:'Retour sur les c\u00F4tes. 8\u00D71min30, r\u00E9cup descente. Reprise du travail sp\u00E9cifique. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Pendant la r\u00E9cup descente en bas de c\u00F4te : \uD83D\uDFE2 8 fentes avant altern\u00E9es + 8 glute bridge au sol \u00B7 \uD83D\uDD35 10 fentes bulgares + 8 step-down contr\u00F4l\u00E9 (3s descente) sur bordure \u00B7 \uD83D\uDD34 8 step-down excentriques (4s descente) + 8 fentes saut\u00E9es + gainage lat\u00E9ral 30s. Le step-down excentrique est l\'exercice cl\u00E9 anti-douleur genou en descente trail.'},
-   g0:'1h45 route r\u00E9cup',g1:'2h trail',g2:'3h30 trail',decharge:false},
-  {sem:28,mois:'Mars',phase:'Objectifs printemps',phaseClass:'phase-senpereko',
-   mardi:{titre:'Footing r\u00E9cup 40min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration. Footing tr\u00E8s facile pour \u00E9liminer les toxines. Pas d\'intensit\u00E9.'},
-   jeudi:{titre:'Footing r\u00E9cup 45min + \u00E9tirements',terrain:'halage',detail:'R\u00E9cup\u00E9ration sur le halage. Plat = moins de contrainte m\u00E9canique.'},
-   g0:'1h30 route r\u00E9cup',g1:'1h30 trail r\u00E9cup',g2:'2h r\u00E9cup trail',decharge:true},
-
-  {sem:29,mois:'Avr',phase:'Construction \u00E9t\u00E9',phaseClass:'phase-euskal',
-   mardi:{titre:'5\u00D73min seuil + 4\u00D71min vif',terrain:'halage',detail:'S\u00E9ance double : seuil puis vivacit\u00E9. 5\u00D73min seuil (r\u00E9cup 2min30) puis 4\u00D71min vifs apr\u00E8s 5min de r\u00E9cup. R\u00E9sistance \u00E0 la fatigue. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'6\u00D72min \u00B7 C\u00F4te Voulgre + descente',terrain:'voulgre',detail:'6 c\u00F4tes de 2min + descentes longues et contr\u00F4l\u00E9es. Travail complet mont\u00E9e / descente. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'2h route',g1:'2h trail D+',g2:'3h trail',decharge:false},
-  {sem:30,mois:'Avr',phase:'Construction \u00E9t\u00E9',phaseClass:'phase-euskal',
-   mardi:{titre:'4\u00D78min allure cible \u00B7 Halage',terrain:'halage',detail:'4 blocs de 8min \u00E0 l\'allure cible de chacun : allure semi/marathon pour les routards, allure trail cible pour les traileurs. Important : reproduire exactement l\'allure pr\u00E9vue, pas plus vite. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Sortie montagne mensuelle \u00B7 Mondarrain',terrain:'montagne',detail:'Sortie mensuelle sur le Mondarrain depuis Itxassou. Fartlek en mont\u00E9e, descentes r\u00E9cup. Total 1h45-2h. Groupe B : fartlek intra-muros 50min \u00E0 Bayonne. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Le terrain fait d\u00E9j\u00E0 80% du travail. Ajouter entre 2 mont\u00E9es : \uD83D\uDFE2 8 squats lents sur terrain plat + marche active dans la descente \u00B7 \uD83D\uDD35 8 step-down sur rocher plat (4s) + 8 fentes en descente + gainage 30s \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares sur le terrain + clamshell 10 chaque c\u00F4t\u00E9. Les descentes techniques sur sentier = travail excentrique intense pour les quadriceps.'},
-   g0:'2h15 route',g1:'2h trail',g2:'4h trail',decharge:false},
-  {sem:31,mois:'Avr',phase:'Construction \u00E9t\u00E9',phaseClass:'phase-euskal',
-   mardi:{titre:'2\u00D720min seuil \u00B7 Halage',terrain:'halage',detail:'Deux longues plages au seuil, r\u00E9cup 5min entre. La dur\u00E9e la plus longue du programme. Tr\u00E8s formateur pour les efforts longs en route et trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D72min \u00B7 C\u00F4te Voulgre + descente tech.',terrain:'voulgre',detail:'8 c\u00F4tes de 2min + descentes techniques soign\u00E9es. Mont\u00E9e et descente travaill\u00E9es avec la m\u00EAme exigence. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'2h15 route longue',g1:'2h trail D+',g2:'4h trail',decharge:false},
-  {sem:32,mois:'Avr',phase:'Construction \u00E9t\u00E9',phaseClass:'phase-euskal',
-   mardi:{titre:'Footing 40min + 5\u00D71min vifs',terrain:'halage',detail:'D\u00E9charge. Footing facile avec 5 acc\u00E9l\u00E9rations courtes. On pr\u00E9serve les jambes. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Sortie r\u00E9cup terrain 45min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration active. Terrain naturel. Allure tr\u00E8s douce.'},
-   g0:'1h45 route l\u00E9ger',g1:'1h45 trail l\u00E9ger',g2:'3h l\u00E9ger',decharge:true},
-
-  {sem:33,mois:'Mai',phase:'Objectifs \u00E9t\u00E9',phaseClass:'phase-euskal',
-   mardi:{titre:'Footing + 6\u00D745s vivants',terrain:'halage',detail:'S\u00E9ance de maintien l\u00E9g\u00E8re. Footing facile avec 6 acc\u00E9l\u00E9rations courtes. Entretien de la vivacit\u00E9.'},
-   jeudi:{titre:'Fartlek Les Girouettes ou Intra-muros 45min',terrain:'girouettes',detail:'Fartlek dans Bayonne ou Anglet, accent technique. Terrain vari\u00E9, allure dict\u00E9e par le terrain. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG de 5 min \u00E0 la fin du fartlek avant retour : \uD83D\uDFE2 10 squats + 10 fentes + 30s planche frontale + 30s gainage lat\u00E9ral chaque \u00B7 \uD83D\uDD35 10 squats saut\u00E9s (r\u00E9ception souple) + 10 step-down (3s) + planche lat\u00E9rale dynamique 30s \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + gainage lat\u00E9ral + clamshell 10. Se fait debout, sur le terrain \u2014 pas besoin de s\'allonger.'},
-   g0:'Course route locale \uD83C\uDFC1 ou 1h45 route',g1:'1h30 trail l\u00E9ger',g2:'2h30 trail',event:'Courses de mai \u2014 trails locaux',decharge:false},
-  {sem:34,mois:'Mai',phase:'Objectifs \u00E9t\u00E9',phaseClass:'phase-euskal',
-   mardi:{titre:'5\u00D73min seuil \u00B7 Halage',terrain:'halage',detail:'Retour au seuil. 5\u00D73min, r\u00E9cup 3min. On recharge les qualit\u00E9s apr\u00E8s une \u00E9ventuelle course ou p\u00E9riode intense. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D71min30 \u00B7 C\u00F4te VW \u00B7 Puissance',terrain:'vw',detail:'8 c\u00F4tes de 1min30. Retour au travail de force sp\u00E9cifique. Descente r\u00E9cup trottin\u00E9e. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Pendant la r\u00E9cup descente en bas de c\u00F4te : \uD83D\uDFE2 8 fentes avant altern\u00E9es + 8 glute bridge au sol \u00B7 \uD83D\uDD35 10 fentes bulgares + 8 step-down contr\u00F4l\u00E9 (3s descente) sur bordure \u00B7 \uD83D\uDD34 8 step-down excentriques (4s descente) + 8 fentes saut\u00E9es + gainage lat\u00E9ral 30s. Le step-down excentrique est l\'exercice cl\u00E9 anti-douleur genou en descente trail.'},
-   g0:'2h route',g1:'2h trail',g2:'3h30 trail',decharge:false},
-  {sem:35,mois:'Mai',phase:'Objectifs \u00E9t\u00E9',phaseClass:'phase-recup',
-   mardi:{titre:'Footing r\u00E9cup 40min tr\u00E8s facile',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration douce selon les charges accumul\u00E9es. Footing tr\u00E8s facile. Pas de performance.'},
-   jeudi:{titre:'Marche ou footing l\u00E9ger 45min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration active au choix. Selon les jambes : marche dynamique ou footing tr\u00E8s l\u00E9ger.'},
-   g0:'1h30 route r\u00E9cup',g1:'1h30 trail r\u00E9cup',g2:'2h30 r\u00E9cup trail',decharge:false},
-  {sem:36,mois:'Mai',phase:'Construction',phaseClass:'phase-recup',
-   mardi:{titre:'Footing vallonn\u00E9 50min',terrain:'intramuros',detail:'Retour progressif. Terrain naturel, allure douce. On r\u00E9introduit le d\u00E9nivel\u00E9 pour pr\u00E9parer l\'\u00E9t\u00E9.'},
-   jeudi:{titre:'Technique descente \u00B7 C\u00F4te Voulgre 45min',terrain:'voulgre',detail:'Retour sur les c\u00F4tes uniquement pour la descente. Pas d\'intensit\u00E9 en mont\u00E9e. Focus complet sur la technique de descente trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Entre chaque r\u00E9p\u00E9tition de la Voulgre (r\u00E9cup active) : \uD83D\uDFE2 10 squats lents + 8 fentes avant + 5 glute bridge unilat\u00E9ral chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 8 fentes bulgares + clamshell 10 chaque \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares lest\u00E9es + 8 squats saut\u00E9s + planche lat\u00E9rale 30s. Bloc final unique : 2\u00D710 calf raises unilat\u00E9raux sur bordure de trottoir.'},
-   g0:'1h30 route',g1:'1h30 trail',g2:'2h30 trail',decharge:false},
-
-  {sem:37,mois:'Juin',phase:'Construction',phaseClass:'phase-base',
-   mardi:{titre:'8\u00D72min seuil \u00B7 Halage',terrain:'halage',detail:'Retour aux affaires. 8\u00D72min au seuil, r\u00E9cup 2min. On repart sur une base solide pour l\'\u00E9t\u00E9. Volume et intensit\u00E9 remontent progressivement. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'8\u00D72min c\u00F4te longue',terrain:'voulgre',detail:'8 c\u00F4tes de 2min. Reprise du travail sp\u00E9cifique trail. Volume en hausse. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 En bas de la Voulgre pendant les 3 min de r\u00E9cup : \uD83D\uDFE2 10 squats lents (4s descente) + 30s planche frontale \u00B7 \uD83D\uDD35 8 step-down excentriques (4s) + 10 squats + planche lat\u00E9rale 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 squats saut\u00E9s + 8 fentes bulgares + gainage lat\u00E9ral dynamique 30s. Progression : les premi\u00E8res semaines faire uniquement les squats, ajouter les step-down quand l\'adaptation est faite.'},
-   g0:'2h route',g1:'2h trail D+',g2:'4h trail',decharge:false},
-  {sem:38,mois:'Juin',phase:'Construction',phaseClass:'phase-base',
-   mardi:{titre:'5\u00D75min seuil \u00B7 Halage',terrain:'halage',detail:'5\u00D75min au seuil. On allonge les efforts. D\u00E9veloppe la r\u00E9sistance \u00E0 l\'effort soutenu. R\u00E9cup 3min. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Boucle plage + Chiberta \u00B7 60min',terrain:'plage',detail:'Sortie mensuelle Anglet : boucle plage + Chiberta ou parc Les Girouettes. 60min fartlek nature. Un des circuits les plus agr\u00E9ables de la section, parfait pour l\'\u00E9t\u00E9.'},
-   g0:'2h route',g1:'2h trail',g2:'4h trail',decharge:false},
-  {sem:39,mois:'Juin',phase:'Construction',phaseClass:'phase-base',
-   mardi:{titre:'10\u00D72min seuil intense \u00B7 Halage',terrain:'halage',detail:'Volume de seuil \u00E9lev\u00E9 : 10\u00D72min, r\u00E9cup 1min30. Beaucoup de r\u00E9p\u00E9titions. Accumulation de travail au seuil sans \u00E9puisement. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Sortie montagne mensuelle \u00B7 Ursuya',terrain:'montagne',detail:'Sortie mensuelle de juin sur l\'Ursuya. Tempo trail : 2 blocs de 20min \u00E0 allure soutenue. Total 1h30-2h. Groupe B : fartlek intra-muros 55min. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Le terrain fait d\u00E9j\u00E0 80% du travail. Ajouter entre 2 mont\u00E9es : \uD83D\uDFE2 8 squats lents sur terrain plat + marche active dans la descente \u00B7 \uD83D\uDD35 8 step-down sur rocher plat (4s) + 8 fentes en descente + gainage 30s \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares sur le terrain + clamshell 10 chaque c\u00F4t\u00E9. Les descentes techniques sur sentier = travail excentrique intense pour les quadriceps.'},
-   g0:'2h route',g1:'2h trail D+',g2:'4h trail',decharge:false},
-  {sem:40,mois:'Juin',phase:'Construction',phaseClass:'phase-base',
-   mardi:{titre:'Footing + 5\u00D71min30 vivants',terrain:'intramuros',detail:'D\u00E9charge. Footing dans le parc avec 5 acc\u00E9l\u00E9rations. Volume r\u00E9duit.'},
-   jeudi:{titre:'Footing r\u00E9cup 50min',terrain:'halage',detail:'R\u00E9cup\u00E9ration active sur le halage. Plat, doux. On consolide le mois.'},
-   g0:'1h45 r\u00E9cup route',g1:'1h45 r\u00E9cup trail',g2:'3h l\u00E9ger',decharge:true},
-
-  {sem:41,mois:'Juil',phase:'Bloc montagne',phaseClass:'phase-montagne',
-   mardi:{titre:'5\u00D75min seuil \u00B7 Halage',terrain:'halage',detail:'Mont\u00E9e en intensit\u00E9. 5\u00D75min au seuil avec r\u00E9cup 3min. Construction de la base solide avant le bloc estival. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Montagne mensuelle \u00B7 Mondarrain + fartlek',terrain:'montagne',detail:'Sortie montagne intensive. 5-6 mont\u00E9es longues (5-8min) sur le Mondarrain. Descentes r\u00E9cup. Total 2h-2h30. Groupe B : 10\u00D72min c\u00F4tes VW / La Floride. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Le terrain fait d\u00E9j\u00E0 80% du travail. Ajouter entre 2 mont\u00E9es : \uD83D\uDFE2 8 squats lents sur terrain plat + marche active dans la descente \u00B7 \uD83D\uDD35 8 step-down sur rocher plat (4s) + 8 fentes en descente + gainage 30s \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares sur le terrain + clamshell 10 chaque c\u00F4t\u00E9. Les descentes techniques sur sentier = travail excentrique intense pour les quadriceps.'},
-   g0:'2h30 route longue',g1:'2h30 trail D+',g2:'5h trail ou montagne',decharge:false},
-  {sem:42,mois:'Juil',phase:'Bloc montagne',phaseClass:'phase-montagne',
-   mardi:{titre:'3\u00D712min seuil \u00B7 Halage',terrain:'halage',detail:'Tr\u00E8s longues r\u00E9p\u00E9titions au seuil. 3\u00D712min r\u00E9cup 4min. La dur\u00E9e la plus longue du programme. Mentalement exigeant. Capital pour le marathon et les longs trails d\'\u00E9t\u00E9. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Escaliers Biarritz \u00B7 10\u00D7mont\u00E9e explosive',terrain:'escaliers',detail:'S\u00E9ance sp\u00E9ciale mensuelle : 10 mont\u00E9es compl\u00E8tes \u00E0 allure maximale soutenue. Descente lente et contr\u00F4l\u00E9e (excentrique). R\u00E9cup 2min. Total 1h15. Alternative : c\u00F4tes VW / La Floride pour ceux qui restent. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Au pied des escaliers entre chaque mont\u00E9e compl\u00E8te : \uD83D\uDFE2 8 squats poids corps lents \u2014 jambes fatigu\u00E9es, aller sur l\'amplitude \u00B7 \uD83D\uDD35 10 fentes avant + 8 calf raises unilat\u00E9raux sur marche du bas \u00B7 \uD83D\uDD34 8 step-down excentriques (5s) sur la marche du bas + foul\u00E9es bondissantes 15s. La descente des escaliers est d\u00E9j\u00E0 un travail excentrique intense \u2014 adapter le volume PPG en cons\u00E9quence.'},
-   g0:'2h30 route',g1:'2h30 trail',g2:'5h trail montagne',decharge:false},
-  {sem:43,mois:'Juil',phase:'Bloc montagne',phaseClass:'phase-montagne',
-   mardi:{titre:'Fartlek Les Douves ou Intra-muros 60min',terrain:'douves',detail:'60min de fartlek avec effort intense en mont\u00E9e des remparts et r\u00E9cup en descente. Simule les relances trail. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min en fin de s\u00E9ance sur le terrain : \uD83D\uDFE2 10 squats + 10 fentes + 30s planche + 20s gainage lat\u00E9ral \u00B7 \uD83D\uDD35 10 squats saut\u00E9s + 8 step-down (3s) + planche lat\u00E9rale 30s + clamshell 10 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (5s) + 8 fentes bulgares + gainage lat\u00E9ral dynamique. Terrain \u00E9clair\u00E9 = possibilit\u00E9 de faire les exercices au sol sans risque.'},
-   jeudi:{titre:'Montagne mensuelle \u00B7 Ursuya descentes',terrain:'montagne',detail:'Sortie montagne Ursuya avec focus descentes techniques. 8 mont\u00E9es de 2min + descentes longues \u00E0 vive allure. Groupe B : fartlek intra-muros + descentes techniques c\u00F4tes. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Le terrain fait d\u00E9j\u00E0 80% du travail. Ajouter entre 2 mont\u00E9es : \uD83D\uDFE2 8 squats lents sur terrain plat + marche active dans la descente \u00B7 \uD83D\uDD35 8 step-down sur rocher plat (4s) + 8 fentes en descente + gainage 30s \u00B7 \uD83D\uDD34 10 step-down excentriques (5s) + 8 fentes bulgares sur le terrain + clamshell 10 chaque c\u00F4t\u00E9. Les descentes techniques sur sentier = travail excentrique intense pour les quadriceps.'},
-   g0:'2h30 route',g1:'2h30 trail',g2:'5h trail ou weekend montagne',decharge:false},
-  {sem:44,mois:'Juil',phase:'Bloc montagne',phaseClass:'phase-montagne',
-   mardi:{titre:'Footing + 6\u00D71min vivants',terrain:'halage',detail:'D\u00E9charge. Volume tr\u00E8s r\u00E9duit. R\u00E9cup\u00E9ration compl\u00E8te. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   jeudi:{titre:'Footing r\u00E9cup 50min',terrain:'intramuros',detail:'R\u00E9cup\u00E9ration active. Allure tr\u00E8s douce.'},
-   g0:'2h route l\u00E9ger',g1:'2h trail l\u00E9ger',g2:'3h30 l\u00E9ger r\u00E9cup',decharge:true},
-
-  {sem:45,mois:'Ao\u00FBt',phase:'Objectifs \u00E9t\u00E9 / r\u00E9cup',phaseClass:'phase-grp',
-   mardi:{titre:'Footing + 6\u00D730s allumage',terrain:'intramuros',detail:'Maintien de la forme. Footing 40min avec 6 petites acc\u00E9l\u00E9rations. On n\'\u00E9puise pas, on entretient avant les objectifs d\'\u00E9t\u00E9.'},
-   jeudi:{titre:'Footing l\u00E9ger 45min + 4\u00D71min',terrain:'halage',detail:'Maintien sur le halage. 4 acc\u00E9l\u00E9rations l\u00E9g\u00E8res. L\u00E9ger et efficace. | \uD83C\uDFCB PPG coupl\u00E9e \u2014 Bloc PPG 5 min apr\u00E8s le fractionn\u00E9, avant le retour calme : \uD83D\uDFE2 10 squats + 10 fentes altern\u00E9es + 30s planche frontale \u00B7 \uD83D\uDD35 8 squats saut\u00E9s r\u00E9ception souple + 10 fentes + gainage lat\u00E9ral 30s chaque c\u00F4t\u00E9 \u00B7 \uD83D\uDD34 10 squats saut\u00E9s + 8 step-down excentriques (4s) + 8 fentes bulgares + planche dynamique 40s. Ne pas faire apr\u00E8s le retour calme \u2014 les jambes doivent encore \u00EAtre chaudes pour l\'adaptation musculaire.'},
-   g0:'2h route (ou course \uD83C\uDFC1)',g1:'2h trail (ou course trail \uD83C\uDFC1)',g2:'3h trail r\u00E9cup',event:'Objectifs \u00E9t\u00E9 \u2014 trails / routes d\'ao\u00FBt',decharge:false},
-  {sem:46,mois:'Ao\u00FBt',phase:'R\u00E9cup\u00E9ration active',phaseClass:'phase-grp',
-   mardi:{titre:'Footing + 4\u00D745s vifs',terrain:'intramuros',detail:'Volume r\u00E9duit de 40%. Footing tr\u00E8s facile avec 4 petites acc\u00E9l\u00E9rations. R\u00E9cup\u00E9ration si effort important le weekend.'},
-   jeudi:{titre:'Footing r\u00E9cup 35min \u00B7 Halage',terrain:'halage',detail:'Tr\u00E8s l\u00E9ger. Plat. Juste pour bouger les jambes apr\u00E8s un weekend charg\u00E9.'},
-   g0:'1h30 route l\u00E9ger',g1:'2h trail l\u00E9ger',g2:'2h30 trail',decharge:false},
-  {sem:47,mois:'Ao\u00FBt',phase:'R\u00E9cup\u00E9ration fin saison',phaseClass:'phase-grp',
-   mardi:{titre:'Footing + 3\u00D71min frais',terrain:'intramuros',detail:'Fin de saison. Footing l\u00E9ger dans Bayonne avec 3 petites acc\u00E9l\u00E9rations pour garder la vivacit\u00E9.'},
-   jeudi:{titre:'Footing r\u00E9cup 30min + \u00E9tirements',terrain:'intramuros',detail:'Minimal. On referme la saison en douceur. La saison prochaine commence en septembre.'},
-   g0:'1h route plaisir',g1:'1h30 trail plaisir',g2:'2h trail plaisir',decharge:false},
-  {sem:48,mois:'Ao\u00FBt',phase:'Bilan & renouveau',phaseClass:'phase-grp',
-   mardi:{titre:'Footing plaisir 40min \u00B7 Bayonne',terrain:'intramuros',detail:'Dernier footing de la saison dans Bayonne. Profitez de la ville, courez sans montre. C\'est la saison prochaine qui commence en septembre.'},
-   jeudi:{titre:'Bilan collectif \u00B7 Footing + caf\u00E9',terrain:'intramuros',detail:'S\u00E9ance bilan conviviale. Footing ensemble, puis caf\u00E9 ou bi\u00E8re. On parle de la saison \u00E9coul\u00E9e et on pr\u00E9pare la suivante. Tradition de la section.'},
-   g0:'R\u00E9cup libre',g1:'R\u00E9cup libre',g2:'R\u00E9cup compl\u00E8te',decharge:false}
+  {
+    "sem": 1,
+    "mois": "Sept",
+    "phase": "Reprise",
+    "phaseClass": "phase-reprise",
+    "mardi": {
+      "titre": "Footing 40min + 6×30s vif",
+      "terrain": "halage",
+      "detail": "Première séance de la saison — on reprend en douceur. Échauffement 10min. 6 répétitions de 30s allure vive (RPE 7), récup 1min30 marchée. Retour calme 10min. Objectif : réveiller la mécanique sans épuiser. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "6×30s · Côte La Floride",
+      "terrain": "floride",
+      "detail": "Premier contact avec les côtes. 6 montées de 30s (RPE 7), descente trottinée. Focus : genoux hauts, bras actifs. 🏋 PPG en haut de côte — En haut de chaque côte : 8 squats poids corps lents (3s descente) + 5 fentes avant par jambe. Total ~60s par récup. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "50min footing route souple",
+    "g1": "1h15 trail facile",
+    "g2": "1h45 trail aisé",
+    "decharge": false
+  },
+  {
+    "sem": 2,
+    "mois": "Sept",
+    "phase": "Reprise",
+    "phaseClass": "phase-reprise",
+    "mardi": {
+      "titre": "Fartlek libre 45min · Halage",
+      "terrain": "halage",
+      "detail": "On prend les repères. 45min de fartlek libre : accélérations aux bornes kilométriques, retours souples entre. Durée d'accélération libre (30s à 2min). Apprendre à jouer avec l'allure. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "8×30s · Côte La Floride",
+      "terrain": "floride",
+      "detail": "On monte à 8 répétitions. 8 montées de 30s (RPE 7-8), descente trottinée. Allure identique sur les 8. 🏋 PPG en haut de côte — En haut : 8 squats + 5 fentes par jambe. La PPG en côte renforce le quadriceps sans risque de blessure. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h route aisée",
+    "g1": "1h30 trail facile",
+    "g2": "2h trail avec D+",
+    "decharge": false
+  },
+  {
+    "sem": 3,
+    "mois": "Sept",
+    "phase": "Reprise",
+    "phaseClass": "phase-reprise",
+    "mardi": {
+      "titre": "6×1min Z4 · Halage",
+      "terrain": "halage",
+      "detail": "Premier fractionné structuré. 6×1min à RPE 7 (85% FCmax), récup 2min trottinée. Objectif : tenir la même allure sur les 6 répétitions. Sur le halage, l'absence de dénivelé permet de caler une allure régulière — c'est le but. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "10×30s · Côte La Floride",
+      "terrain": "floride",
+      "detail": "Semaine pic du bloc reprise. 10 montées de 30s (RPE 8). Descente trottinée. Maintenir la qualité sur toute la série. 🏋 PPG en haut de côte — En haut : 8 squats + 5 fentes/jambe + 20s gainage frontal. Total ~90s. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h15 route progressive",
+    "g1": "1h45 trail",
+    "g2": "2h15 trail pyrénéen",
+    "decharge": false
+  },
+  {
+    "sem": 4,
+    "mois": "Sept",
+    "phase": "Reprise",
+    "phaseClass": "phase-reprise",
+    "mardi": {
+      "titre": "Footing récup + 4×30s allumage",
+      "terrain": "intramuros",
+      "detail": "Semaine décharge : on récupère. 35min footing RPE 3, puis 4 accélérations de 30s à RPE 7 pour entretenir la vivacité. Retour calme 10min. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing souple 50min · Bayonne",
+      "terrain": "intramuros",
+      "detail": "Footing terrain varié, allure conversation. 50min de footing à RPE 3-4 dans Bayonne. On consolide les 3 semaines de reprise. Zéro intensité. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "50min footing récup",
+    "g1": "1h trail récup",
+    "g2": "1h30 trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 5,
+    "mois": "Oct",
+    "phase": "Foncier",
+    "phaseClass": "phase-base",
+    "mardi": {
+      "titre": "8×1min Z4 · Halage",
+      "terrain": "halage",
+      "detail": "Premier bloc foncier — on structure le travail. 8×1min à RPE 7-8 (85-90% FCmax), récup 2min. Sur le halage : idéal pour une allure constante. Tenir la même allure sur les 8. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "10×1min · Côte Voulgre",
+      "terrain": "voulgre",
+      "detail": "Séance puissance sur la Voulgre. 10 montées de 1min (RPE 8). Récup descente trottinée (~2min). 🏋 PPG en haut de côte — En haut de chaque côte : 10 squats lents (3s descente) + 8 fentes/jambe. Fessiers + quadriceps bien sollicités. Cette séance vaut largement une séance de musculation salle. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h20 route",
+    "g1": "1h30 trail",
+    "g2": "2h30 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 6,
+    "mois": "Oct",
+    "phase": "Foncier",
+    "phaseClass": "phase-base",
+    "mardi": {
+      "titre": "10×1min Z4 + 4×30s · Halage",
+      "terrain": "halage",
+      "detail": "Volume qualité en montée. 10×1min à RPE 8 (récup 1min45), puis 4×30s finishers à RPE 8-9. Retour calme 10min. Les finishers testent la résistance à la fatigue. Objectif : garder la même cadence sur les 4 derniers 30s. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "8×1min30 · Côte VW",
+      "terrain": "vw",
+      "detail": "Côte VW — durée phare pour la puissance. 8 montées de 1min30 (RPE 8). Descente trottinée complète. Focus : tenir la cadence de pas en fin de montée. 🏋 PPG en haut de côte — En haut : 10 step-down excentriques (4s descente) sur bordure + 5 fentes bulgares/jambe. Le step-down = anti-douleur genou en descente trail. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h30 route",
+    "g1": "1h30 trail +D",
+    "g2": "2h30 trail gros D+",
+    "decharge": false
+  },
+  {
+    "sem": 7,
+    "mois": "Oct",
+    "phase": "Foncier",
+    "phaseClass": "phase-base",
+    "mardi": {
+      "titre": "Fartlek 6×(2min vif / 2min récup)",
+      "terrain": "halage",
+      "detail": "Fartlek structuré sur le halage. 6 cycles de 2min RPE 7 / 2min trot. Allure soutenue sur les 2min, vraie récup sur les 2min de trot. Apprendre à gérer les bascules d'allure. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "6×2min · Côte Voulgre",
+      "terrain": "voulgre",
+      "detail": "Semaine pic foncier — séance exigeante. 6 montées de 2min (RPE 8). Récup descente complète (~3min). Gérer l'effort pour tenir la dernière comme la première. 🏋 PPG en haut de côte — En haut : 10 squats + 10 fentes + 30s gainage frontal. Bloc PPG complet qui profite de la fatigue musculaire déjà installée. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h40 route progressive",
+    "g1": "1h45 trail",
+    "g2": "3h trail pyrénéen",
+    "decharge": false
+  },
+  {
+    "sem": 8,
+    "mois": "Oct",
+    "phase": "Foncier",
+    "phaseClass": "phase-base",
+    "mardi": {
+      "titre": "Footing 40min + 4×1min",
+      "terrain": "intramuros",
+      "detail": "Décharge — volume réduit. 40min footing RPE 3-4 dans Bayonne. Puis 4×1min RPE 7 pour entretenir. Pas d'épuisement. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 50min · terrain varié",
+      "terrain": "chiberta",
+      "detail": "Récupération active sur terrain souple. 50min footing Forêt de Chiberta. Allure conversation. Zéro pression. Profiter du terrain. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route récup",
+    "g1": "1h20 trail récup",
+    "g2": "2h trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 9,
+    "mois": "Nov",
+    "phase": "VMA courte",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "10×(30s/30s) · Halage",
+      "terrain": "halage",
+      "detail": "Entrée en VMA — la séance de référence. Échauffement 15min + 2 lignes droites. 10×30s à VMA (RPE 8-9) / 30s trot. Retour calme 10min. Sur plat : on cherche la vitesse pure. Aucune charge musculaire additionnelle — on reste léger pour atteindre sa VMA. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek nature Chiberta 50min",
+      "terrain": "chiberta",
+      "detail": "Fartlek libre 50min en forêt de Chiberta. Accélérations aux envies (30s à 1min), récup trottinée. RPE 6. Volume aérobie sans surcharge après le 10×30/30 de mardi."
+    },
+    "g0": "1h15 route EF",
+    "g1": "1h30 trail",
+    "g2": "2h trail progressif",
+    "decharge": false
+  },
+  {
+    "sem": 10,
+    "mois": "Nov",
+    "phase": "VMA courte",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "15×(30s/30s) · Halage",
+      "terrain": "halage",
+      "detail": "On monte à 15 répétitions. 15×30s/30s (RPE 8-9). Tenir l'allure sur toutes les reps — c'est l'objectif. Si dégradation dès la 10ème : revenir à 12. Sur plat, la foulée doit rester légère et rebondissante. Raideur tendineuse maximale = efficacité de course. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Tempo 25min + foncier · Halage",
+      "terrain": "halage",
+      "detail": "Échauffement 15min. Tempo 25min à RPE 6 (seuil aérobie modéré). Retour calme 10min. Travail foncier seuil pour équilibrer la semaine."
+    },
+    "g0": "1h30 route",
+    "g1": "1h30 trail",
+    "g2": "2h30 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 11,
+    "mois": "Nov",
+    "phase": "VMA courte",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "2×(8×30s/30s) R=3min",
+      "terrain": "halage",
+      "detail": "Double bloc VMA — pic du bloc courte. 2 séries de 8×30s/30s, récup 3min entre séries. La 2ème série doit ressembler à la 1ère. Sur plat : glycogène préservé pour la qualité. Aucune charge additionnelle. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Sortie longue foncier 1h15 · Halage",
+      "terrain": "halage",
+      "detail": "Sortie foncière 1h15 sur le halage. Allure EF (RPE 4-5), conversation possible. Objectif pur volume aérobie après le 2×(8×30/30) de mardi. Récup active."
+    },
+    "g0": "1h45 route",
+    "g1": "1h45 trail",
+    "g2": "2h45 trail",
+    "decharge": false
+  },
+  {
+    "sem": 12,
+    "mois": "Nov",
+    "phase": "VMA courte",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "Test VMA 6min + footing",
+      "terrain": "stades",
+      "detail": "Test VMA — bilan du bloc. Échauffement 15min + lignes droites. Test 6min : parcourir la plus grande distance possible. VMA = distance parcourue × 10. Footing 15min retour calme. Noter la distance pour calibrer les allures du prochain bloc. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 50min · Chiberta",
+      "terrain": "chiberta",
+      "detail": "Décharge — récupération active. 50min footing en forêt RPE 3. Terrain souple obligatoire après le test VMA. Profiter, discuter. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route récup",
+    "g1": "1h20 trail récup",
+    "g2": "2h trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 13,
+    "mois": "Dec",
+    "phase": "VMA longue",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "8×400m · Piste (stades)",
+      "terrain": "stades",
+      "detail": "VMA longue — fractions 400m. Échauffement 15min + gammes. 8×400m à 100% VMA (RPE 8), récup 200m trottinée (~1min30). Tenir l'allure cible calibrée par le test VMA. Piste plate = précision chronométrique. Aucune charge musculaire — priorité à l'allure. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek forêt Chiberta 55min",
+      "terrain": "chiberta",
+      "detail": "Fartlek libre 55min en forêt. Accélérations variées aux envies, terrain souple. RPE 6 moyen. Volume aérobie qualité — équilibre avec les 8×400m piste de mardi."
+    },
+    "g0": "1h30 route",
+    "g1": "1h45 trail",
+    "g2": "2h30 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 14,
+    "mois": "Dec",
+    "phase": "VMA longue",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "10×400m · Piste",
+      "terrain": "stades",
+      "detail": "On monte à 10 répétitions. 10×400m à 100% VMA (RPE 8-9), récup 200m trottinée. Séance de référence piste. Objectif : tenir la même allure sur les 10. Dégradation au 8ème = normal. Au 5ème = charge trop élevée. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Circuit Les Douves · 6 tours",
+      "terrain": "douves",
+      "detail": "Fartlek naturel sur les remparts. 6 tours du circuit des Douves (~6min par tour). Allure soutenue dans les montées et lignes droites, récup dans les descentes et courbes. RPE 8 moyen. 🏋 PPG en haut de côte — Entre chaque tour : 8 squats + 5 fentes. Les Douves offrent un terrain naturel parfait pour le travail en contraste. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h40 route",
+    "g1": "2h trail",
+    "g2": "3h trail",
+    "decharge": false
+  },
+  {
+    "sem": 15,
+    "mois": "Dec",
+    "phase": "VMA longue",
+    "phaseClass": "phase-dev",
+    "mardi": {
+      "titre": "5×1000m · Halage",
+      "terrain": "halage",
+      "detail": "Première séance 1000m — travail seuil-VMA. 5×1000m à 95% VMA (RPE 8), récup 2min30 trottinée. Sur le halage, allure régulière calibrée. Tenir exactement la même allure sur les 5. Si variation > 5s/km entre le 1er et le 5ème : partir plus prudent la prochaine fois. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek nature · Chiberta · 1h",
+      "terrain": "chiberta",
+      "detail": "Fartlek libre en forêt de Chiberta sur 1h. Accélérations aux envies (30s à 2min), récup trottinée. RPE 6 moyen. Séance volume ludique pour équilibrer avec le 5×1000m mardi."
+    },
+    "g0": "1h30 route",
+    "g1": "1h45 trail",
+    "g2": "2h30 trail",
+    "decharge": false
+  },
+  {
+    "sem": 16,
+    "mois": "Dec",
+    "phase": "Trêve Noël",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing 40min plaisir",
+      "terrain": "intramuros",
+      "detail": "Avant-dernière séance avant Noël — on lâche prise. 40min footing RPE 3-4. Pas de montre. On profite de Bayonne illuminée. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 50min + marché Noël",
+      "terrain": "intramuros",
+      "detail": "Footing + esprit des fêtes. 50min footing tranquille, passage par le marché de Noël. Une séance qui clôture le bloc VMA. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route plaisir",
+    "g1": "1h15 trail plaisir",
+    "g2": "1h45 trail plaisir",
+    "decharge": true,
+    "event": "Trêve de Noël approche"
+  },
+  {
+    "sem": 17,
+    "mois": "Dec",
+    "phase": "Trêve Noël",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "TRÊVE · Footing libre",
+      "terrain": "intramuros",
+      "detail": "Programme suspendu — trêve de Noël. Chacun gère. Un simple footing de 20-30min à RPE 2-3 suffit à maintenir les acquis (principe de réversibilité). Rappel : après 10 jours d'arrêt total, la VO2max commence à diminuer. Mieux vaut 2 footings courts qu'un arrêt complet. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "TRÊVE · Repos ou footing",
+      "terrain": "intramuros",
+      "detail": "Repos total ou footing court selon envie. Profitez des fêtes. Le corps et la tête en ont besoin. Reprise programme S18. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "Footing libre",
+    "g1": "Trail libre",
+    "g2": "Sortie nature libre",
+    "decharge": true,
+    "event": "🎄 Trêve de Noël"
+  },
+  {
+    "sem": 18,
+    "mois": "Jan",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "Reprise · Tempo 20min + 4×400m",
+      "terrain": "halage",
+      "detail": "Reprise après trêve — progression graduelle. Échauffement 15min. Tempo 20min RPE 6 (80% FCmax). Récup 3min. 4×400m RPE 8. Retour calme 10min. Première séance seuil : ne pas chercher à tout rattraper. Le corps a perdu un peu, il va se souvenir vite. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek structuré 8×2min",
+      "terrain": "chiberta",
+      "detail": "Reprise terrain forêt. Échauffement 15min. 8 cycles de 2min RPE 7 / 1min trot en forêt. Terrain souple, allure soutenue. Pas de côtes cette semaine — on laisse les jambes remonter en puissance progressivement. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h15 route EF",
+    "g1": "1h30 trail facile",
+    "g2": "2h trail progressif",
+    "decharge": false
+  },
+  {
+    "sem": 19,
+    "mois": "Jan",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "Tempo 30min · Halage",
+      "terrain": "halage",
+      "detail": "Tempo long — cœur du travail seuil. Échauffement 15min + 2 lignes droites. Tempo continu 30min à RPE 6-7 (85% FCmax). L'allure où vous pouvez dire 2-3 mots mais pas une phrase. 'Confortablement dur'. C'est LA clé du 10km et du semi. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "8×1min · Côte VW",
+      "terrain": "vw",
+      "detail": "Force spécifique VW. 8 montées de 1min (RPE 8). Descente trottinée. 🏋 PPG en haut de côte — En haut : 10 squats + 8 fentes/jambe + 20s gainage frontal. Bloc PPG standard en côte. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h30 route",
+    "g1": "1h30 trail +D",
+    "g2": "2h30 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 20,
+    "mois": "Jan",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "4×1000m R=2min30 · Halage",
+      "terrain": "halage",
+      "detail": "Intervalles longs seuil. Échauffement 15min. 4×1000m à 90% VMA (RPE 7-8), récup 2min30 trottinée. Sur le halage, les bornes 100m/km permettent un calage précis. Même allure sur les 4 kilomètres. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "10×1min R=45s · Girouettes",
+      "terrain": "girouettes",
+      "detail": "Circuit Les Girouettes — récup courte. 10×1min (RPE 8) avec récup 45s seulement. Terrain naturel technique. Plus exigeant qu'une côte classique. 🏋 PPG en haut de côte — En haut des 5 dernières : 8 squats + 5 fentes. Récup courte + PPG = simulation fin de course trail. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h45 route",
+    "g1": "1h45 trail",
+    "g2": "2h45 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 21,
+    "mois": "Jan",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "Tempo progressif 35min",
+      "terrain": "halage",
+      "detail": "Pic du bloc seuil. Échauffement 15min. Tempo 35min PROGRESSIF : 10min RPE 6, 15min RPE 7, 10min RPE 8. L'art de gérer l'allure : ne pas partir trop vite sur la 1ère portion, garder des ressources pour la 3ème. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "6×1min30 · Côte Voulgre",
+      "terrain": "voulgre",
+      "detail": "Voulgre long — force + cardio. 6 montées de 1min30 (RPE 8-9). Descente trottinée complète. 🏋 PPG en haut de côte — En haut : 10 fentes bulgares + 8 step-down excentriques + 20s gainage latéral. Bloc PPG complet. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h45 route progressive",
+    "g1": "2h trail",
+    "g2": "3h trail pyrénéen",
+    "decharge": false
+  },
+  {
+    "sem": 22,
+    "mois": "Jan",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "Footing 40min + 4×400m",
+      "terrain": "intramuros",
+      "detail": "Décharge — volume réduit. Footing 40min RPE 3. 4×400m RPE 7 pour entretenir la vivacité. Retour calme 10min. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing terrain souple 50min",
+      "terrain": "chiberta",
+      "detail": "Forêt de Chiberta — récupération active. 50min footing terrain souple. Allure conversation obligatoire. Profiter du paysage. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route récup",
+    "g1": "1h20 trail récup",
+    "g2": "2h trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 23,
+    "mois": "Fev",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "3×2000m R=2min · Halage",
+      "terrain": "halage",
+      "detail": "Intervalles longs — cœur du seuil. Échauffement 15min. 3×2000m à allure 10km (RPE 7-8), récup 2min trottinée. Chaque 2000m dure ~8-10min. Très exigeant mentalement. C'est la séance qui prépare le 10km ou le semi. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Sortie longue foncier 1h15",
+      "terrain": "halage",
+      "detail": "Sortie foncière 1h15 pure sur le halage. Allure EF (RPE 4), aucune intensité. Volume aérobie pour équilibrer le 3×2000m de mardi."
+    },
+    "g0": "1h45 route allure semi +20s",
+    "g1": "2h trail",
+    "g2": "3h trail",
+    "decharge": false
+  },
+  {
+    "sem": 24,
+    "mois": "Fev",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "Pyramide 1000-2000-3000-2000-1000",
+      "terrain": "halage",
+      "detail": "Pyramide seuil — séance polyvalente. 1000m (RPE 8) / 2000m (RPE 7) / 3000m (RPE 7) / 2000m (RPE 7) / 1000m (RPE 8). Récup 2min entre chaque. Gestion d'allure clé : ne pas exploser sur le 1er 1000m. Le 3000m du milieu est le cœur de la séance. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Sortie longue foncier 1h15 · Chiberta",
+      "terrain": "chiberta",
+      "detail": "Sortie longue foncier RPE 4-5 dans la forêt. Terrain souple obligatoire après la pyramide seuil de mardi. Objectif : volume aérobie et récupération active."
+    },
+    "g0": "1h30 route allure semi",
+    "g1": "1h45 trail",
+    "g2": "2h30 trail technique",
+    "decharge": false
+  },
+  {
+    "sem": 25,
+    "mois": "Fev",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "5×1000m · Halage · Allure 10km",
+      "terrain": "halage",
+      "detail": "Allure spécifique 10km. Échauffement 15min. 5×1000m à allure 10km cible (RPE 8), récup 2min30. Pratiquer l'allure qu'on visera en course. Ressenti = exactement celui du jour J. La piste parfaite pour ça. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Circuit Les Douves · 8 tours",
+      "terrain": "douves",
+      "detail": "Fartlek remparts de Bayonne. 8 tours du circuit Les Douves (~6min/tour). Accélérations dans montées et lignes droites, récup dans descentes. RPE 7-8. 🏋 PPG en haut de côte — Entre les tours 4 et 5, puis 6 et 7 : 10 squats + 8 fentes. La fatigue cumulée rend la PPG redoutable. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h45 route progressive",
+    "g1": "1h45 trail",
+    "g2": "2h45 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 26,
+    "mois": "Fev",
+    "phase": "Seuil",
+    "phaseClass": "phase-force",
+    "mardi": {
+      "titre": "Footing 40min + 4×1min",
+      "terrain": "intramuros",
+      "detail": "Décharge février. Footing 40min RPE 3. 4×1min RPE 7. Retour calme 10min. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 50min · Chiberta",
+      "terrain": "chiberta",
+      "detail": "Récupération active forêt. 50min allure EF dans la forêt. Zéro chrono, focus sensations. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route récup",
+    "g1": "1h30 trail récup",
+    "g2": "2h trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 27,
+    "mois": "Mars",
+    "phase": "Spécifique route",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "5×1000m allure semi · Halage",
+      "terrain": "halage",
+      "detail": "Séance reine pour le semi. Échauffement 15min. 5×1000m à allure semi cible (RPE 7-8), récup 2min30. Tenir EXACTEMENT la même allure sur les 5 kilomètres. Simulation de course parfaite. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek forêt Chiberta · 50min",
+      "terrain": "chiberta",
+      "detail": "Fartlek libre 50min en forêt. Accélérations courtes aux envies, récup trottinée. RPE 6. Terrain souple. Volume qualité modéré."
+    },
+    "g0": "1h45 allure marathon +5s/km",
+    "g1": "2h trail",
+    "g2": "2h30 trail",
+    "decharge": false
+  },
+  {
+    "sem": 28,
+    "mois": "Mars",
+    "phase": "Spécifique route",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "Tempo 40min allure marathon",
+      "terrain": "halage",
+      "detail": "Tempo long à allure cible. Échauffement 15min + 2 lignes droites. 40min continus à allure marathon (RPE 6-7). La séance qui enseigne la gestion marathon : tenir longtemps une allure qui pourrait paraître 'pas si dure' au début. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Sortie progressive 1h30",
+      "terrain": "halage",
+      "detail": "Sortie 1h30 progressive sur le halage : 30min RPE 4, 30min RPE 5, 30min RPE 6. Travail de gestion d'allure long, pas d'intensité haute. Objectif : spécificité endurance marathon."
+    },
+    "g0": "2h allure marathon exacte",
+    "g1": "2h trail",
+    "g2": "2h30 trail soutenu",
+    "decharge": false
+  },
+  {
+    "sem": 29,
+    "mois": "Mars",
+    "phase": "Spécifique route",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "3×15min R=5min · Halage",
+      "terrain": "halage",
+      "detail": "Séance seuil longue — pic du bloc. 3×15min à RPE 7 (allure seuil), récup 5min marche/trot. La plus exigeante mentalement. Tenir l'allure sur le 3ème bloc est l'objectif. Si impossible : revenir à 2×15min. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Sortie foncier 1h15 · Halage",
+      "terrain": "halage",
+      "detail": "Sortie foncière 1h15 RPE 4-5 sur le halage. Après la séance seuil de mardi (la plus dure de la saison), récupération active exigée. Allure conversation obligatoire."
+    },
+    "g0": "2h allure marathon",
+    "g1": "2h trail soutenu",
+    "g2": "3h trail",
+    "decharge": false
+  },
+  {
+    "sem": 30,
+    "mois": "Mars",
+    "phase": "Spécifique route",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "Footing 40min + 4×400m",
+      "terrain": "intramuros",
+      "detail": "Décharge — on se prépare à la compétition. Footing 40min RPE 3-4. 4×400m RPE 7 pour entretenir la vitesse. Retour calme 10min. On bascule vers la phase d'affûtage. Le corps se reconstruit. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing souple 45min",
+      "terrain": "chiberta",
+      "detail": "Récupération active. 45min allure EF sur terrain varié. Dernière semaine avant affûtage. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h10 route EF",
+    "g1": "1h20 trail récup",
+    "g2": "1h45 trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 31,
+    "mois": "Avr",
+    "phase": "Compétitions route",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "Pré-affûtage · 4×1000m",
+      "terrain": "halage",
+      "detail": "Dernière séance quali avant course — pré-affûtage. 4×1000m à allure semi (RPE 7-8), récup 2min30. Volume réduit vs les semaines précédentes. On maintient l'intensité, on baisse le volume. Le corps doit sortir un pic de forme dans 10 jours. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 45min + 4 lignes droites",
+      "terrain": "halage",
+      "detail": "Activation douce. 45min EF (RPE 3-4) sur le halage. 4 lignes droites progressives à la fin. Pas de côtes cette semaine — jambes fraîches obligatoires avant la course. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h20 allure marathon confort",
+    "g1": "1h30 trail facile",
+    "g2": "1h45 trail léger",
+    "decharge": false,
+    "event": "Semi-marathon dans 10 jours"
+  },
+  {
+    "sem": 32,
+    "mois": "Avr",
+    "phase": "Compétitions route",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "AFFÛTAGE · 30min + 3×600m",
+      "terrain": "halage",
+      "detail": "Affûtage — semaine clé. 30min footing EF (RPE 3-4). Puis 3×600m à allure semi (RPE 7-8) avec récup 3min complète. Footing 15min retour. Volume réduit de 30-50%, intensité maintenue. Les cuisses doivent se vider de fatigue et se charger en glycogène. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "ACTIVATION · 20min + 4 lignes",
+      "terrain": "intramuros",
+      "detail": "Activation finale — 2 jours avant course. 20min footing très facile (RPE 2-3). 4 lignes droites progressives de 100m. Étirements doux. Objectif : réveiller les jambes, pas s'entraîner. Rester frais. La course est dans 2 jours. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "Course semi-marathon !",
+    "g1": "Course 10km ou repos",
+    "g2": "Sortie découverte 1h",
+    "decharge": true,
+    "event": "🏁 Semi-Marathon"
+  },
+  {
+    "sem": 33,
+    "mois": "Avr",
+    "phase": "Compétitions route",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "Récupération active · Footing 30min",
+      "terrain": "intramuros",
+      "detail": "Post-course — récupération. 30min footing très lent (RPE 2-3). Bayonne intra-muros. Zéro intensité. Le corps a encaissé l'effort course. Il faut 7-10 jours pour récupérer totalement. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 45min · Chiberta",
+      "terrain": "chiberta",
+      "detail": "Trottinade forêt. 45min footing terrain souple RPE 3. Allure conversation obligatoire. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route souple",
+    "g1": "1h15 trail récup",
+    "g2": "1h30 trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 34,
+    "mois": "Avr",
+    "phase": "Compétitions route",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "Footing 50min + 6×30s",
+      "terrain": "halage",
+      "detail": "Reprise post-compétition. 50min footing EF (RPE 4). 6×30s à RPE 7 pour réveiller la vivacité. Retour calme 10min. Retour progressif à l'entraînement structuré. Prochain bloc : transition trail. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek libre 45min · Halage",
+      "terrain": "halage",
+      "detail": "Fartlek sensations. 45min de fartlek libre sur le halage. Accélérations libres quand l'envie vient. RPE 6 moyen. Ressourcement mental avant de redémarrer un cycle structuré. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h30 route",
+    "g1": "1h45 trail",
+    "g2": "2h15 trail",
+    "decharge": false
+  },
+  {
+    "sem": 35,
+    "mois": "Mai",
+    "phase": "Transition trail",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "10×1min30 · Côte VW",
+      "terrain": "vw",
+      "detail": "Bascule vers le trail — VW force. 10 montées de 1min30 (RPE 8). Descente trottinée. 🏋 PPG en haut de côte — En haut : 10 squats + 10 fentes + 30s gainage frontal. On réveille le pattern côte après 2 mois de route. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "jeudi": {
+      "titre": "Fartlek terrain Chiberta · 60min",
+      "terrain": "chiberta",
+      "detail": "Fartlek forêt — retour à la nature. 60min en forêt. Accélérations libres dans les faux-plats, récup dans les portions techniques. RPE 6-7. On se réadapte au terrain irrégulier. Vigilance pose de pied. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h30 route",
+    "g1": "2h trail",
+    "g2": "2h30 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 36,
+    "mois": "Mai",
+    "phase": "Transition trail",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "Escaliers Côte des Basques",
+      "terrain": "escaliers",
+      "detail": "Excentrique pur — préparation descente. Échauffement 15min. 5 blocs × 3 aller-retour escaliers. Montée soutenue, descente LENTE et contrôlée. RPE 8. 🏋 PPG en haut de côte — En bas de chaque bloc : 8 step-down excentriques (5s descente) + 5 fentes bulgares. Cette séance = bouclier anti-douleur genoux en trail. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "jeudi": {
+      "titre": "Sortie trail forêt 1h15",
+      "terrain": "chiberta",
+      "detail": "Sortie trail 1h15 en forêt avec quelques relances. RPE 5-6. Terrain souple, récupération active après les escaliers de mardi."
+    },
+    "g0": "1h30 route",
+    "g1": "2h trail D+",
+    "g2": "2h45 trail Ursuya",
+    "decharge": false
+  },
+  {
+    "sem": 37,
+    "mois": "Mai",
+    "phase": "Transition trail",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "Pyramide VVF 20s-40s-1min",
+      "terrain": "vvf",
+      "detail": "Pyramide multi-durées VVF. 3×20s / 3×40s / 6×1min / 3×40s / 3×20s. Les 20s explosifs (RPE 9), les 1min soutenus (RPE 8). Descente trottinée entre chaque. 🏋 PPG en haut de côte — En haut des 6×1min (sommet de séance) : 8 squats + 5 fentes. Pic de charge du bloc transition. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "jeudi": {
+      "titre": "Sortie dénivelé · 1h30",
+      "terrain": "montagne",
+      "detail": "Sortie nature avec D+ — simulation trail. 1h30 en trail avec du dénivelé (500-700m D+). Allure EF à Z3 (RPE 4-6). Pas de PPG programmée — la sortie en elle-même travaille la force. Fin de séance : 5min étirements quadriceps. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h45 route progressive",
+    "g1": "2h30 trail D+",
+    "g2": "3h trail montagne",
+    "decharge": false
+  },
+  {
+    "sem": 38,
+    "mois": "Mai",
+    "phase": "Transition trail",
+    "phaseClass": "phase-prepa",
+    "mardi": {
+      "titre": "Footing 45min + 4×1min",
+      "terrain": "intramuros",
+      "detail": "Décharge avant prépa trail finale. 45min footing RPE 3-4. 4×1min RPE 7. Retour calme 10min. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing terrain souple 50min",
+      "terrain": "chiberta",
+      "detail": "Récupération forêt. 50min EF Chiberta. Zéro intensité. Préparer le corps à la prépa trail du mois prochain. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route récup",
+    "g1": "1h30 trail récup",
+    "g2": "2h trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 39,
+    "mois": "Juin",
+    "phase": "Trail compétition",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "Côtes VVF multi-durées",
+      "terrain": "vvf",
+      "detail": "Spécifique trail — multi-formats. Échauffement 15min. 6×40s + 4×1min30 + 6×40s (RPE 8-9). Descente trottinée. 🏋 PPG en haut de côte — En haut des 4×1min30 (pic de séance) : 10 squats + 8 fentes bulgares. Charge PPG ciblée sur le pic. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "jeudi": {
+      "titre": "Sortie spécifique Ursuya",
+      "terrain": "montagne",
+      "detail": "Sortie simulation trail. 2h en montagne avec D+ (700-1000m). Allure EF sur montée, attentif en descente (RPE 4-5). Reconnaissance de terrain si Trail des Colombes passe par Ursuya. Hydratation, ravito, gestion effort. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h45 route",
+    "g1": "2h30 trail D+",
+    "g2": "3h30 trail montagne",
+    "decharge": false
+  },
+  {
+    "sem": 40,
+    "mois": "Juin",
+    "phase": "Trail compétition",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "6×1min30 · Côte Voulgre",
+      "terrain": "voulgre",
+      "detail": "Pré-affûtage trail — on garde la qualité. 6 montées de 1min30 (RPE 8). Descente trottinée complète. 🏋 PPG en haut de côte — En haut : 8 squats + 5 fentes/jambe. On baisse le volume PPG par rapport aux semaines pic. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "jeudi": {
+      "titre": "Fartlek forêt 45min + D+",
+      "terrain": "chiberta",
+      "detail": "Fartlek terrain naturel. 45min fartlek en forêt avec les faux-plats. Allure variable RPE 5-7. Se caler mentalement sur le trail à venir. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h30 route",
+    "g1": "1h45 trail",
+    "g2": "2h30 trail",
+    "decharge": false,
+    "event": "Trail des Colombes dans 10 jours"
+  },
+  {
+    "sem": 41,
+    "mois": "Juin",
+    "phase": "Trail compétition",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "AFFÛTAGE trail · 30min + 4×1min",
+      "terrain": "douves",
+      "detail": "Affûtage trail — dernière quali. 30min EF sur les remparts (RPE 4). 4×1min (RPE 7) pour entretenir. Retour calme. Volume réduit. Intensité conservée. Le trail est dimanche. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "ACTIVATION · 20min + 4 lignes",
+      "terrain": "intramuros",
+      "detail": "Activation finale — 2 jours avant trail. 20min footing facile. 4 lignes droites progressives. Étirements légers. Rester frais. La course est dimanche. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "Trail des Colombes !",
+    "g1": "Trail des Colombes !",
+    "g2": "Trail des Colombes ou long",
+    "decharge": true,
+    "event": "🏔 Trail des Colombes"
+  },
+  {
+    "sem": 42,
+    "mois": "Juin",
+    "phase": "Trail compétition",
+    "phaseClass": "phase-precomp",
+    "mardi": {
+      "titre": "Récup active · Footing 30min",
+      "terrain": "intramuros",
+      "detail": "Post-trail — récupération. 30min footing très lent (RPE 2-3). Bayonne. Zéro intensité. Le trail engage plus que la route (excentrique intense). 10-14 jours pour récupérer totalement. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 40min · Chiberta",
+      "terrain": "chiberta",
+      "detail": "Trottinade forêt. 40min footing souple. Apprécier la forêt. Pas d'intensité. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "45min récup",
+    "g1": "1h trail récup",
+    "g2": "1h30 trail léger",
+    "decharge": true
+  },
+  {
+    "sem": 43,
+    "mois": "Juil",
+    "phase": "Relâche Fêtes",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing plaisir 45min",
+      "terrain": "halage",
+      "detail": "Ambiance d'été — programme allégé. 45min footing halage au calme. Allure EF. Profiter de la lumière longue. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek libre 45min",
+      "terrain": "intramuros",
+      "detail": "Fartlek libre Bayonne intra-muros. 45min. Accélérations quand l'envie, marche quand utile. RPE 5-6. Plaisir avant tout. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h30 plage + Chiberta",
+    "g1": "1h45 trail",
+    "g2": "2h15 trail aisé",
+    "decharge": false
+  },
+  {
+    "sem": 44,
+    "mois": "Juil",
+    "phase": "Relâche Fêtes",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "FÊTES · Footing santé 30min",
+      "terrain": "intramuros",
+      "detail": "Semaine des Fêtes — adaptation culturelle. 30min footing très facile (RPE 2-3). Programme club suspendu. La charge physique des Fêtes se substitue à l'entraînement. Principe du Guide : la charge liée à l'événement (marche, chaleur, manque de sommeil) est une charge réelle. Pas de surcharge additionnelle. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "FÊTES · Repos ou marche",
+      "terrain": "intramuros",
+      "detail": "Repos total ou marche selon envie. Profiter des Fêtes. Reprise douce la semaine prochaine. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "Libre / repos",
+    "g1": "Libre / marche",
+    "g2": "Libre / repos",
+    "decharge": true,
+    "event": "🎊 Fêtes de Bayonne"
+  },
+  {
+    "sem": 45,
+    "mois": "Juil",
+    "phase": "Relâche Fêtes",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Reprise · Footing 40min",
+      "terrain": "halage",
+      "detail": "Reprise post-Fêtes — tout en douceur. 40min footing halage RPE 3-4. Apprécier le retour à la course. Aucune intensité. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing 45min · terrain varié",
+      "terrain": "chiberta",
+      "detail": "Reprise forêt. 45min footing Chiberta ou plage. Allure conversation. Jambes qui se remettent. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h footing plaisir",
+    "g1": "1h30 trail souple",
+    "g2": "1h45 trail aisé",
+    "decharge": false
+  },
+  {
+    "sem": 46,
+    "mois": "Juil",
+    "phase": "Relâche Fêtes",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing 50min + 6×30s",
+      "terrain": "halage",
+      "detail": "Retour progressif à la qualité. 50min footing EF. 6×30s à RPE 7 pour réveiller la mécanique. Retour calme 10min. On prépare doucement la reprise structurée d'août. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek Les Douves · 50min",
+      "terrain": "douves",
+      "detail": "Fartlek urbain remparts. 50min fartlek sur les remparts. Accélérations libres, terrain varié. RPE 5-7. Zéro PPG — on reste sur du plaisir pour cette période de transition. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h30 route",
+    "g1": "1h45 trail",
+    "g2": "2h15 trail",
+    "decharge": false
+  },
+  {
+    "sem": 47,
+    "mois": "Août",
+    "phase": "Pré-reprise",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing 50min · Halage",
+      "terrain": "halage",
+      "detail": "Pré-reprise — volume sans intensité. 50min footing halage RPE 4. Quelques accélérations spontanées possibles, mais jamais forcées. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "6×1min · Côte La Floride",
+      "terrain": "floride",
+      "detail": "Réveil des côtes en douceur. 6 montées de 1min (RPE 7-8). Descente trottinée. Volume réduit vs saison active. 🏋 PPG en haut de côte — En haut : 8 squats + 5 fentes/jambe. On remet le pattern PPG-côte en marche pour la rentrée. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h15 route",
+    "g1": "1h30 trail",
+    "g2": "2h trail",
+    "decharge": false
+  },
+  {
+    "sem": 48,
+    "mois": "Août",
+    "phase": "Pré-reprise",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Fartlek structuré 8×(1min/1min)",
+      "terrain": "halage",
+      "detail": "Fartlek structuré — reprise qualité. 8 cycles de 1min RPE 7 / 1min trot sur le halage. Retour calme. Pas de PPG — séance plat qualité. Préparation rentrée. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "8×1min · Côte Voulgre",
+      "terrain": "voulgre",
+      "detail": "Côte Voulgre — on remet le bleu de travail. 8 montées de 1min (RPE 8). Descente trottinée. 🏋 PPG en haut de côte — En haut : 8 squats + 5 fentes. Volume PPG modéré — reprise progressive. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h30 route",
+    "g1": "1h45 trail",
+    "g2": "2h15 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 49,
+    "mois": "Août",
+    "phase": "Pré-reprise",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "5×1000m · Halage",
+      "terrain": "halage",
+      "detail": "Réveil du seuil. 5×1000m à RPE 7 (allure seuil modérée), récup 2min30. Retour calme 10min. Allure sur le halage, on remet en place les repères chronométriques. Pas de PPG. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Fartlek terrain Girouettes",
+      "terrain": "girouettes",
+      "detail": "Circuit Girouettes — fartlek naturel. 50min circuit. Accélérations dans les montées, récup dans les descentes. RPE 7 moyen. 🏋 PPG en haut de côte — Sur 3 des montées : 8 squats + 5 fentes. Reprise PPG-côte mesurée. 📍 Principe : fatigue musculaire sécurisée en côte (aucun impact articulaire) + recrutement fibres profondes + spécificité trail."
+    },
+    "g0": "1h45 route progressive",
+    "g1": "2h trail",
+    "g2": "2h30 trail D+",
+    "decharge": false
+  },
+  {
+    "sem": 50,
+    "mois": "Août",
+    "phase": "Pré-reprise",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing 45min + 4×400m",
+      "terrain": "intramuros",
+      "detail": "Décharge avant rentrée. Footing 45min RPE 3-4. 4×400m RPE 7 pour entretenir. Retour calme 10min. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing récup 50min · Chiberta",
+      "terrain": "chiberta",
+      "detail": "Avant-dernière de la saison. 50min EF forêt. Savourer la fin de saison. Préparer mentalement la rentrée. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h footing libre",
+    "g1": "1h15 trail plaisir",
+    "g2": "1h45 trail plaisir",
+    "decharge": true
+  },
+  {
+    "sem": 51,
+    "mois": "Août",
+    "phase": "Pré-reprise",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing plaisir 40min",
+      "terrain": "halage",
+      "detail": "Dernière séance libre de la saison. 40min footing halage. Zéro pression. Profiter. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Footing Bayonne 45min",
+      "terrain": "intramuros",
+      "detail": "Footing dans la ville. 45min footing Bayonne intra-muros. Allure conversation. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "1h route plaisir",
+    "g1": "1h30 trail plaisir",
+    "g2": "2h trail plaisir",
+    "decharge": false
+  },
+  {
+    "sem": 52,
+    "mois": "Août",
+    "phase": "Pré-reprise",
+    "phaseClass": "phase-recup",
+    "mardi": {
+      "titre": "Footing 40min + activation",
+      "terrain": "halage",
+      "detail": "Dernière semaine — activation finale saison. 40min footing RPE 3-4. 4 lignes droites progressives en fin. Préparer la rentrée de saison. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "jeudi": {
+      "titre": "Bilan collectif + footing",
+      "terrain": "intramuros",
+      "detail": "Bilan de saison — moment convivial. Footing ensemble 40min RPE 3, puis café/verre en terrasse. Tradition de la section. On parle de la saison écoulée et on prépare la nouvelle. ⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité."
+    },
+    "g0": "Récup active libre",
+    "g1": "Récup active libre",
+    "g2": "Récup complète avant rentrée",
+    "decharge": false,
+    "event": "🏆 Bilan de saison"
+  }
 ]
 
 const calFixed = [

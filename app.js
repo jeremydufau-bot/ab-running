@@ -33,49 +33,92 @@ function renderInfosClub(){
 // ══════════════════════════════════════════════
 // DIFFICULTÉ (système piste de ski, basé sur UA)
 // ══════════════════════════════════════════════
-// Estimation de la charge UA d'une séance mardi/jeudi à partir de son titre
-// Retourne { ua, rpe, duree, diff_key, diff_label, diff_color }
-function estimateSessionCharge(titre){
+// Calcul de charge UA d'une séance mardi/jeudi à partir de son titre.
+// Retourne { ua, rpe, duree, diff_key, diff_label, diff_color, has_ppg }
+//
+// Nouvelle logique (philosophie AB) :
+// - PLAT  (halage, piste, stades, intramuros, chiberta, plage)  → PAS DE PPG
+//   (protection foulée + glycogène pour la qualité)
+// - CÔTE  (floride, voulgre, vw, escaliers, vvf, douves, girouettes, montagne)
+//   → PPG INTÉGRÉE en haut de côte (renforcement en contraste)
+//
+// Signature : (titre, options) où options = {decharge: bool}
+function estimateSessionCharge(titre, options){
+  options = options || {};
+  const isDecharge = !!options.decharge;
   const t = (titre || '').toLowerCase();
-  let rpe = 7, duree = 50; // défaut séance fractionné standard
+  let rpe = 7, duree_seance = 50;
 
-  // Ajustement RPE selon type de séance
-  if(/récup|recup|repos/.test(t))         { rpe = 3; duree = 45; }
-  else if(/footing souple|allure souple/.test(t)) { rpe = 4; duree = 50; }
-  else if(/footing|endurance/.test(t))    { rpe = 5; duree = 55; }
-  else if(/fartlek\s+libre/.test(t))      { rpe = 6; duree = 50; }
-  else if(/fartlek/.test(t))              { rpe = 7; duree = 50; }
-  else if(/tempo|seuil/.test(t))          { rpe = 7; duree = 55; }
-  else if(/côte|cote|escaliers/.test(t))  { rpe = 8; duree = 50; }
-  else if(/30["']?\s*\/\s*30|vma/.test(t)){ rpe = 8; duree = 45; }
-  else if(/pyramid/.test(t))              { rpe = 8; duree = 55; }
-  else if(/3x15|4x2000|5x1000/.test(t))   { rpe = 8; duree = 70; }
-  else if(/×\s*[12]min|×1min|×2min/.test(t))      { rpe = 8; duree = 50; }
-  else if(/×\s*3min|×3min/.test(t))        { rpe = 7; duree = 50; }
-  else if(/×\s*4min|×\s*5min/.test(t))    { rpe = 7; duree = 55; }
+  // ── 1. CAS PARTICULIERS — affûtage, activation, trêve, repos ──
+  if(/repos\b|rest\b|trêve|treve/.test(t))          { rpe = 2; duree_seance = 25; }
+  else if(/activation\b|lignes droites/.test(t))     { rpe = 4; duree_seance = 25; }
+  else if(/affûtage|affutage/.test(t))               { rpe = 5; duree_seance = 45; }
+  else if(/récup\.?\s*active|recup active|footing récup|footing recup|récup \b|recup \b/.test(t)) { rpe = 3; duree_seance = 40; }
+  else if(/fêtes|fetes\b|bilan/.test(t))             { rpe = 3; duree_seance = 40; }
+  else if(/plaisir/.test(t) && /footing/.test(t))    { rpe = 3; duree_seance = 45; }
+  // ── 2. Séances côte (RPE 8, durée 55min incluant PPG-côte) ──
+  else if(/côte|cote|escaliers|pyramide.*vvf|vvf/.test(t)) {
+    rpe = 8; duree_seance = 55;
+  }
+  // ── 3. Séances VMA courte ──
+  else if(/30s\/30s|30\"\/30\"|test vma/.test(t))   { rpe = 9; duree_seance = 45; }
+  else if(/×400m|×300m|×500m/.test(t))               { rpe = 8; duree_seance = 50; }
+  // ── 4. Séances seuil / tempo ──
+  else if(/tempo\s*\d+/.test(t)) {
+    const m = t.match(/tempo\s*(\d+)/);
+    const tempoDur = m ? parseInt(m[1]) : 30;
+    rpe = 7; duree_seance = 15 + tempoDur + 10;
+  }
+  else if(/×1000m|×2000m|×1500m/.test(t))            { rpe = 8; duree_seance = 55; }
+  else if(/×15min|×7min|×8min|3×15/.test(t))        { rpe = 8; duree_seance = 65; }
+  // ── 5. Fartlek ──
+  else if(/fartlek\s*libre/.test(t))                 { rpe = 6; duree_seance = 50; }
+  else if(/fartlek.*pyramide|pyramide.*fartlek/.test(t)) { rpe = 8; duree_seance = 55; }
+  else if(/fartlek/.test(t))                         { rpe = 7; duree_seance = 50; }
+  // ── 6. Intervalles ──
+  else if(/×1min30|×2min|pyramide/.test(t))         { rpe = 8; duree_seance = 50; }
+  else if(/×1min\b|×30s/.test(t))                    { rpe = 7; duree_seance = 45; }
+  // ── 7. Footing par défaut ──
+  else if(/footing|sortie|endurance/.test(t)) {
+    const mMin = t.match(/(\d+)\s*min/);
+    const mH   = t.match(/(\d+)h(\d+)?/);
+    if(mH){ duree_seance = parseInt(mH[1])*60 + (parseInt(mH[2]||'0')); }
+    else if(mMin){ duree_seance = parseInt(mMin[1]); }
+    else { duree_seance = 50; }
+    rpe = /souple|conversation|facile/.test(t) ? 3 : 4;
+  }
 
-  // Charge séance principale
-  const ua_seance = rpe * duree;
-  // Échauff 30min × RPE 3 = 90
-  const ua_echauff = 90;
-  // PPG 15min × RPE 4 = 60
-  const ua_ppg = 60;
+  // ── Si semaine décharge : on plafonne RPE à 4 ──
+  if(isDecharge && rpe > 4){ rpe = 4; }
+
+  // ── Charge séance principale ──
+  const ua_seance = rpe * duree_seance;
+
+  // ── Échauffement ──
+  let ua_echauff = 90;
+  if(/repos\b|trêve|treve|fêtes|fetes|bilan/.test(t))              ua_echauff = 0;
+  else if(/activation\b|récup\.?\s*active|footing récup/.test(t))  ua_echauff = 40;
+  else if(/affûtage|affutage/.test(t))                              ua_echauff = 60;
+  if(isDecharge && ua_echauff > 60) ua_echauff = 60;  // échauff réduit en décharge
+
+  // ── PPG : intégrée dans les 55min pour les côtes — ailleurs = 0 ──
+  const ua_ppg = 0;
+
   const ua = ua_seance + ua_echauff + ua_ppg;
 
-  // Déterminer le niveau de difficulté
   const niveaux = (typeof difficulteNiveaux !== 'undefined' && difficulteNiveaux.length)
     ? difficulteNiveaux
     : [
-        { key:'vert',   label:'Vert',   couleur:'#2E8B3E', ua_max:280 },
-        { key:'bleu',   label:'Bleu',   couleur:'#3A7BBF', ua_max:380 },
-        { key:'orange', label:'Orange', couleur:'#E67E22', ua_max:480 },
-        { key:'rouge',  label:'Rouge',  couleur:'#C0392B', ua_max:600 },
-        { key:'noir',   label:'Noir',   couleur:'#1A1A1A', ua_max:9999 }
+        { key:'vert',   label:'Vert — Facile',         couleur:'#2E8B3E', ua_max:280 },
+        { key:'bleu',   label:'Bleu — Modéré',         couleur:'#3A7BBF', ua_max:380 },
+        { key:'orange', label:'Orange — Soutenu',      couleur:'#E67E22', ua_max:480 },
+        { key:'rouge',  label:'Rouge — Difficile',     couleur:'#C0392B', ua_max:600 },
+        { key:'noir',   label:'Noir — Très difficile', couleur:'#1A1A1A', ua_max:9999 }
       ];
   const niv = niveaux.find(n => ua <= n.ua_max) || niveaux[niveaux.length-1];
 
   return {
-    ua, rpe, duree,
+    ua, rpe, duree: duree_seance,
     diff_key:   niv.key,
     diff_label: niv.label,
     diff_color: niv.couleur
@@ -207,14 +250,14 @@ function buildTable(){
         <div class="seance-titre">${mardi.titre}</div>
         <div class="seance-meta">
           ${terrainTag(mardi.terrain)}
-          ${diffBadge(estimateSessionCharge(mardi.titre))}
+          ${diffBadge(estimateSessionCharge(mardi.titre, {decharge:dc}))}
         </div>
       </td>
       <td>
         <div class="seance-titre">${jeudi.titre}</div>
         <div class="seance-meta">
           ${terrainTag(jeudi.terrain)}
-          ${diffBadge(estimateSessionCharge(jeudi.titre))}
+          ${diffBadge(estimateSessionCharge(jeudi.titre, {decharge:dc}))}
         </div>
       </td>
       <td style="color:var(--muted);font-size:.78rem;line-height:1.5">${wknd}</td>
