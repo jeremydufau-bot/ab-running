@@ -82,13 +82,13 @@ function estimateSessionCharge(titre){
   };
 }
 
-// Rendu d'une pastille difficulté
+// Rendu d'une indication de difficulté (texte coloré simple, pédagogique)
 function diffBadge(ch){
   return `<span class="diff-pill diff-${ch.diff_key}">
     <span class="diff-dot diff-${ch.diff_key}"></span>
     ${ch.diff_label}
   </span>
-  <span class="ua-badge" title="RPE × durée estimée">${ch.ua} UA · ${ch.rpe}/10</span>`;
+  <span class="ua-badge" title="Charge estimée : RPE ${ch.rpe} × durée incluant échauff + PPG">${ch.ua} UA</span>`;
 }
 
 // ══════════════════════════════════════════════
@@ -287,7 +287,7 @@ function nivDetails(titre, nLvl){
   const nd = getNiveauBlock(titre);
   if(!nd) return '';
   const cols = ['var(--mousse)','var(--ab-blue2)','var(--rouge)'];
-  return `<div style="font-family:'Syne',sans-serif;font-size:.7rem;color:${cols[nLvl]};font-weight:700;margin-top:.3rem">
+  return `<div style="font-family:'Lora',serif;font-size:.7rem;color:${cols[nLvl]};font-weight:700;margin-top:.3rem">
     ${nd.reps[nLvl]} rép · récup ${nd.recup[nLvl]} · ${nd.allure[nLvl]}
   </div>`;
 }
@@ -322,7 +322,7 @@ function renderAccueilGrid(){
 
     if(!base || sn < 1 || sn > 48){
       grid.innerHTML += `<div class="card" style="opacity:.4">
-        <span style="font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">${weekLabels[i]} · S${sn}</span>
+        <span style="font-family:'Lora',serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">${weekLabels[i]} · S${sn}</span>
         <p style="font-size:.82rem;color:var(--muted);margin-top:.4rem">Hors saison.</p>
       </div>`; continue;
     }
@@ -355,43 +355,43 @@ function renderAccueilGrid(){
     <div style="background:var(--surface);border:1.5px solid ${border};border-radius:14px;overflow:hidden;box-shadow:${isCur?'0 4px 20px rgba(74,122,204,.18)':'0 2px 8px rgba(27,58,107,.05)'}">
       <div style="background:${hdrBg};padding:.8rem 1.3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
         <div style="display:flex;align-items:center;gap:.8rem">
-          <span style="font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;color:${snCol}">S${sn}</span>
+          <span style="font-family:'Lora',serif;font-size:2rem;line-height:1;color:${snCol}">S${sn}</span>
           <div>
-            <div style="font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${lblCol}">${weekLabels[i]}</div>
-            <div style="font-family:'Syne',sans-serif;font-size:.68rem;font-weight:600;color:${rngCol}">${fmtWR(lundiSem)}</div>
+            <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${lblCol}">${weekLabels[i]}</div>
+            <div style="font-family:'Lora',serif;font-size:.68rem;font-weight:600;color:${rngCol}">${fmtWR(lundiSem)}</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:.35rem;flex-wrap:wrap">
           <span class="phase-badge ${ph.cls}">${ph.label}</span>
           ${base.decharge?'<span class="decharge-badge">🟢 Décharge</span>':''}
-          ${base.event?`<span style="font-family:'Syne',sans-serif;font-size:.57rem;font-weight:700;color:${isCur?'rgba(255,255,255,.8)':'var(--ab-blue2)'}">📌 ${base.event}</span>`:''}
+          ${base.event?`<span style="font-family:'Lora',serif;font-size:.57rem;font-weight:700;color:${isCur?'rgba(255,255,255,.8)':'var(--ab-blue2)'}">📌 ${base.event}</span>`:''}
         </div>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr">
         <div style="padding:.95rem 1.2rem;border-right:1px solid var(--border)">
-          <div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.3rem">📅 ${fmtM}</div>
-          <div style="font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_mardi.titre}${modM}</div>
+          <div style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.3rem">📅 ${fmtM}</div>
+          <div style="font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_mardi.titre}${modM}</div>
           <span class="tag tag-sky" style="font-size:.56rem">${tM.icon} ${tM.label}</span>
           <span class="tag tag-blue" style="font-size:.56rem">18h15 · La Floride</span>
           ${nivDetails(s_mardi.titre, accNiveau)}
           <div style="font-size:.73rem;color:var(--muted);line-height:1.65;margin-top:.4rem">${detM.length>120?detM.substring(0,120)+'…':detM}</div>
-          ${ppgM?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgM.length>100?ppgM.substring(0,100)+'…':ppgM}</div>`:''}
+          ${ppgM?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgM.length>100?ppgM.substring(0,100)+'…':ppgM}</div>`:''}
         </div>
         <div style="padding:.95rem 1.2rem">
-          <div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mousse);margin-bottom:.3rem">📅 ${fmtJ}</div>
-          <div style="font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_jeudi.titre}${modJ}</div>
+          <div style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mousse);margin-bottom:.3rem">📅 ${fmtJ}</div>
+          <div style="font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_jeudi.titre}${modJ}</div>
           <span class="tag tag-green" style="font-size:.56rem">${tJ.icon} ${tJ.label}</span>
           <span class="tag tag-sky" style="font-size:.56rem">18h15 · La Floride</span>
           ${nivDetails(s_jeudi.titre, accNiveau)}
           <div style="font-size:.73rem;color:var(--muted);line-height:1.65;margin-top:.4rem">${detJ.length>120?detJ.substring(0,120)+'…':detJ}</div>
-          ${ppgJ?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgJ.length>100?ppgJ.substring(0,100)+'…':ppgJ}</div>`:''}
+          ${ppgJ?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgJ.length>100?ppgJ.substring(0,100)+'…':ppgJ}</div>`:''}
         </div>
       </div>
 
       <div style="padding:.5rem 1.2rem;border-top:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
-        <span style="font-size:.72rem;color:var(--muted);font-family:'Syne',sans-serif">🏃 ${gLabels[accLevel]} — ${wkndVal}</span>
-        <button onclick="openDetail(${sn})" style="background:none;border:none;font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;color:var(--ab-blue2);cursor:pointer;letter-spacing:.04em">Détail complet →</button>
+        <span style="font-size:.72rem;color:var(--muted);font-family:'Lora',serif">🏃 ${gLabels[accLevel]} — ${wkndVal}</span>
+        <button onclick="openDetail(${sn})" style="background:none;border:none;font-family:'Lora',serif;font-size:.65rem;font-weight:700;color:var(--ab-blue2);cursor:pointer;letter-spacing:.04em">Détail complet →</button>
       </div>
     </div>`;
   }
@@ -479,14 +479,14 @@ function formatDetailAndPPG(text, nLvl){
 
   const ppgHtml = `
     <div style="background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.12);border-radius:8px;padding:1rem;margin-top:.8rem">
-      <div style="font-family:'Syne',sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3a6b;margin-bottom:.5rem">🏋 PPG COUPLÉE</div>
+      <div style="font-family:'Lora',serif;font-size:.62rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3a6b;margin-bottom:.5rem">🏋 PPG COUPLÉE</div>
       ${intro ? `<p style="font-size:.79rem;color:#6b7a9a;margin-bottom:.6rem;font-style:italic">${intro}</p>` : ''}
       <div style="display:flex;flex-direction:column;gap:.4rem">
         ${texts.map((t,i) => !t.trim() ? '' : `
           <div style="padding:.55rem .8rem;border-radius:7px;
             background:${i===nLvl ? bgs[i] : 'rgba(0,0,0,.02)'};
             border:1px solid ${i===nLvl ? borders[i] : 'rgba(0,0,0,.06)'}">
-            <div style="font-family:'Syne',sans-serif;font-size:.67rem;font-weight:800;color:${colors[i]};margin-bottom:.2rem">
+            <div style="font-family:'Lora',serif;font-size:.67rem;font-weight:800;color:${colors[i]};margin-bottom:.2rem">
               ${labels[i]}${i===nLvl ? ' <span style="font-size:.55rem;opacity:.7">← votre niveau</span>' : ''}
             </div>
             <div style="font-size:.82rem;color:#1a2540;line-height:1.6;font-weight:${i===nLvl?'500':'400'}">${t}</div>
@@ -513,7 +513,7 @@ function openDetail(sem){
     if(!nd) return '';
     return `
       <div style="background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);border-radius:8px;padding:.8rem;margin-top:.6rem">
-        <div style="font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.5rem">R\u{E9}p\u{E9}titions &amp; intensit\u{E9} par niveau</div>
+        <div style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.5rem">R\u{E9}p\u{E9}titions &amp; intensit\u{E9} par niveau</div>
         <div class="niveau-tabs">
           <button class="niveau-tab ${nLvl===0?'active':''}" onclick="switchNivTab(0,this)">\u{1F7E2} D\u{E9}butant</button>
           <button class="niveau-tab ${nLvl===1?'active':''}" onclick="switchNivTab(1,this)">\u{1F535} Interm.</button>
@@ -539,8 +539,8 @@ function openDetail(sem){
 
   document.getElementById('mTitle').innerHTML = `Semaine ${s.sem} \u{2014} ${s.mois} \u{B7} ${s.phase}`;
   document.getElementById('mBody').innerHTML = `
-    ${s.event?`<div style="background:rgba(27,58,107,.07);border:1px solid rgba(27,58,107,.12);border-radius:6px;padding:.6rem 1rem;margin-bottom:.8rem;font-family:'Syne',sans-serif;font-size:.74rem;font-weight:700;color:var(--ab-blue2)">\u{1F4CC} ${s.event}</div>`:''}
-    ${s.decharge?`<div style="background:rgba(74,138,90,.08);border:1px solid rgba(74,138,90,.2);border-radius:6px;padding:.5rem 1rem;margin-bottom:.8rem;font-family:'Syne',sans-serif;font-size:.72rem;color:var(--mousse)">\u{1F7E2} Semaine de d\u{E9}charge \u{2014} volume -35%, pas d'intensit\u{E9} haute.</div>`:''}
+    ${s.event?`<div style="background:rgba(27,58,107,.07);border:1px solid rgba(27,58,107,.12);border-radius:6px;padding:.6rem 1rem;margin-bottom:.8rem;font-family:'Lora',serif;font-size:.74rem;font-weight:700;color:var(--ab-blue2)">\u{1F4CC} ${s.event}</div>`:''}
+    ${s.decharge?`<div style="background:rgba(74,138,90,.08);border:1px solid rgba(74,138,90,.2);border-radius:6px;padding:.5rem 1rem;margin-bottom:.8rem;font-family:'Lora',serif;font-size:.72rem;color:var(--mousse)">\u{1F7E2} Semaine de d\u{E9}charge \u{2014} volume -35%, pas d'intensit\u{E9} haute.</div>`:''}
     <h4>\u{1F4C5} Mardi \u{2014} ${mardi.titre}</h4>
     <p style="margin-top:.25rem">${terrainTag(mardi.terrain)}</p>
     ${formatDetailAndPPG(mardi.detail, nLvl)}
@@ -598,7 +598,7 @@ function renderCal(){
 
   if(allEvents.length === 0){
     document.getElementById('calContent').innerHTML = `
-      <div style="text-align:center;padding:3rem;color:var(--muted);font-family:'Syne',sans-serif;font-size:.85rem">
+      <div style="text-align:center;padding:3rem;color:var(--muted);font-family:'Lora',serif;font-size:.85rem">
         Aucune sortie pour ce filtre.
       </div>`;
     return;
@@ -628,7 +628,7 @@ function renderCal(){
               <div class="cal-event-month">${d.toLocaleDateString('fr-FR',{month:'short'}).replace('.','')}</div>
             </div>
             <div class="cal-event-info">
-              <div class="cal-event-titre">${e.titre}${member&&e.auteur?`<span style="font-family:'Syne',sans-serif;font-size:.58rem;color:var(--ab-light);margin-left:.4rem">par ${e.auteur}</span>`:''}
+              <div class="cal-event-titre">${e.titre}${member&&e.auteur?`<span style="font-family:'Lora',serif;font-size:.58rem;color:var(--ab-light);margin-left:.4rem">par ${e.auteur}</span>`:''}
               </div>
               <div class="cal-event-desc">${e.desc}</div>
             </div>
@@ -746,7 +746,7 @@ function renderSuggestions(){
 
   if(sugs.length === 0){
     document.getElementById('suggestionsContainer').innerHTML = `
-      <div style="text-align:center;padding:2.5rem;color:var(--muted);font-family:'Syne',sans-serif;font-size:.82rem">
+      <div style="text-align:center;padding:2.5rem;color:var(--muted);font-family:'Lora',serif;font-size:.82rem">
         Aucune proposition à venir — soyez le premier à en ajouter une !
       </div>`;
     return;
@@ -763,7 +763,7 @@ function renderSuggestions(){
   }
 
   if(passees.length){
-    html += `<div style="font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:.6rem 0;margin-top:1rem;border-top:1px solid var(--border)">
+    html += `<div style="font-family:'Lora',serif;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:.6rem 0;margin-top:1rem;border-top:1px solid var(--border)">
       Dates passées (${passees.length})
     </div>`;
     html += passees.map(s => renderSugCard(s, voted, true)).join('');
@@ -774,7 +774,7 @@ function renderSuggestions(){
   // Info sur les passées masquées
   if(hidePast && totalPast > 0){
     document.getElementById('suggestionsContainer').innerHTML +=
-      `<div style="font-family:'Syne',sans-serif;font-size:.72rem;color:var(--muted);margin-top:.8rem;text-align:center">
+      `<div style="font-family:'Lora',serif;font-size:.72rem;color:var(--muted);margin-top:.8rem;text-align:center">
         ${totalPast} proposition${totalPast>1?'s':''} passée${totalPast>1?'s':''} masquée${totalPast>1?'s':''}
       </div>`;
   }
@@ -790,14 +790,14 @@ function renderSugCard(s, voted, past=false){
       <div class="sug-header">
         <span class="sug-cat tag ${catCls[s.cat]||'tag-white'}">${catLabels[s.cat]||s.cat}</span>
         ${dateStr ? `<span class="sug-date" style="${past?'text-decoration:line-through;':''}" title="${s.date}">📅 ${dateStr}</span>` : ''}
-        ${goesToCal && !past ? `<span style="font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;color:var(--mousse);background:rgba(74,138,90,.1);padding:.1rem .4rem;border-radius:3px">📅 Dans Sorties</span>` : ''}
+        ${goesToCal && !past ? `<span style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;color:var(--mousse);background:rgba(74,138,90,.1);padding:.1rem .4rem;border-radius:3px">📅 Dans Sorties</span>` : ''}
         <span style="margin-left:auto;display:flex;align-items:center;gap:.4rem">
           <button class="vote-btn ${voted.includes(s.id)?'voted':''}" onclick="vote('${s.id}',this)" ${past?'disabled title="Date passée"':''}>
             👍 ${s.votes}
           </button>
         </span>
       </div>
-      ${titreDisplay ? `<div style="font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.3rem">${titreDisplay}</div>` : ''}
+      ${titreDisplay ? `<div style="font-family:'Lora',serif;font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.3rem">${titreDisplay}</div>` : ''}
       <div class="sug-text">${s.text}</div>
       <div class="sug-author">Proposé par ${s.pseudo}</div>
     </div>`;
@@ -1211,9 +1211,9 @@ function setPhaseMuscu(p, btn) {
 function renderMuscu() {
   const pd = phaseMusculaireDesc[currentPhaseMuscu];
   document.getElementById('phaseMusculaire').innerHTML = `
-    <strong style="color:var(--text);font-family:'Syne',sans-serif">${pd.titre}</strong>
-    <span style="display:inline-block;margin-left:1rem;font-family:'Syne',sans-serif;font-size:.72rem;color:var(--ab-blue)">⏱ ${pd.duree}</span>
-    <span style="display:inline-block;margin-left:.7rem;font-family:'Syne',sans-serif;font-size:.72rem;color:var(--mousse)">📅 ${pd.freq}</span>
+    <strong style="color:var(--text);font-family:'Lora',serif">${pd.titre}</strong>
+    <span style="display:inline-block;margin-left:1rem;font-family:'Lora',serif;font-size:.72rem;color:var(--ab-blue)">⏱ ${pd.duree}</span>
+    <span style="display:inline-block;margin-left:.7rem;font-family:'Lora',serif;font-size:.72rem;color:var(--mousse)">📅 ${pd.freq}</span>
     <br><span style="font-size:.85rem">${pd.desc}</span>
   `;
 
@@ -1491,7 +1491,7 @@ function renderReveil() {
           <div style="font-size:.84rem;color:var(--text);font-weight:500">${ex.nom}</div>
           <div style="font-size:.72rem;color:var(--muted);margin-top:.1rem;line-height:1.4">${ex.desc.substring(0,60)}…</div>
         </div>
-        <div style="font-family:'Syne',sans-serif;font-size:.74rem;font-weight:700;color:${th.color};white-space:nowrap;flex-shrink:0">${ex.dose}</div>
+        <div style="font-family:'Lora',serif;font-size:.74rem;font-weight:700;color:${th.color};white-space:nowrap;flex-shrink:0">${ex.dose}</div>
       </div>
     `).join('');
 
@@ -1500,10 +1500,10 @@ function renderReveil() {
         <div style="padding:1rem 1.2rem;background:${th.bg};border-bottom:1px solid ${th.border};display:flex;align-items:center;gap:.8rem">
           <span style="font-size:1.6rem">${joursEmoji[i]}</span>
           <div>
-            <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:${th.color}">${jour}</div>
+            <div style="font-family:'Lora',serif;font-size:1rem;font-weight:800;color:${th.color}">${jour}</div>
             <div style="font-size:.72rem;color:var(--muted);margin-top:.1rem">${joursFocus[i]}</div>
           </div>
-          <div style="margin-left:auto;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;color:${th.color};background:${th.bg};border:1px solid ${th.border};padding:.2rem .6rem;border-radius:3px">15 min</div>
+          <div style="margin-left:auto;font-family:'Lora',serif;font-size:.68rem;font-weight:700;color:${th.color};background:${th.bg};border:1px solid ${th.border};padding:.2rem .6rem;border-radius:3px">15 min</div>
         </div>
         ${exoList}
       </div>
@@ -1516,9 +1516,9 @@ function openReveilModal(jourIdx, exoIdx) {
   const th = joursTheme[jourIdx];
   document.getElementById('mTitle').innerHTML = `${joursEmoji[jourIdx]} ${ex.nom}`;
   document.getElementById('mBody').innerHTML = `
-    <div style="display:inline-block;background:rgba(27,58,107,.1);border:1px solid rgba(27,58,107,.25);border-radius:4px;padding:.2rem .7rem;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:var(--ab-light);margin-bottom:1.2rem">${joursReveil[jourIdx]} · ${joursFocus[jourIdx]}</div>
+    <div style="display:inline-block;background:rgba(27,58,107,.1);border:1px solid rgba(27,58,107,.25);border-radius:4px;padding:.2rem .7rem;font-family:'Lora',serif;font-size:.72rem;font-weight:700;color:var(--ab-light);margin-bottom:1.2rem">${joursReveil[jourIdx]} · ${joursFocus[jourIdx]}</div>
     <h4>Prescription</h4>
-    <p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:${th.color}">${ex.dose}</p>
+    <p style="font-family:'Lora',serif;font-size:1rem;font-weight:700;color:${th.color}">${ex.dose}</p>
     <h4>Description complète</h4>
     <p>${ex.desc}</p>
     <h4>Dans la routine du matin</h4>

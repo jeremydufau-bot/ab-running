@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin — AB Running Loisir</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #F5F8FC; --surface: #fff; --border: rgba(27,58,107,.12);
@@ -21,14 +21,14 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
   background:linear-gradient(135deg,var(--ab-blue) 0%,var(--ab-blue2) 60%,var(--ab-light) 100%);
 }
 .login-box{background:#fff;border-radius:16px;padding:2.5rem;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.2);}
-.login-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--ab-blue);margin-bottom:.2rem;}
-.login-sub{font-family:'Syne',sans-serif;font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem;}
-.login-label{font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;color:var(--ab-blue);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.35rem;}
+.login-logo{font-family:'Lora',serif;font-size:1.4rem;color:var(--ab-blue);margin-bottom:.2rem;font-weight:700;}
+.login-sub{font-family:'Lora',serif;font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem;}
+.login-label{font-family:'Lora',serif;font-size:.65rem;font-weight:700;color:var(--ab-blue);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.35rem;}
 .login-input{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-size:.9rem;font-family:'Lora',serif;color:var(--text);background:#f8faff;outline:none;transition:border-color .15s;margin-bottom:1rem;}
 .login-input:focus{border-color:var(--ab-light);}
-.login-btn{width:100%;background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;padding:.75rem;border:none;border-radius:8px;cursor:pointer;letter-spacing:.05em;transition:background .15s;}
+.login-btn{width:100%;background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.78rem;font-weight:700;padding:.75rem;border:none;border-radius:8px;cursor:pointer;letter-spacing:.05em;transition:background .15s;}
 .login-btn:hover{background:var(--ab-blue2);}
-.login-error{color:var(--rouge);font-family:'Syne',sans-serif;font-size:.72rem;margin-top:.6rem;display:none;}
+.login-error{color:var(--rouge);font-family:'Lora',serif;font-size:.72rem;margin-top:.6rem;display:none;}
 
 /* ── APP ── */
 #app{display:none;}
@@ -37,19 +37,19 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
   justify-content:space-between;position:sticky;top:0;z-index:100;
   box-shadow:0 2px 12px rgba(27,58,107,.25);
 }
-.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:.05em;}
-.topbar-subtitle{font-family:'Syne',sans-serif;font-size:.6rem;color:rgba(255,255,255,.55);letter-spacing:.12em;text-transform:uppercase;}
+.topbar-title{font-family:'Lora',serif;font-size:1.15rem;color:#fff;letter-spacing:0;font-weight:700;}
+.topbar-subtitle{font-family:'Lora',serif;font-size:.6rem;color:rgba(255,255,255,.55);letter-spacing:.12em;text-transform:uppercase;}
 .topbar-right{display:flex;align-items:center;gap:.8rem;}
 .publish-btn{
-  background:var(--mousse);color:#fff;font-family:'Syne',sans-serif;
+  background:var(--mousse);color:#fff;font-family:'Lora',serif;
   font-size:.72rem;font-weight:700;padding:.55rem 1.2rem;border:none;
   border-radius:8px;cursor:pointer;letter-spacing:.04em;transition:all .15s;
   display:flex;align-items:center;gap:.4rem;
 }
 .publish-btn:hover{background:#3a7548;}
 .publish-btn:disabled{background:var(--muted);cursor:not-allowed;}
-.logout-btn{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;padding:.4rem .8rem;border-radius:6px;cursor:pointer;}
-.status-bar{background:rgba(27,58,107,.06);border-bottom:1px solid var(--border);padding:.5rem 2rem;font-family:'Syne',sans-serif;font-size:.68rem;color:var(--muted);display:flex;align-items:center;gap:.5rem;}
+.logout-btn{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);font-family:'Lora',serif;font-size:.65rem;font-weight:700;padding:.4rem .8rem;border-radius:6px;cursor:pointer;}
+.status-bar{background:rgba(27,58,107,.06);border-bottom:1px solid var(--border);padding:.5rem 2rem;font-family:'Lora',serif;font-size:.68rem;color:var(--muted);display:flex;align-items:center;gap:.5rem;}
 .status-dot{width:8px;height:8px;border-radius:50%;background:var(--mousse);flex-shrink:0;}
 .status-dot.warn{background:var(--ocre);}
 .status-dot.error{background:var(--rouge);}
@@ -58,7 +58,7 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
 .admin-tabs{display:flex;gap:0;background:var(--surface);border-bottom:2px solid var(--border);padding:0 2rem;}
 .admin-tab{
   background:none;border:none;border-bottom:3px solid transparent;
-  font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;
+  font-family:'Lora',serif;font-size:.72rem;font-weight:700;
   color:var(--muted);padding:.9rem 1.2rem;cursor:pointer;letter-spacing:.06em;
   text-transform:uppercase;margin-bottom:-2px;transition:all .15s;
 }
@@ -68,25 +68,25 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
 /* ── CONTENT ── */
 .admin-page{display:none;padding:2rem;max-width:1200px;margin:0 auto;}
 .admin-page.active{display:block;}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--ab-blue);margin-bottom:.3rem;}
+.section-title{font-family:'Lora',serif;font-size:1.35rem;color:var(--ab-blue);margin-bottom:.3rem;font-weight:700;}
 .section-sub{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;}
 
 /* ── PROGRAMME TABLE ── */
 .prog-admin-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.8rem;}
 .prog-admin-table th{
-  background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;
+  background:var(--ab-blue);color:#fff;font-family:'Lora',serif;
   font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:.7rem 1rem;text-align:left;position:sticky;top:52px;z-index:5;
 }
 .prog-admin-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);background:var(--surface);vertical-align:middle;}
 .prog-admin-table tr:hover td{background:rgba(74,122,204,.04);}
 .prog-admin-table tr.decharge td{background:rgba(74,138,90,.03);}
-.sem-badge{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;color:var(--ab-blue);}
-.phase-mini{font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;padding:.1rem .4rem;border-radius:3px;}
+.sem-badge{font-family:'Lora',serif;font-size:.75rem;font-weight:800;color:var(--ab-blue);}
+.phase-mini{font-family:'Lora',serif;font-size:.58rem;font-weight:700;padding:.1rem .4rem;border-radius:3px;}
 .seance-cell{font-size:.78rem;color:var(--text);}
-.seance-terrain{font-family:'Syne',sans-serif;font-size:.58rem;color:var(--muted);margin-top:.15rem;}
+.seance-terrain{font-family:'Lora',serif;font-size:.58rem;color:var(--muted);margin-top:.15rem;}
 .modified-flag{color:var(--ab-light);font-size:.6rem;margin-left:.3rem;}
-.btn-edit-row{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;padding:.25rem .6rem;border-radius:5px;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.btn-edit-row{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.62rem;font-weight:700;padding:.25rem .6rem;border-radius:5px;cursor:pointer;white-space:nowrap;transition:all .15s;}
 .btn-edit-row:hover{border-color:var(--ab-light);color:var(--ab-blue);}
 
 /* ── EDIT PANEL ── */
@@ -101,26 +101,26 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
   padding:1.2rem 1.5rem;background:var(--ab-blue);color:#fff;flex-shrink:0;
   display:flex;align-items:center;justify-content:space-between;
 }
-.edit-panel-head h2{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.03em;}
+.edit-panel-head h2{font-family:'Lora',serif;font-size:1.3rem;letter-spacing:.03em;}
 .edit-panel-body{flex:1;overflow-y:auto;padding:1.2rem 1.5rem;}
 .edit-panel-foot{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:.6rem;background:var(--surface);flex-shrink:0;}
-.panel-close{background:rgba(255,255,255,.15);border:none;color:#fff;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;padding:.3rem .7rem;border-radius:5px;cursor:pointer;}
+.panel-close{background:rgba(255,255,255,.15);border:none;color:#fff;font-family:'Lora',serif;font-size:.7rem;font-weight:700;padding:.3rem .7rem;border-radius:5px;cursor:pointer;}
 
 .field-group{margin-bottom:1.1rem;}
-.field-label{font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);display:block;margin-bottom:.3rem;}
+.field-label{font-family:'Lora',serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);display:block;margin-bottom:.3rem;}
 .field-input{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.55rem .8rem;font-family:'Lora',serif;font-size:.85rem;color:var(--text);outline:none;transition:border-color .15s;}
 .field-input:focus{border-color:var(--ab-light);}
 .field-textarea{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.55rem .8rem;font-family:'Lora',serif;font-size:.82rem;color:var(--text);outline:none;min-height:90px;resize:vertical;transition:border-color .15s;line-height:1.6;}
 .field-textarea:focus{border-color:var(--ab-light);}
-.field-select{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.5rem .8rem;font-family:'Syne',sans-serif;font-size:.78rem;color:var(--text);outline:none;cursor:pointer;}
+.field-select{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.5rem .8rem;font-family:'Lora',serif;font-size:.78rem;color:var(--text);outline:none;cursor:pointer;}
 .field-sub{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
 
-.block-sep{font-family:'Syne',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue);background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);border-radius:6px;padding:.4rem .8rem;margin:1rem 0 .8rem;display:block;}
+.block-sep{font-family:'Lora',serif;font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue);background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);border-radius:6px;padding:.4rem .8rem;margin:1rem 0 .8rem;display:block;}
 
-.btn-save{background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border-radius:7px;border:none;cursor:pointer;flex:1;}
+.btn-save{background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border-radius:7px;border:none;cursor:pointer;flex:1;}
 .btn-save:hover{background:var(--ab-blue2);}
-.btn-cancel-panel{background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.6rem 1.2rem;border-radius:7px;cursor:pointer;}
-.btn-reset{background:none;border:1.5px solid rgba(192,64,64,.25);color:var(--rouge);font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;padding:.5rem .9rem;border-radius:7px;cursor:pointer;}
+.btn-cancel-panel{background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.2rem;border-radius:7px;cursor:pointer;}
+.btn-reset{background:none;border:1.5px solid rgba(192,64,64,.25);color:var(--rouge);font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.5rem .9rem;border-radius:7px;cursor:pointer;}
 
 /* ── CALENDRIER ADMIN ── */
 .cal-admin-list{display:flex;flex-direction:column;gap:.6rem;}
@@ -128,30 +128,30 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
   background:var(--surface);border:1px solid var(--border);border-radius:10px;
   padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
 }
-.cal-admin-date{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--ab-blue);min-width:38px;text-align:center;line-height:1;}
-.cal-admin-month{font-family:'Syne',sans-serif;font-size:.58rem;color:var(--muted);text-align:center;}
+.cal-admin-date{font-family:'Lora',serif;font-size:1.4rem;color:var(--ab-blue);min-width:38px;text-align:center;line-height:1;}
+.cal-admin-month{font-family:'Lora',serif;font-size:.58rem;color:var(--muted);text-align:center;}
 .cal-admin-info{flex:1;}
-.cal-admin-titre{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--text);}
+.cal-admin-titre{font-family:'Lora',serif;font-size:.82rem;font-weight:700;color:var(--text);}
 .cal-admin-desc{font-size:.74rem;color:var(--muted);margin-top:.1rem;}
-.cal-type-badge{font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;padding:.15rem .5rem;border-radius:20px;}
+.cal-type-badge{font-family:'Lora',serif;font-size:.58rem;font-weight:700;padding:.15rem .5rem;border-radius:20px;}
 .type-trail{background:rgba(74,138,90,.12);color:var(--mousse);}
 .type-route{background:rgba(74,122,204,.12);color:var(--ab-blue2);}
 .type-rando{background:rgba(212,137,58,.12);color:#8a5010;}
 .type-montagne{background:rgba(192,64,64,.12);color:var(--rouge);}
 .type-social{background:rgba(120,80,180,.12);color:#6030a0;}
-.btn-del-cal{background:none;border:1px solid rgba(192,64,64,.2);color:rgba(192,64,64,.5);font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:all .15s;flex-shrink:0;}
+.btn-del-cal{background:none;border:1px solid rgba(192,64,64,.2);color:rgba(192,64,64,.5);font-family:'Lora',serif;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:all .15s;flex-shrink:0;}
 .btn-del-cal:hover{background:rgba(192,64,64,.08);border-color:var(--rouge);color:var(--rouge);}
-.btn-edit-cal{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:all .15s;flex-shrink:0;}
+.btn-edit-cal{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:all .15s;flex-shrink:0;}
 .btn-edit-cal:hover{border-color:var(--ab-light);color:var(--ab-blue);}
 .add-cal-box{background:var(--surface);border:1.5px dashed var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1.2rem;}
-.add-cal-box h3{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:800;color:var(--ab-blue);margin-bottom:1rem;}
+.add-cal-box h3{font-family:'Lora',serif;font-size:.8rem;font-weight:800;color:var(--ab-blue);margin-bottom:1rem;}
 .add-cal-row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:flex-end;}
 
 /* ── CONFIG ── */
 .config-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem;margin-bottom:1rem;}
-.config-card h3{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;color:var(--ab-blue);margin-bottom:.8rem;}
+.config-card h3{font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--ab-blue);margin-bottom:.8rem;}
 .config-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem;}
-.config-key{font-family:'Syne',sans-serif;font-size:.72rem;color:var(--text);}
+.config-key{font-family:'Lora',serif;font-size:.72rem;color:var(--text);}
 .config-note{font-size:.72rem;color:var(--muted);margin-top:.4rem;line-height:1.5;}
 
 /* ── GITHUB MODAL ── */
@@ -161,21 +161,21 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
 }
 #gh-modal-overlay.open{display:flex;}
 .gh-modal{background:#fff;border-radius:16px;padding:2rem;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);}
-.gh-modal h2{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--ab-blue);margin-bottom:.4rem;}
+.gh-modal h2{font-family:'Lora',serif;font-size:1.4rem;color:var(--ab-blue);margin-bottom:.4rem;}
 .gh-modal p{font-size:.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;}
 .gh-steps{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.2rem;}
 .gh-step{display:flex;gap:.8rem;align-items:flex-start;}
-.gh-step-num{background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.65rem;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.gh-step-num{background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.65rem;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
 .gh-step-text{font-size:.8rem;color:var(--text);line-height:1.5;}
 .gh-step-text a{color:var(--ab-blue2);}
 .progress-bar{height:4px;background:rgba(27,58,107,.1);border-radius:2px;overflow:hidden;margin:1rem 0;}
 .progress-fill{height:100%;background:var(--mousse);border-radius:2px;width:0;transition:width .3s;}
-#publish-status{font-family:'Syne',sans-serif;font-size:.72rem;color:var(--muted);text-align:center;min-height:1.2rem;}
+#publish-status{font-family:'Lora',serif;font-size:.72rem;color:var(--muted);text-align:center;min-height:1.2rem;}
 
 /* ── TOAST ── */
 #toast{
   position:fixed;bottom:2rem;right:2rem;background:var(--ab-blue);color:#fff;
-  font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;
+  font-family:'Lora',serif;font-size:.75rem;font-weight:700;
   padding:.7rem 1.3rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.2);
   z-index:1000;transform:translateY(100px);opacity:0;transition:all .25s;pointer-events:none;
 }
@@ -238,9 +238,9 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
         <input type="text" id="seance-search" placeholder="Rechercher…"
           oninput="filterSeances(this.value)"
-          style="font-family:'Syne',sans-serif;font-size:.72rem;padding:.38rem .8rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text);width:180px">
+          style="font-family:'Lora',serif;font-size:.72rem;padding:.38rem .8rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text);width:180px">
         <select id="seance-cat" onchange="filterSeances()"
-          style="font-family:'Syne',sans-serif;font-size:.72rem;padding:.38rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text)">
+          style="font-family:'Lora',serif;font-size:.72rem;padding:.38rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text)">
           <option value="">Toutes catégories</option>
           <option value="cote">⛰️ Côtes</option>
           <option value="fartlek">🌀 Fartlek</option>
@@ -252,7 +252,7 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
           <option value="sortie">🏃 Sortie</option>
         </select>
         <button onclick="openNewSeance()"
-          style="background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer">+ Nouvelle séance</button>
+          style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer">+ Nouvelle séance</button>
       </div>
     </div>
     <div id="seances-list" style="display:flex;flex-direction:column;gap:.7rem;max-width:1000px"></div>
@@ -266,8 +266,8 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
         <div class="section-sub">48 semaines · cliquez sur ✏️ pour modifier une semaine · les changements sont publiés via "Publier"</div>
       </div>
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-        <span style="font-family:'Syne',sans-serif;font-size:.62rem;color:var(--muted)">Filtre :</span>
-        <select id="phase-filter" onchange="buildProgTable()" style="font-family:'Syne',sans-serif;font-size:.72rem;padding:.35rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text)">
+        <span style="font-family:'Lora',serif;font-size:.62rem;color:var(--muted)">Filtre :</span>
+        <select id="phase-filter" onchange="buildProgTable()" style="font-family:'Lora',serif;font-size:.72rem;padding:.35rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text)">
           <option value="">Toutes les phases</option>
           <option value="phase-reprise">Reprise</option>
           <option value="phase-base">Base endurance</option>
@@ -305,7 +305,7 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
         <div class="section-title">Messages Infos Club</div>
         <div class="section-sub">Bandeau affiché sous le hero sur la page d'accueil · ajoutez/modifiez/supprimez les messages visibles par tous les membres</div>
       </div>
-      <button onclick="addInfoClub()" style="background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer;align-self:flex-start">+ Nouveau message</button>
+      <button onclick="addInfoClub()" style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer;align-self:flex-start">+ Nouveau message</button>
     </div>
     <div id="infos-club-list" style="display:flex;flex-direction:column;gap:.8rem;max-width:1000px"></div>
   </div>
@@ -399,7 +399,7 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
         <label class="field-label">Description</label>
         <textarea class="field-textarea" id="new-cal-desc" rows="2" placeholder="Détails, niveau requis, covoiturage..."></textarea>
       </div>
-      <button onclick="addCalEvent()" style="margin-top:.7rem;background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;padding:.55rem 1.2rem;border:none;border-radius:7px;cursor:pointer;">Ajouter →</button>
+      <button onclick="addCalEvent()" style="margin-top:.7rem;background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.55rem 1.2rem;border:none;border-radius:7px;cursor:pointer;">Ajouter →</button>
     </div>
 
     <div id="cal-admin-list" class="cal-admin-list"></div>
@@ -434,8 +434,8 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
           Cochez la permission <strong>repo</strong> (accès complet aux dépôts). Ce token reste dans votre navigateur uniquement.
         </div>
       </div>
-      <button onclick="saveConfig()" style="background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border:none;border-radius:7px;cursor:pointer;">💾 Enregistrer</button>
-      <button onclick="testConnection()" style="margin-left:.6rem;background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.58rem 1.2rem;border-radius:7px;cursor:pointer;">🔍 Tester la connexion</button>
+      <button onclick="saveConfig()" style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border:none;border-radius:7px;cursor:pointer;">💾 Enregistrer</button>
+      <button onclick="testConnection()" style="margin-left:.6rem;background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.58rem 1.2rem;border-radius:7px;cursor:pointer;">🔍 Tester la connexion</button>
     </div>
 
     <div class="config-card">
@@ -448,7 +448,7 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
         <label class="field-label">Confirmer</label>
         <input type="password" class="field-input" id="cfg-pwd-confirm" placeholder="Confirmer le mot de passe">
       </div>
-      <button onclick="changePwd()" style="background:var(--ab-blue);color:#fff;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border:none;border-radius:7px;cursor:pointer;">Changer le mot de passe</button>
+      <button onclick="changePwd()" style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border:none;border-radius:7px;cursor:pointer;">Changer le mot de passe</button>
       <div class="config-note" style="margin-top:.8rem">⚠️ Le mot de passe est partagé entre les 3 coachs. Communiquez-le de vive voix ou par message privé.</div>
     </div>
   </div>
@@ -484,8 +484,8 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
     <div class="progress-bar" id="progress-bar" style="display:none"><div class="progress-fill" id="progress-fill"></div></div>
     <div id="publish-status"></div>
     <div style="display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap">
-      <button id="confirm-publish-btn" onclick="doPublish()" style="background:var(--mousse);color:#fff;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.65rem 1.5rem;border:none;border-radius:8px;cursor:pointer;flex:1">📤 Publier maintenant</button>
-      <button onclick="closePublishModal()" style="background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;padding:.63rem 1.2rem;border-radius:8px;cursor:pointer">Annuler</button>
+      <button id="confirm-publish-btn" onclick="doPublish()" style="background:var(--mousse);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.65rem 1.5rem;border:none;border-radius:8px;cursor:pointer;flex:1">📤 Publier maintenant</button>
+      <button onclick="closePublishModal()" style="background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.63rem 1.2rem;border-radius:8px;cursor:pointer">Annuler</button>
     </div>
   </div>
 </div>
@@ -750,30 +750,30 @@ function buildProgTable(){
       if(delta > 5)       { color = '#C0392B'; arrow = '↑'; }
       else if(delta < -5) { color = '#2E8B3E'; arrow = '↓'; }
       else                { color = '#3A7BBF'; arrow = '='; }
-      deltaHtml = `<span style="color:${color};font-family:'Syne',sans-serif;font-size:.72rem;font-weight:800">${arrow} ${delta > 0 ? '+' : ''}${delta}%</span>`;
+      deltaHtml = `<span style="color:${color};font-family:'Lora',serif;font-size:.72rem;font-weight:800">${arrow} ${delta > 0 ? '+' : ''}${delta}%</span>`;
     }
 
-    // Badges RPE + UA pour mar / jeu
-    const rpeBadge = (v) => `<div style="display:inline-block;background:${rpeColor(v)};color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.7rem;padding:.15rem .45rem;border-radius:4px;min-width:24px;text-align:center">${v}</div>`;
-    const uaBadge = (v) => `<div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:${rpeColor(v/50)};letter-spacing:.01em">${v}</div>`;
+    const totalColor = uaWeekColor(ch.total);
 
-    const totalBg = uaWeekColor(ch.total);
+    // Indicateurs simplifiés : couleur sur le chiffre uniquement (pas de fond)
+    const rpeBadge = (v) => `<span style="color:${rpeColor(v)};font-family:'Lora',serif;font-weight:700;font-size:.95rem">${v}</span>`;
+    const uaBadge  = (v) => `<span style="font-family:'Lora',serif;font-weight:400;font-size:.72rem;color:var(--muted)">${v}</span>`;
 
     return `<tr class="${s.decharge?'decharge':''}">
       <td>
         <div class="sem-badge">S${s.sem}</div>
-        <div style="font-family:'Syne',sans-serif;font-size:.6rem;color:var(--muted)">${s.mois}</div>
+        <div style="font-family:'Lora',serif;font-size:.6rem;color:var(--muted)">${s.mois}</div>
       </td>
       <td>
         <span class="phase-mini" style="background:${bg};color:${col}">${s.phase}</span>
-        ${s.decharge?'<div style="font-family:\'Syne\',sans-serif;font-size:.55rem;color:var(--mousse);margin-top:.2rem">🟢 Décharge</div>':''}
+        ${s.decharge?'<div style="font-family:\'Lora\',serif;font-size:.62rem;color:var(--mousse);margin-top:.2rem">Décharge</div>':''}
       </td>
       <td>
         <div class="seance-cell">${s.mardi.titre}${mardiChanged?'<span class="modified-flag">✏️</span>':''}</div>
         <div class="seance-terrain">${terrainLabel[s.mardi.terrain]?terrainLabel[s.mardi.terrain].icon+' '+terrainLabel[s.mardi.terrain].label:s.mardi.terrain}</div>
       </td>
       <td style="text-align:center;white-space:nowrap">
-        <div style="display:flex;flex-direction:column;gap:.15rem;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:.1rem;align-items:center;line-height:1.2">
           ${rpeBadge(ch.mar.rpe)}
           ${uaBadge(ch.mar.ua)}
         </div>
@@ -783,13 +783,13 @@ function buildProgTable(){
         <div class="seance-terrain">${terrainLabel[s.jeudi.terrain]?terrainLabel[s.jeudi.terrain].icon+' '+terrainLabel[s.jeudi.terrain].label:s.jeudi.terrain}</div>
       </td>
       <td style="text-align:center;white-space:nowrap">
-        <div style="display:flex;flex-direction:column;gap:.15rem;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:.1rem;align-items:center;line-height:1.2">
           ${rpeBadge(ch.jeu.rpe)}
           ${uaBadge(ch.jeu.ua)}
         </div>
       </td>
       <td style="text-align:center">
-        <div style="display:inline-block;background:${totalBg};color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;padding:.35rem .55rem;border-radius:6px;min-width:48px">${ch.total}</div>
+        <span style="font-family:'Lora',serif;font-weight:700;font-size:1rem;color:${totalColor}">${ch.total}</span>
       </td>
       <td style="text-align:center">${deltaHtml}</td>
       <td>
@@ -856,9 +856,9 @@ function showNivPreview(jourid, key){
   const cols = ['#3d8b5c','#2351a0','#c04040'];
   const lbls = ['\uD83D\uDFE2 D\u00E9b','\uD83D\uDD35 Inter','\uD83D\uDD34 Conf'];
   el.innerHTML = '<div style="background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:8px;padding:.6rem .9rem;margin-bottom:.6rem">'
-    +'<div style="font-family:\'Syne\',sans-serif;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.4rem">Niveaux</div>'
+    +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.4rem">Niveaux</div>'
     +[0,1,2].map(i => '<div style="display:flex;gap:.5rem;font-size:.74rem;margin-bottom:.15rem">'
-      +'<span style="font-family:\'Syne\',sans-serif;font-size:.63rem;font-weight:700;color:'+cols[i]+';min-width:65px">'+lbls[i]+'</span>'
+      +'<span style="font-family:\'Lora\',serif;font-size:.63rem;font-weight:700;color:'+cols[i]+';min-width:65px">'+lbls[i]+'</span>'
       +'<span>'+niv.reps[i]+'</span>'
       +'<span style="color:var(--muted)">\u00B7 R='+niv.recup[i]+'</span>'
       +'<span style="color:var(--muted);font-size:.68rem">\u00B7 '+niv.allure[i]+'</span>'
@@ -991,8 +991,8 @@ function buildCalList(){
       <div class="cal-admin-info">
         <div class="cal-admin-titre">
           ${e.titre}
-          ${isNew?'<span style="font-family:\'Syne\',sans-serif;font-size:.58rem;color:var(--mousse);margin-left:.3rem">NEW</span>':''}
-          ${isModified?'<span style="font-family:\'Syne\',sans-serif;font-size:.58rem;color:var(--ab-light);margin-left:.3rem">✏️</span>':''}
+          ${isNew?'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--mousse);margin-left:.3rem">NEW</span>':''}
+          ${isModified?'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--ab-light);margin-left:.3rem">✏️</span>':''}
         </div>
         <div class="cal-admin-desc">${e.desc}</div>
       </div>
@@ -1048,7 +1048,7 @@ function renderInfosList(){
   const el = document.getElementById('infos-club-list');
   if(!el) return;
   if(!localInfosClub || !localInfosClub.length){
-    el.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--muted);font-family:'Syne',sans-serif;font-size:.82rem;background:#fff;border:1px dashed var(--border);border-radius:10px">Aucun message. Cliquez sur "+ Nouveau message" pour en ajouter.</div>`;
+    el.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--muted);font-family:'Lora',serif;font-size:.82rem;background:#fff;border:1px dashed var(--border);border-radius:10px">Aucun message. Cliquez sur "+ Nouveau message" pour en ajouter.</div>`;
     return;
   }
   const typeLabels = {
@@ -1079,10 +1079,10 @@ function renderInfosList(){
       <label class="field-label">Message</label>
       <textarea class="field-textarea" rows="3" oninput="updateInfoField(${i},'texte',this.value)">${m.texte||''}</textarea>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
-        <span style="font-family:'Syne',sans-serif;font-size:.65rem;color:var(--muted)">
+        <span style="font-family:'Lora',serif;font-size:.65rem;color:var(--muted)">
           ID : ${m.id} ${m.dateFin ? '· Expire le '+new Date(m.dateFin+'T12:00:00').toLocaleDateString('fr-FR') : '· Sans date de fin'}
         </span>
-        <button onclick="deleteInfoClub(${i})" style="background:none;border:1px solid var(--rouge);color:var(--rouge);font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;padding:.3rem .8rem;border-radius:6px;cursor:pointer">🗑 Supprimer</button>
+        <button onclick="deleteInfoClub(${i})" style="background:none;border:1px solid var(--rouge);color:var(--rouge);font-family:'Lora',serif;font-size:.7rem;font-weight:700;padding:.3rem .8rem;border-radius:6px;cursor:pointer">🗑 Supprimer</button>
       </div>
     </div>
   `).join('');
@@ -1157,9 +1157,9 @@ function renderDifficulteList(){
   el.innerHTML = localDifficulte.map((d, i) => `
     <div style="display:flex;gap:.8rem;align-items:center;background:#f8fafd;border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;flex-wrap:wrap">
       <div style="width:32px;height:32px;border-radius:50%;background:${d.couleur};flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--border)"></div>
-      <div style="font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);min-width:160px">${d.emoji||'•'} ${d.label}</div>
+      <div style="font-family:'Lora',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);min-width:160px">${d.emoji||'•'} ${d.label}</div>
       <div style="display:flex;align-items:center;gap:.4rem">
-        <span style="font-family:'Syne',sans-serif;font-size:.65rem;color:var(--muted)">UA max</span>
+        <span style="font-family:'Lora',serif;font-size:.65rem;color:var(--muted)">UA max</span>
         <input type="number" class="field-input" value="${d.ua_max}" style="width:90px;padding:.3rem .5rem" oninput="updateDifficulte(${i},'ua_max',parseInt(this.value)||0)" ${i === localDifficulte.length-1 ? 'disabled title="Niveau max — pas de plafond"' : ''}>
       </div>
       <div style="flex:1;min-width:200px">
@@ -1181,11 +1181,11 @@ function renderChargeHebdoList(){
   el.innerHTML = localChargeSeuils.map((s, i) => `
     <div style="display:flex;gap:.8rem;align-items:center;background:#f8fafd;border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;flex-wrap:wrap">
       <div style="width:24px;height:24px;border-radius:50%;background:${s.couleur};flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--border)"></div>
-      <div style="font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);min-width:130px">
+      <div style="font-family:'Lora',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);min-width:130px">
         <input type="text" class="field-input" value="${escapeAttr(s.label)}" style="padding:.25rem .5rem;width:100%" oninput="updateChargeSeuil(${i},'label',this.value)">
       </div>
       <div style="display:flex;align-items:center;gap:.4rem">
-        <span style="font-family:'Syne',sans-serif;font-size:.65rem;color:var(--muted)">UA max</span>
+        <span style="font-family:'Lora',serif;font-size:.65rem;color:var(--muted)">UA max</span>
         <input type="number" class="field-input" value="${s.max}" style="width:90px;padding:.3rem .5rem" oninput="updateChargeSeuil(${i},'max',parseInt(this.value)||0)" ${i === localChargeSeuils.length-1 ? 'disabled title="Niveau max"' : ''}>
       </div>
       <div style="flex:1;min-width:200px">
@@ -1229,20 +1229,20 @@ function buildSeancesGrid(){
     const notes = niv.notes || '';
     return '<div class="seance-lib-card" data-key="'+key+'" data-label="'+label.replace(/"/g,"'")+'" style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:.4rem">'
       +'<div style="background:var(--surface2);padding:.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap">'
-      +'<div><span style="font-family:\'Syne\',sans-serif;font-size:.78rem;font-weight:800;color:var(--ab-blue)">'+label+'</span>'
-      +'<span style="font-family:\'Syne\',sans-serif;font-size:.58rem;color:var(--muted);margin-left:.5rem;background:rgba(27,58,107,.07);padding:.1rem .4rem;border-radius:3px">'+key+'</span></div>'
+      +'<div><span style="font-family:\'Lora\',serif;font-size:.78rem;font-weight:800;color:var(--ab-blue)">'+label+'</span>'
+      +'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--muted);margin-left:.5rem;background:rgba(27,58,107,.07);padding:.1rem .4rem;border-radius:3px">'+key+'</span></div>'
       +'<button class="btn-edit-row" onclick="openSeanceEdit(\''+key+'\')">&#x270F;&#xFE0F; Modifier</button>'
       +'</div>'
       +'<div style="padding:.65rem 1rem">'
       +'<div style="display:grid;grid-template-columns:115px 1fr 1fr 2fr;gap:.3rem;margin-bottom:.25rem">'
       +'<div></div>'
-      +'<div style="font-family:\'Syne\',sans-serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">R&#233;p.</div>'
-      +'<div style="font-family:\'Syne\',sans-serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">R&#233;cup</div>'
-      +'<div style="font-family:\'Syne\',sans-serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">Allure</div>'
+      +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">R&#233;p.</div>'
+      +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">R&#233;cup</div>'
+      +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">Allure</div>'
       +'</div>'
       +[0,1,2].map(i =>
         '<div style="display:grid;grid-template-columns:115px 1fr 1fr 2fr;gap:.3rem;margin-bottom:.2rem;align-items:baseline">'
-        +'<span style="font-family:\'Syne\',sans-serif;font-size:.65rem;font-weight:700;color:'+cols[i]+'">'+lbls[i]+'</span>'
+        +'<span style="font-family:\'Lora\',serif;font-size:.65rem;font-weight:700;color:'+cols[i]+'">'+lbls[i]+'</span>'
         +'<span style="font-size:.77rem">'+(niv.reps[i]||'&mdash;')+'</span>'
         +'<span style="font-size:.77rem;color:var(--muted)">'+(niv.recup[i]||'&mdash;')+'</span>'
         +'<span style="font-size:.74rem;color:var(--muted)">'+(niv.allure[i]||'&mdash;')+'</span>'
@@ -1266,7 +1266,7 @@ function openSeanceEdit(key){
   document.getElementById('btn-reset-week').style.display = 'none';
   document.getElementById('panel-body').innerHTML =
     '<div class="field-group"><label class="field-label">Cl&#233;</label>'
-    +'<div style="font-family:\'Syne\',sans-serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);background:rgba(27,58,107,.06);padding:.4rem .7rem;border-radius:6px">'+key+'</div></div>'
+    +'<div style="font-family:\'Lora\',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);background:rgba(27,58,107,.06);padding:.4rem .7rem;border-radius:6px">'+key+'</div></div>'
     +'<div class="field-group"><label class="field-label">Label (nom affich&#233;)</label>'
     +'<input class="field-input" id="es-label" value="'+(niv.label||label).replace(/"/g,'&quot;')+'"></div>'
     +[0,1,2].map(i =>
