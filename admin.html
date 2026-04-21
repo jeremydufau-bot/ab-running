@@ -282,11 +282,15 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
       <table class="prog-admin-table">
         <thead>
           <tr>
-            <th style="width:65px">Sem.</th>
-            <th style="width:130px">Phase</th>
+            <th style="width:58px">Sem.</th>
+            <th style="width:115px">Phase</th>
             <th>Mardi</th>
+            <th style="width:90px;text-align:center" title="RPE × Durée de la séance mardi (incluant échauff + PPG)">Mar.<br><small style="font-weight:400;opacity:.7;font-size:.55rem">RPE · UA</small></th>
             <th>Jeudi</th>
-            <th style="width:100px">Action</th>
+            <th style="width:90px;text-align:center" title="RPE × Durée de la séance jeudi (incluant échauff + PPG)">Jeu.<br><small style="font-weight:400;opacity:.7;font-size:.55rem">RPE · UA</small></th>
+            <th style="width:80px;text-align:center" title="Charge totale de la semaine (Mardi + Jeudi)">Total<br><small style="font-weight:400;opacity:.7;font-size:.55rem">UA sem.</small></th>
+            <th style="width:70px;text-align:center" title="Évolution par rapport à la semaine précédente">Δ sem.</th>
+            <th style="width:90px">Action</th>
           </tr>
         </thead>
         <tbody id="prog-admin-body"></tbody>
@@ -657,10 +661,73 @@ const phaseTextColors = {
   'phase-senpereko':'#1b3a6b','phase-euskal':'#1b3a6b',
 };
 
+// ════════════════════════════════════════════════
+// ESTIMATION DE CHARGE (local admin)
+// ════════════════════════════════════════════════
+// Estime RPE, durée et UA d'une séance à partir de son titre
+function adminEstimCharge(titre){
+  const t = (titre || '').toLowerCase();
+  let rpe = 7, duree = 50; // défaut
+
+  if(/récup|recup|repos|allumage/.test(t))        { rpe = 3; duree = 45; }
+  else if(/footing souple|allure souple/.test(t)) { rpe = 4; duree = 50; }
+  else if(/footing|endurance/.test(t))            { rpe = 5; duree = 55; }
+  else if(/fartlek\s+libre/.test(t))              { rpe = 6; duree = 50; }
+  else if(/fartlek/.test(t))                      { rpe = 7; duree = 50; }
+  else if(/tempo|seuil/.test(t))                  { rpe = 7; duree = 55; }
+  else if(/côte|cote|escaliers/.test(t))          { rpe = 8; duree = 50; }
+  else if(/30["']?\s*\/\s*30|vma/.test(t))        { rpe = 8; duree = 45; }
+  else if(/pyramid/.test(t))                      { rpe = 8; duree = 55; }
+  else if(/3x15|4x2000|5x1000/.test(t))           { rpe = 8; duree = 70; }
+  else if(/×\s*[12]min|×1min|×2min/.test(t))      { rpe = 8; duree = 50; }
+  else if(/×\s*3min|×3min/.test(t))               { rpe = 7; duree = 50; }
+  else if(/×\s*4min|×\s*5min/.test(t))            { rpe = 7; duree = 55; }
+
+  // Charge séance + échauff 90 UA + PPG 60 UA fixes
+  const ua = rpe * duree + 90 + 60;
+  return { rpe, duree, ua };
+}
+
+// Retourne le code couleur (hex) d'un RPE selon l'intensité
+function rpeColor(rpe){
+  if(rpe <= 3) return '#2E8B3E';   // vert
+  if(rpe <= 5) return '#5FAD4E';   // vert clair
+  if(rpe <= 6) return '#3A7BBF';   // bleu
+  if(rpe <= 7) return '#E67E22';   // orange
+  if(rpe <= 8) return '#C0392B';   // rouge
+  return '#1A1A1A';                // noir
+}
+
+// Retourne le code couleur d'une charge UA totale semaine (basé sur chargeHebdoSeuils)
+function uaWeekColor(ua){
+  const seuils = (typeof localChargeSeuils !== 'undefined' && localChargeSeuils && localChargeSeuils.length)
+    ? localChargeSeuils
+    : [
+        { max:400, couleur:'#2E8B3E' },
+        { max:600, couleur:'#5FAD4E' },
+        { max:800, couleur:'#3A7BBF' },
+        { max:1050,couleur:'#E67E22' },
+        { max:9999,couleur:'#C0392B' }
+      ];
+  const s = seuils.find(x => ua <= x.max) || seuils[seuils.length-1];
+  return s.couleur;
+}
+
 function buildProgTable(){
   const filter = document.getElementById('phase-filter').value;
   const rows = localProgramme.filter(s => !filter || s.phaseClass === filter);
   const orig = programme;
+
+  // Pré-calculer toutes les charges pour le delta inter-semaines
+  const charges = {};
+  localProgramme.forEach(s => {
+    const mar = adminEstimCharge(s.mardi && s.mardi.titre);
+    const jeu = adminEstimCharge(s.jeudi && s.jeudi.titre);
+    charges[s.sem] = {
+      mar, jeu,
+      total: mar.ua + jeu.ua
+    };
+  });
 
   document.getElementById('prog-admin-body').innerHTML = rows.map(s => {
     const o = orig.find(x=>x.sem===s.sem) || s;
@@ -670,6 +737,28 @@ function buildProgTable(){
     const anyChanged = mardiChanged||jeudiChanged||wkndChanged;
     const bg = phaseColors[s.phaseClass]||'rgba(27,58,107,.08)';
     const col = phaseTextColors[s.phaseClass]||'#1b3a6b';
+
+    const ch = charges[s.sem];
+    const chPrev = charges[s.sem - 1];
+
+    // Delta %
+    let deltaHtml = '<span style="color:var(--muted);font-size:.7rem">—</span>';
+    if(chPrev && chPrev.total > 0){
+      const delta = Math.round((ch.total - chPrev.total) / chPrev.total * 100);
+      let color = 'var(--muted)';
+      let arrow = '';
+      if(delta > 5)       { color = '#C0392B'; arrow = '↑'; }
+      else if(delta < -5) { color = '#2E8B3E'; arrow = '↓'; }
+      else                { color = '#3A7BBF'; arrow = '='; }
+      deltaHtml = `<span style="color:${color};font-family:'Syne',sans-serif;font-size:.72rem;font-weight:800">${arrow} ${delta > 0 ? '+' : ''}${delta}%</span>`;
+    }
+
+    // Badges RPE + UA pour mar / jeu
+    const rpeBadge = (v) => `<div style="display:inline-block;background:${rpeColor(v)};color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.7rem;padding:.15rem .45rem;border-radius:4px;min-width:24px;text-align:center">${v}</div>`;
+    const uaBadge = (v) => `<div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:${rpeColor(v/50)};letter-spacing:.01em">${v}</div>`;
+
+    const totalBg = uaWeekColor(ch.total);
+
     return `<tr class="${s.decharge?'decharge':''}">
       <td>
         <div class="sem-badge">S${s.sem}</div>
@@ -683,10 +772,26 @@ function buildProgTable(){
         <div class="seance-cell">${s.mardi.titre}${mardiChanged?'<span class="modified-flag">✏️</span>':''}</div>
         <div class="seance-terrain">${terrainLabel[s.mardi.terrain]?terrainLabel[s.mardi.terrain].icon+' '+terrainLabel[s.mardi.terrain].label:s.mardi.terrain}</div>
       </td>
+      <td style="text-align:center;white-space:nowrap">
+        <div style="display:flex;flex-direction:column;gap:.15rem;align-items:center">
+          ${rpeBadge(ch.mar.rpe)}
+          ${uaBadge(ch.mar.ua)}
+        </div>
+      </td>
       <td>
         <div class="seance-cell">${s.jeudi.titre}${jeudiChanged?'<span class="modified-flag">✏️</span>':''}</div>
         <div class="seance-terrain">${terrainLabel[s.jeudi.terrain]?terrainLabel[s.jeudi.terrain].icon+' '+terrainLabel[s.jeudi.terrain].label:s.jeudi.terrain}</div>
       </td>
+      <td style="text-align:center;white-space:nowrap">
+        <div style="display:flex;flex-direction:column;gap:.15rem;align-items:center">
+          ${rpeBadge(ch.jeu.rpe)}
+          ${uaBadge(ch.jeu.ua)}
+        </div>
+      </td>
+      <td style="text-align:center">
+        <div style="display:inline-block;background:${totalBg};color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;padding:.35rem .55rem;border-radius:6px;min-width:48px">${ch.total}</div>
+      </td>
+      <td style="text-align:center">${deltaHtml}</td>
       <td>
         <button class="btn-edit-row" onclick="openPanel(${s.sem})">✏️ Modifier</button>
         ${anyChanged?`<button class="btn-edit-row" style="margin-top:.3rem;color:var(--rouge);border-color:rgba(192,64,64,.3)" onclick="resetWeekById(${s.sem})">↺</button>`:''}
