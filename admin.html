@@ -1298,12 +1298,13 @@ function openNewSeance(){
     +'<div class="field-group"><label class="field-label">Catégorie</label>'
     +'<input class="field-input" id="es-cat" placeholder="ex: Seuil"></div>'
     +'<div class="field-group"><label class="field-label">RPE</label>'
-    +'<input class="field-input" id="es-rpe" placeholder="ex: 7/10"></div></div>'
-    +[0,1,2].map(i =>
-      '<span class="block-sep" style="background:'+tSeps[i]+';border-color:'+tSepB[i]+';color:'+tCols[i]+'">'+tLabels[i]+'</span>'
-      +'<div class="field-group"><label class="field-label">Variante '+tLabels[i]+'</label>'
-      +'<input class="field-input" id="es-terrain-'+i+'" placeholder="ex: 6×1000m R=2\' Halage"></div>'
-    ).join('')
+   +'<input class="field-input" id="es-rpe" placeholder="ex: 7/10"></div></div>'
++ [0,1,2].map(i =>
+  '<span class="block-sep" style="background:'+tSeps[i]+';border-color:'+tSepB[i]+';color:'+tCols[i]+'">'+tLabels[i]+'</span>'
+  +'<div class="field-group"><label class="field-label">Variante '+tLabels[i]+'</label>'
+  +'<input class="field-input" id="es-terrain-'+i+'" placeholder="ex: 6×1000m R=2\' Halage"></div>'
+).join('')
++'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
     +'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
     +'<input class="field-input" id="es-volume" placeholder="ex: 3 reprise · 6 standard · 8 si forme"></div>'
     +'<div class="field-group"><label class="field-label">Notes coach</label>'
