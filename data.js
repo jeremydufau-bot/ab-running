@@ -1715,13 +1715,54 @@ const programme = [
 ];
 
 const objectifs = [
-  {s:13,nom:'Marathon La Rochelle',date:'2026-11-29',type:'route'},
-  {s:27,nom:'France de Cross',date:'2027-03-07',type:'cross'},
-  {s:28,nom:'Senpereko Trail',date:'2027-03-14',type:'trail'},
-  {s:33,nom:'Semi-Marathon Saint-Sébastien',date:'2027-04-18',type:'route'},
-  {s:35,nom:'Marathon Biarritz',date:'2027-05-02',type:'route'},
-  {s:36,nom:'Euskal Raid Ascension',date:'2027-05-08',type:'trail'},
-  {s:44,nom:'Saison Trails Pays Basque',date:'2027-06-28',type:'trail'},
+  {
+    "s": 46,
+    "nom": "Course des Fêtes de Bayonnes",
+    "date": "2026-07-15",
+    "type": "route"
+  },
+  {
+    "s": 13,
+    "nom": "Marathon La Rochelle",
+    "date": "2026-11-29",
+    "type": "route"
+  },
+  {
+    "s": 27,
+    "nom": "France de Cross",
+    "date": "2027-03-07",
+    "type": "cross"
+  },
+  {
+    "s": 28,
+    "nom": "Senpereko Trail",
+    "date": "2027-03-14",
+    "type": "trail"
+  },
+  {
+    "s": 33,
+    "nom": "Semi-Marathon Saint-Sébastien",
+    "date": "2027-04-18",
+    "type": "route"
+  },
+  {
+    "s": 35,
+    "nom": "Marathon Biarritz",
+    "date": "2027-05-02",
+    "type": "route"
+  },
+  {
+    "s": 36,
+    "nom": "Euskal Raid Ascension",
+    "date": "2027-05-08",
+    "type": "trail"
+  },
+  {
+    "s": 44,
+    "nom": "Saison Trails Pays Basque",
+    "date": "2027-06-28",
+    "type": "trail"
+  }
 ];
 
 const calFixed = [
