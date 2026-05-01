@@ -3,1357 +3,724 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AB Running Loisir — Aviron Bayonnais Athlétisme</title>
+<title>AB Running Loisir — Aviron Bayonnais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
-:root {
-  /* ── Palette officielle AB ── */
-  --ab-sky:        #7BC3E5;   /* bleu ciel logo */
-  --ab-sky-pale:   #C5E3F0;
-  --ab-sky-bg:     #E8F4FA;
-  --ab-navy:       #1B3A6B;   /* bleu marine profond */
-  --ab-navy-dark:  #142B54;
-  --ab-blue:       #2A5DA0;   /* bleu moyen */
-  --ab-blue-light: #4A7ECC;
-  --white:         #FFFFFF;
-  --bg:            #F5F8FC;
-  --bg2:           #EBF1F9;
-  --surface:       #FFFFFF;
-  --surface2:      #F0F4FA;
-  --border:        rgba(27,58,107,0.12);
-  --border-strong: rgba(27,58,107,0.22);
-  --text:          #1A2540;
-  --muted:         #6B7A9A;
+:root{
+  --bg:#F2F5FA;--surface:#fff;--surface2:#F8FAFF;--border:rgba(27,58,107,.1);
+  --navy:#1B3A6B;--blue:#2A5DA0;--light:#4A7ECC;--sky:#7BC3E5;
+  --text:#1A2540;--muted:#6B7A9A;--mousse:#4A8A5A;--rouge:#C04040;--ocre:#D4893A;
+  --gold:#B8860B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:15px;line-height:1.6}
+a{color:var(--blue);text-decoration:none}
 
-  /* ── Difficulté 5 niveaux (type piste de ski) ── */
-  --d-vert:        #2E8B3E;
-  --d-vert-bg:     rgba(46,139,62,.12);
-  --d-bleu:        #3A7BBF;
-  --d-bleu-bg:     rgba(58,123,191,.12);
-  --d-orange:      #E67E22;
-  --d-orange-bg:   rgba(230,126,34,.14);
-  --d-rouge:       #C0392B;
-  --d-rouge-bg:    rgba(192,57,43,.12);
-  --d-noir:        #1A1A1A;
-  --d-noir-bg:     rgba(0,0,0,.08);
+/* ── NAV ── */
+header{background:var(--navy);padding:.7rem 1.5rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(27,58,107,.25)}
+.logo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)}
+.site-name{color:#fff;font-size:1.1rem;font-weight:700;flex:1}
+nav{display:flex;gap:.25rem;flex-wrap:wrap}
+nav button{background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-family:'Lora',serif;font-size:.68rem;font-weight:600;padding:.4rem .7rem;border-radius:6px;cursor:pointer;transition:.15s}
+nav button:hover{background:rgba(255,255,255,.08);color:#fff}
+nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:#fff}
 
-  /* Accents */
-  --ocre:          #D4893A;
-  --mousse:        #4A8A5A;
-  --rouge:         #C04040;
-}
+/* ── LAYOUT ── */
+.page{display:none;max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.page.active{display:block}
+.sec-eye{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.sec-title{font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:.6rem;line-height:1.2}
+.sec-title em{font-style:italic;color:var(--blue)}
+.sec-intro{font-size:.88rem;color:var(--muted);max-width:720px;margin-bottom:1.5rem;line-height:1.7}
+.divider{height:1px;background:var(--border);margin:2rem 0}
 
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Lora',serif;
-  font-size:15px;
-  line-height:1.7;
-  overflow-x:hidden;
-}
+/* ── BUTTONS ── */
+.ctrl-bar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.ctrl-label{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.btn{font-family:'Lora',serif;font-size:.7rem;font-weight:500;padding:.35rem .65rem;border-radius:7px;border:1px solid var(--border);color:var(--muted);background:transparent;cursor:pointer;transition:.12s}
+.btn:hover{border-color:var(--light);color:var(--navy)}
+.btn.active{background:rgba(42,93,160,.12);border-color:var(--blue);color:var(--navy)}
 
-/* ══════════ HERO ══════════ */
-.hero{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:3rem 3rem 3rem;
-  min-height:45vh;
-  background:
-    radial-gradient(ellipse at top right, rgba(123,195,229,.35) 0%, transparent 55%),
-    linear-gradient(135deg, var(--ab-navy) 0%, var(--ab-blue) 60%, var(--ab-sky) 120%);
-  overflow:hidden;
-}
-.hero::before{
-  content:'';
-  position:absolute;
-  top:-20%;
-  right:-10%;
-  width:60%;
-  height:120%;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 50 Q30 20 50 50 T90 50' stroke='rgba(255,255,255,0.04)' stroke-width='.5' fill='none'/%3E%3C/svg%3E");
-  background-size:180px;
-  pointer-events:none;
-}
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.hero-inner{
-  position:relative;
-  z-index:2;
-  max-width:1100px;
-  margin:0 auto;
-  width:100%;
-}
-.hero-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:1rem;
-  margin-bottom:1.8rem;
-}
-.hero-brand{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-}
-.hero-logo{
-  width:64px;
-  height:64px;
-  border-radius:50%;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 4px 16px rgba(0,0,0,.25);
-  flex-shrink:0;
-  overflow:hidden;
-}
-.hero-logo img{width:100%;height:100%;object-fit:cover;}
-.hero-logo-fallback{
-  font-family:'Lora',serif;
-  font-size:1.4rem;
-  color:var(--ab-sky);
-  letter-spacing:.05em;
-}
-.hero-brand-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.2;
-}
-.hero-brand-text .club{
-  font-family:'Lora',serif;
-  font-size:.58rem;
-  font-weight:800;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.75);
-}
-.hero-brand-text .section{font-family:'Lora',serif;font-size:1.15rem;color:#fff;letter-spacing:0;font-weight:700;}
-.coach-link{
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:20px;
-  padding:.4rem 1rem;
-  font-family:'Lora',serif;
-  font-size:.65rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.8);
-  text-decoration:none;
-  transition:all .2s;
-}
-.coach-link:hover{background:rgba(255,255,255,.22);color:#fff;}
-.hero h1{font-family:'Lora',serif;font-size:clamp(2rem,5vw,3.4rem);line-height:1.15;color:#fff;letter-spacing:0;margin-bottom:.9rem;font-weight:700;}
-.hero h1 .word1{display:block;}
-.hero h1 .word2{display:block;color:var(--ab-sky);}
-.hero-tagline{
-  font-family:'Lora',serif;
-  font-size:1rem;
-  font-weight:500;
-  color:rgba(255,255,255,.85);
-  margin-bottom:1.5rem;
-  max-width:580px;
-}
-.hero-pills{display:flex;gap:.6rem;flex-wrap:wrap;}
-.hpill{
-  display:inline-flex;
-  align-items:center;
-  gap:.35rem;
-  font-family:'Lora',serif;
-  font-size:.65rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  padding:.4rem 1rem;
-  border-radius:20px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.28);
-  color:rgba(255,255,255,.95);
-  backdrop-filter:blur(8px);
-}
+/* ── TAGS ── */
+.tag{display:inline-block;font-size:.58rem;font-weight:700;padding:.12rem .4rem;border-radius:3px;white-space:nowrap;margin-right:.2rem}
+.tag-sky{background:rgba(123,195,229,.18);color:#2478A8}
+.tag-blue{background:rgba(27,58,107,.1);color:var(--navy)}
+.tag-green{background:rgba(74,138,90,.1);color:var(--mousse)}
+.tag-ocre{background:rgba(212,137,58,.12);color:#b56a10}
+.tag-rouge{background:rgba(192,64,64,.1);color:var(--rouge)}
+.rpe-pill{display:inline-flex;align-items:center;font-size:.65rem;font-weight:700;background:rgba(184,134,11,.15);color:var(--gold);padding:.15rem .45rem;border-radius:4px;white-space:nowrap}
+.ua-badge{font-size:.7rem;font-weight:600;color:var(--navy)}
 
-/* ══════════ NAV ══════════ */
-nav{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:var(--ab-navy);
-  border-bottom:3px solid var(--ab-sky);
-  display:flex;
-  overflow-x:auto;
-  scrollbar-width:none;
-  box-shadow:0 4px 20px rgba(27,58,107,.25);
-}
-nav::-webkit-scrollbar{display:none;}
-nav .nav-inner{
-  display:flex;
-  margin:0 auto;
-  max-width:1100px;
-  width:100%;
-}
-nav button{
-  background:none;
-  border:none;
-  border-bottom:3px solid transparent;
-  color:rgba(255,255,255,.65);
-  font-family:'Lora',serif;
-  font-size:.7rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  padding:1.1rem 1.2rem;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:all .2s;
-  margin-bottom:-3px;
-}
-nav button:hover{color:#fff;background:rgba(255,255,255,.07);}
-nav button.active{color:#fff;border-bottom-color:var(--ab-sky);background:rgba(255,255,255,.05);}
+/* ── PHASE BADGES ── */
+.ph{display:inline-block;font-size:.57rem;font-weight:700;padding:.12rem .5rem;border-radius:3px;white-space:nowrap}
+.ph-rep{background:rgba(123,195,229,.2);color:#1a5080}
+.ph-base{background:rgba(74,122,204,.15);color:var(--blue)}
+.ph-dev{background:rgba(27,58,107,.15);color:var(--navy)}
+.ph-force{background:rgba(212,137,58,.15);color:#8a5010}
+.ph-prepa{background:rgba(74,122,204,.18);color:var(--navy)}
+.ph-precomp{background:rgba(160,90,180,.15);color:#6a3080}
+.ph-event{background:rgba(27,58,107,.2);color:var(--navy)}
+.ph-recup{background:rgba(74,138,90,.15);color:var(--mousse)}
+.dech{font-size:.55rem;font-weight:700;background:rgba(74,138,90,.12);color:var(--mousse);padding:.1rem .4rem;border-radius:3px;margin-left:.3rem}
 
-/* ══════════ PAGES ══════════ */
-.page{display:none;padding:3rem 3rem 5rem;max-width:1100px;margin:0 auto;}
-.page.active{display:block;animation:fadeup .3s ease;}
-@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* ── PROG TABLE ── */
+.prog-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(27,58,107,.07)}
+.prog-table{width:100%;border-collapse:collapse;min-width:700px}
+.prog-table th{background:var(--navy);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 1rem;text-align:left;white-space:nowrap}
+.prog-table td{padding:.6rem .8rem;border-bottom:1px solid var(--border);background:var(--surface);vertical-align:middle;transition:.12s}
+.prog-table tr:hover td{background:rgba(123,195,229,.06)}
+.prog-table tr.dec td{background:rgba(74,138,90,.04)}
+.prog-table tr.dec:hover td{background:rgba(74,138,90,.08)}
+.prog-table tr.has-obj td{background:rgba(255,215,0,.04)}
+.sem-num{font-size:.7rem;font-weight:800;color:var(--navy)}
+.mois-lbl{font-size:.62rem;color:var(--muted)}
+.s-titre{font-size:.78rem;color:var(--text);font-weight:500;margin-bottom:.2rem}
+.s-meta{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center}
+.obj-lbl{font-size:.68rem;color:var(--gold);font-weight:700;margin-top:.2rem}
 
-.sec-eye{
-  font-family:'Lora',serif;
-  font-size:.63rem;
-  font-weight:700;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  color:var(--ab-blue-light);
-  margin-bottom:.5rem;
-}
-.sec-title{
-  font-family:'Lora',serif;
-  font-size:clamp(2rem,5vw,3.2rem);
-  line-height:1;
-  color:var(--ab-navy);
-  margin-bottom:1.2rem;
-  letter-spacing:.02em;
-}
-.sec-title em{color:var(--ab-blue-light);font-style:italic;font-weight:600;}
-.sec-intro{
-  color:var(--muted);
-  max-width:720px;
-  margin-bottom:2.2rem;
-  font-size:.92rem;
-  line-height:1.8;
-}
-.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0;}
+/* ── MODAL ── */
+#overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(20,35,70,.6);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1.5rem}
+#overlay.open{display:flex}
+#modal{background:var(--surface);border-radius:14px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-hdr{background:var(--navy);color:#fff;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-radius:14px 14px 0 0}
+.modal-hdr h3{font-size:.9rem;font-weight:700}
+.modal-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.2rem;cursor:pointer}
+.modal-body{padding:1.2rem 1.5rem}
+.modal-body h4{font-size:.85rem;font-weight:700;color:var(--navy);margin-top:1rem;margin-bottom:.3rem}
+.terrain-tabs{display:flex;gap:.35rem;margin:.5rem 0}
+.terrain-tab{padding:.3rem .6rem;border-radius:5px;border:1px solid var(--border);background:transparent;font-family:'Lora',serif;font-size:.7rem;font-weight:600;cursor:pointer;transition:.12s}
+.terrain-tab.active{color:#fff}
+.terrain-tab[data-t="0"].active{background:var(--blue);border-color:var(--blue)}
+.terrain-tab[data-t="1"].active{background:var(--mousse);border-color:var(--mousse)}
+.terrain-tab[data-t="2"].active{background:var(--rouge);border-color:var(--rouge)}
+.terrain-content{display:none;padding:.5rem .7rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-size:.78rem;line-height:1.5}
+.terrain-content.active{display:block}
+.info-box{padding:.5rem .8rem;border-radius:6px;font-size:.76rem;margin-bottom:.6rem}
+.info-box.gold{background:rgba(255,215,0,.12);border:1px solid rgba(184,134,11,.3);color:var(--gold);font-weight:700}
+.info-box.green{background:rgba(74,138,90,.08);border:1px solid rgba(74,138,90,.2);color:var(--mousse)}
+.info-box.blue{background:rgba(27,58,107,.04);border-left:3px solid var(--blue);color:var(--text);font-style:italic}
+.vol-box{margin-top:.5rem;padding:.4rem .6rem;background:rgba(255,243,205,.4);border-left:3px solid var(--gold);border-radius:4px}
+.vol-box .vol-title{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.15rem}
+.vol-box .vol-text{font-size:.74rem;color:var(--text)}
 
-/* ══════════ INFOS CLUB BANDEAU ══════════ */
-.infos-club-section{
-  max-width:1100px;
-  margin:-1.5rem auto 0;
-  padding:0 3rem;
-  position:relative;
-  z-index:10;
-}
-.infos-club-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1.3rem 1.6rem;
-  box-shadow:0 8px 28px rgba(27,58,107,.12);
-  position:relative;
-  margin-bottom:.8rem;
-  border-left:4px solid var(--ab-sky);
-}
-.infos-club-card.type-event{border-left-color:var(--ocre);}
-.infos-club-card.type-urgent{border-left-color:var(--rouge);}
-.infos-club-card.type-info{border-left-color:var(--ab-sky);}
-.ic-header{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:1rem;
-  margin-bottom:.4rem;
-}
-.ic-title{
-  font-family:'Lora',serif;
-  font-size:.95rem;
-  font-weight:800;
-  color:var(--ab-navy);
-  line-height:1.3;
-}
-.ic-date-tag{
-  font-family:'Lora',serif;
-  font-size:.55rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted);
-  white-space:nowrap;
-  padding-top:.25rem;
-}
-.ic-text{
-  font-size:.86rem;
-  color:var(--text);
-  line-height:1.7;
-  white-space:pre-wrap;
-}
+/* ── ACCUEIL CARDS ── */
+.acc-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(27,58,107,.05);margin-bottom:.8rem}
+.acc-card.current{border-color:var(--light);box-shadow:0 4px 20px rgba(74,122,204,.18)}
+.acc-hdr{padding:.7rem 1.1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem}
+.acc-hdr.cur{background:var(--navy);color:#fff}
+.acc-hdr .snum{font-size:1.8rem;line-height:1;margin-right:.6rem}
+.acc-body{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
+.acc-day{padding:.8rem 1rem}
+.acc-day+.acc-day{border-left:1px solid var(--border)}
+.acc-day-label{font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem}
+.acc-day-label.mar{color:var(--blue)}
+.acc-day-label.jeu{color:var(--mousse)}
+.acc-day .s-titre{font-size:.8rem;font-weight:800;line-height:1.3;margin-bottom:.3rem}
+.acc-foot{padding:.45rem 1rem;border-top:1px solid var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem}
+.acc-foot .detail-btn{background:none;border:none;font-family:'Lora',serif;font-size:.65rem;font-weight:700;color:var(--blue);cursor:pointer}
 
-/* ══════════ CARDS ══════════ */
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:1.5rem;
-  box-shadow:0 2px 8px rgba(27,58,107,.05);
-}
-.card h3{
-  font-family:'Lora',serif;
-  font-size:.88rem;
-  font-weight:800;
-  color:var(--ab-navy);
-  margin-bottom:.5rem;
-}
-.card p,.card li{font-size:.84rem;color:var(--muted);line-height:1.8;}
-.card ul{list-style:none;padding:0;}
-.card li::before{content:'→ ';color:var(--ab-blue-light);}
+/* ── OBJECTIFS ── */
+.obj-card{display:flex;align-items:center;gap:.7rem;padding:.6rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:.4rem}
+.obj-card.past{opacity:.45}
+.obj-icon{font-size:1.3rem}
+.obj-info{flex:1;min-width:0}
+.obj-nom{font-size:.82rem;font-weight:700;line-height:1.3}
+.obj-date{font-size:.68rem;color:var(--muted)}
+.obj-countdown{text-align:right;font-size:.7rem;font-weight:700}
 
-/* ══════════ TAGS ══════════ */
-.tag{
-  display:inline-block;
-  font-family:'Lora',serif;
-  font-size:.6rem;
-  font-weight:700;
-  padding:.15rem .55rem;
-  border-radius:3px;
-  margin:.12rem .12rem 0 0;
-}
-.tag-blue{background:rgba(42,93,160,.1);color:var(--ab-blue);}
-.tag-sky{background:rgba(123,195,229,.18);color:#2478A8;}
-.tag-green{background:rgba(74,138,90,.1);color:var(--mousse);}
-.tag-ocre{background:rgba(212,137,58,.12);color:#b56a10;}
-.tag-rouge{background:rgba(192,64,64,.1);color:var(--rouge);}
-.tag-white{background:rgba(27,58,107,.08);color:var(--ab-navy);}
+/* ── CALCULATEUR ── */
+.calc-explainer{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:.8rem}
+.calc-explainer h3{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.calc-explainer p{font-size:.8rem;color:var(--muted);line-height:1.6}
+.calc-sem{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem}
+.calc-sem-hdr{background:var(--surface2);padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.calc-sem-title{font-size:.78rem;font-weight:700;color:var(--navy)}
+.calc-sem-title small{font-weight:400;color:var(--muted);display:block;font-size:.68rem}
+.calc-total{font-size:1rem;font-weight:800;color:var(--navy)}
+.calc-badge{display:inline-block;padding:.15rem .45rem;border-radius:4px;font-size:.62rem;font-weight:700;color:#fff;margin-left:.4rem}
+.calc-table{width:100%;border-collapse:collapse}
+.calc-table th{font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.4rem .6rem;text-align:left}
+.calc-table td{padding:.35rem .6rem;border-top:1px solid var(--border)}
+.calc-table td:first-child{font-size:.76rem;color:var(--text);font-weight:500;min-width:80px}
+.calc-input{width:80px;padding:.3rem .5rem;border:1px solid var(--border);border-radius:5px;font-family:'Lora',serif;font-size:.82rem;text-align:center}
+.calc-ua{font-size:.82rem;font-weight:700;color:var(--muted)}
+.seuil-row{display:flex;gap:.6rem;align-items:center;padding:.35rem 0}
+.seuil-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.seuil-range{font-size:.72rem;color:var(--muted);min-width:90px}
+.seuil-label{font-size:.75rem;font-weight:700;color:var(--text);min-width:100px}
+.seuil-desc{font-size:.7rem;color:var(--muted)}
 
-/* ══════════ DIFFICULTÉ (indice coloré discret) ══════════ */
-.diff-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:.35rem;
-  font-family:'Lora',serif;
-  font-size:.75rem;
-  font-weight:600;
-  white-space:nowrap;
-  background:none;
-  border:none;
-  padding:0;
-}
-.diff-vert{color:var(--d-vert);}
-.diff-bleu{color:var(--d-bleu);}
-.diff-orange{color:var(--d-orange);}
-.diff-rouge{color:var(--d-rouge);}
-.diff-noir{color:var(--d-noir);}
-.diff-dot{
-  width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;
-}
-.diff-dot.diff-vert{background:var(--d-vert);}
-.diff-dot.diff-bleu{background:var(--d-bleu);}
-.diff-dot.diff-orange{background:var(--d-orange);}
-.diff-dot.diff-rouge{background:var(--d-rouge);}
-.diff-dot.diff-noir{background:var(--d-noir);}
+/* ── INFOS CLUB BANNER ── */
+.infos-club-card{background:rgba(123,195,229,.08);border:1px solid rgba(123,195,229,.2);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:.6rem}
+.ic-title{font-size:.82rem;font-weight:700;color:var(--navy)}
+.ic-text{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.ic-date-tag{font-size:.6rem;color:var(--blue);font-weight:600}
+.infos-club-card.type-urgent{background:rgba(192,64,64,.06);border-color:rgba(192,64,64,.2)}
 
-.ua-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:.25rem;
-  font-family:'Lora',serif;
-  font-size:.7rem;
-  font-weight:500;
-  color:var(--muted);
-  font-style:italic;
-}
+/* ── RENFORCEMENT ── */
+.exo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem}
+.exo-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;transition:.12s}
+.exo-card:hover{border-color:var(--light);box-shadow:0 2px 8px rgba(74,122,204,.1)}
+.exo-emoji{font-size:1.4rem;margin-bottom:.3rem}
+.exo-nom{font-size:.82rem;font-weight:700;color:var(--navy)}
+.exo-muscles{font-size:.68rem;color:var(--muted);margin-bottom:.3rem}
+.exo-desc{font-size:.74rem;color:var(--text);line-height:1.5;margin-bottom:.3rem}
+.exo-prog{font-size:.68rem;color:var(--blue);line-height:1.5}
 
-.rpe-pill{
-  display:inline-flex;align-items:center;gap:.2rem;
-  font-family:'Lora',serif;font-size:.65rem;font-weight:700;
-  background:rgba(184,134,11,.15);color:#8b6508;
-  padding:.15rem .45rem;border-radius:4px;white-space:nowrap;
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  header{flex-wrap:wrap;gap:.5rem}
+  nav{width:100%;justify-content:center}
+  .acc-body{grid-template-columns:1fr}
+  .acc-day+.acc-day{border-left:none;border-top:1px solid var(--border)}
+  .page{padding:1.2rem 1rem 3rem}
+  .sec-title{font-size:1.4rem}
 }
-.terrain-sel-btn,.acc-terrain-btn{
-  font-family:'Lora',serif;font-size:.7rem;font-weight:500;
-  padding:.35rem .65rem;border-radius:7px;
-  border:1px solid var(--border);color:var(--muted);background:transparent;cursor:pointer;
-  transition:all .12s;
-}
-.terrain-sel-btn:hover,.acc-terrain-btn:hover{border-color:var(--ab-blue-light);color:var(--ab-navy);}
-.terrain-sel-btn.active,.acc-terrain-btn.active{background:rgba(42,93,160,.12);border-color:var(--ab-blue);color:var(--ab-navy);}
-.has-objectif td{background:rgba(255,215,0,.06) !important;}
-.has-objectif:hover td{background:rgba(255,215,0,.12) !important;}
-
-/* ══════════ LÉGENDE DIFFICULTÉ ══════════ */
-.legende-diff{
-  margin:0 0 1.5rem;
-  padding:1.1rem 1.3rem;
-  background:var(--surface2);
-  border:1px solid var(--border);
-  border-radius:10px;
-}
-.legende-diff-title{
-  font-family:'Lora',serif;
-  font-size:.75rem;
-  font-weight:700;
-  color:var(--ab-navy);
-}
-
-/* ══════════ PROGRAMME TABLE ══════════ */
-.programme-controls{
-  display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:flex-start;
-}
-.ctrl-group{display:flex;flex-direction:column;gap:.4rem;}
-.ctrl-label{
-  font-family:'Lora',serif;font-size:.6rem;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
-}
-.level-btns,.phase-btns,.niveau-btns{display:flex;gap:.4rem;flex-wrap:wrap;}
-.level-btn,.phase-btn,.niveau-sel-btn{
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--muted);font-family:'Lora',serif;font-size:.7rem;font-weight:700;
-  padding:.4rem .9rem;border-radius:6px;cursor:pointer;transition:all .18s;
-}
-.level-btn:hover,.phase-btn:hover,.niveau-sel-btn:hover{border-color:var(--ab-blue-light);color:var(--ab-navy);}
-.level-btn.active{background:var(--ab-navy);border-color:var(--ab-navy);color:#fff;}
-.phase-btn.active{background:rgba(42,93,160,.12);border-color:var(--ab-blue-light);color:var(--ab-blue);}
-.niveau-sel-btn.active{background:rgba(42,93,160,.12);border-color:var(--ab-blue-light);color:var(--ab-blue);}
-
-.prog-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.8rem;}
-.prog-table th{
-  background:var(--ab-navy);color:#fff;
-  font-family:'Lora',serif;font-size:.62rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:.75rem 1rem;text-align:left;position:sticky;top:52px;z-index:5;
-}
-.prog-table th:first-child{border-radius:8px 0 0 0;}
-.prog-table th:last-child{border-radius:0 8px 0 0;}
-.prog-table tr{cursor:pointer;}
-.prog-table td{
-  padding:.7rem 1rem;border-bottom:1px solid var(--border);
-  background:var(--surface);vertical-align:middle;transition:background .12s;
-}
-.prog-table tr:hover td{background:rgba(123,195,229,.06);}
-.prog-table tr.decharge td{background:rgba(74,138,90,.04);}
-.prog-table tr.decharge:hover td{background:rgba(74,138,90,.08);}
-.sem-num{font-family:'Lora',serif;font-size:.7rem;font-weight:800;color:var(--ab-navy);}
-.mois-lbl{font-size:.65rem;color:var(--muted);}
-.phase-badge{
-  display:inline-block;font-family:'Lora',serif;font-size:.57rem;font-weight:700;
-  padding:.12rem .5rem;border-radius:3px;white-space:nowrap;
-}
-.terrain-tag{
-  display:inline-block;font-family:'Lora',serif;font-size:.58rem;font-weight:700;
-  padding:.1rem .4rem;border-radius:3px;margin-left:.3rem;
-}
-.seance-titre{font-size:.8rem;color:var(--text);font-weight:500;margin-bottom:.25rem;}
-.seance-meta{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center;margin-top:.3rem;}
-.decharge-badge{
-  font-family:'Lora',serif;font-size:.55rem;font-weight:700;
-  background:rgba(74,138,90,.12);color:var(--mousse);
-  padding:.1rem .4rem;border-radius:3px;margin-left:.3rem;
-}
-
-/* Phase colors */
-.phase-reprise{background:rgba(123,195,229,.2);color:#1a5080;}
-.phase-base{background:rgba(74,122,204,.15);color:var(--ab-blue);}
-.phase-dev{background:rgba(27,58,107,.15);color:var(--ab-navy);}
-.phase-force{background:rgba(212,137,58,.15);color:#8a5010;}
-.phase-prepa{background:rgba(74,122,204,.18);color:var(--ab-navy);}
-.phase-precomp{background:rgba(160,90,180,.15);color:#6a3080;}
-.phase-event{background:rgba(27,58,107,.2);color:var(--ab-navy);}
-.phase-recup{background:rgba(74,138,90,.15);color:var(--mousse);}
-.phase-montagne{background:rgba(192,64,64,.12);color:var(--rouge);}
-
-/* ══════════ MODAL ══════════ */
-#overlay{
-  display:none;position:fixed;inset:0;z-index:1000;
-  background:rgba(20,35,70,.6);backdrop-filter:blur(6px);
-  align-items:center;justify-content:center;padding:2rem;
-}
-#overlay.open{display:flex;}
-.modal{
-  background:var(--surface);border:1px solid var(--border-strong);
-  border-radius:16px;max-width:620px;width:100%;max-height:85vh;
-  overflow-y:auto;padding:2rem;box-shadow:0 20px 60px rgba(27,58,107,.25);
-}
-.modal-close{
-  float:right;background:none;border:1px solid var(--border);
-  color:var(--muted);font-family:'Lora',serif;font-size:.7rem;font-weight:700;
-  padding:.3rem .8rem;border-radius:4px;cursor:pointer;margin-bottom:1rem;
-}
-.modal-close:hover{color:var(--ab-navy);border-color:var(--ab-navy);}
-.modal h2{font-family:'Lora',serif;font-size:1.05rem;font-weight:800;color:var(--ab-navy);margin-bottom:1.2rem;}
-.modal h4{font-family:'Lora',serif;font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue-light);margin:.8rem 0 .3rem;}
-.modal p,.modal li{font-size:.85rem;color:var(--muted);line-height:1.8;}
-.modal ul{padding:0;list-style:none;}
-.modal li::before{content:'→ ';color:var(--ab-blue-light);}
-.modal strong{color:var(--text);}
-
-/* ══════════ CALCULATEUR ══════════ */
-.calc-explainer{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:1.5rem 1.8rem;
-  margin-bottom:1.5rem;
-  box-shadow:0 2px 8px rgba(27,58,107,.04);
-}
-.calc-explainer h3{
-  font-family:'Lora',serif;
-  font-size:.95rem;
-  font-weight:800;
-  color:var(--ab-navy);
-  margin-bottom:.6rem;
-}
-.calc-explainer p{
-  font-size:.88rem;
-  color:var(--text);
-  line-height:1.8;
-  white-space:pre-line;
-}
-.calc-intro{
-  background:linear-gradient(135deg, rgba(42,93,160,.06) 0%, rgba(123,195,229,.1) 100%);
-  border-left:4px solid var(--ab-sky);
-}
-.calc-grid-explainers{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:1rem;
-  margin-bottom:2rem;
-}
-
-.calc-semaine{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  margin-bottom:1.5rem;
-  box-shadow:0 2px 8px rgba(27,58,107,.05);
-}
-.calc-sem-header{
-  background:var(--ab-navy);
-  color:#fff;
-  padding:.85rem 1.3rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:.8rem;
-}
-.calc-sem-title{
-  font-family:'Lora',serif;
-  font-size:1.5rem;
-  letter-spacing:.06em;
-}
-.calc-sem-title small{
-  font-family:'Lora',serif;
-  font-size:.62rem;
-  font-weight:600;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.7);
-  display:block;
-  margin-top:.1rem;
-}
-.calc-sem-total{
-  display:flex;
-  align-items:center;
-  gap:.8rem;
-}
-.calc-sem-total-label{
-  font-family:'Lora',serif;
-  font-size:.6rem;
-  font-weight:700;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.65);
-}
-.calc-sem-total-value{
-  font-family:'Lora',serif;
-  font-size:2rem;
-  line-height:1;
-  color:var(--ab-sky);
-  letter-spacing:.04em;
-}
-.calc-sem-badge{
-  padding:.35rem .9rem;
-  border-radius:20px;
-  font-family:'Lora',serif;
-  font-size:.62rem;
-  font-weight:800;
-  letter-spacing:.06em;
-  color:#fff;
-}
-
-.calc-table{
-  width:100%;
-  border-collapse:separate;
-  border-spacing:0;
-}
-.calc-table th{
-  background:var(--surface2);
-  color:var(--muted);
-  font-family:'Lora',serif;
-  font-size:.58rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  padding:.6rem .8rem;
-  text-align:left;
-  border-bottom:1px solid var(--border);
-}
-.calc-table td{
-  padding:.6rem .8rem;
-  border-bottom:1px solid var(--border);
-  background:var(--surface);
-  font-size:.82rem;
-  vertical-align:middle;
-}
-.calc-table tr:last-child td{border-bottom:none;}
-.calc-jour-label{
-  font-family:'Lora',serif;
-  font-weight:700;
-  color:var(--ab-navy);
-  font-size:.78rem;
-}
-.calc-input{
-  width:70px;
-  padding:.35rem .5rem;
-  border:1px solid var(--border);
-  border-radius:6px;
-  font-family:'Lora',serif;
-  font-size:.82rem;
-  text-align:center;
-  background:var(--surface);
-  color:var(--text);
-  transition:border-color .2s;
-}
-.calc-input:focus{
-  outline:none;
-  border-color:var(--ab-blue-light);
-  box-shadow:0 0 0 3px rgba(74,122,204,.15);
-}
-.calc-ua{
-  font-family:'Lora',serif;
-  font-weight:800;
-  color:var(--ab-navy);
-  font-size:.85rem;
-  min-width:50px;
-  text-align:right;
-  display:inline-block;
-}
-.calc-commentaire{
-  font-size:.75rem;
-  color:var(--muted);
-  font-style:italic;
-}
-
-.calc-bloc-summary{
-  margin-top:1.5rem;
-  background:linear-gradient(135deg, var(--ab-navy) 0%, var(--ab-blue) 100%);
-  color:#fff;
-  border-radius:12px;
-  padding:1.5rem 1.8rem;
-  box-shadow:0 4px 16px rgba(27,58,107,.2);
-}
-.calc-bloc-summary h3{
-  font-family:'Lora',serif;
-  font-size:1.6rem;
-  letter-spacing:.05em;
-  margin-bottom:1rem;
-  color:#fff;
-}
-.calc-bloc-stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
-  gap:1rem;
-  margin-top:.8rem;
-}
-.calc-bloc-stat{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:10px;
-  padding:.9rem 1rem;
-  backdrop-filter:blur(10px);
-}
-.calc-bloc-stat-label{
-  font-family:'Lora',serif;
-  font-size:.58rem;
-  font-weight:700;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.7);
-  margin-bottom:.3rem;
-}
-.calc-bloc-stat-value{
-  font-family:'Lora',serif;
-  font-size:1.8rem;
-  letter-spacing:.03em;
-  color:var(--ab-sky);
-  line-height:1;
-}
-.calc-bloc-stat-desc{
-  font-size:.72rem;
-  color:rgba(255,255,255,.7);
-  margin-top:.3rem;
-  line-height:1.5;
-}
-.calc-seuils{
-  margin-top:1.5rem;
-}
-.calc-seuil-row{
-  display:flex;
-  align-items:center;
-  gap:.8rem;
-  padding:.4rem 0;
-}
-.calc-seuil-dot{
-  width:14px;height:14px;border-radius:50%;flex-shrink:0;
-}
-.calc-seuil-range{
-  font-family:'Lora',serif;
-  font-size:.72rem;
-  font-weight:700;
-  min-width:140px;
-  color:var(--text);
-}
-.calc-seuil-label{
-  font-family:'Lora',serif;
-  font-size:.72rem;
-  font-weight:700;
-  color:var(--ab-navy);
-  min-width:140px;
-}
-.calc-seuil-desc{font-size:.76rem;color:var(--muted);}
-
-/* ══════════ CALENDRIER ══════════ */
-.cal-month{margin-bottom:2rem;}
-.cal-month-title{font-family:'Lora',serif;font-size:1.3rem;color:var(--ab-navy);margin-bottom:1rem;letter-spacing:0;font-weight:700;}
-.cal-events{display:flex;flex-direction:column;gap:.6rem;}
-.cal-event{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;
-  transition:all .15s;cursor:pointer;
-}
-.cal-event:hover{border-color:var(--ab-blue-light);box-shadow:0 2px 10px rgba(74,122,204,.1);}
-.cal-event-date{font-family:'Lora',serif;font-size:1.3rem;line-height:1;color:var(--ab-navy);min-width:42px;text-align:center;font-weight:700;}
-.cal-event-month{font-family:'Lora',serif;font-size:.6rem;color:var(--muted);text-align:center;}
-.cal-event-info{flex:1;}
-.cal-event-titre{font-family:'Lora',serif;font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:.15rem;}
-.cal-event-desc{font-size:.78rem;color:var(--muted);}
-.cal-event-type{
-  font-family:'Lora',serif;font-size:.6rem;font-weight:700;
-  padding:.2rem .6rem;border-radius:20px;white-space:nowrap;
-}
-.type-trail{background:rgba(74,138,90,.12);color:var(--mousse);}
-.type-route{background:rgba(74,122,204,.12);color:var(--ab-blue);}
-.type-rando{background:rgba(212,137,58,.12);color:var(--ocre);}
-.type-montagne{background:rgba(192,64,64,.12);color:var(--rouge);}
-.type-social{background:rgba(160,90,180,.12);color:#6a3080;}
-.cal-add-btn{
-  background:var(--ab-navy);color:#fff;border:none;
-  font-family:'Lora',serif;font-size:.72rem;font-weight:700;
-  padding:.55rem 1.2rem;border-radius:8px;cursor:pointer;transition:all .18s;
-  letter-spacing:.05em;
-}
-.cal-add-btn:hover{background:var(--ab-blue);transform:translateY(-1px);}
-
-.filter-btn{
-  background:none;border:1px solid var(--border);color:var(--muted);
-  font-family:'Lora',serif;font-size:.72rem;font-weight:600;
-  padding:.35rem .9rem;border-radius:20px;cursor:pointer;transition:all .2s;
-}
-.filter-btn:hover{border-color:var(--ab-blue-light);color:var(--ab-navy);}
-.filter-btn.active{background:rgba(27,58,107,.08);border-color:var(--ab-navy);color:var(--ab-navy);}
-
-/* ══════════ TERRAINS ══════════ */
-.terrains-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
-.terrain-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:1.3rem;transition:all .2s;cursor:pointer;
-  box-shadow:0 2px 6px rgba(27,58,107,.04);
-}
-.terrain-card:hover{border-color:var(--ab-blue-light);transform:translateY(-2px);box-shadow:0 6px 18px rgba(27,58,107,.1);}
-.terrain-card-icon{font-size:2rem;margin-bottom:.4rem;}
-.terrain-card-name{font-family:'Lora',serif;font-size:.95rem;font-weight:800;color:var(--ab-navy);margin-bottom:.2rem;}
-.terrain-card-loc{font-family:'Lora',serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
-.terrain-card-desc{font-size:.8rem;color:var(--muted);line-height:1.6;}
-
-/* ══════════ SUGGESTIONS ══════════ */
-.suggestion-box{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:1.5rem;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(27,58,107,.05);
-}
-.suggestion-form input,.suggestion-form select,.suggestion-form textarea{
-  width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:6px;
-  font-family:'Lora',serif;font-size:.85rem;background:var(--surface);color:var(--text);
-  transition:border-color .2s;
-}
-.suggestion-form input:focus,.suggestion-form select:focus,.suggestion-form textarea:focus{
-  outline:none;border-color:var(--ab-blue-light);box-shadow:0 0 0 3px rgba(74,122,204,.12);
-}
-.suggestion-form textarea{resize:vertical;min-height:80px;}
-.btn-submit{
-  background:var(--ab-navy);color:#fff;border:none;
-  font-family:'Lora',serif;font-size:.78rem;font-weight:700;
-  padding:.7rem 1.5rem;border-radius:8px;cursor:pointer;transition:all .18s;
-  letter-spacing:.06em;align-self:flex-start;
-}
-.btn-submit:hover{background:var(--ab-blue);}
-.sug-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  padding:1.2rem 1.4rem;margin-bottom:.8rem;
-}
-.sug-card.past{opacity:.5;}
-.sug-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.5rem;flex-wrap:wrap;}
-.sug-cat{font-family:'Lora',serif;font-size:.58rem;font-weight:700;padding:.15rem .5rem;border-radius:3px;}
-.sug-titre{font-family:'Lora',serif;font-size:.95rem;font-weight:800;color:var(--ab-navy);margin-bottom:.3rem;}
-.sug-meta{display:flex;gap:.5rem;font-size:.7rem;color:var(--muted);flex-wrap:wrap;}
-.sug-text{font-size:.82rem;color:var(--text);line-height:1.7;margin:.5rem 0;white-space:pre-wrap;}
-.sug-actions{display:flex;gap:.5rem;margin-top:.5rem;align-items:center;}
-.vote-btn{
-  background:none;border:1px solid var(--border);color:var(--muted);
-  font-family:'Lora',serif;font-size:.72rem;font-weight:700;
-  padding:.25rem .7rem;border-radius:20px;cursor:pointer;transition:all .18s;
-}
-.vote-btn:hover{border-color:var(--ab-blue-light);color:var(--ab-navy);}
-.vote-btn.voted{background:rgba(42,93,160,.1);border-color:var(--ab-blue);color:var(--ab-navy);}
-
-/* ══════════ RENFORCEMENT ══════════ */
-.eq-btn,.phase-eq-btn{
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--text);font-family:'Lora',serif;font-size:.78rem;font-weight:700;
-  padding:.7rem 1.1rem;border-radius:8px;cursor:pointer;transition:all .18s;
-  text-align:left;
-}
-.eq-btn:hover,.phase-eq-btn:hover{border-color:var(--ab-blue-light);}
-.eq-btn.active,.phase-eq-btn.active{background:rgba(42,93,160,.1);border-color:var(--ab-blue);color:var(--ab-navy);}
-
-.bloc-circuit{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.5rem;margin-bottom:1rem;box-shadow:0 2px 6px rgba(27,58,107,.04);}
-.bloc-circuit h3{font-family:'Lora',serif;font-size:.9rem;font-weight:800;color:var(--ab-navy);margin-bottom:.8rem;}
-.exo-card{
-  display:flex;justify-content:space-between;align-items:center;gap:1rem;
-  padding:.6rem .8rem;border-bottom:1px solid var(--border);
-  cursor:pointer;transition:background .15s;
-}
-.exo-card:last-child{border-bottom:none;}
-.exo-card:hover{background:rgba(123,195,229,.06);}
-.exo-card-name{font-size:.87rem;color:var(--text);font-weight:500;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
-.exo-card-sub{font-size:.74rem;color:var(--muted);margin-top:.15rem;}
-.exo-card-right{text-align:right;flex-shrink:0;}
-.exo-card-dose{font-family:'Lora',serif;font-size:.8rem;font-weight:700;color:var(--ab-blue);}
-.exo-card-equip{font-size:.62rem;font-family:'Lora',serif;font-weight:700;padding:.1rem .45rem;border-radius:3px;margin-top:.2rem;display:inline-block;}
-.eq-corpo{background:rgba(74,138,90,.1);color:var(--mousse);}
-.eq-elast{background:rgba(27,58,107,.08);color:var(--ab-blue);}
-.eq-salle{background:rgba(74,122,204,.1);color:var(--ab-blue-light);}
-
-.lib-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem;cursor:pointer;transition:all .2s;box-shadow:0 2px 6px rgba(27,58,107,.04);}
-.lib-card:hover{border-color:var(--ab-blue-light);transform:translateY(-2px);box-shadow:0 4px 12px rgba(27,58,107,.1);}
-.lib-card-name{font-family:'Lora',serif;font-size:.85rem;font-weight:700;color:var(--ab-navy);margin-bottom:.2rem;}
-.lib-card-cat{display:inline-block;font-family:'Lora',serif;font-size:.62rem;font-weight:700;padding:.1rem .5rem;border-radius:3px;margin-bottom:.5rem;}
-.lib-card-desc{font-size:.78rem;color:var(--muted);line-height:1.65;}
-.lib-card-equips{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.6rem;}
-
-/* ══════════ INFOS PRATIQUES ══════════ */
-.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
-.info-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;box-shadow:0 2px 8px rgba(27,58,107,.05);}
-.info-card-icon{font-size:2rem;margin-bottom:.5rem;}
-.info-card h3{font-family:'Lora',serif;font-size:.95rem;font-weight:800;color:var(--ab-navy);margin-bottom:.6rem;}
-.info-card p,.info-card li{font-size:.82rem;color:var(--muted);line-height:1.75;}
-.info-card ul{list-style:none;padding:0;}
-.info-card li{padding-left:1.1em;position:relative;margin-bottom:.25rem;}
-.info-card li::before{content:'→';color:var(--ab-blue-light);position:absolute;left:0;}
-
-/* ══════════ ACCUEIL — 3 semaines ══════════ */
-.acc-sel-btn,.acc-niv-btn{
-  background:var(--surface);border:1px solid var(--border);color:var(--muted);
-  font-family:'Lora',serif;font-size:.7rem;font-weight:700;
-  padding:.38rem .85rem;border-radius:6px;cursor:pointer;transition:all .2s;
-  letter-spacing:.02em;
-}
-.acc-sel-btn:hover,.acc-niv-btn:hover{border-color:var(--ab-blue-light);color:var(--ab-navy);}
-.acc-sel-btn.active,.acc-niv-btn.active{background:rgba(42,93,160,.12);border-color:var(--ab-blue);color:var(--ab-navy);}
-
-/* ══════════ LE CLUB ══════════ */
-.club-hero{
-  background:linear-gradient(135deg, var(--ab-navy) 0%, var(--ab-blue) 100%);
-  color:#fff;border-radius:14px;padding:2rem;margin-bottom:2rem;
-  box-shadow:0 8px 24px rgba(27,58,107,.18);
-}
-.club-hero h2{font-family:'Lora',serif;font-size:1.5rem;letter-spacing:0;color:#fff;margin-bottom:.5rem;font-weight:700;}
-.club-hero p{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.9);}
-
-/* ══════════ RESPONSIVE ══════════ */
-@media (max-width:768px){
-  .hero{padding:2rem 1.3rem;}
-  .page{padding:2rem 1.3rem 3rem;}
-  .infos-club-section{padding:0 1.3rem;}
-  nav button{padding:.9rem .8rem;font-size:.64rem;}
-  .programme-controls{flex-direction:column;gap:.8rem;}
-  .prog-table{font-size:.72rem;}
-  .prog-table th,.prog-table td{padding:.55rem .6rem;}
-  .calc-sem-header{flex-direction:column;align-items:flex-start;}
-  .calc-table{font-size:.72rem;}
-  .calc-table th,.calc-table td{padding:.45rem .5rem;}
-  .calc-input{width:55px;padding:.3rem .4rem;font-size:.75rem;}
-  .hero-logo{width:52px;height:52px;}
-  .hero-brand-text .section{font-family:'Lora',serif;font-size:1.15rem;color:#fff;letter-spacing:0;font-weight:700;}
-}
-
-/* Scroll polish */
-::-webkit-scrollbar{width:8px;height:8px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:rgba(27,58,107,.2);border-radius:4px;}
-::-webkit-scrollbar-thumb:hover{background:rgba(27,58,107,.35);}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════ HERO ══════════════════ -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-top">
-      <div class="hero-brand">
-        <div class="hero-logo">
-          <img src="logo_ab.avif" alt="AB" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=hero-logo-fallback>AB</div>';">
-        </div>
-        <div class="hero-brand-text">
-          <span class="club">Aviron Bayonnais · Athlétisme</span>
-          <span class="section">AB Running Loisir</span>
-        </div>
-      </div>
-      <a href="admin.html" class="coach-link">🔑 Espace coach</a>
-    </div>
-    <h1>
-      <span class="word1">Courir ensemble,</span>
-      <span class="word2">progresser à son rythme.</span>
-    </h1>
-    <p class="hero-tagline">Une section ouverte à tous — du débutant au confirmé — pour pratiquer la course à pied dans la convivialité, avec un accompagnement structuré.</p>
-    <div class="hero-pills">
-      <span class="hpill">📍 Stade La Floride · Bayonne</span>
-      <span class="hpill">📅 Mardi & Jeudi · 18h15</span>
-      <span class="hpill">🏃 Tous niveaux</span>
-    </div>
-  </div>
-</div>
+<header>
+  <img src="logo_ab.avif" alt="AB" class="logo">
+  <span class="site-name">AB Running Loisir</span>
+  <nav id="mainNav">
+    <button class="active" onclick="showPage('accueil',this)">Accueil</button>
+    <button onclick="showPage('programme',this)">Programme</button>
+    <button onclick="showPage('calculateur',this)">Calculateur</button>
+    <button onclick="showPage('renforcement',this)">Renforcement</button>
+  </nav>
+</header>
 
-<!-- ══════════════════ INFOS CLUB (bandeau dynamique) ══════════════════ -->
-<div class="infos-club-section" id="infosClubSection"></div>
-
-<!-- ══════════════════ NAVIGATION ══════════════════ -->
-<nav>
-  <div class="nav-inner">
-    <button class="active" onclick="showPage('accueil',this)">🏠 Accueil</button>
-    <button onclick="showPage('programme',this)">📅 Programme</button>
-    <button onclick="showPage('calculateur',this)">📊 Calculateur</button>
-    <button onclick="showPage('calendrier',this)">🗓 Sorties</button>
-    <button onclick="showPage('terrains',this)">🗺 Terrains</button>
-    <button onclick="showPage('suggestions',this)">💡 Idées</button>
-    <button onclick="showPage('muscu',this)">💪 Renforcement</button>
-    <button onclick="showPage('reveil',this)">🌅 Routines</button>
-    <button onclick="showPage('infos',this)">ℹ️ Infos</button>
-    <button onclick="showPage('leclub',this)">🏃 Le club</button>
-  </div>
-</nav>
-
-<!-- ══════════════════ ACCUEIL ══════════════════ -->
+<!-- ═══ ACCUEIL ═══ -->
 <div class="page active" id="accueil">
-
-  <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;margin-bottom:1.5rem">
+  <div id="infosClubZone"></div>
+  <div class="sec-eye">Semaine en cours</div>
+  <div class="sec-title" id="acc-title">Programme <em>cette semaine</em></div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem">
     <div>
-      <div class="sec-eye">Programme en cours</div>
-      <div class="sec-title" style="margin-bottom:.3rem">Les <em>3 prochaines semaines</em></div>
-      <div id="acc-saison-lbl" style="font-family:'Lora',serif;font-size:.7rem;color:var(--muted)"></div>
-    </div>
-    <div style="background:var(--ab-navy);color:#fff;border-radius:12px;padding:.8rem 1.3rem;text-align:center;min-width:105px;font-family:'Lora',serif;flex-shrink:0">
-      <div style="font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;opacity:.6;margin-bottom:.15rem">Semaine</div>
-      <div id="acc-sem-num" style="font-family:'Lora',serif;font-size:2.6rem;line-height:1;color:var(--ab-sky)"></div>
-      <div id="acc-sem-phase" style="font-size:.58rem;opacity:.65;margin-top:.1rem;line-height:1.3"></div>
-    </div>
-  </div>
-
-  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.4rem;padding:.9rem 1.1rem;background:var(--surface2);border-radius:10px;border:1px solid var(--border)">
-    <div>
-      <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem">Sortie weekend</div>
-      <div style="display:flex;gap:.35rem;flex-wrap:wrap">
-        <button class="acc-sel-btn active" onclick="setAccLevel(0,this)">🛣️ Route</button>
-        <button class="acc-sel-btn" onclick="setAccLevel(1,this)">🌲 Trail</button>
-      </div>
-    </div>
-    <div>
-      <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem">Variante terrain</div>
-      <div style="display:flex;gap:.35rem;flex-wrap:wrap">
-        <button class="acc-terrain-btn active" onclick="setAccTerrain(0,this)">🛣️ Route</button>
-        <button class="acc-terrain-btn" onclick="setAccTerrain(1,this)">🏟️ Piste</button>
-        <button class="acc-terrain-btn" onclick="setAccTerrain(2,this)">🌲 Trail</button>
+      <div class="ctrl-label">Sortie weekend</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setWE(0,this)">🛣️ Route</button>
+        <button class="btn" onclick="setWE(1,this)">🌲 Trail</button>
       </div>
     </div>
   </div>
-
-  <div id="acc-grid" style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem"></div>
-
-  <div class="divider"></div>
-  <div class="sec-eye" style="margin-top:0">Calendrier des objectifs</div>
-  <div class="sec-title" style="font-size:1.6rem">Objectifs <em>saison 2026-2027</em></div>
-  <p style="font-size:.82rem;color:var(--muted);max-width:680px;margin-bottom:.8rem">Repères pour la dynamique annuelle. Chacun gère son calendrier perso — ces dates structurent les blocs d'entraînement.</p>
-  <div id="acc-objectifs" style="display:flex;flex-direction:column;gap:.5rem;max-width:680px;margin-bottom:1.5rem"></div>
+  <div id="acc-grid"></div>
 
   <div class="divider"></div>
-  <div class="sec-eye" style="margin-top:0">Agenda</div>
-  <div class="sec-title" style="font-size:1.6rem">Prochaines <em>sorties & événements</em></div>
-  <div id="acc-events" style="display:flex;flex-direction:column;gap:.5rem;max-width:680px;margin-bottom:.8rem"></div>
-  <button onclick="showPage('calendrier',document.querySelectorAll('nav button')[3])" style="margin-top:.3rem;background:none;border:1px solid var(--border);color:var(--ab-blue);font-family:'Lora',serif;font-size:.68rem;font-weight:700;padding:.45rem 1rem;border-radius:7px;cursor:pointer">Voir tout le calendrier →</button>
+  <div class="sec-eye">Saison 2026-2027</div>
+  <div class="sec-title" style="font-size:1.4rem">Objectifs <em>repères</em></div>
+  <div id="acc-objectifs" style="max-width:680px;margin-bottom:1.5rem"></div>
 </div>
 
-<!-- ══════════════════ PROGRAMME ══════════════════ -->
+<!-- ═══ PROGRAMME ═══ -->
 <div class="page" id="programme">
   <div class="sec-eye">Saison complète</div>
-  <div class="sec-title">Programme <em>annuel</em></div>
-  <p class="sec-intro">52 semaines, mardi + jeudi soir. Tronc commun — chaque séance existe en variante Route, Piste et Trail. L'auto-régulation se fait par le <strong>RPE</strong> (effort ressenti) et la modulation du volume (reprise / standard / forme). Cliquez sur une semaine pour le détail complet.</p>
+  <div class="sec-title">Programme <em>52 semaines</em></div>
+  <p class="sec-intro">Tronc commun mardi + jeudi. Chaque séance existe en variante Route, Piste, Trail. Auto-régulation par RPE et modulation du volume. Cliquez sur une semaine pour le détail.</p>
 
-  <!-- Explication RPE / UA / Terrain -->
-  <div class="legende-diff">
-    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;margin-bottom:.6rem">
-      <span class="legende-diff-title" style="margin:0">Comment lire le programme :</span>
-      <span class="rpe-pill" style="font-size:.72rem">RPE 7/10</span>
-      <span class="ua-badge" style="font-size:.72rem">650 UA</span>
-    </div>
-    <div style="font-size:.8rem;color:var(--muted);line-height:1.6;font-style:italic">
-      Le <strong style="color:var(--ab-navy);font-style:normal">RPE</strong> (échelle 1-10) mesure votre effort ressenti — c'est vous qui dosez. Les <strong style="color:var(--ab-navy);font-style:normal">UA</strong> (Unités Arbitraires = RPE × durée en min) permettent de suivre la charge hebdomadaire. Pour en savoir plus, consultez la page <a href="#" onclick="showPage('calculateur',document.querySelectorAll('nav button')[2]);return false" style="color:var(--ab-blue);text-decoration:underline">Calculateur</a>.
-    </div>
-  </div>
-
-  <div class="programme-controls">
-    <div class="ctrl-group">
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.2rem">
+    <div>
       <div class="ctrl-label">Sortie weekend</div>
-      <div class="level-btns">
-        <button class="level-btn active" onclick="setLevel(0,this)">🛣️ Route</button>
-        <button class="level-btn" onclick="setLevel(1,this)">🌲 Trail</button>
+      <div class="ctrl-bar" id="we-btns">
+        <button class="btn active" onclick="setWE(0,this)">🛣️ Route</button>
+        <button class="btn" onclick="setWE(1,this)">🌲 Trail</button>
       </div>
     </div>
-    <div class="ctrl-group">
-      <div class="ctrl-label">Variante terrain</div>
-      <div class="terrain-btns">
-        <button class="terrain-sel-btn active" onclick="setTerrain(0,this)">🛣️ Route</button>
-        <button class="terrain-sel-btn" onclick="setTerrain(1,this)">🏟️ Piste</button>
-        <button class="terrain-sel-btn" onclick="setTerrain(2,this)">🌲 Trail</button>
-      </div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-label">Filtrer par phase</div>
-      <div class="phase-btns">
-        <button class="phase-btn active" onclick="setPhase('',this)">Tout</button>
-        <button class="phase-btn" onclick="setPhase('phase-reprise',this)">Reprise</button>
-        <button class="phase-btn" onclick="setPhase('phase-base',this)">Base</button>
-        <button class="phase-btn" onclick="setPhase('phase-force',this)">Force</button>
-        <button class="phase-btn" onclick="setPhase('phase-prepa',this)">Prépa</button>
-        <button class="phase-btn" onclick="setPhase('phase-montagne',this)">Montagne</button>
+    <div>
+      <div class="ctrl-label">Phase</div>
+      <div class="ctrl-bar" id="phase-btns">
+        <button class="btn active" onclick="setPhase('',this)">Tout</button>
+        <button class="btn" onclick="setPhase('rep',this)">Reprise</button>
+        <button class="btn" onclick="setPhase('base',this)">Base</button>
+        <button class="btn" onclick="setPhase('dev',this)">Développement</button>
+        <button class="btn" onclick="setPhase('force',this)">Cross</button>
+        <button class="btn" onclick="setPhase('precomp',this)">Spécifique</button>
+        <button class="btn" onclick="setPhase('recup',this)">Récup</button>
+        <button class="btn" onclick="setPhase('event',this)">Compétition</button>
       </div>
     </div>
   </div>
 
-  <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(27,58,107,.07)">
+  <div class="prog-wrap">
     <table class="prog-table">
-      <thead>
-        <tr>
-          <th style="width:70px">Sem.</th>
-          <th>Phase</th>
-          <th>Mardi — Séance</th>
-          <th>Jeudi — Séance</th>
-          <th id="col-weekend-label">Weekend · Route</th>
-          <th style="width:65px;text-align:center">UA</th>
-        </tr>
-      </thead>
+      <thead><tr>
+        <th style="width:60px">Sem</th>
+        <th>Phase</th>
+        <th>Mardi</th>
+        <th>Jeudi</th>
+        <th id="col-we">Weekend · Route</th>
+        <th style="width:55px;text-align:center">UA</th>
+        <th style="width:50px;text-align:center">Δ%</th>
+      </tr></thead>
       <tbody id="progBody"></tbody>
     </table>
   </div>
 </div>
 
-<!-- ══════════════════ CALCULATEUR ══════════════════ -->
+<!-- ═══ CALCULATEUR ═══ -->
 <div class="page" id="calculateur">
-  <div class="sec-eye">Outil de suivi personnel</div>
+  <div class="sec-eye">Outil personnel</div>
   <div class="sec-title">Calculateur <em>de charge</em></div>
-  <div id="calc-intro-zone"></div>
-
-  <div class="calc-grid-explainers" id="calc-explainers"></div>
-
-  <!-- Légende seuils -->
-  <div class="calc-explainer" style="margin-bottom:2rem">
-    <h3>🎯 Comment lire ton total semaine</h3>
-    <div class="calc-seuils" id="calc-seuils"></div>
-  </div>
-
-  <div class="sec-eye" style="margin-top:2rem">Bloc de 4 semaines</div>
-  <div class="sec-title" style="font-size:1.8rem">Ton <em>bloc d'entraînement</em></div>
-  <p class="sec-intro">Remplis les séances de tes 4 semaines. Durée en minutes + RPE (1-10). Le calcul se fait automatiquement. Ces données ne sont pas enregistrées — c'est à toi de prendre note si tu le souhaites.</p>
-
-  <div id="calc-semaines"></div>
-
-  <!-- Synthèse du bloc -->
-  <div class="calc-bloc-summary" id="calc-bloc-summary"></div>
+  <div id="calc-intro"></div>
+  <div id="calc-explainers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem;margin-bottom:1.5rem"></div>
+  <div class="sec-eye">Seuils de charge hebdomadaire</div>
+  <div id="calc-seuils" style="max-width:600px;margin-bottom:1.5rem"></div>
+  <div class="sec-eye">Planifier vos 4 semaines</div>
+  <div id="calc-weeks"></div>
 </div>
 
-<!-- ══════════════════ CALENDRIER ══════════════════ -->
-<div class="page" id="calendrier">
-  <div class="sec-eye">Activités & sorties</div>
-  <div class="sec-title">Calendrier <em>des sorties</em></div>
-  <p class="sec-intro">Toutes les sorties proposées — par la section ou par les membres. Filtrez par type. Proposez les vôtres directement ici.</p>
-
-  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem">
-    <button class="cal-add-btn" onclick="showPage('suggestions',document.querySelectorAll('nav button')[5])">+ Proposer une sortie</button>
-    <div style="display:flex;gap:.5rem;flex-wrap:wrap" id="calFilterBtns">
-      <button class="filter-btn active" onclick="filterCal('all',this)">Tout</button>
-      <button class="filter-btn" onclick="filterCal('trail',this)">🌿 Trail</button>
-      <button class="filter-btn" onclick="filterCal('route',this)">🏃 Route</button>
-      <button class="filter-btn" onclick="filterCal('rando',this)">🥾 Rando</button>
-      <button class="filter-btn" onclick="filterCal('montagne',this)">🏔 Montagne</button>
-      <button class="filter-btn" onclick="filterCal('social',this)">🎉 Section</button>
+<!-- ═══ RENFORCEMENT ═══ -->
+<div class="page" id="renforcement">
+  <div class="sec-eye">Préparation physique</div>
+  <div class="sec-title">Renforcement <em>& PPG</em></div>
+  <p class="sec-intro">PPG exclusivement en côtes (principe physiologique). Séances de renforcement à faire en dehors des séances club ou >6h après.</p>
+  <div>
+    <div class="ctrl-label">Équipement</div>
+    <div class="ctrl-bar" id="equip-btns">
+      <button class="btn active" onclick="setEquip('corpo',this)">🤸 Corps</button>
+      <button class="btn" onclick="setEquip('elastiques',this)">🔴 Élastiques</button>
+      <button class="btn" onclick="setEquip('salle',this)">🏋️ Salle</button>
     </div>
   </div>
-
-  <div id="calContent"></div>
+  <div id="exo-grid" class="exo-grid"></div>
 </div>
 
-<!-- ══════════════════ TERRAINS ══════════════════ -->
-<div class="page" id="terrains">
-  <div class="sec-eye">Les lieux d'entraînement</div>
-  <div class="sec-title">Terrains <em>de jeu</em></div>
-  <p class="sec-intro">Nos principaux lieux d'entraînement entre Bayonne, Anglet, Biarritz et la montagne. Chaque terrain a sa spécificité : plat pour les allures, côtes pour la force, nature pour le trail.</p>
-
-  <div class="terrains-grid" id="terrainsGrid"></div>
-</div>
-
-<!-- ══════════════════ IDÉES ══════════════════ -->
-<div class="page" id="suggestions">
-  <div class="sec-eye">Vie de la section</div>
-  <div class="sec-title">Boîte à <em>idées</em></div>
-  <p class="sec-intro">Envie d'organiser une course d'orientation ? Un trek de 2 jours dans les Pyrénées ? Une sortie nocturne à Bayonne ? Proposez ici. Les sorties trail, route, rando et montagne apparaissent automatiquement dans l'onglet Sorties.</p>
-
-  <div class="suggestion-box">
-    <h3 style="font-family:'Lora',serif;font-size:.9rem;font-weight:800;color:var(--ab-navy);margin-bottom:1rem">💡 Nouvelle proposition</h3>
-    <div class="suggestion-form" style="display:flex;flex-direction:column;gap:.8rem">
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
-        <input type="text" id="sug-pseudo" placeholder="Votre prénom (ou pseudo)" style="flex:1;min-width:160px">
-        <select id="sug-cat" style="flex:1;min-width:200px" onchange="updateCalBadge()">
-          <option value="sortie-trail">🌿 Sortie trail</option>
-          <option value="sortie-route">🏃 Sortie route / course</option>
-          <option value="rando">🥾 Rando / trek</option>
-          <option value="montagne">🏔 Aventure montagne</option>
-          <option value="event">🎉 Événement / social</option>
-          <option value="organisation">⚙️ Idée organisation</option>
-          <option value="sport">⚡ Activité alternative</option>
-        </select>
-      </div>
-      <input type="text" id="sug-titre" placeholder="Titre court (ex: Trail Ursuya, Rando Rhune...)">
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap;align-items:flex-start">
-        <div style="flex:1;min-width:180px">
-          <input type="date" id="sug-date-souhait" style="width:100%" required>
-          <div style="font-family:'Lora',serif;font-size:.6rem;color:var(--rouge);margin-top:.25rem" id="sug-date-error"></div>
-        </div>
-        <div id="sug-cal-badge" style="display:none;background:rgba(74,138,90,.1);border:1px solid rgba(74,138,90,.25);border-radius:6px;padding:.4rem .8rem;font-family:'Lora',serif;font-size:.7rem;font-weight:700;color:var(--mousse);flex-shrink:0;align-self:flex-start">
-          📅 Apparaîtra dans l'onglet Sorties
-        </div>
-      </div>
-      <textarea id="sug-text" placeholder="Décrivez : terrain, durée, niveau, point de départ, ce qu'il faut prévoir..." rows="3"></textarea>
-      <button class="btn-submit" onclick="submitSuggestion()">Envoyer →</button>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-bottom:1rem">
-    <div style="font-family:'Lora',serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)">Propositions — ordre chronologique</div>
-    <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;font-family:'Lora',serif;font-size:.75rem;font-weight:600;color:var(--muted)">
-      <div style="position:relative;width:36px;height:20px">
-        <input type="checkbox" id="hidePastToggle" onchange="renderSuggestions()" style="opacity:0;width:0;height:0;position:absolute">
-        <span id="toggleTrack" style="position:absolute;inset:0;background:var(--border-strong);border-radius:10px;transition:background .2s;cursor:pointer"></span>
-        <span id="toggleThumb" style="position:absolute;top:3px;left:3px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
-      </div>
-      Masquer les dates passées
-    </label>
-  </div>
-  <div id="suggestionsContainer"></div>
-</div>
-
-<!-- ══════════════════ RENFORCEMENT ══════════════════ -->
-<div class="page" id="muscu">
-  <div class="sec-eye">Séance vendredi</div>
-  <div class="sec-title">Renforcement <em>musculaire</em></div>
-  <p class="sec-intro">45–60 min chaque vendredi. Les exercices s'adaptent à l'équipement disponible et à la phase de saison. Cliquez sur n'importe quel exercice pour voir la description complète, les variantes et les progressions.</p>
-
-  <div style="margin-bottom:2rem">
-    <div style="font-family:'Lora',serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ab-navy);margin-bottom:1rem">Équipement disponible :</div>
-    <div style="display:flex;gap:.7rem;flex-wrap:wrap">
-      <button class="eq-btn active" onclick="setEquip('corpo',this)">🏠 Poids du corps</button>
-      <button class="eq-btn" onclick="setEquip('elastiques',this)">🔴 + Élastiques</button>
-      <button class="eq-btn" onclick="setEquip('salle',this)">🏋️ Salle complète</button>
-    </div>
-  </div>
-
-  <div style="margin-bottom:2rem">
-    <div style="font-family:'Lora',serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ab-navy);margin-bottom:1rem">Phase de saison :</div>
-    <div style="display:flex;gap:.7rem;flex-wrap:wrap">
-      <button class="phase-eq-btn active" onclick="setPhaseMuscu('fondamental',this)">🌱 Fondamental</button>
-      <button class="phase-eq-btn" onclick="setPhaseMuscu('force',this)">⚒️ Force</button>
-      <button class="phase-eq-btn" onclick="setPhaseMuscu('specifique',this)">🎯 Spécifique</button>
-      <button class="phase-eq-btn" onclick="setPhaseMuscu('competition',this)">🏁 Compétition</button>
-    </div>
-  </div>
-
-  <div id="phaseMusculaire" style="background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.12);border-radius:10px;padding:1.5rem;margin-bottom:2rem;font-size:.87rem;line-height:1.8;color:var(--muted)"></div>
-  <div id="circuitDisplay"></div>
-
-  <div class="divider"></div>
-  <div class="sec-eye" style="margin-top:0">Bibliothèque</div>
-  <div class="sec-title" style="font-size:1.6rem">Tous les <em>exercices</em></div>
-  <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;max-width:600px">Cliquez sur un exercice pour la description détaillée, les muscles ciblés, la technique et les progressions.</p>
-
-  <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem" id="filterBtns">
-    <button class="filter-btn active" onclick="filterExos('all',this)">Tous</button>
-    <button class="filter-btn" onclick="filterExos('jambes',this)">🦵 Jambes</button>
-    <button class="filter-btn" onclick="filterExos('fessiers',this)">🍑 Fessiers / Hanches</button>
-    <button class="filter-btn" onclick="filterExos('gainage',this)">🧱 Gainage</button>
-    <button class="filter-btn" onclick="filterExos('mollets',this)">👟 Mollets</button>
-    <button class="filter-btn" onclick="filterExos('pliometrie',this)">⚡ Pliométrie</button>
-    <button class="filter-btn" onclick="filterExos('etirements',this)">🌿 Étirements</button>
-  </div>
-  <div id="exoGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem"></div>
-</div>
-
-<!-- ══════════════════ ROUTINES MATIN ══════════════════ -->
-<div class="page" id="reveil">
-  <div class="sec-eye">Quotidien · 15 minutes</div>
-  <div class="sec-title">Routines <em>du matin</em></div>
-  <p class="sec-intro">15 minutes au réveil, 7 jours sur 7. Pas besoin de se changer, pas besoin d'espace. Ces routines préparent le corps à la journée, maintiennent la mobilité, et s'accumulent sur la saison.</p>
-
-  <div style="margin-bottom:2rem">
-    <div style="font-family:'Lora',serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ab-navy);margin-bottom:.8rem">Équipement :</div>
-    <div style="display:flex;gap:.7rem;flex-wrap:wrap">
-      <button class="eq-btn active" id="rev-eq-corpo" onclick="setReveilEquip('corpo',this)">🏠 Poids du corps</button>
-      <button class="eq-btn" id="rev-eq-elast" onclick="setReveilEquip('elastiques',this)">🔴 + Élastiques</button>
-    </div>
-  </div>
-
-  <div id="reveilGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem"></div>
-</div>
-
-<!-- ══════════════════ INFOS PRATIQUES ══════════════════ -->
-<div class="page" id="infos">
-  <div class="sec-eye">Tout ce qu'il faut savoir</div>
-  <div class="sec-title">Infos <em>pratiques</em></div>
-  <p class="sec-intro">Les informations essentielles pour rejoindre et participer à la section AB Running Loisir.</p>
-
-  <div class="info-grid">
-    <div class="info-card">
-      <div class="info-card-icon">📍</div>
-      <h3>Lieu de RDV</h3>
-      <p><strong style="color:var(--text)">Stade La Floride</strong><br>Bayonne<br><br>Départ des séances depuis le stade. Pour les sorties spéciales (Halage, Intra-muros) : RDV au stade, départ en groupe.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">📅</div>
-      <h3>Horaires des séances</h3>
-      <ul>
-        <li><strong style="color:var(--text)">Mardi 18h15</strong> — séance qualité</li>
-        <li><strong style="color:var(--text)">Jeudi 18h15</strong> — séance terrain</li>
-        <li><strong style="color:var(--text)">Weekend</strong> — sorties dans le calendrier</li>
-        <li><strong style="color:var(--text)">Montagne</strong> — 1 jeudi par mois</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🎽</div>
-      <h3>Équipement de base</h3>
-      <ul>
-        <li>Chaussures de running</li>
-        <li>Chaussures trail pour les côtes</li>
-        <li>Coupe-vent pour l'hiver</li>
-        <li>Lampe frontale (séances hivernales)</li>
-        <li>Gourde pour les sorties longues</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">📊</div>
-      <h3>RPE et UA</h3>
-      <p>Chaque séance indique un <strong>RPE</strong> (effort ressenti, 1 à 10) — c'est vous qui dosez en fonction de vos sensations.<br><br>
-      Les <strong>UA</strong> (Unités Arbitraires) = RPE × durée en minutes. Cet indicateur permet de suivre la charge hebdomadaire et d'ajuster le volume semaine après semaine.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">👥</div>
-      <h3>Tronc commun + 2 sorties WE</h3>
-      <p>Mardi et jeudi : séance commune identique — chacun choisit sa variante terrain (Route, Piste, Trail).<br><br>
-      <strong style="color:var(--text)">🛣️ Route</strong> : semi/marathon, halage<br>
-      <strong style="color:var(--text)">🌲 Trail</strong> : Chiberta, Douves, sentiers</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🤝</div>
-      <h3>L'esprit de la section</h3>
-      <p>Ni compétition interne, ni sélection. La section est ouverte à tous, avec un accompagnement structuré respectant la politique fédérale FFA de développement du sport loisir et santé.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════ LE CLUB ══════════════════ -->
-<div class="page" id="leclub">
-  <div class="sec-eye">Aviron Bayonnais Athlétisme</div>
-  <div class="sec-title">Le <em>club</em></div>
-
-  <div class="club-hero">
-    <h2>Une section historique du Pays Basque</h2>
-    <p>L'Aviron Bayonnais Athlétisme est l'un des clubs majeurs de la région, affilié à la Fédération Française d'Athlétisme. La section <strong>Running Loisir</strong> complète les sections <strong>Athlétisme classique</strong> et <strong>Trail</strong> pour offrir une pratique adaptée à chaque coureur.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-card">
-      <div class="info-card-icon">🏃</div>
-      <h3>Athlétisme classique</h3>
-      <p>La section historique avec ses licences compétition. Travail sur piste, cross, courses sur route — du jeune athlète au vétéran compétiteur.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🌿</div>
-      <h3>Trail</h3>
-      <p>Section trail dédiée — actuellement saturée. Pratique en nature, côtes, montagne. Licences trail compétition et loisir.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🏃‍♀️</div>
-      <h3>Running Loisir — nouvelle</h3>
-      <p>La nouvelle section pour accueillir tous ceux qui n'entrent pas dans les deux autres — course plaisir, préparation objectif personnel, course à son rythme.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🏅</div>
-      <h3>Affiliation FFA</h3>
-      <p>Le club suit la politique fédérale de développement du running et de l'athlétisme loisir, dans le respect des orientations santé-sport de l'État.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════ MODAL DÉTAIL ══════════════════ -->
+<!-- ═══ MODAL ═══ -->
 <div id="overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕ Fermer</button>
-    <h2 id="mTitle"></h2>
-    <div id="mBody"></div>
+  <div id="modal">
+    <div class="modal-hdr">
+      <h3 id="mTitle"></h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
   </div>
 </div>
-
-<footer style="text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.65rem;letter-spacing:.15em">
-  AB RUNNING LOISIR · AVIRON BAYONNAIS ATHLÉTISME · AFFILIÉ FFA
-</footer>
 
 <script src="data.js"></script>
-<script src="app.js"></script>
+<script>
+// ══════════════════════════════════════════════════
+// HELPERS — tout est dérivé des clés compact
+// ══════════════════════════════════════════════════
+const S1 = new Date(2026,7,31); // lundi 31 août 2026
+const MOIS = ['Janv','Févr','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'];
 
+function semDate(n){ return new Date(+S1 + (n-1)*7*864e5); }
+function semMois(n){ return MOIS[semDate(n).getMonth()]; }
+function sd(k){ return (k && k!=='—' && seancesData[k]) || null; }
+function phCls(p){ const m = phaseMap[p]; return m ? 'ph-'+m.c : 'ph-base'; }
+function phLabel(p){ const m = phaseMap[p]; return m ? m.l : p; }
+function tTag(lieu){
+  const t = terrainLabel[lieu];
+  if(!t) return '';
+  return `<span class="tag ${t.cls}">${t.icon} ${t.label}</span>`;
+}
+function objForSem(n){
+  const o = objectifs.find(x=>x.s===n);
+  return o ? `🏆 ${o.nom}` : '';
+}
+
+function getCurrentSem(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const yr = today.getFullYear();
+  const saisonAnnee = today.getMonth() >= 8 ? yr : yr-1;
+  const sep1 = new Date(saisonAnnee,8,1);
+  const j = sep1.getDay();
+  const lundiS1 = new Date(saisonAnnee,8,1+(j===0?-6:1-j));
+  const ja = today.getDay();
+  const lundiAuj = new Date(today.getFullYear(),today.getMonth(),today.getDate()+(ja===0?-6:1-ja));
+  return { num: Math.floor(Math.round((lundiAuj-lundiS1)/864e5)/7)+1, lundi: lundiAuj };
+}
+
+function fmtRange(lundi){
+  const dim = new Date(+lundi+6*864e5);
+  const o = {day:'numeric',month:'short'};
+  return lundi.toLocaleDateString('fr-FR',o)+' – '+dim.toLocaleDateString('fr-FR',o);
+}
+
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let curWE = 0; // 0=Route, 1=Trail
+let curPhase = '';
+let curTerrain = 0; // 0=Route, 1=Piste, 2=Trail (for modal)
+let curEquip = 'corpo';
+
+// ══════════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════════
+function showPage(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#mainNav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(id==='accueil') renderAccueil();
+  if(id==='programme') buildProg();
+  if(id==='calculateur') renderCalc();
+  if(id==='renforcement') renderExos();
+}
+function closeModal(){ document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+function setWE(v,btn){
+  curWE=v;
+  document.querySelectorAll('.ctrl-bar .btn').forEach(b=>{
+    if(b.parentElement===btn.parentElement) b.classList.toggle('active',b===btn);
+  });
+  const lbl = document.getElementById('col-we');
+  if(lbl) lbl.textContent = ['Weekend · Route','Weekend · Trail'][v];
+  buildProg(); renderAccueil();
+}
+function setPhase(ph,btn){
+  curPhase=ph;
+  btn.parentElement.querySelectorAll('.btn').forEach(b=>b.classList.toggle('active',b===btn));
+  buildProg();
+}
+
+// ══════════════════════════════════════════════════
+// ACCUEIL
+// ══════════════════════════════════════════════════
+function renderInfosClub(){
+  const el = document.getElementById('infosClubZone');
+  if(!el || !infosClub || !infosClub.length) return;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const actifs = infosClub.filter(m=>{
+    if(!m.dateFin) return true;
+    return new Date(m.dateFin+'T23:59:59')>=today;
+  });
+  el.innerHTML = actifs.map(m=>`<div class="infos-club-card type-${m.type||'info'}">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="ic-title">${m.titre||''}</div>
+      ${m.dateFin?`<span class="ic-date-tag">Jusqu'au ${new Date(m.dateFin+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}</span>`:''}
+    </div>
+    <div class="ic-text">${m.texte||''}</div>
+  </div>`).join('');
+}
+
+function renderAccueil(){
+  const {num,lundi} = getCurrentSem();
+  const wkLabels = ['Cette semaine','Semaine prochaine','Dans 2 semaines'];
+  const grid = document.getElementById('acc-grid');
+  if(!grid) return;
+  grid.innerHTML = '';
+
+  for(let i=0;i<3;i++){
+    const sn = num+i;
+    const w = programme.find(x=>x.s===sn);
+    const lundiSem = new Date(+lundi+i*7*864e5);
+    const isCur = i===0;
+
+    if(!w || sn<1 || sn>52){
+      grid.innerHTML += `<div class="acc-card" style="opacity:.4"><div class="acc-hdr"><span>${wkLabels[i]} · S${sn} — Hors saison</span></div></div>`;
+      continue;
+    }
+
+    const mData = sd(w.m), jData = sd(w.j);
+    const mRpe = mData?mData.rpe:'', jRpe = jData?jData.rpe:'';
+    const mLieu = mData?mData.lieu:'halage', jLieu = jData?jData.lieu:'halage';
+    const weKey = curWE===1?w.wt:w.wr;
+    const weData = sd(weKey);
+    const weLbl = weData?weData.l:(weKey==='—'?'—':weKey);
+    const obj = objForSem(sn);
+    const marFmt = new Date(+lundiSem+864e5).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
+    const jeuFmt = new Date(+lundiSem+3*864e5).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
+
+    grid.innerHTML += `
+    <div class="acc-card ${isCur?'current':''}">
+      <div class="acc-hdr ${isCur?'cur':''}">
+        <div style="display:flex;align-items:center">
+          <span class="snum" style="color:${isCur?'var(--sky)':'var(--navy)'}">S${sn}</span>
+          <div>
+            <div style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${isCur?'rgba(255,255,255,.5)':'var(--muted)'}">${wkLabels[i]}</div>
+            <div style="font-size:.68rem;font-weight:600;color:${isCur?'rgba(255,255,255,.88)':'var(--text)'}">${fmtRange(lundiSem)}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:.3rem;align-items:center;flex-wrap:wrap">
+          <span class="ph ${phCls(w.p)}">${phLabel(w.p)}</span>
+          ${w.d?'<span class="dech">🌙 Décharge</span>':''}
+          ${obj?`<span style="font-size:.6rem;font-weight:700;color:${isCur?'#FFD700':'var(--gold)'}">${obj}</span>`:''}
+        </div>
+      </div>
+      <div class="acc-body">
+        <div class="acc-day">
+          <div class="acc-day-label mar">📅 ${marFmt}</div>
+          <div class="s-titre">${mData?mData.l:'—'}</div>
+          ${tTag(mLieu)} ${mRpe?`<span class="rpe-pill">RPE ${mRpe}</span>`:''}
+          ${mData&&mData.n?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${mData.n}</div>`:''}
+        </div>
+        <div class="acc-day">
+          <div class="acc-day-label jeu">📅 ${jeuFmt}</div>
+          <div class="s-titre">${jData?jData.l:'—'}</div>
+          ${tTag(jLieu)} ${jRpe?`<span class="rpe-pill">RPE ${jRpe}</span>`:''}
+          ${jData&&jData.n?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${jData.n}</div>`:''}
+        </div>
+      </div>
+      <div class="acc-foot">
+        <span style="font-size:.72rem;color:var(--muted)">🏃 WE ${['Route','Trail'][curWE]} — ${weLbl} · <span class="ua-badge">${w.ua} UA</span></span>
+        <button class="detail-btn" onclick="openDetail(${sn})">Détail →</button>
+      </div>
+    </div>`;
+  }
+  renderObjectifs();
+}
+
+function renderObjectifs(){
+  const el = document.getElementById('acc-objectifs');
+  if(!el) return;
+  const today = new Date(); today.setHours(0,0,0,0);
+  el.innerHTML = objectifs.map(o=>{
+    const d = new Date(o.date+'T12:00:00');
+    const passe = d<today;
+    const dLeft = Math.round((d-today)/864e5);
+    const dLbl = passe?'Passé':(dLeft===0?"Aujourd'hui":dLeft===1?'Demain':`J-${dLeft}`);
+    const tc = {route:'var(--blue)',trail:'var(--mousse)',cross:'var(--rouge)'}[o.type]||'var(--blue)';
+    return `<div class="obj-card ${passe?'past':''}">
+      <div class="obj-icon">🏆</div>
+      <div class="obj-info">
+        <div class="obj-nom">S${o.s} — ${o.nom}</div>
+        <div class="obj-date">${d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long',year:'numeric'})}</div>
+      </div>
+      <div class="obj-countdown" style="color:${passe?'var(--muted)':tc}">${dLbl}<div style="font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">${o.type}</div></div>
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════
+// PROGRAMME TABLE
+// ══════════════════════════════════════════════════
+function buildProg(){
+  const tbody = document.getElementById('progBody');
+  if(!tbody) return;
+  const rows = programme.filter(w=>{
+    if(!curPhase) return true;
+    const m = phaseMap[w.p];
+    return m && m.c === curPhase;
+  });
+
+  tbody.innerHTML = rows.map((w,i)=>{
+    const mData = sd(w.m), jData = sd(w.j);
+    const weKey = curWE===1?w.wt:w.wr;
+    const weData = sd(weKey);
+    const weLbl = weData?weData.l:(weKey==='—'?'—':weKey);
+    const obj = objForSem(w.s);
+
+    // Delta %
+    const prev = programme.find(x=>x.s===w.s-1);
+    let delta = '';
+    if(prev && prev.ua>0){
+      const d = Math.round((w.ua-prev.ua)/prev.ua*100);
+      const col = d>5?'var(--rouge)':d<-5?'var(--mousse)':'var(--muted)';
+      const arr = d>5?'↑':d<-5?'↓':'=';
+      delta = `<span style="color:${col};font-weight:700">${arr}${d>0?'+':''}${d}%</span>`;
+    }
+
+    return `<tr class="${w.d?'dec':''} ${obj?'has-obj':''}" onclick="openDetail(${w.s})" style="cursor:pointer">
+      <td><div class="sem-num">S${w.s}</div><div class="mois-lbl">${semMois(w.s)}</div></td>
+      <td>
+        <span class="ph ${phCls(w.p)}">${phLabel(w.p)}</span>
+        ${w.d?'<span class="dech">🌙</span>':''}
+        ${obj?`<div class="obj-lbl">${obj}</div>`:''}
+      </td>
+      <td>
+        <div class="s-titre">${mData?mData.l:'—'}</div>
+        <div class="s-meta">${mData?tTag(mData.lieu):''} ${mData?`<span class="rpe-pill">RPE ${mData.rpe}</span>`:''}</div>
+      </td>
+      <td>
+        <div class="s-titre">${jData?jData.l:'—'}</div>
+        <div class="s-meta">${jData?tTag(jData.lieu):''} ${jData?`<span class="rpe-pill">RPE ${jData.rpe}</span>`:''}</div>
+      </td>
+      <td style="font-size:.76rem;color:var(--muted)">${weLbl}</td>
+      <td style="text-align:center"><span class="ua-badge">${w.ua}</span></td>
+      <td style="text-align:center;font-size:.72rem">${delta||'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════
+// DETAIL MODAL
+// ══════════════════════════════════════════════════
+function openDetail(sn){
+  const w = programme.find(x=>x.s===sn);
+  if(!w) return;
+  const mData = sd(w.m), jData = sd(w.j);
+  const obj = objForSem(sn);
+
+  function seanceBlock(data){
+    if(!data) return '<p style="color:var(--muted)">Repos / Pas de séance</p>';
+    const fields = ['r','p','t'], labels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+    return `
+      <div style="display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;margin-bottom:.4rem">
+        ${tTag(data.lieu)} <span class="rpe-pill">RPE ${data.rpe}</span> <span style="font-size:.68rem;color:var(--muted)">${data.c}</span>
+      </div>
+      <div class="terrain-tabs">
+        ${[0,1,2].map(i=>`<button class="terrain-tab ${i===curTerrain?'active':''}" data-t="${i}" onclick="switchT(${i})">${labels[i]}</button>`).join('')}
+      </div>
+      ${[0,1,2].map(i=>{
+        const v = data[fields[i]];
+        const avail = v && v!=='—';
+        return `<div class="terrain-content ${i===curTerrain?'active':''}" data-t="${i}">
+          ${avail?v:`${labels[i]} : pas de variante pour cette séance`}
+        </div>`;
+      }).join('')}
+      <div class="vol-box"><div class="vol-title">📊 Volume / Modulation</div><div class="vol-text">${data.v}</div></div>
+      ${data.n?`<div style="font-size:.74rem;color:var(--muted);font-style:italic;margin-top:.4rem">💡 ${data.n}</div>`:''}
+    `;
+  }
+
+  document.getElementById('mTitle').textContent = `Semaine ${sn} — ${semMois(sn)} · ${w.p}`;
+  const weR = sd(w.wr), weT = sd(w.wt);
+
+  document.getElementById('mBody').innerHTML = `
+    ${obj?`<div class="info-box gold">${obj}</div>`:''}
+    ${w.d?'<div class="info-box green">🌙 Semaine de décharge — volume réduit.</div>':''}
+    ${w.n?`<div class="info-box blue">${w.n}</div>`:''}
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h4>📅 Mardi — ${mData?mData.l:'Repos'}</h4>
+      <span class="ua-badge">UA semaine : ${w.ua}</span>
+    </div>
+    ${seanceBlock(mData)}
+    <h4>📅 Jeudi — ${jData?jData.l:'Repos'}</h4>
+    ${seanceBlock(jData)}
+    <h4>🏃 Sortie weekend</h4>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem">
+      <div style="flex:1;min-width:180px;padding:.6rem .8rem;background:${curWE===0?'rgba(27,58,107,.06)':'rgba(0,0,0,.02)'};border:1px solid ${curWE===0?'var(--blue)':'var(--border)'};border-radius:6px">
+        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:.2rem">🛣️ Route</div>
+        <div style="font-size:.78rem;font-weight:600">${weR?weR.l:'—'}</div>
+      </div>
+      <div style="flex:1;min-width:180px;padding:.6rem .8rem;background:${curWE===1?'rgba(74,138,90,.08)':'rgba(0,0,0,.02)'};border:1px solid ${curWE===1?'var(--mousse)':'var(--border)'};border-radius:6px">
+        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;color:var(--mousse);margin-bottom:.2rem">🌲 Trail</div>
+        <div style="font-size:.78rem;font-weight:600">${weT?weT.l:'—'}</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function switchT(t){
+  curTerrain = t;
+  document.querySelectorAll('.terrain-tab').forEach(b=>b.classList.toggle('active',+b.dataset.t===t));
+  document.querySelectorAll('.terrain-content').forEach(b=>{b.classList.toggle('active',+b.dataset.t===t)});
+}
+
+// ══════════════════════════════════════════════════
+// CALCULATEUR
+// ══════════════════════════════════════════════════
+function renderCalc(){
+  // Intro
+  const intro = document.getElementById('calc-intro');
+  if(intro && calculateurTextes){
+    intro.innerHTML = `<div class="calc-explainer" style="margin-bottom:1.5rem"><p style="font-size:.88rem;line-height:1.75;white-space:pre-line">${calculateurTextes.intro||''}</p></div>`;
+  }
+  // Explainers
+  const expl = document.getElementById('calc-explainers');
+  if(expl && calculateurTextes){
+    const t = calculateurTextes;
+    expl.innerHTML = `
+      <div class="calc-explainer"><h3>💪 ${t.rpe_titre||''}</h3><p>${t.rpe_texte||''}</p></div>
+      <div class="calc-explainer"><h3>📊 ${t.ua_titre||''}</h3><p>${t.ua_texte||''}</p></div>
+      <div class="calc-explainer"><h3>🧱 ${t.bloc_titre||''}</h3><p>${t.bloc_texte||''}</p></div>`;
+  }
+  // Seuils
+  const seuilsEl = document.getElementById('calc-seuils');
+  if(seuilsEl){
+    seuilsEl.innerHTML = chargeHebdoSeuils.map((s,i)=>{
+      const prev = i>0?chargeHebdoSeuils[i-1].max:0;
+      const range = s.max>=9999?`> ${prev} UA`:`${prev}–${s.max} UA`;
+      return `<div class="seuil-row"><div class="seuil-dot" style="background:${s.couleur}"></div><div class="seuil-range">${range}</div><div class="seuil-label">${s.label}</div><div class="seuil-desc">${s.description}</div></div>`;
+    }).join('');
+  }
+  // 4 semaines
+  const wEl = document.getElementById('calc-weeks');
+  if(wEl && !wEl.dataset.init){
+    const jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+    const titres = ['S1 — Base','S2 — Montée','S3 — Pic','S4 — Récup'];
+    const subs = ['charge modérée','+10 à 15%','+20 à 25% — la plus dure','−40% — assimilation'];
+    wEl.innerHTML = [0,1,2,3].map(w=>`
+      <div class="calc-sem">
+        <div class="calc-sem-hdr">
+          <div class="calc-sem-title">${titres[w]}<small>${subs[w]}</small></div>
+          <div><span class="calc-total" id="tot-${w}">0 UA</span><span class="calc-badge" id="bdg-${w}" style="background:var(--muted)">—</span></div>
+        </div>
+        <table class="calc-table"><thead><tr><th>Jour</th><th style="width:100px">Durée (min)</th><th style="width:100px">RPE (1-10)</th><th style="width:70px;text-align:right">UA</th></tr></thead>
+        <tbody>${jours.map((j,d)=>`<tr><td>${j}</td><td><input type="number" min="0" max="300" step="5" class="calc-input" data-w="${w}" data-d="${d}" data-f="dur" oninput="calcUp(${w})" placeholder="0"></td><td><input type="number" min="0" max="10" step="1" class="calc-input" data-w="${w}" data-d="${d}" data-f="rpe" oninput="calcUp(${w})" placeholder="0"></td><td style="text-align:right"><span class="calc-ua" id="cua-${w}-${d}">0</span></td></tr>`).join('')}</tbody></table>
+      </div>`).join('');
+    wEl.dataset.init='1';
+  }
+  for(let w=0;w<4;w++) calcUp(w);
+}
+
+function calcUp(w){
+  let total=0;
+  for(let d=0;d<7;d++){
+    const dur = parseFloat(document.querySelector(`[data-w="${w}"][data-d="${d}"][data-f="dur"]`)?.value)||0;
+    const rpe = parseFloat(document.querySelector(`[data-w="${w}"][data-d="${d}"][data-f="rpe"]`)?.value)||0;
+    const ua = Math.round(dur*rpe);
+    const el = document.getElementById(`cua-${w}-${d}`);
+    if(el){ el.textContent=ua; el.style.color=ua>0?'var(--navy)':'var(--muted)'; }
+    total+=ua;
+  }
+  const totEl = document.getElementById(`tot-${w}`);
+  const bdgEl = document.getElementById(`bdg-${w}`);
+  if(totEl) totEl.textContent = total+' UA';
+  if(bdgEl){
+    if(total===0){ bdgEl.textContent='—'; bdgEl.style.background='var(--muted)'; }
+    else{
+      const s = chargeHebdoSeuils.find(x=>total<=x.max)||chargeHebdoSeuils[chargeHebdoSeuils.length-1];
+      bdgEl.textContent=s.label; bdgEl.style.background=s.couleur;
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════
+// RENFORCEMENT
+// ══════════════════════════════════════════════════
+function setEquip(eq,btn){
+  curEquip=eq;
+  btn.parentElement.querySelectorAll('.btn').forEach(b=>b.classList.toggle('active',b===btn));
+  renderExos();
+}
+
+function renderExos(){
+  const el = document.getElementById('exo-grid');
+  if(!el || typeof circuits==='undefined') return;
+  // Collect all exercises from circuits
+  const allExos = [];
+  Object.values(circuits).forEach(phase=>{
+    if(!phase.blocs) return;
+    phase.blocs.forEach(bloc=>{
+      bloc.exercices.forEach(ex=>{
+        if(!allExos.find(e=>e.nom===ex.nom)){
+          if(!ex.equips || ex.equips.includes(curEquip)){
+            allExos.push(ex);
+          }
+        }
+      });
+    });
+  });
+
+  if(!allExos.length){
+    el.innerHTML = '<p style="color:var(--muted);padding:1rem">Aucun exercice pour cet équipement.</p>';
+    return;
+  }
+
+  el.innerHTML = allExos.map(ex=>`
+    <div class="exo-card">
+      <div class="exo-emoji">${ex.emoji||'💪'}</div>
+      <div class="exo-nom">${ex.nom}</div>
+      <div class="exo-muscles">${ex.muscles||''}</div>
+      <div class="exo-desc">${ex.description||''}</div>
+      ${ex.progressions?`<div class="exo-prog">${ex.progressions.map(p=>'→ '+p).join('<br>')}</div>`:''}
+    </div>
+  `).join('');
+}
+
+// ══════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════
+renderInfosClub();
+renderAccueil();
+</script>
 </body>
 </html>

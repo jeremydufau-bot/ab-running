@@ -6,1541 +6,696 @@
 <title>Admin — AB Running Loisir</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #F5F8FC; --surface: #fff; --border: rgba(27,58,107,.12);
-  --ab-blue: #1B3A6B; --ab-blue2: #2A5DA0; --ab-light: #4A7ECC;
-  --ab-sky: #7BC3E5; --text: #1A2540; --muted: #6B7A9A;
-  --mousse: #4A8A5A; --rouge: #C04040; --ocre: #D4893A;
+:root{
+  --bg:#F2F5FA;--surface:#fff;--surface2:#F8FAFF;--border:rgba(27,58,107,.1);
+  --navy:#1B3A6B;--blue:#2A5DA0;--light:#4A7ECC;--sky:#7BC3E5;
+  --text:#1A2540;--muted:#6B7A9A;--mousse:#4A8A5A;--rouge:#C04040;--ocre:#D4893A;
+  --gold:#B8860B;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:14px;line-height:1.6;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:14px;line-height:1.6}
 
-/* ── LOGIN ── */
-#login-screen{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--ab-blue) 0%,var(--ab-blue2) 60%,var(--ab-light) 100%);
-}
-.login-box{background:#fff;border-radius:16px;padding:2.5rem;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.2);}
-.login-logo{font-family:'Lora',serif;font-size:1.4rem;color:var(--ab-blue);margin-bottom:.2rem;font-weight:700;}
-.login-sub{font-family:'Lora',serif;font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem;}
-.login-label{font-family:'Lora',serif;font-size:.65rem;font-weight:700;color:var(--ab-blue);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.35rem;}
-.login-input{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-size:.9rem;font-family:'Lora',serif;color:var(--text);background:#f8faff;outline:none;transition:border-color .15s;margin-bottom:1rem;}
-.login-input:focus{border-color:var(--ab-light);}
-.login-btn{width:100%;background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.78rem;font-weight:700;padding:.75rem;border:none;border-radius:8px;cursor:pointer;letter-spacing:.05em;transition:background .15s;}
-.login-btn:hover{background:var(--ab-blue2);}
-.login-error{color:var(--rouge);font-family:'Lora',serif;font-size:.72rem;margin-top:.6rem;display:none;}
+/* Login */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy),var(--blue),var(--light))}
+.login-box{background:#fff;border-radius:16px;padding:2.5rem;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.login-box h2{font-size:1.2rem;color:var(--navy);margin-bottom:.2rem}
+.login-box p{font-size:.7rem;color:var(--muted);margin-bottom:1.5rem}
+.login-box input{width:100%;padding:.6rem .8rem;border:1.5px solid var(--border);border-radius:8px;font-family:'Lora',serif;font-size:.85rem;margin-bottom:.8rem}
+.login-box button{width:100%;background:var(--navy);color:#fff;border:none;padding:.7rem;border-radius:8px;font-family:'Lora',serif;font-size:.78rem;font-weight:700;cursor:pointer}
+#login-err{color:var(--rouge);font-size:.72rem;display:none;margin-top:.4rem}
 
-/* ── APP ── */
-#app{display:none;}
-.topbar{
-  background:var(--ab-blue);padding:.9rem 2rem;display:flex;align-items:center;
-  justify-content:space-between;position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 12px rgba(27,58,107,.25);
-}
-.topbar-title{font-family:'Lora',serif;font-size:1.15rem;color:#fff;letter-spacing:0;font-weight:700;}
-.topbar-subtitle{font-family:'Lora',serif;font-size:.6rem;color:rgba(255,255,255,.55);letter-spacing:.12em;text-transform:uppercase;}
-.topbar-right{display:flex;align-items:center;gap:.8rem;}
-.publish-btn{
-  background:var(--mousse);color:#fff;font-family:'Lora',serif;
-  font-size:.72rem;font-weight:700;padding:.55rem 1.2rem;border:none;
-  border-radius:8px;cursor:pointer;letter-spacing:.04em;transition:all .15s;
-  display:flex;align-items:center;gap:.4rem;
-}
-.publish-btn:hover{background:#3a7548;}
-.publish-btn:disabled{background:var(--muted);cursor:not-allowed;}
-.logout-btn{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);font-family:'Lora',serif;font-size:.65rem;font-weight:700;padding:.4rem .8rem;border-radius:6px;cursor:pointer;}
-.status-bar{background:rgba(27,58,107,.06);border-bottom:1px solid var(--border);padding:.5rem 2rem;font-family:'Lora',serif;font-size:.68rem;color:var(--muted);display:flex;align-items:center;gap:.5rem;}
-.status-dot{width:8px;height:8px;border-radius:50%;background:var(--mousse);flex-shrink:0;}
-.status-dot.warn{background:var(--ocre);}
-.status-dot.error{background:var(--rouge);}
+/* App */
+#app{display:none}
+.topbar{background:var(--navy);padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(27,58,107,.25)}
+.topbar h1{color:#fff;font-size:1rem;font-weight:700}
+.topbar-right{display:flex;gap:.5rem;align-items:center}
+.topbar-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-family:'Lora',serif;font-size:.68rem;padding:.35rem .7rem;border-radius:6px;cursor:pointer}
+.topbar-btn:hover{background:rgba(255,255,255,.2)}
+.topbar-btn.pub{background:var(--mousse);border-color:var(--mousse)}
 
-/* ── TABS ── */
-.admin-tabs{display:flex;gap:0;background:var(--surface);border-bottom:2px solid var(--border);padding:0 2rem;}
-.admin-tab{
-  background:none;border:none;border-bottom:3px solid transparent;
-  font-family:'Lora',serif;font-size:.72rem;font-weight:700;
-  color:var(--muted);padding:.9rem 1.2rem;cursor:pointer;letter-spacing:.06em;
-  text-transform:uppercase;margin-bottom:-2px;transition:all .15s;
-}
-.admin-tab.active{color:var(--ab-blue);border-bottom-color:var(--ab-blue);}
-.admin-tab:hover{color:var(--ab-blue);}
+.tabs{display:flex;gap:.3rem;padding:.6rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border)}
+.tab{font-family:'Lora',serif;font-size:.72rem;font-weight:600;padding:.4rem .8rem;border-radius:6px;border:none;background:transparent;color:var(--muted);cursor:pointer}
+.tab:hover{color:var(--navy);background:rgba(27,58,107,.05)}
+.tab.active{background:rgba(42,93,160,.12);color:var(--navy)}
 
-/* ── CONTENT ── */
-.admin-page{display:none;padding:2rem;max-width:1200px;margin:0 auto;}
-.admin-page.active{display:block;}
-.section-title{font-family:'Lora',serif;font-size:1.35rem;color:var(--ab-blue);margin-bottom:.3rem;font-weight:700;}
-.section-sub{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;}
+.admin-page{display:none;max-width:1100px;margin:0 auto;padding:1.5rem}
+.admin-page.active{display:block}
 
-/* ── PROGRAMME TABLE ── */
-.prog-admin-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.8rem;}
-.prog-admin-table th{
-  background:var(--ab-blue);color:#fff;font-family:'Lora',serif;
-  font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  padding:.7rem 1rem;text-align:left;position:sticky;top:52px;z-index:5;
-}
-.prog-admin-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);background:var(--surface);vertical-align:middle;}
-.prog-admin-table tr:hover td{background:rgba(74,122,204,.04);}
-.prog-admin-table tr.decharge td{background:rgba(74,138,90,.03);}
-.sem-badge{font-family:'Lora',serif;font-size:.75rem;font-weight:800;color:var(--ab-blue);}
-.phase-mini{font-family:'Lora',serif;font-size:.58rem;font-weight:700;padding:.1rem .4rem;border-radius:3px;}
-.seance-cell{font-size:.78rem;color:var(--text);}
-.seance-terrain{font-family:'Lora',serif;font-size:.58rem;color:var(--muted);margin-top:.15rem;}
-.modified-flag{color:var(--ab-light);font-size:.6rem;margin-left:.3rem;}
-.btn-edit-row{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.62rem;font-weight:700;padding:.25rem .6rem;border-radius:5px;cursor:pointer;white-space:nowrap;transition:all .15s;}
-.btn-edit-row:hover{border-color:var(--ab-light);color:var(--ab-blue);}
+.status-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:.4rem 1.5rem;font-size:.68rem;display:flex;align-items:center;gap:.5rem}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--mousse)}
+.status-dot.warn{background:var(--ocre)}
 
-/* ── EDIT PANEL ── */
-.edit-panel{
-  position:fixed;right:0;top:0;bottom:0;width:480px;background:var(--surface);
-  border-left:1px solid var(--border);box-shadow:-8px 0 40px rgba(27,58,107,.12);
-  z-index:200;display:flex;flex-direction:column;transform:translateX(100%);
-  transition:transform .25s ease;overflow:hidden;
-}
-.edit-panel.open{transform:translateX(0);}
-.edit-panel-head{
-  padding:1.2rem 1.5rem;background:var(--ab-blue);color:#fff;flex-shrink:0;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.edit-panel-head h2{font-family:'Lora',serif;font-size:1.3rem;letter-spacing:.03em;}
-.edit-panel-body{flex:1;overflow-y:auto;padding:1.2rem 1.5rem;}
-.edit-panel-foot{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:.6rem;background:var(--surface);flex-shrink:0;}
-.panel-close{background:rgba(255,255,255,.15);border:none;color:#fff;font-family:'Lora',serif;font-size:.7rem;font-weight:700;padding:.3rem .7rem;border-radius:5px;cursor:pointer;}
+/* Form */
+.field-label{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.25rem}
+.field-input,.field-select,.field-textarea{width:100%;padding:.5rem .7rem;border:1px solid var(--border);border-radius:6px;font-family:'Lora',serif;font-size:.82rem;background:var(--surface);color:var(--text)}
+.field-textarea{resize:vertical}
+.field-group{margin-bottom:.8rem}
+.btn-sm{font-family:'Lora',serif;font-size:.68rem;font-weight:600;padding:.3rem .6rem;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer}
+.btn-sm:hover{border-color:var(--light);color:var(--navy)}
+.btn-sm.danger{color:var(--rouge);border-color:rgba(192,64,64,.3)}
+.block-sep{display:block;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;margin:.8rem 0 .6rem;background:rgba(27,58,107,.04);border:1px solid var(--border);border-radius:6px;color:var(--navy)}
 
-.field-group{margin-bottom:1.1rem;}
-.field-label{font-family:'Lora',serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);display:block;margin-bottom:.3rem;}
-.field-input{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.55rem .8rem;font-family:'Lora',serif;font-size:.85rem;color:var(--text);outline:none;transition:border-color .15s;}
-.field-input:focus{border-color:var(--ab-light);}
-.field-textarea{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.55rem .8rem;font-family:'Lora',serif;font-size:.82rem;color:var(--text);outline:none;min-height:90px;resize:vertical;transition:border-color .15s;line-height:1.6;}
-.field-textarea:focus{border-color:var(--ab-light);}
-.field-select{width:100%;background:#f8faff;border:1.5px solid var(--border);border-radius:7px;padding:.5rem .8rem;font-family:'Lora',serif;font-size:.78rem;color:var(--text);outline:none;cursor:pointer;}
-.field-sub{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+/* Prog table */
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{background:var(--surface2);font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.5rem .7rem;text-align:left;border-bottom:1px solid var(--border)}
+.admin-table td{padding:.45rem .7rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.admin-table tr:hover td{background:rgba(123,195,229,.04)}
+.admin-table tr.dec td{background:rgba(74,138,90,.03)}
+.modified-flag{color:var(--ocre);font-size:.6rem;margin-left:.3rem}
 
-.block-sep{font-family:'Lora',serif;font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue);background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);border-radius:6px;padding:.4rem .8rem;margin:1rem 0 .8rem;display:block;}
+/* Séances grid */
+.seance-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:.5rem}
+.seance-card-hdr{background:var(--surface2);padding:.5rem .8rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;border-bottom:1px solid var(--border)}
+.seance-card-body{padding:.5rem .8rem}
 
-.btn-save{background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border-radius:7px;border:none;cursor:pointer;flex:1;}
-.btn-save:hover{background:var(--ab-blue2);}
-.btn-cancel-panel{background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.2rem;border-radius:7px;cursor:pointer;}
-.btn-reset{background:none;border:1.5px solid rgba(192,64,64,.25);color:var(--rouge);font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.5rem .9rem;border-radius:7px;cursor:pointer;}
+/* Panel */
+#panel-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:200}
+#edit-panel{position:fixed;top:0;right:-480px;width:460px;max-width:95vw;height:100vh;background:var(--surface);box-shadow:-4px 0 30px rgba(0,0,0,.15);z-index:210;transition:right .3s;overflow-y:auto}
+#edit-panel.open{right:0}
+.panel-hdr{background:var(--navy);color:#fff;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center}
+.panel-hdr h3{font-size:.85rem;font-weight:700}
+.panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.1rem;cursor:pointer}
+.panel-body{padding:1rem 1.2rem}
+.panel-footer{padding:.8rem 1.2rem;border-top:1px solid var(--border);display:flex;gap:.5rem;justify-content:flex-end}
+.panel-btn{font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.5rem 1rem;border-radius:6px;border:none;cursor:pointer}
+.panel-btn.save{background:var(--navy);color:#fff}
+.panel-btn.cancel{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.panel-btn.reset{background:transparent;border:1px solid rgba(192,64,64,.3);color:var(--rouge)}
 
-/* ── CALENDRIER ADMIN ── */
-.cal-admin-list{display:flex;flex-direction:column;gap:.6rem;}
-.cal-admin-item{
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  padding:.9rem 1.1rem;display:flex;align-items:center;gap:1rem;
-}
-.cal-admin-date{font-family:'Lora',serif;font-size:1.4rem;color:var(--ab-blue);min-width:38px;text-align:center;line-height:1;}
-.cal-admin-month{font-family:'Lora',serif;font-size:.58rem;color:var(--muted);text-align:center;}
-.cal-admin-info{flex:1;}
-.cal-admin-titre{font-family:'Lora',serif;font-size:.82rem;font-weight:700;color:var(--text);}
-.cal-admin-desc{font-size:.74rem;color:var(--muted);margin-top:.1rem;}
-.cal-type-badge{font-family:'Lora',serif;font-size:.58rem;font-weight:700;padding:.15rem .5rem;border-radius:20px;}
-.type-trail{background:rgba(74,138,90,.12);color:var(--mousse);}
-.type-route{background:rgba(74,122,204,.12);color:var(--ab-blue2);}
-.type-rando{background:rgba(212,137,58,.12);color:#8a5010;}
-.type-montagne{background:rgba(192,64,64,.12);color:var(--rouge);}
-.type-social{background:rgba(120,80,180,.12);color:#6030a0;}
-.btn-del-cal{background:none;border:1px solid rgba(192,64,64,.2);color:rgba(192,64,64,.5);font-family:'Lora',serif;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:all .15s;flex-shrink:0;}
-.btn-del-cal:hover{background:rgba(192,64,64,.08);border-color:var(--rouge);color:var(--rouge);}
-.btn-edit-cal{background:none;border:1px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;cursor:pointer;transition:all .15s;flex-shrink:0;}
-.btn-edit-cal:hover{border-color:var(--ab-light);color:var(--ab-blue);}
-.add-cal-box{background:var(--surface);border:1.5px dashed var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1.2rem;}
-.add-cal-box h3{font-family:'Lora',serif;font-size:.8rem;font-weight:800;color:var(--ab-blue);margin-bottom:1rem;}
-.add-cal-row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:flex-end;}
+/* Toast */
+#toast{position:fixed;top:1rem;right:1rem;z-index:300;display:flex;flex-direction:column;gap:.3rem}
+.toast-item{padding:.6rem 1rem;border-radius:8px;font-size:.76rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,.15);animation:slideIn .3s}
+.toast-item.success{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.toast-item.error{background:#fbe9e7;color:#c62828;border:1px solid #ef9a9a}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:none;opacity:1}}
 
-/* ── CONFIG ── */
-.config-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem;margin-bottom:1rem;}
-.config-card h3{font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--ab-blue);margin-bottom:.8rem;}
-.config-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem;}
-.config-key{font-family:'Lora',serif;font-size:.72rem;color:var(--text);}
-.config-note{font-size:.72rem;color:var(--muted);margin-top:.4rem;line-height:1.5;}
-
-/* ── GITHUB MODAL ── */
-#gh-modal-overlay{
-  display:none;position:fixed;inset:0;background:rgba(20,35,70,.6);
-  backdrop-filter:blur(6px);z-index:500;align-items:center;justify-content:center;
-}
-#gh-modal-overlay.open{display:flex;}
-.gh-modal{background:#fff;border-radius:16px;padding:2rem;max-width:480px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);}
-.gh-modal h2{font-family:'Lora',serif;font-size:1.4rem;color:var(--ab-blue);margin-bottom:.4rem;}
-.gh-modal p{font-size:.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;}
-.gh-steps{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.2rem;}
-.gh-step{display:flex;gap:.8rem;align-items:flex-start;}
-.gh-step-num{background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.65rem;font-weight:800;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
-.gh-step-text{font-size:.8rem;color:var(--text);line-height:1.5;}
-.gh-step-text a{color:var(--ab-blue2);}
-.progress-bar{height:4px;background:rgba(27,58,107,.1);border-radius:2px;overflow:hidden;margin:1rem 0;}
-.progress-fill{height:100%;background:var(--mousse);border-radius:2px;width:0;transition:width .3s;}
-#publish-status{font-family:'Lora',serif;font-size:.72rem;color:var(--muted);text-align:center;min-height:1.2rem;}
-
-/* ── TOAST ── */
-#toast{
-  position:fixed;bottom:2rem;right:2rem;background:var(--ab-blue);color:#fff;
-  font-family:'Lora',serif;font-size:.75rem;font-weight:700;
-  padding:.7rem 1.3rem;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.2);
-  z-index:1000;transform:translateY(100px);opacity:0;transition:all .25s;pointer-events:none;
-}
-#toast.show{transform:translateY(0);opacity:1;}
-#toast.success{background:var(--mousse);}
-#toast.error{background:var(--rouge);}
+/* Publish modal */
+#pub-overlay{display:none;position:fixed;inset:0;background:rgba(20,35,70,.6);z-index:250;align-items:center;justify-content:center}
+#pub-overlay.open{display:flex}
+.pub-box{background:var(--surface);border-radius:14px;padding:2rem;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 </style>
 </head>
 <body>
 
-<!-- ══ LOGIN ══ -->
-<div id="login-screen">
+<!-- LOGIN -->
+<div id="login">
   <div class="login-box">
-    <div class="login-logo">AB Running Loisir</div>
-    <div class="login-sub">Interface Coach — Accès restreint</div>
-    <label class="login-label">Mot de passe coach</label>
-    <input type="password" class="login-input" id="login-pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="login-btn" onclick="doLogin()">Accéder →</button>
-    <div class="login-error" id="login-error">Mot de passe incorrect.</div>
+    <h2>AB Running Admin</h2>
+    <p>Accès réservé aux coachs</p>
+    <input type="password" id="pwd" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Connexion</button>
+    <div id="login-err">Mot de passe incorrect</div>
   </div>
 </div>
 
-<!-- ══ APP ══ -->
+<!-- APP -->
 <div id="app">
-
   <div class="topbar">
-    <div>
-      <div class="topbar-title">AB Running Loisir — Admin</div>
-      <div class="topbar-subtitle">Interface Coach</div>
-    </div>
+    <h1>Admin — AB Running</h1>
     <div class="topbar-right">
-      <button class="publish-btn" id="publish-btn" onclick="openPublishModal()">
-        📤 Publier les modifications
-      </button>
-      <button class="logout-btn" onclick="doLogout()">Déconnexion</button>
+      <span id="status-msg" style="font-size:.65rem;color:rgba(255,255,255,.6)">Prêt</span>
+      <button class="topbar-btn pub" onclick="openPublish()">📤 Publier</button>
+      <button class="topbar-btn" onclick="doLogout()">Déconnexion</button>
     </div>
   </div>
+  <div class="status-bar"><div class="status-dot" id="status-dot"></div><span id="status-text">Aucune modification en attente</span></div>
 
-  <div class="status-bar" id="status-bar">
-    <div class="status-dot" id="status-dot"></div>
-    <span id="status-msg">Prêt — aucune modification en attente</span>
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('tab-prog',this)">📅 Programme</button>
+    <button class="tab" onclick="showTab('tab-seances',this)">📋 Séances</button>
+    <button class="tab" onclick="showTab('tab-cal',this)">🗓 Calendrier</button>
+    <button class="tab" onclick="showTab('tab-infos',this)">📢 Infos Club</button>
+    <button class="tab" onclick="showTab('tab-calc',this)">📊 Calculateur</button>
+    <button class="tab" onclick="showTab('tab-config',this)">⚙️ Config</button>
   </div>
 
-  <div class="admin-tabs">
-    <button class="admin-tab active" onclick="showTab('programme',this)">📅 Programme</button>
-    <button class="admin-tab" onclick="showTab('seances',this)">📋 Séances</button>
-    <button class="admin-tab" onclick="showTab('infos',this)">📢 Infos club</button>
-    <button class="admin-tab" onclick="showTab('calculateur',this)">📊 Calculateur</button>
-    <button class="admin-tab" onclick="showTab('calendrier',this)">🗓 Calendrier</button>
-    <button class="admin-tab" onclick="showTab('config',this)">⚙️ Configuration</button>
-  </div>
-
-  <!-- ══ SÉANCES ══ -->
-  <div class="admin-page" id="tab-seances">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem">
-      <div>
-        <div class="section-title">Bibliothèque de séances</div>
-        <div class="section-sub">Toutes les séances disponibles — modifiez les détails. Dans l'onglet Programme, sélectionnez une séance pour éviter la re-saisie.</div>
-      </div>
-      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-        <input type="text" id="seance-search" placeholder="Rechercher…"
-          oninput="filterSeances(this.value)"
-          style="font-family:'Lora',serif;font-size:.72rem;padding:.38rem .8rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text);width:180px">
-        <select id="seance-cat" onchange="filterSeances()"
-          style="font-family:'Lora',serif;font-size:.72rem;padding:.38rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text)">
-          <option value="">Toutes catégories</option>
-          <option value="cote">⛰️ Côtes</option>
-          <option value="fartlek">🌀 Fartlek</option>
-          <option value="pyramid">📐 Pyramides</option>
-          <option value="piste">🏟 Piste</option>
-          <option value="vitesse">💨 Vitesse</option>
-          <option value="seuil">⚡ Seuil</option>
-          <option value="vma">🔥 VMA / 30-30</option>
-          <option value="sortie">🏃 Sortie</option>
-        </select>
-        <button onclick="openNewSeance()"
-          style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer">+ Nouvelle séance</button>
-      </div>
+  <!-- TAB PROGRAMME -->
+  <div class="admin-page active" id="tab-prog">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h2 style="font-size:1rem;color:var(--navy)">Programme 52 semaines</h2>
+      <select class="field-select" style="width:auto" id="phase-filter" onchange="buildAdminProg()">
+        <option value="">Toutes les phases</option>
+      </select>
     </div>
-    <div id="seances-list" style="display:flex;flex-direction:column;gap:.7rem;max-width:1000px"></div>
-  </div>
-
-  <!-- ══ PROGRAMME ══ -->
-  <div class="admin-page active" id="tab-programme">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem">
-      <div>
-        <div class="section-title">Programme annuel</div>
-        <div class="section-sub">48 semaines · cliquez sur ✏️ pour modifier une semaine · les changements sont publiés via "Publier"</div>
-      </div>
-      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-        <span style="font-family:'Lora',serif;font-size:.62rem;color:var(--muted)">Filtre :</span>
-        <select id="phase-filter" onchange="buildProgTable()" style="font-family:'Lora',serif;font-size:.72rem;padding:.35rem .6rem;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text)">
-          <option value="">Toutes les phases</option>
-          <option value="phase-reprise">Reprise</option>
-          <option value="phase-base">Base endurance</option>
-          <option value="phase-force">Force / D+</option>
-          <option value="phase-prepa">Prépa trail</option>
-          <option value="phase-precomp">Pré-compétition</option>
-          <option value="phase-montagne">Bloc montagne</option>
-        </select>
-      </div>
-    </div>
-    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(27,58,107,.07)">
-      <table class="prog-admin-table">
-        <thead>
-          <tr>
-            <th style="width:58px">Sem.</th>
-            <th style="width:115px">Phase</th>
-            <th>Mardi</th>
-            <th style="width:90px;text-align:center" title="RPE × Durée de la séance mardi (incluant échauff + PPG)">Mar.<br><small style="font-weight:400;opacity:.7;font-size:.55rem">RPE · UA</small></th>
-            <th>Jeudi</th>
-            <th style="width:90px;text-align:center" title="RPE × Durée de la séance jeudi (incluant échauff + PPG)">Jeu.<br><small style="font-weight:400;opacity:.7;font-size:.55rem">RPE · UA</small></th>
-            <th style="width:80px;text-align:center" title="Charge totale de la semaine (Mardi + Jeudi)">Total<br><small style="font-weight:400;opacity:.7;font-size:.55rem">UA sem.</small></th>
-            <th style="width:70px;text-align:center" title="Évolution par rapport à la semaine précédente">Δ sem.</th>
-            <th style="width:90px">Action</th>
-          </tr>
-        </thead>
-        <tbody id="prog-admin-body"></tbody>
+    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+      <table class="admin-table">
+        <thead><tr>
+          <th>Sem</th><th>Phase</th><th>Mardi</th><th>RPE</th><th>Jeudi</th><th>RPE</th><th>UA</th><th>Δ%</th><th></th>
+        </tr></thead>
+        <tbody id="admin-prog-body"></tbody>
       </table>
     </div>
   </div>
 
-  <!-- ══ INFOS CLUB ══ -->
+  <!-- TAB SÉANCES -->
+  <div class="admin-page" id="tab-seances">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <h2 style="font-size:1rem;color:var(--navy)">Bibliothèque des séances</h2>
+      <button class="btn-sm" onclick="openNewSeance()">＋ Nouvelle séance</button>
+    </div>
+    <input class="field-input" id="seance-search" placeholder="Rechercher par clé ou nom…" oninput="filterSeances()" style="margin-bottom:.8rem;max-width:400px">
+    <div id="seances-list"></div>
+  </div>
+
+  <!-- TAB CALENDRIER -->
+  <div class="admin-page" id="tab-cal">
+    <h2 style="font-size:1rem;color:var(--navy);margin-bottom:1rem">Calendrier des sorties</h2>
+    <div id="cal-list" style="margin-bottom:1rem"></div>
+    <div class="block-sep">Ajouter une sortie</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;max-width:500px">
+      <div class="field-group"><label class="field-label">Date</label><input type="date" class="field-input" id="new-cal-date"></div>
+      <div class="field-group"><label class="field-label">Type</label>
+        <select class="field-select" id="new-cal-type"><option value="course">Course</option><option value="social">Social</option><option value="trail">Trail</option><option value="rando">Rando</option></select></div>
+      <div class="field-group" style="grid-column:1/-1"><label class="field-label">Titre</label><input class="field-input" id="new-cal-titre" placeholder="Sortie montagne…"></div>
+      <div class="field-group" style="grid-column:1/-1"><label class="field-label">Détails</label><textarea class="field-textarea" id="new-cal-desc" rows="2" placeholder="Lieu, RDV, covoiturage…"></textarea></div>
+    </div>
+    <button class="btn-sm" onclick="addCalEvent()" style="margin-top:.5rem">Ajouter</button>
+  </div>
+
+  <!-- TAB INFOS CLUB -->
   <div class="admin-page" id="tab-infos">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem">
-      <div>
-        <div class="section-title">Messages Infos Club</div>
-        <div class="section-sub">Bandeau affiché sous le hero sur la page d'accueil · ajoutez/modifiez/supprimez les messages visibles par tous les membres</div>
+    <h2 style="font-size:1rem;color:var(--navy);margin-bottom:1rem">Messages Info Club</h2>
+    <div id="infos-list" style="margin-bottom:1rem"></div>
+    <div class="block-sep">Ajouter un message</div>
+    <div style="max-width:500px">
+      <div class="field-group"><label class="field-label">Titre</label><input class="field-input" id="new-info-titre" placeholder="🎉 Bienvenue…"></div>
+      <div class="field-group"><label class="field-label">Texte</label><textarea class="field-textarea" id="new-info-texte" rows="2"></textarea></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+        <div class="field-group"><label class="field-label">Type</label>
+          <select class="field-select" id="new-info-type"><option value="info">Info</option><option value="urgent">Urgent</option></select></div>
+        <div class="field-group"><label class="field-label">Date fin (optionnel)</label><input type="date" class="field-input" id="new-info-fin"></div>
       </div>
-      <button onclick="addInfoClub()" style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border:none;border-radius:7px;cursor:pointer;align-self:flex-start">+ Nouveau message</button>
-    </div>
-    <div id="infos-club-list" style="display:flex;flex-direction:column;gap:.8rem;max-width:1000px"></div>
-  </div>
-
-  <!-- ══ CALCULATEUR ══ -->
-  <div class="admin-page" id="tab-calculateur">
-    <div style="margin-bottom:1.5rem">
-      <div class="section-title">Calculateur de charge</div>
-      <div class="section-sub">Éditez les textes d'explication (RPE, UA, bloc) et les seuils de difficulté / charge hebdomadaire</div>
-    </div>
-
-    <!-- Textes explicatifs -->
-    <div class="config-card">
-      <h3>📝 Textes d'explication</h3>
-      <div style="margin-top:1rem">
-        <label class="field-label">Introduction (haut de page calculateur)</label>
-        <textarea class="field-textarea" id="calc-txt-intro" rows="4"></textarea>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
-          <div>
-            <label class="field-label">Titre bloc RPE</label>
-            <input type="text" class="field-input" id="calc-txt-rpe-titre">
-          </div>
-          <div>
-            <label class="field-label">Titre bloc UA</label>
-            <input type="text" class="field-input" id="calc-txt-ua-titre">
-          </div>
-        </div>
-
-        <label class="field-label" style="margin-top:.8rem">Texte RPE</label>
-        <textarea class="field-textarea" id="calc-txt-rpe" rows="6"></textarea>
-
-        <label class="field-label" style="margin-top:.8rem">Texte UA</label>
-        <textarea class="field-textarea" id="calc-txt-ua" rows="6"></textarea>
-
-        <label class="field-label" style="margin-top:.8rem">Titre bloc "4 semaines"</label>
-        <input type="text" class="field-input" id="calc-txt-bloc-titre">
-
-        <label class="field-label" style="margin-top:.8rem">Texte bloc 4 semaines</label>
-        <textarea class="field-textarea" id="calc-txt-bloc" rows="6"></textarea>
-      </div>
-    </div>
-
-    <!-- Seuils de difficulté séances -->
-    <div class="config-card" style="margin-top:1.2rem">
-      <h3>🎿 Seuils de difficulté (pastilles séance · piste de ski)</h3>
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">
-        Les séances sont automatiquement classées selon leur charge totale UA (séance + échauffement + PPG). Modifiez les seuils maximum pour chaque niveau.
-      </p>
-      <div id="difficulte-list" style="display:flex;flex-direction:column;gap:.6rem"></div>
-    </div>
-
-    <!-- Seuils charge hebdo -->
-    <div class="config-card" style="margin-top:1.2rem">
-      <h3>📈 Seuils de charge hebdomadaire (calculateur)</h3>
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">
-        Ces seuils indiquent à l'utilisateur si sa semaine est légère, normale, ou chargée.
-      </p>
-      <div id="charge-hebdo-list" style="display:flex;flex-direction:column;gap:.6rem"></div>
+      <button class="btn-sm" onclick="addInfo()" style="margin-top:.3rem">Ajouter</button>
     </div>
   </div>
 
-  <!-- ══ CALENDRIER ══ -->
-  <div class="admin-page" id="tab-calendrier">
-    <div class="section-title">Calendrier des sorties</div>
-    <div class="section-sub">Gérez les sorties et événements — modifiez, ajoutez, supprimez</div>
-
-    <div class="add-cal-box">
-      <h3>➕ Ajouter un événement</h3>
-      <div class="add-cal-row">
-        <div style="flex:1;min-width:150px">
-          <label class="field-label">Date</label>
-          <input type="date" class="field-input" id="new-cal-date">
-        </div>
-        <div style="flex:1;min-width:150px">
-          <label class="field-label">Type</label>
-          <select class="field-select" id="new-cal-type">
-            <option value="trail">🌿 Trail</option>
-            <option value="route">🏃 Route</option>
-            <option value="rando">🥾 Rando</option>
-            <option value="montagne">🏔 Montagne</option>
-            <option value="social">🎉 Section</option>
-          </select>
-        </div>
-        <div style="flex:2;min-width:200px">
-          <label class="field-label">Titre</label>
-          <input type="text" class="field-input" id="new-cal-titre" placeholder="Ex: Sortie trail Ursuya">
-        </div>
-      </div>
-      <div style="margin-top:.7rem">
-        <label class="field-label">Description</label>
-        <textarea class="field-textarea" id="new-cal-desc" rows="2" placeholder="Détails, niveau requis, covoiturage..."></textarea>
-      </div>
-      <button onclick="addCalEvent()" style="margin-top:.7rem;background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.72rem;font-weight:700;padding:.55rem 1.2rem;border:none;border-radius:7px;cursor:pointer;">Ajouter →</button>
-    </div>
-
-    <div id="cal-admin-list" class="cal-admin-list"></div>
+  <!-- TAB CALCULATEUR -->
+  <div class="admin-page" id="tab-calc">
+    <h2 style="font-size:1rem;color:var(--navy);margin-bottom:1rem">Textes & seuils du calculateur</h2>
+    <div class="block-sep">Textes explicatifs</div>
+    <div id="calc-textes-form" style="max-width:600px"></div>
+    <div class="block-sep">Seuils de charge hebdomadaire</div>
+    <div id="calc-seuils-form" style="max-width:600px"></div>
   </div>
 
-  <!-- ══ CONFIG ══ -->
+  <!-- TAB CONFIG -->
   <div class="admin-page" id="tab-config">
-    <div class="section-title">Configuration</div>
-    <div class="section-sub">Paramètres de connexion GitHub pour la publication automatique</div>
-
-    <div class="config-card">
-      <h3>🔗 Connexion GitHub</h3>
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">
-        Pour publier les modifications directement sur votre site, renseignez vos informations GitHub. Ces données sont stockées uniquement dans votre navigateur.
-      </p>
-
-      <div class="field-group">
-        <label class="field-label">Pseudo GitHub</label>
-        <input type="text" class="field-input" id="cfg-owner" placeholder="ex: jeremydufau-bot">
-        <div class="field-sub">Votre nom d'utilisateur GitHub</div>
-      </div>
-      <div class="field-group">
-        <label class="field-label">Nom du dépôt</label>
-        <input type="text" class="field-input" id="cfg-repo" placeholder="ex: ab-running">
-        <div class="field-sub">Le nom du dépôt GitHub (sans le /)</div>
-      </div>
-      <div class="field-group">
-        <label class="field-label">Token GitHub (Personal Access Token)</label>
-        <input type="password" class="field-input" id="cfg-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-        <div class="field-sub">
-          Créez un token sur GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)<br>
-          Cochez la permission <strong>repo</strong> (accès complet aux dépôts). Ce token reste dans votre navigateur uniquement.
-        </div>
-      </div>
-      <button onclick="saveConfig()" style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border:none;border-radius:7px;cursor:pointer;">💾 Enregistrer</button>
-      <button onclick="testConnection()" style="margin-left:.6rem;background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.58rem 1.2rem;border-radius:7px;cursor:pointer;">🔍 Tester la connexion</button>
-    </div>
-
-    <div class="config-card">
-      <h3>🔐 Mot de passe coach</h3>
-      <div class="field-group">
-        <label class="field-label">Nouveau mot de passe</label>
-        <input type="password" class="field-input" id="cfg-pwd-new" placeholder="Nouveau mot de passe">
-      </div>
-      <div class="field-group">
-        <label class="field-label">Confirmer</label>
-        <input type="password" class="field-input" id="cfg-pwd-confirm" placeholder="Confirmer le mot de passe">
-      </div>
-      <button onclick="changePwd()" style="background:var(--ab-blue);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.6rem 1.4rem;border:none;border-radius:7px;cursor:pointer;">Changer le mot de passe</button>
-      <div class="config-note" style="margin-top:.8rem">⚠️ Le mot de passe est partagé entre les 3 coachs. Communiquez-le de vive voix ou par message privé.</div>
-    </div>
-  </div>
-
-</div><!-- /app -->
-
-<!-- ══ EDIT PANEL ══ -->
-<div class="edit-panel" id="edit-panel">
-  <div class="edit-panel-head">
-    <h2 id="panel-title">Modifier la semaine</h2>
-    <button class="panel-close" onclick="closePanel()">✕ Fermer</button>
-  </div>
-  <div class="edit-panel-body" id="panel-body"></div>
-  <div class="edit-panel-foot">
-    <button class="btn-save" onclick="editingSeanceKey ? saveSeance() : saveWeek()">💾 Enregistrer</button>
-    <button class="btn-cancel-panel" onclick="closePanel()">Annuler</button>
-    <button class="btn-reset" id="btn-reset-week" onclick="resetWeek()" style="display:none">↺ Original</button>
-  </div>
-</div>
-<div id="panel-overlay" onclick="closePanel()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.15);z-index:199;"></div>
-
-<!-- ══ PUBLISH MODAL ══ -->
-<div id="gh-modal-overlay">
-  <div class="gh-modal">
-    <h2>📤 Publier sur GitHub</h2>
-    <p>Cette action va mettre à jour <strong>data.js</strong> sur votre dépôt GitHub. Tous les membres verront les modifications dans 1-2 minutes.</p>
-    <div class="gh-steps" id="gh-steps-config" style="display:none">
-      <div class="gh-step">
-        <div class="gh-step-num">1</div>
-        <div class="gh-step-text">⚠️ Configurez d'abord vos informations GitHub dans l'onglet <strong>Configuration</strong></div>
-      </div>
-    </div>
-    <div class="progress-bar" id="progress-bar" style="display:none"><div class="progress-fill" id="progress-fill"></div></div>
-    <div id="publish-status"></div>
-    <div style="display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap">
-      <button id="confirm-publish-btn" onclick="doPublish()" style="background:var(--mousse);color:#fff;font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.65rem 1.5rem;border:none;border-radius:8px;cursor:pointer;flex:1">📤 Publier maintenant</button>
-      <button onclick="closePublishModal()" style="background:none;border:1.5px solid var(--border);color:var(--muted);font-family:'Lora',serif;font-size:.75rem;font-weight:700;padding:.63rem 1.2rem;border-radius:8px;cursor:pointer">Annuler</button>
+    <h2 style="font-size:1rem;color:var(--navy);margin-bottom:1rem">Configuration GitHub</h2>
+    <div style="max-width:400px">
+      <div class="field-group"><label class="field-label">Owner (utilisateur/org)</label><input class="field-input" id="cfg-owner"></div>
+      <div class="field-group"><label class="field-label">Repo</label><input class="field-input" id="cfg-repo"></div>
+      <div class="field-group"><label class="field-label">Token (PAT)</label><input type="password" class="field-input" id="cfg-token"></div>
+      <button class="btn-sm" onclick="saveConfig()">Sauvegarder</button>
     </div>
   </div>
 </div>
 
-<!-- ══ TOAST ══ -->
+<!-- EDIT PANEL -->
+<div id="panel-overlay" onclick="closePanel()"></div>
+<div id="edit-panel">
+  <div class="panel-hdr"><h3 id="panel-title"></h3><button class="panel-close" onclick="closePanel()">✕</button></div>
+  <div class="panel-body" id="panel-body"></div>
+  <div class="panel-footer">
+    <button class="panel-btn reset" id="btn-reset" style="display:none" onclick="resetItem()">↺ Réinitialiser</button>
+    <button class="panel-btn cancel" onclick="closePanel()">Annuler</button>
+    <button class="panel-btn save" onclick="saveItem()">✓ Enregistrer</button>
+  </div>
+</div>
+
+<!-- PUBLISH MODAL -->
+<div id="pub-overlay" onclick="if(event.target===this)closePub()">
+  <div class="pub-box">
+    <h3 style="font-size:.9rem;color:var(--navy);margin-bottom:.5rem">Publier sur GitHub</h3>
+    <p style="font-size:.76rem;color:var(--muted);margin-bottom:1rem">Pousse le data.js modifié vers votre repo. Index.html est aussi mis à jour pour casser le cache navigateur.</p>
+    <div id="pub-progress" style="display:none;margin-bottom:1rem">
+      <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden"><div id="pub-bar" style="height:100%;background:var(--navy);width:0;transition:width .3s"></div></div>
+      <div id="pub-msg" style="font-size:.72rem;color:var(--muted);margin-top:.3rem"></div>
+    </div>
+    <div style="display:flex;gap:.5rem;justify-content:flex-end">
+      <button class="panel-btn cancel" onclick="closePub()">Annuler</button>
+      <button class="panel-btn save" id="pub-btn" onclick="doPublish()">📤 Publier</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script src="data.js"></script>
 <script>
-// ════════════════════════════════════════════════
-// AUTHENTIFICATION — simple et fiable
-// ════════════════════════════════════════════════
-
-// Mot de passe stocké en clair (encodé base64 pour ne pas être visible à l'oeil)
-// "admin" en base64 = "YWRtaW4="
-// Pour changer: encoder votre mot de passe sur https://www.base64encode.org
-const DEFAULT_PWD_B64 = 'YWRtaW4='; // = "admin"
-
-function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
-
+// ══════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════
+const HASH = 'ab2024run';
 function doLogin(){
-  const pwd = document.getElementById('login-pwd').value;
-  const stored = localStorage.getItem('ab-admin-pwd-b64') || DEFAULT_PWD_B64;
-  if(b64(pwd) === stored){
-    localStorage.setItem('ab-admin-session', 'true');
-    document.getElementById('login-screen').style.display='none';
-    document.getElementById('app').style.display='block';
-    initApp();
-  } else {
-    document.getElementById('login-error').style.display='block';
-    document.getElementById('login-pwd').value='';
-    document.getElementById('login-pwd').focus();
-  }
+  const v = document.getElementById('pwd').value;
+  if(v===HASH){ localStorage.setItem('ab-auth','1'); document.getElementById('login').style.display='none'; document.getElementById('app').style.display='block'; initApp(); }
+  else{ document.getElementById('login-err').style.display='block'; }
 }
+function doLogout(){ localStorage.removeItem('ab-auth'); location.reload(); }
+if(localStorage.getItem('ab-auth')==='1'){ document.getElementById('login').style.display='none'; document.getElementById('app').style.display='block'; }
 
-function doLogout(){
-  localStorage.removeItem('ab-admin-session');
-  location.reload();
-}
-
-function changePwd(){
-  const n = document.getElementById('cfg-pwd-new').value;
-  const c = document.getElementById('cfg-pwd-confirm').value;
-  if(!n){ toast('Entrez un nouveau mot de passe','error'); return; }
-  if(n!==c){ toast('Les mots de passe ne correspondent pas','error'); return; }
-  localStorage.setItem('ab-admin-pwd-b64', b64(n));
-  document.getElementById('cfg-pwd-new').value='';
-  document.getElementById('cfg-pwd-confirm').value='';
-  toast('Mot de passe mis à jour ✓','success');
-}
-
-// Check session on load
-if(localStorage.getItem('ab-admin-session')==='true'){
-  document.getElementById('login-screen').style.display='none';
-  document.getElementById('app').style.display='block';
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initApp);
-  } else {
-    initApp();
-  }
-}
-
-// ════════════════════════════════════════════════
-// ÉTAT LOCAL — modifications en attente
-// ════════════════════════════════════════════════
-// On travaille sur une copie locale du programme et calFixed
-// Seul "Publier" écrit sur GitHub
-let localProgramme = null;
-let localCalFixed = null;
-let localSeances = null;
-let localInfosClub = null;
-let localCalcTextes = null;
-let localDifficulte = null;
-let localChargeSeuils = null;
-let pendingChanges = false;
+// ══════════════════════════════════════════════════
+// LOCAL STATE
+// ══════════════════════════════════════════════════
+let L = {}; // local edits
+let editMode = null; // 'week'|'seance'|'seance-new'
+let editKey = null;
 
 function getLocal(){
-  const stored = localStorage.getItem('ab-admin-pending');
-  if(stored){
-    const d = JSON.parse(stored);
-    localProgramme    = d.programme;
-    localCalFixed     = d.calFixed;
-    localSeances      = d.seances        || JSON.parse(JSON.stringify(seancesData));
-    localInfosClub    = d.infosClub      || (typeof infosClub !== 'undefined' ? JSON.parse(JSON.stringify(infosClub)) : []);
-    localCalcTextes   = d.calcTextes     || (typeof calculateurTextes !== 'undefined' ? JSON.parse(JSON.stringify(calculateurTextes)) : {});
-    localChargeSeuils = d.chargeSeuils   || (typeof chargeHebdoSeuils !== 'undefined' ? JSON.parse(JSON.stringify(chargeHebdoSeuils)) : []);
-  } else {
-    localProgramme    = JSON.parse(JSON.stringify(programme));
-    localCalFixed     = JSON.parse(JSON.stringify(calFixed));
-    localSeances      = JSON.parse(JSON.stringify(seancesData));
-    localInfosClub    = (typeof infosClub !== 'undefined')         ? JSON.parse(JSON.stringify(infosClub)) : [];
-    localCalcTextes   = (typeof calculateurTextes !== 'undefined') ? JSON.parse(JSON.stringify(calculateurTextes)) : {};
-    localChargeSeuils = (typeof chargeHebdoSeuils !== 'undefined') ? JSON.parse(JSON.stringify(chargeHebdoSeuils)) : [];
-  }
+  const s = localStorage.getItem('ab-admin-v4');
+  if(s) L = JSON.parse(s);
+  else L = {};
+  // Deep clone originals as starting point
+  if(!L.programme) L.programme = JSON.parse(JSON.stringify(programme));
+  if(!L.seances) L.seances = JSON.parse(JSON.stringify(seancesData));
+  if(!L.calFixed) L.calFixed = JSON.parse(JSON.stringify(calFixed));
+  if(!L.infosClub) L.infosClub = JSON.parse(JSON.stringify(infosClub));
+  if(!L.calcTextes) L.calcTextes = JSON.parse(JSON.stringify(typeof calculateurTextes!=='undefined'?calculateurTextes:{}));
+  if(!L.chargeSeuils) L.chargeSeuils = JSON.parse(JSON.stringify(chargeHebdoSeuils));
 }
-
 function saveLocal(){
-  localStorage.setItem('ab-admin-pending', JSON.stringify({
-    programme:    localProgramme,
-    calFixed:     localCalFixed,
-    seances:      localSeances,
-    infosClub:    localInfosClub,
-    calcTextes:   localCalcTextes,
-    chargeSeuils: localChargeSeuils,
-    savedAt:      new Date().toISOString()
-  }));
-  pendingChanges = true;
-  updateStatusBar();
+  L.savedAt = new Date().toISOString();
+  localStorage.setItem('ab-admin-v4', JSON.stringify(L));
+  updateStatus();
+}
+function updateStatus(){
+  const changed = JSON.stringify(L.programme)!==JSON.stringify(programme) ||
+                  JSON.stringify(L.seances)!==JSON.stringify(seancesData) ||
+                  JSON.stringify(L.calFixed)!==JSON.stringify(calFixed) ||
+                  JSON.stringify(L.infosClub)!==JSON.stringify(infosClub);
+  document.getElementById('status-dot').className = 'status-dot'+(changed?' warn':'');
+  const t = L.savedAt ? new Date(L.savedAt).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '';
+  document.getElementById('status-text').textContent = changed ? `⚠️ Modifications non publiées${t?' — '+t:''}` : 'Prêt — aucune modification';
+}
+function toast(msg,type){
+  const el = document.getElementById('toast');
+  const d = document.createElement('div');
+  d.className='toast-item '+(type||'success');
+  d.textContent=msg;
+  el.appendChild(d);
+  setTimeout(()=>d.remove(),4000);
 }
 
-function updateStatusBar(){
-  const dot = document.getElementById('status-dot');
-  const msg = document.getElementById('status-msg');
-  if(pendingChanges){
-    dot.className = 'status-dot warn';
-    const saved = JSON.parse(localStorage.getItem('ab-admin-pending')||'{}').savedAt;
-    const t = saved ? new Date(saved).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '';
-    msg.textContent = `⚠️ Modifications non publiées${t?' — dernière sauvegarde à '+t:''}`;
-  } else {
-    dot.className = 'status-dot';
-    msg.textContent = 'Prêt — aucune modification en attente';
-  }
-}
-
-// ════════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════════
-function initApp(){
-  getLocal();
-  // Check if there are pending changes
-  const pending = localStorage.getItem('ab-admin-pending');
-  if(pending){
-    const d = JSON.parse(pending);
-    pendingChanges = (JSON.stringify(d.programme) !== JSON.stringify(programme) ||
-                      JSON.stringify(d.calFixed) !== JSON.stringify(calFixed) ||
-                      JSON.stringify(d.seances) !== JSON.stringify(seancesData));
-  }
-  buildProgTable();
-  buildCalList();
-  loadConfig();
-  updateStatusBar();
-}
-
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════════
 // TABS
-// ════════════════════════════════════════════════
-function showTab(id, btn){
+// ══════════════════════════════════════════════════
+function showTab(id,btn){
   document.querySelectorAll('.admin-page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  closePanel();
-  if(id==='seances') buildSeancesGrid();
-  if(id==='infos') renderInfosList();
-  if(id==='calculateur') renderCalcAdmin();
+  if(id==='tab-prog') buildAdminProg();
+  if(id==='tab-seances') buildSeancesList();
+  if(id==='tab-cal') buildCalList();
+  if(id==='tab-infos') buildInfosList();
+  if(id==='tab-calc') buildCalcAdmin();
 }
 
-// ════════════════════════════════════════════════
-// PROGRAMME — tableau
-// ════════════════════════════════════════════════
-const phaseColors = {
-  'phase-reprise':'#c5dcfa','phase-base':'rgba(74,122,204,.15)',
-  'phase-force':'rgba(212,137,58,.15)','phase-prepa':'rgba(74,122,204,.18)',
-  'phase-precomp':'rgba(160,90,180,.15)','phase-montagne':'rgba(192,64,64,.12)',
-  'phase-senpereko':'rgba(27,58,107,.15)','phase-euskal':'rgba(27,58,107,.15)',
-};
-const phaseTextColors = {
-  'phase-reprise':'#1a5080','phase-base':'#2351a0','phase-force':'#8a5010',
-  'phase-prepa':'#1b3a6b','phase-precomp':'#6a3080','phase-montagne':'#c04040',
-  'phase-senpereko':'#1b3a6b','phase-euskal':'#1b3a6b',
-};
-
-// ════════════════════════════════════════════════
-// ESTIMATION DE CHARGE (local admin)
-// ════════════════════════════════════════════════
-// Estime RPE, durée et UA d'une séance à partir de son titre
-function adminEstimCharge(titre){
-  const t = (titre || '').toLowerCase();
-  let rpe = 7, duree = 50; // défaut
-
-  if(/récup|recup|repos|allumage/.test(t))        { rpe = 3; duree = 45; }
-  else if(/footing souple|allure souple/.test(t)) { rpe = 4; duree = 50; }
-  else if(/footing|endurance/.test(t))            { rpe = 5; duree = 55; }
-  else if(/fartlek\s+libre/.test(t))              { rpe = 6; duree = 50; }
-  else if(/fartlek/.test(t))                      { rpe = 7; duree = 50; }
-  else if(/tempo|seuil/.test(t))                  { rpe = 7; duree = 55; }
-  else if(/côte|cote|escaliers/.test(t))          { rpe = 8; duree = 50; }
-  else if(/30["']?\s*\/\s*30|vma/.test(t))        { rpe = 8; duree = 45; }
-  else if(/pyramid/.test(t))                      { rpe = 8; duree = 55; }
-  else if(/3x15|4x2000|5x1000/.test(t))           { rpe = 8; duree = 70; }
-  else if(/×\s*[12]min|×1min|×2min/.test(t))      { rpe = 8; duree = 50; }
-  else if(/×\s*3min|×3min/.test(t))               { rpe = 7; duree = 50; }
-  else if(/×\s*4min|×\s*5min/.test(t))            { rpe = 7; duree = 55; }
-
-  // Charge séance + échauff 90 UA + PPG 60 UA fixes
-  const ua = rpe * duree + 90 + 60;
-  return { rpe, duree, ua };
-}
-
-// Retourne le code couleur (hex) d'un RPE selon l'intensité
-function rpeColor(rpe){
-  if(rpe <= 3) return '#2E8B3E';   // vert
-  if(rpe <= 5) return '#5FAD4E';   // vert clair
-  if(rpe <= 6) return '#3A7BBF';   // bleu
-  if(rpe <= 7) return '#E67E22';   // orange
-  if(rpe <= 8) return '#C0392B';   // rouge
-  return '#1A1A1A';                // noir
-}
-
-// Retourne le code couleur d'une charge UA totale semaine (basé sur chargeHebdoSeuils)
-function uaWeekColor(ua){
-  const seuils = (typeof localChargeSeuils !== 'undefined' && localChargeSeuils && localChargeSeuils.length)
-    ? localChargeSeuils
-    : [
-        { max:400, couleur:'#2E8B3E' },
-        { max:600, couleur:'#5FAD4E' },
-        { max:800, couleur:'#3A7BBF' },
-        { max:1050,couleur:'#E67E22' },
-        { max:9999,couleur:'#C0392B' }
-      ];
-  const s = seuils.find(x => ua <= x.max) || seuils[seuils.length-1];
-  return s.couleur;
-}
-
-function buildProgTable(){
+// ══════════════════════════════════════════════════
+// PROGRAMME
+// ══════════════════════════════════════════════════
+function buildAdminProg(){
   const filter = document.getElementById('phase-filter').value;
-  const rows = localProgramme.filter(s => !filter || s.phaseClass === filter);
-  const orig = programme;
+  const rows = L.programme.filter(w=>!filter||(phaseMap[w.p]&&phaseMap[w.p].c===filter));
+  const MOIS = ['Janv','Févr','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'];
+  const S1 = new Date(2026,7,31);
 
-  // Pré-calculer toutes les charges pour le delta inter-semaines
-  const charges = {};
-  localProgramme.forEach(s => {
-    const mar = adminEstimCharge(s.mardi && s.mardi.titre);
-    const jeu = adminEstimCharge(s.jeudi && s.jeudi.titre);
-    charges[s.sem] = {
-      mar, jeu,
-      total: mar.ua + jeu.ua
-    };
-  });
+  // Populate phase filter
+  const sel = document.getElementById('phase-filter');
+  if(sel.options.length <= 1){
+    Object.entries(phaseMap).forEach(([k,v])=>{
+      if(!Array.from(sel.options).find(o=>o.value===v.c)){
+        sel.add(new Option(v.l, v.c));
+      }
+    });
+  }
 
-  document.getElementById('prog-admin-body').innerHTML = rows.map(s => {
-    const o = orig.find(x=>x.sem===s.sem) || s;
-    const mardiChanged = JSON.stringify(s.mardi) !== JSON.stringify(o.mardi);
-    const jeudiChanged = JSON.stringify(s.jeudi) !== JSON.stringify(o.jeudi);
-    const wkndChanged = JSON.stringify(s.we_route)!==JSON.stringify(o.we_route) || JSON.stringify(s.we_trail)!==JSON.stringify(o.we_trail);
-    const anyChanged = mardiChanged||jeudiChanged||wkndChanged;
-    const bg = phaseColors[s.phaseClass]||'rgba(27,58,107,.08)';
-    const col = phaseTextColors[s.phaseClass]||'#1b3a6b';
-
-    const ch = charges[s.sem];
-    const chPrev = charges[s.sem - 1];
-
-    // Delta %
-    let deltaHtml = '<span style="color:var(--muted);font-size:.7rem">—</span>';
-    if(chPrev && chPrev.total > 0){
-      const delta = Math.round((ch.total - chPrev.total) / chPrev.total * 100);
-      let color = 'var(--muted)';
-      let arrow = '';
-      if(delta > 5)       { color = '#C0392B'; arrow = '↑'; }
-      else if(delta < -5) { color = '#2E8B3E'; arrow = '↓'; }
-      else                { color = '#3A7BBF'; arrow = '='; }
-      deltaHtml = `<span style="color:${color};font-family:'Lora',serif;font-size:.72rem;font-weight:800">${arrow} ${delta > 0 ? '+' : ''}${delta}%</span>`;
+  document.getElementById('admin-prog-body').innerHTML = rows.map(w=>{
+    const mD = L.seances[w.m], jD = L.seances[w.j];
+    const mRpe = mD?mD.rn:0, jRpe = jD?jD.rn:0;
+    const mDur = mD?mD.d:0, jDur = jD?jD.d:0;
+    const uaCalc = mRpe*mDur + jRpe*jDur;
+    const orig = programme.find(x=>x.s===w.s);
+    const changed = orig && JSON.stringify(w)!==JSON.stringify(orig);
+    const prev = L.programme.find(x=>x.s===w.s-1);
+    let delta = '';
+    if(prev && prev.ua>0){
+      const d = Math.round((w.ua-prev.ua)/prev.ua*100);
+      const col = d>5?'var(--rouge)':d<-5?'var(--mousse)':'var(--muted)';
+      delta = `<span style="color:${col};font-weight:700">${d>0?'+':''}${d}%</span>`;
     }
-
-    const totalColor = uaWeekColor(ch.total);
-
-    // Indicateurs simplifiés : couleur sur le chiffre uniquement (pas de fond)
-    const rpeBadge = (v) => `<span style="color:${rpeColor(v)};font-family:'Lora',serif;font-weight:700;font-size:.95rem">${v}</span>`;
-    const uaBadge  = (v) => `<span style="font-family:'Lora',serif;font-weight:400;font-size:.72rem;color:var(--muted)">${v}</span>`;
-
-    return `<tr class="${s.decharge?'decharge':''}">
-      <td>
-        <div class="sem-badge">S${s.sem}</div>
-        <div style="font-family:'Lora',serif;font-size:.6rem;color:var(--muted)">${s.mois}</div>
-      </td>
-      <td>
-        <span class="phase-mini" style="background:${bg};color:${col}">${s.phase}</span>
-        ${s.decharge?'<div style="font-family:\'Lora\',serif;font-size:.62rem;color:var(--mousse);margin-top:.2rem">Décharge</div>':''}
-      </td>
-      <td>
-        <div class="seance-cell">${s.mardi.titre}${mardiChanged?'<span class="modified-flag">✏️</span>':''}</div>
-        <div class="seance-terrain">${terrainLabel[s.mardi.terrain]?terrainLabel[s.mardi.terrain].icon+' '+terrainLabel[s.mardi.terrain].label:s.mardi.terrain}</div>
-      </td>
-      <td style="text-align:center;white-space:nowrap">
-        <div style="display:flex;flex-direction:column;gap:.1rem;align-items:center;line-height:1.2">
-          ${rpeBadge(ch.mar.rpe)}
-          ${uaBadge(ch.mar.ua)}
-        </div>
-      </td>
-      <td>
-        <div class="seance-cell">${s.jeudi.titre}${jeudiChanged?'<span class="modified-flag">✏️</span>':''}</div>
-        <div class="seance-terrain">${terrainLabel[s.jeudi.terrain]?terrainLabel[s.jeudi.terrain].icon+' '+terrainLabel[s.jeudi.terrain].label:s.jeudi.terrain}</div>
-      </td>
-      <td style="text-align:center;white-space:nowrap">
-        <div style="display:flex;flex-direction:column;gap:.1rem;align-items:center;line-height:1.2">
-          ${rpeBadge(ch.jeu.rpe)}
-          ${uaBadge(ch.jeu.ua)}
-        </div>
-      </td>
-      <td style="text-align:center">
-        <span style="font-family:'Lora',serif;font-weight:700;font-size:1rem;color:${totalColor}">${ch.total}</span>
-      </td>
-      <td style="text-align:center">${deltaHtml}</td>
-      <td>
-        <button class="btn-edit-row" onclick="openPanel(${s.sem})">✏️ Modifier</button>
-        ${anyChanged?`<button class="btn-edit-row" style="margin-top:.3rem;color:var(--rouge);border-color:rgba(192,64,64,.3)" onclick="resetWeekById(${s.sem})">↺</button>`:''}
-      </td>
+    const d = new Date(+S1+(w.s-1)*7*864e5);
+    return `<tr class="${w.d?'dec':''}">
+      <td><strong style="font-size:.72rem;color:var(--navy)">S${w.s}</strong><div style="font-size:.58rem;color:var(--muted)">${MOIS[d.getMonth()]}</div></td>
+      <td><span style="font-size:.68rem;font-weight:600;color:var(--navy)">${w.p}</span>${w.d?'<div style="font-size:.58rem;color:var(--mousse)">Décharge</div>':''}</td>
+      <td style="font-size:.75rem">${mD?mD.l:'—'}${changed?'<span class="modified-flag">✏️</span>':''}</td>
+      <td style="text-align:center;font-size:.82rem;font-weight:700;color:${mRpe>=8?'var(--rouge)':mRpe>=6?'var(--navy)':'var(--mousse)'}">${mRpe||'—'}</td>
+      <td style="font-size:.75rem">${jD?jD.l:'—'}</td>
+      <td style="text-align:center;font-size:.82rem;font-weight:700;color:${jRpe>=8?'var(--rouge)':jRpe>=6?'var(--navy)':'var(--mousse)'}">${jRpe||'—'}</td>
+      <td style="text-align:center;font-weight:700;color:var(--navy)">${w.ua}</td>
+      <td style="text-align:center;font-size:.72rem">${delta||'—'}</td>
+      <td><button class="btn-sm" onclick="openWeekEdit(${w.s})">✏️</button>${changed?`<button class="btn-sm danger" style="margin-left:.2rem" onclick="resetWeek(${w.s})">↺</button>`:''}</td>
     </tr>`;
   }).join('');
 }
 
-// ════════════════════════════════════════════════
-// EDIT PANEL
-// ════════════════════════════════════════════════
-let editingSem = null;
+function openWeekEdit(sn){
+  editMode='week'; editKey=sn;
+  const w = L.programme.find(x=>x.s===sn);
+  if(!w) return;
+  document.getElementById('panel-title').textContent = `Semaine ${sn} — ${w.p}`;
+  document.getElementById('btn-reset').style.display = JSON.stringify(w)!==JSON.stringify(programme.find(x=>x.s===sn))?'block':'none';
 
-function seancePicker(seanceId, jourid){
-  const cats = [
-    {label:'\u26F0\uFE0F C\u00F4tes', fn: k => k.startsWith('cote') || k==='circuit_douves' || k==='escaliers' || k.includes('vvf')},
-    {label:'\uD83C\uDF00 Fartlek', fn: k => k.startsWith('fartlek') || k.includes('fartlek')},
-    {label:'\uD83D\uDCD0 Pyramides', fn: k => k.startsWith('pyramid')},
-    {label:'\u26A1 Seuil', fn: k => ['3x15_r5','3x7_r130','3x8_r1','8x3_r130','5x1000_halage','4x2000_r2'].includes(k) || /^\d+min$/.test(k)},
-    {label:'\uD83D\uDD25 VMA', fn: k => k.includes('3030') || k.includes('30_30') || k.includes('2020') || k==='8x50s_vma' || k.includes('decrements') || k.includes('interval')},
-    {label:'\uD83D\uDCA8 Vitesse', fn: k => k.startsWith('vitesse') || k.startsWith('piste')},
-    {label:'\uD83C\uDFC3 Sortie', fn: k => ['sortie_longue','sortie_recup','allure_marathon','allure_semi','ppg_seance'].includes(k)},
-    {label:'\uD83D\uDCE6 Autres', fn: k => true},
-  ];
-  const keys = Object.keys(localSeances);
-  const used = new Set();
-  let html = '<option value="">\u2014 Choisir depuis la biblioth\u00E8que \u2014</option>';
-  for(const cat of cats){
-    const grp = keys.filter(k => !used.has(k) && cat.fn(k));
-    if(!grp.length) continue;
-    html += '<optgroup label="'+cat.label+'">';
-    grp.forEach(k => {
-      used.add(k);
-      const lbl = (localSeances[k].label || k).substring(0,60);
-      html += '<option value="'+k+'">'+lbl+'</option>';
-    });
-    html += '</optgroup>';
-  }
-  return '<select class="field-select" id="'+seanceId+'" onchange="applySeancePicker(\''+jourid+'\',\''+seanceId+'\')">'+html+'</select>';
-}
-
-function applySeancePicker(jourid, seanceId){
-  const key = document.getElementById(seanceId).value;
-  if(!key) return;
-  const sd = localSeances[key];
-  if(!sd) return;
-  document.getElementById('p-'+jourid+'-titre').value = sd.label || key;
-  showNivPreview(jourid, key);
-}
-
-function showNivPreview(jourid, key){
-  const el = document.getElementById('niv-preview-'+jourid);
-  if(!el || !localSeances[key]) return;
-  const sd = localSeances[key];
-  const tFields = ['route','piste','trail'];
-  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
-  const tCols = ['#2351a0','#3d8b5c','#c04040'];
-  el.innerHTML = '<div style="background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:8px;padding:.6rem .9rem;margin-bottom:.6rem">'
-    +'<div style="display:flex;gap:.8rem;align-items:center;margin-bottom:.4rem">'
-    +'<span style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue)">Variantes terrain</span>'
-    +'<span style="font-size:.7rem;color:#8b6508;background:rgba(184,134,11,.15);padding:.15rem .4rem;border-radius:4px;font-weight:700">RPE '+sd.rpe+'</span>'
-    +'<span style="font-size:.68rem;color:var(--muted)">'+sd.cat+'</span>'
-    +'</div>'
-    +[0,1,2].map(i => {
-      const v = sd[tFields[i]];
-      return '<div style="display:flex;gap:.5rem;font-size:.74rem;margin-bottom:.2rem;align-items:baseline">'
-        +'<span style="font-family:\'Lora\',serif;font-size:.63rem;font-weight:700;color:'+tCols[i]+';min-width:70px">'+tLabels[i]+'</span>'
-        +'<span style="color:'+(v && v!=='—'?'var(--text)':'var(--muted)')+'">'+(v||'—')+'</span>'
-        +'</div>';
-    }).join('')
-    +(sd.volume?'<div style="font-size:.72rem;color:#8b6508;margin-top:.3rem">📊 '+sd.volume+'</div>':'')
-    +(sd.notes?'<div style="font-size:.7rem;color:var(--muted);font-style:italic;margin-top:.2rem">💡 '+sd.notes+'</div>':'')
-    +'</div>';
-}
-
-function openPanel(sem){
-  editingSem = sem;
-  const s = localProgramme.find(x=>x.sem===sem);
-  const orig = programme.find(x=>x.sem===sem) || s;
-  const anyChanged = JSON.stringify(s)!==JSON.stringify(orig);
-
-  document.getElementById('panel-title').textContent = 'Semaine '+sem+' \u2014 '+s.mois+' \u00B7 '+s.phase;
-  document.getElementById('btn-reset-week').style.display = anyChanged ? 'block' : 'none';
-
-  const terrainOpts = (sel) => Object.entries(terrainLabel).map(([k,v])=>
-    '<option value="'+k+'" '+(sel===k?'selected':'')+'>'+v.icon+' '+v.label+'</option>'
-  ).join('');
+  const picker = (id,cur)=>{
+    let html = '<option value="—">— Repos —</option>';
+    const cats = [{l:'⛰️ Côtes',fn:k=>k.startsWith('cote')||k==='circuit_douves'||k==='escaliers'||k.includes('vvf')},
+      {l:'🌀 Fartlek',fn:k=>k.includes('fartlek')},{l:'📐 Pyramides',fn:k=>k.startsWith('pyramid')},
+      {l:'⚡ Seuil',fn:k=>['3x15_r5','3x7_r130','3x8_r1','8x3_r130','5x1000_halage','4x2000_r2'].includes(k)||/^\d+min$/.test(k)},
+      {l:'🔥 VMA',fn:k=>k.includes('3030')||k.includes('30_30')||k.includes('2020')||k==='8x50s_vma'},
+      {l:'💨 Vitesse',fn:k=>k.startsWith('vitesse')||k.startsWith('piste')},
+      {l:'🏃 Sortie',fn:k=>['sortie_longue','sortie_recup','allure_marathon','allure_semi','ppg_seance'].includes(k)},
+      {l:'📦 Autres',fn:()=>true}];
+    const used = new Set();
+    for(const cat of cats){
+      const grp = Object.keys(L.seances).filter(k=>!used.has(k)&&cat.fn(k));
+      if(!grp.length) continue;
+      html += `<optgroup label="${cat.l}">`;
+      grp.forEach(k=>{ used.add(k); html += `<option value="${k}" ${k===cur?'selected':''}>${(L.seances[k].l||k).substring(0,55)}</option>`; });
+      html += '</optgroup>';
+    }
+    return `<select class="field-select" id="${id}">${html}</select>`;
+  };
 
   document.getElementById('panel-body').innerHTML =
-    '<span class="block-sep">\uD83D\uDCC5 MARDI</span>'
-    +'<div class="field-group">'
-    +'<label class="field-label">S\u00E9ance depuis la biblioth\u00E8que <span style="font-weight:400;color:var(--muted)">(remplit le titre et la description)</span></label>'
-    +seancePicker('p-mardi-bib','mardi')
-    +'</div>'
-    +'<div id="niv-preview-mardi"></div>'
-    +'<div class="field-group"><label class="field-label">Titre <span style="font-weight:400;color:var(--muted)">(modifiable)</span></label>'
-    +'<input class="field-input" id="p-mardi-titre" value="'+s.mardi.titre.replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">Terrain</label>'
-    +'<select class="field-select" id="p-mardi-terrain">'+terrainOpts(s.mardi.terrain)+'</select></div>'
-    +'<div class="field-group"><label class="field-label">Description <span style="font-weight:400;color:var(--muted)">(modifiable)</span></label>'
-    +'<textarea class="field-textarea" id="p-mardi-detail" rows="4">'+(s.mardi.detail||((localSeances[s.mardi.key]||{}).notes||''))+'</textarea></div>'
-    +'<span class="block-sep" style="background:rgba(74,138,90,.06);border-color:rgba(74,138,90,.15);color:var(--mousse)">\uD83D\uDCC5 JEUDI</span>'
-    +'<div class="field-group">'
-    +'<label class="field-label">S\u00E9ance depuis la biblioth\u00E8que <span style="font-weight:400;color:var(--muted)">(remplit le titre et la description)</span></label>'
-    +seancePicker('p-jeudi-bib','jeudi')
-    +'</div>'
-    +'<div id="niv-preview-jeudi"></div>'
-    +'<div class="field-group"><label class="field-label">Titre <span style="font-weight:400;color:var(--muted)">(modifiable)</span></label>'
-    +'<input class="field-input" id="p-jeudi-titre" value="'+s.jeudi.titre.replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">Terrain</label>'
-    +'<select class="field-select" id="p-jeudi-terrain">'+terrainOpts(s.jeudi.terrain)+'</select></div>'
-    +'<div class="field-group"><label class="field-label">Description <span style="font-weight:400;color:var(--muted)">(modifiable)</span></label>'
-    +'<textarea class="field-textarea" id="p-jeudi-detail" rows="4">'+(s.jeudi.detail||((localSeances[s.jeudi.key]||{}).notes||''))+'</textarea></div>'
-    +'<span class="block-sep" style="background:rgba(27,58,107,.04)">\uD83C\uDFC3 SORTIE WEEKEND</span>'
-    +'<div class="field-group"><label class="field-label">🛣️ Route</label>'
-    +'<input class="field-input" id="p-we-route" value="'+((s.we_route&&s.we_route.titre)||'—').replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">🌲 Trail</label>'
-    +'<input class="field-input" id="p-we-trail" value="'+((s.we_trail&&s.we_trail.titre)||'—').replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label" style="display:flex;align-items:center;gap:.5rem;cursor:pointer">'
-    +'<input type="checkbox" id="p-decharge" '+(s.decharge?'checked':'')+'>Semaine de d\u00E9charge</label></div>';
+    '<span class="block-sep">📅 MARDI</span>'
+    +`<div class="field-group"><label class="field-label">Séance</label>${picker('pw-m',w.m)}</div>`
+    +'<span class="block-sep" style="color:var(--mousse)">📅 JEUDI</span>'
+    +`<div class="field-group"><label class="field-label">Séance</label>${picker('pw-j',w.j)}</div>`
+    +'<span class="block-sep">🏃 SORTIE WEEKEND</span>'
+    +`<div class="field-group"><label class="field-label">🛣️ Route</label>${picker('pw-wr',w.wr)}</div>`
+    +`<div class="field-group"><label class="field-label">🌲 Trail</label>${picker('pw-wt',w.wt)}</div>`
+    +`<div class="field-group"><label class="field-label">UA semaine (manuel)</label><input type="number" class="field-input" id="pw-ua" value="${w.ua}"></div>`
+    +`<div class="field-group"><label class="field-label" style="display:flex;align-items:center;gap:.5rem;cursor:pointer"><input type="checkbox" id="pw-d" ${w.d?'checked':''}> Semaine de décharge</label></div>`
+    +`<div class="field-group"><label class="field-label">Notes coach</label><textarea class="field-textarea" id="pw-n" rows="2">${w.n||''}</textarea></div>`;
 
   document.getElementById('edit-panel').classList.add('open');
   document.getElementById('panel-overlay').style.display='block';
 }
 
-function closePanel(){
-  document.getElementById('edit-panel').classList.remove('open');
-  document.getElementById('panel-overlay').style.display='none';
-  editingSem = null;
-  editingSeanceKey = null;
-}
-
-function saveWeek(){
-  if(!editingSem) return;
-  const idx = localProgramme.findIndex(x=>x.sem===editingSem);
-  if(idx===-1) return;
-  localProgramme[idx].mardi.titre   = document.getElementById('p-mardi-titre').value.trim();
-  localProgramme[idx].mardi.terrain = document.getElementById('p-mardi-terrain').value;
-  if(localProgramme[idx].mardi.detail !== undefined) localProgramme[idx].mardi.detail = document.getElementById('p-mardi-detail').value.trim();
-  localProgramme[idx].jeudi.titre   = document.getElementById('p-jeudi-titre').value.trim();
-  localProgramme[idx].jeudi.terrain = document.getElementById('p-jeudi-terrain').value;
-  if(localProgramme[idx].jeudi.detail !== undefined) localProgramme[idx].jeudi.detail = document.getElementById('p-jeudi-detail').value.trim();
-  const weRouteVal = document.getElementById('p-we-route').value.trim();
-  const weTrailVal = document.getElementById('p-we-trail').value.trim();
-  localProgramme[idx].we_route = {key: weRouteVal, titre: weRouteVal};
-  localProgramme[idx].we_trail = {key: weTrailVal, titre: weTrailVal};
-  localProgramme[idx].decharge = document.getElementById('p-decharge').checked;
-  saveLocal();
-  buildProgTable();
-  closePanel();
-  toast('Semaine S'+editingSem+' mise à jour — pensez à Publier ✓','success');
-}
-
-function resetWeek(){
-  if(!editingSem) return;
-  resetWeekById(editingSem);
-  closePanel();
-}
-
-function resetWeekById(sem){
-  const orig = programme.find(x=>x.sem===sem);
+function resetWeek(sn){
+  const orig = programme.find(x=>x.s===sn);
   if(!orig) return;
-  const idx = localProgramme.findIndex(x=>x.sem===sem);
-  localProgramme[idx] = JSON.parse(JSON.stringify(orig));
-  saveLocal();
-  buildProgTable();
-  toast('Semaine S'+sem+' remise à l\'original','success');
+  const idx = L.programme.findIndex(x=>x.s===sn);
+  L.programme[idx] = JSON.parse(JSON.stringify(orig));
+  saveLocal(); buildAdminProg(); toast('S'+sn+' réinitialisée','success');
 }
 
-// ════════════════════════════════════════════════
-// CALENDRIER — admin
-// ════════════════════════════════════════════════
-const typeInfo = {
-  trail:{label:'🌿 Trail',cls:'type-trail'},
-  route:{label:'🏃 Route',cls:'type-route'},
-  rando:{label:'🥾 Rando',cls:'type-rando'},
-  montagne:{label:'🏔 Montagne',cls:'type-montagne'},
-  social:{label:'🎉 Section',cls:'type-social'},
-};
-
-function buildCalList(){
-  const today = new Date(); today.setHours(0,0,0,0);
-  const sorted = [...localCalFixed].sort((a,b)=>new Date(a.date)-new Date(b.date));
-
-  document.getElementById('cal-admin-list').innerHTML = sorted.map(e => {
-    const d = new Date(e.date+'T12:00:00');
-    const isPast = d < today;
-    const ti = typeInfo[e.type] || {label:e.type,cls:'type-social'};
-    const orig = calFixed.find(x=>x.id===e.id);
-    const isNew = !orig;
-    const isModified = orig && JSON.stringify(e)!==JSON.stringify(orig);
-    return `<div class="cal-admin-item" style="${isPast?'opacity:.5':''}">
-      <div>
-        <div class="cal-admin-date">${d.getDate()}</div>
-        <div class="cal-admin-month">${d.toLocaleDateString('fr-FR',{month:'short'}).replace('.','')}</div>
-      </div>
-      <div class="cal-admin-info">
-        <div class="cal-admin-titre">
-          ${e.titre}
-          ${isNew?'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--mousse);margin-left:.3rem">NEW</span>':''}
-          ${isModified?'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--ab-light);margin-left:.3rem">✏️</span>':''}
-        </div>
-        <div class="cal-admin-desc">${e.desc}</div>
-      </div>
-      <span class="cal-type-badge ${ti.cls}">${ti.label}</span>
-      <button class="btn-edit-cal" onclick="editCalEvent('${e.id}')">✏️</button>
-      <button class="btn-del-cal" onclick="deleteCalEvent('${e.id}')">✕</button>
-    </div>`;
-  }).join('');
+// ══════════════════════════════════════════════════
+// SÉANCES BIBLIOTHÈQUE
+// ══════════════════════════════════════════════════
+function filterSeances(){
+  const q = (document.getElementById('seance-search')?.value||'').toLowerCase();
+  document.querySelectorAll('.seance-card').forEach(c=>{
+    const k = c.dataset.key||'', l = (c.dataset.label||'').toLowerCase();
+    c.style.display = (!q || k.includes(q) || l.includes(q)) ? '' : 'none';
+  });
 }
 
-function addCalEvent(){
-  const date  = document.getElementById('new-cal-date').value;
-  const type  = document.getElementById('new-cal-type').value;
-  const titre = document.getElementById('new-cal-titre').value.trim();
-  const desc  = document.getElementById('new-cal-desc').value.trim();
-  if(!date||!titre){ toast('Date et titre obligatoires','error'); return; }
-  const id = 'u'+Date.now();
-  localCalFixed.push({id, date, type, titre, desc});
-  document.getElementById('new-cal-date').value='';
-  document.getElementById('new-cal-titre').value='';
-  document.getElementById('new-cal-desc').value='';
-  saveLocal();
-  buildCalList();
-  toast('Événement ajouté','success');
-}
-
-function deleteCalEvent(id){
-  if(!confirm('Supprimer cet événement ?')) return;
-  localCalFixed = localCalFixed.filter(e=>e.id!==id);
-  saveLocal();
-  buildCalList();
-  toast('Événement supprimé','success');
-}
-
-function editCalEvent(id){
-  const e = localCalFixed.find(x=>x.id===id);
-  if(!e) return;
-  document.getElementById('new-cal-date').value = e.date;
-  document.getElementById('new-cal-type').value = e.type;
-  document.getElementById('new-cal-titre').value = e.titre;
-  document.getElementById('new-cal-desc').value = e.desc;
-  // Remove old and user will re-add
-  localCalFixed = localCalFixed.filter(x=>x.id!==id);
-  saveLocal();
-  buildCalList();
-  toast('Événement chargé dans le formulaire — modifiez et cliquez Ajouter','success');
-}
-
-// ════════════════════════════════════════════════
-// INFOS CLUB — gestion des messages
-// ════════════════════════════════════════════════
-function renderInfosList(){
-  const el = document.getElementById('infos-club-list');
+function buildSeancesList(){
+  const el = document.getElementById('seances-list');
   if(!el) return;
-  if(!localInfosClub || !localInfosClub.length){
-    el.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--muted);font-family:'Lora',serif;font-size:.82rem;background:#fff;border:1px dashed var(--border);border-radius:10px">Aucun message. Cliquez sur "+ Nouveau message" pour en ajouter.</div>`;
-    return;
-  }
-  const typeLabels = {
-    info: '🔵 Information',
-    event: '🟠 Événement',
-    urgent: '🔴 Urgent'
-  };
-  el.innerHTML = localInfosClub.map((m, i) => `
-    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;border-left:4px solid ${m.type === 'urgent' ? 'var(--rouge)' : m.type === 'event' ? 'var(--ocre)' : 'var(--ab-sky)'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem">
-        <div style="flex:1;min-width:200px">
-          <label class="field-label">Titre</label>
-          <input type="text" class="field-input" value="${escapeAttr(m.titre||'')}" oninput="updateInfoField(${i},'titre',this.value)">
+  const tL = ['🛣️ Route','🏟️ Piste','🌲 Trail'], tF = ['r','p','t'], tC = ['var(--blue)','var(--mousse)','var(--rouge)'];
+  el.innerHTML = Object.entries(L.seances).map(([k,s])=>`
+    <div class="seance-card" data-key="${k}" data-label="${(s.l||'').replace(/"/g,"'")}">
+      <div class="seance-card-hdr">
+        <div>
+          <span style="font-size:.78rem;font-weight:800;color:var(--navy)">${s.l||k}</span>
+          <span style="font-size:.55rem;color:var(--muted);margin-left:.4rem;background:rgba(27,58,107,.06);padding:.1rem .35rem;border-radius:3px">${k}</span>
+          <span style="font-size:.62rem;color:var(--gold);background:rgba(184,134,11,.12);padding:.1rem .3rem;border-radius:3px;margin-left:.3rem;font-weight:700">RPE ${s.rpe||'—'}</span>
+          <span style="font-size:.58rem;color:var(--muted);margin-left:.3rem">${s.c||''}</span>
         </div>
-        <div style="width:140px">
-          <label class="field-label">Type</label>
-          <select class="field-select" onchange="updateInfoField(${i},'type',this.value)">
-            <option value="info"    ${m.type==='info'?'selected':''}>🔵 Info</option>
-            <option value="event"   ${m.type==='event'?'selected':''}>🟠 Événement</option>
-            <option value="urgent"  ${m.type==='urgent'?'selected':''}>🔴 Urgent</option>
-          </select>
-        </div>
-        <div style="width:150px">
-          <label class="field-label">Date de fin (optionnelle)</label>
-          <input type="date" class="field-input" value="${m.dateFin||''}" oninput="updateInfoField(${i},'dateFin',this.value)">
-        </div>
+        <button class="btn-sm" onclick="openSeanceEdit('${k}')">✏️</button>
       </div>
-      <label class="field-label">Message</label>
-      <textarea class="field-textarea" rows="3" oninput="updateInfoField(${i},'texte',this.value)">${m.texte||''}</textarea>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6rem">
-        <span style="font-family:'Lora',serif;font-size:.65rem;color:var(--muted)">
-          ID : ${m.id} ${m.dateFin ? '· Expire le '+new Date(m.dateFin+'T12:00:00').toLocaleDateString('fr-FR') : '· Sans date de fin'}
-        </span>
-        <button onclick="deleteInfoClub(${i})" style="background:none;border:1px solid var(--rouge);color:var(--rouge);font-family:'Lora',serif;font-size:.7rem;font-weight:700;padding:.3rem .8rem;border-radius:6px;cursor:pointer">🗑 Supprimer</button>
+      <div class="seance-card-body">
+        ${[0,1,2].map(i=>`<div style="display:flex;gap:.4rem;font-size:.74rem;margin-bottom:.15rem"><span style="font-weight:700;color:${tC[i]};min-width:70px">${tL[i]}</span><span style="color:${s[tF[i]]&&s[tF[i]]!=='—'?'var(--text)':'var(--muted)'}">${s[tF[i]]||'—'}</span></div>`).join('')}
+        ${s.v?`<div style="font-size:.68rem;color:var(--gold);margin-top:.2rem">📊 ${s.v}</div>`:''}
+        ${s.n?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.15rem">💡 ${s.n}</div>`:''}
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function escapeAttr(s){
-  return (s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function updateInfoField(idx, field, value){
-  if(!localInfosClub[idx]) return;
-  localInfosClub[idx][field] = value;
-  saveLocal();
-}
-
-function addInfoClub(){
-  const id = 'msg' + Date.now();
-  localInfosClub.push({
-    id,
-    titre: '📢 Nouveau message',
-    texte: 'Contenu du message...',
-    dateFin: '',
-    type: 'info'
-  });
-  saveLocal();
-  renderInfosList();
-}
-
-function deleteInfoClub(idx){
-  if(!confirm('Supprimer ce message ?')) return;
-  localInfosClub.splice(idx, 1);
-  saveLocal();
-  renderInfosList();
-}
-
-// ════════════════════════════════════════════════
-// CALCULATEUR — textes + seuils
-// ════════════════════════════════════════════════
-function renderCalcAdmin(){
-  // Textes
-  const fields = ['intro','rpe_titre','rpe_texte','ua_titre','ua_texte','bloc_titre','bloc_texte'];
-  const mapping = {
-    intro:      'calc-txt-intro',
-    rpe_titre:  'calc-txt-rpe-titre',
-    rpe_texte:  'calc-txt-rpe',
-    ua_titre:   'calc-txt-ua-titre',
-    ua_texte:   'calc-txt-ua',
-    bloc_titre: 'calc-txt-bloc-titre',
-    bloc_texte: 'calc-txt-bloc'
-  };
-  fields.forEach(f => {
-    const el = document.getElementById(mapping[f]);
-    if(el){
-      el.value = (localCalcTextes && localCalcTextes[f]) || '';
-      el.oninput = () => {
-        if(!localCalcTextes) localCalcTextes = {};
-        localCalcTextes[f] = el.value;
-        saveLocal();
-      };
-    }
-  });
-
-  // (difficulteNiveaux supprimé — système ski retiré)
-  // Seuils charge hebdo
-  renderChargeHebdoList();
-}
-
-function renderDifficulteList(){
-  const el = document.getElementById('difficulte-list');
-  if(!el || !localDifficulte) return;
-  el.innerHTML = localDifficulte.map((d, i) => `
-    <div style="display:flex;gap:.8rem;align-items:center;background:#f8fafd;border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;flex-wrap:wrap">
-      <div style="width:32px;height:32px;border-radius:50%;background:${d.couleur};flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--border)"></div>
-      <div style="font-family:'Lora',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);min-width:160px">${d.emoji||'•'} ${d.label}</div>
-      <div style="display:flex;align-items:center;gap:.4rem">
-        <span style="font-family:'Lora',serif;font-size:.65rem;color:var(--muted)">UA max</span>
-        <input type="number" class="field-input" value="${d.ua_max}" style="width:90px;padding:.3rem .5rem" oninput="updateDifficulte(${i},'ua_max',parseInt(this.value)||0)" ${i === localDifficulte.length-1 ? 'disabled title="Niveau max — pas de plafond"' : ''}>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <input type="text" class="field-input" value="${escapeAttr(d.description||'')}" placeholder="Description courte" oninput="updateDifficulte(${i},'description',this.value)" style="width:100%">
-      </div>
-    </div>
-  `).join('');
-}
-
-function updateDifficulte(idx, field, value){
-  if(!localDifficulte[idx]) return;
-  localDifficulte[idx][field] = value;
-  saveLocal();
-}
-
-function renderChargeHebdoList(){
-  const el = document.getElementById('charge-hebdo-list');
-  if(!el || !localChargeSeuils) return;
-  el.innerHTML = localChargeSeuils.map((s, i) => `
-    <div style="display:flex;gap:.8rem;align-items:center;background:#f8fafd;border:1px solid var(--border);border-radius:8px;padding:.7rem .9rem;flex-wrap:wrap">
-      <div style="width:24px;height:24px;border-radius:50%;background:${s.couleur};flex-shrink:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--border)"></div>
-      <div style="font-family:'Lora',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);min-width:130px">
-        <input type="text" class="field-input" value="${escapeAttr(s.label)}" style="padding:.25rem .5rem;width:100%" oninput="updateChargeSeuil(${i},'label',this.value)">
-      </div>
-      <div style="display:flex;align-items:center;gap:.4rem">
-        <span style="font-family:'Lora',serif;font-size:.65rem;color:var(--muted)">UA max</span>
-        <input type="number" class="field-input" value="${s.max}" style="width:90px;padding:.3rem .5rem" oninput="updateChargeSeuil(${i},'max',parseInt(this.value)||0)" ${i === localChargeSeuils.length-1 ? 'disabled title="Niveau max"' : ''}>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <input type="text" class="field-input" value="${escapeAttr(s.description||'')}" placeholder="Description" oninput="updateChargeSeuil(${i},'description',this.value)" style="width:100%">
-      </div>
-    </div>
-  `).join('');
-}
-
-function updateChargeSeuil(idx, field, value){
-  if(!localChargeSeuils[idx]) return;
-  localChargeSeuils[idx][field] = value;
-  saveLocal();
-}
-
-// ══════════════════════// SEANCES - bibliotheque
-let editingSeanceKey = null;
-
-function filterSeances(val){
-  const search = (typeof val === 'string' ? val : (document.getElementById('seance-search')||{}).value||'').toLowerCase();
-  const cat = (document.getElementById('seance-cat')||{}).value||'';
-  document.querySelectorAll('.seance-lib-card').forEach(card => {
-    const key = card.dataset.key||'';
-    const lbl = (card.dataset.label||'').toLowerCase();
-    const okSearch = !search || key.includes(search) || lbl.includes(search);
-    const okCat = !cat || key.includes(cat);
-    card.style.display = (okSearch && okCat) ? '' : 'none';
-  });
-}
-
-function buildSeancesGrid(){
-  if(!localSeances) return;
-  const list = document.getElementById('seances-list');
-  if(!list) return;
-  const tFields = ['route','piste','trail'];
-  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
-  const tCols = ['#2351a0','#3d8b5c','#c04040'];
-
-  list.innerHTML = Object.entries(localSeances).map(([key, sd]) => {
-    const label = sd.label || key;
-    const notes = sd.notes || '';
-    return '<div class="seance-lib-card" data-key="'+key+'" data-label="'+label.replace(/"/g,"'")+'" style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:.4rem">'
-      +'<div style="background:var(--surface2);padding:.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap">'
-      +'<div><span style="font-family:\'Lora\',serif;font-size:.78rem;font-weight:800;color:var(--ab-blue)">'+label+'</span>'
-      +'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--muted);margin-left:.5rem;background:rgba(27,58,107,.07);padding:.1rem .4rem;border-radius:3px">'+key+'</span>'
-      +'<span style="font-size:.65rem;color:#8b6508;background:rgba(184,134,11,.15);padding:.1rem .35rem;border-radius:3px;margin-left:.4rem;font-weight:700">RPE '+(sd.rpe||'—')+'</span>'
-      +'<span style="font-size:.6rem;color:var(--muted);margin-left:.4rem">'+(sd.cat||'')+'</span>'
-      +'</div>'
-      +'<button class="btn-edit-row" onclick="openSeanceEdit(\''+key+'\')">✏️ Modifier</button>'
-      +'</div>'
-      +'<div style="padding:.65rem 1rem">'
-      +[0,1,2].map(i => {
-        const v = sd[tFields[i]];
-        return '<div style="display:flex;gap:.5rem;font-size:.76rem;margin-bottom:.2rem;align-items:baseline">'
-          +'<span style="font-family:\'Lora\',serif;font-size:.65rem;font-weight:700;color:'+tCols[i]+';min-width:75px">'+tLabels[i]+'</span>'
-          +'<span style="color:'+(v&&v!=='—'?'var(--text)':'var(--muted)')+'">'+(v||'—')+'</span>'
-          +'</div>';
-      }).join('')
-      +(sd.volume?'<div style="margin-top:.3rem;font-size:.7rem;color:#8b6508">📊 '+sd.volume+'</div>':'')
-      +(notes?'<div style="margin-top:.3rem;padding:.3rem .6rem;background:rgba(212,137,58,.06);border-left:3px solid var(--ocre);font-size:.72rem;color:var(--muted)">💡 '+notes+'</div>':'')
-      +'</div></div>';
-  }).join('');
-}
-
-function openSeanceEdit(key){
-  editingSeanceKey = key;
-  const sd = localSeances[key];
-  if(!sd) return;
-  const label = sd.label || key;
-  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
-  const tFields = ['route','piste','trail'];
-  const tCols = ['#2351a0','#3d8b5c','#c04040'];
-  const tSeps = ['rgba(27,58,107,.05)','rgba(74,138,90,.06)','rgba(192,64,64,.05)'];
-  const tSepB = ['rgba(27,58,107,.12)','rgba(74,138,90,.2)','rgba(192,64,64,.15)'];
-  document.getElementById('panel-title').textContent = label.substring(0,45);
-  document.getElementById('btn-reset-week').style.display = 'none';
+function openSeanceEdit(k){
+  editMode='seance'; editKey=k;
+  const s = L.seances[k];
+  if(!s) return;
+  const tL = ['🛣️ Route','🏟️ Piste','🌲 Trail'], tF = ['r','p','t'];
+  document.getElementById('panel-title').textContent = (s.l||k).substring(0,45);
+  document.getElementById('btn-reset').style.display = 'none';
   document.getElementById('panel-body').innerHTML =
-    '<div class="field-group"><label class="field-label">Clé</label>'
-    +'<div style="font-family:\'Lora\',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);background:rgba(27,58,107,.06);padding:.4rem .7rem;border-radius:6px">'+key+'</div></div>'
-    +'<div class="field-group"><label class="field-label">Label (nom affiché)</label>'
-    +'<input class="field-input" id="es-label" value="'+(sd.label||label).replace(/"/g,'&quot;')+'"></div>'
-    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">'
-    +'<div class="field-group"><label class="field-label">Catégorie</label>'
-    +'<input class="field-input" id="es-cat" value="'+(sd.cat||'').replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">RPE</label>'
-    +'<input class="field-input" id="es-rpe" value="'+(sd.rpe||'').replace(/"/g,'&quot;')+'"></div></div>'
-    +[0,1,2].map(i =>
-      '<span class="block-sep" style="background:'+tSeps[i]+';border-color:'+tSepB[i]+';color:'+tCols[i]+'">'+tLabels[i]+'</span>'
-      +'<div class="field-group"><label class="field-label">Variante '+tLabels[i]+'</label>'
-      +'<input class="field-input" id="es-terrain-'+i+'" value="'+(sd[tFields[i]]||'—').replace(/"/g,'&quot;')+'"></div>'
-    ).join('')
-    +'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
-    +'<input class="field-input" id="es-volume" value="'+(sd.volume||'').replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">Notes coach</label>'
-    +'<textarea class="field-textarea" id="es-notes" rows="3">'+(sd.notes||'')+'</textarea></div>';
+    `<div class="field-group"><label class="field-label">Clé</label><div style="font-size:.75rem;font-weight:700;color:var(--navy);background:rgba(27,58,107,.06);padding:.35rem .6rem;border-radius:6px">${k}</div></div>`
+    +`<div class="field-group"><label class="field-label">Label</label><input class="field-input" id="se-l" value="${(s.l||'').replace(/"/g,'&quot;')}"></div>`
+    +`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem">`
+    +`<div class="field-group"><label class="field-label">Catégorie</label><input class="field-input" id="se-c" value="${(s.c||'').replace(/"/g,'&quot;')}"></div>`
+    +`<div class="field-group"><label class="field-label">RPE</label><input class="field-input" id="se-rpe" value="${(s.rpe||'').replace(/"/g,'&quot;')}"></div>`
+    +`<div class="field-group"><label class="field-label">RPE num</label><input type="number" class="field-input" id="se-rn" value="${s.rn||0}" min="1" max="10"></div></div>`
+    +`<div class="field-group"><label class="field-label">Durée (min)</label><input type="number" class="field-input" id="se-d" value="${s.d||0}"></div>`
+    +[0,1,2].map(i=>`<div class="field-group"><label class="field-label">${tL[i]}</label><input class="field-input" id="se-t${i}" value="${(s[tF[i]]||'—').replace(/"/g,'&quot;')}"></div>`).join('')
+    +`<div class="field-group"><label class="field-label">Volume / Modulation</label><input class="field-input" id="se-v" value="${(s.v||'').replace(/"/g,'&quot;')}"></div>`
+    +`<div class="field-group"><label class="field-label">Notes coach</label><textarea class="field-textarea" id="se-n" rows="2">${s.n||''}</textarea></div>`;
   document.getElementById('edit-panel').classList.add('open');
   document.getElementById('panel-overlay').style.display='block';
 }
 
 function openNewSeance(){
-  editingSeanceKey = '__new__';
-  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
-  const tCols = ['#2351a0','#3d8b5c','#c04040'];
-  const tSeps = ['rgba(27,58,107,.05)','rgba(74,138,90,.06)','rgba(192,64,64,.05)'];
-  const tSepB = ['rgba(27,58,107,.12)','rgba(74,138,90,.2)','rgba(192,64,64,.15)'];
+  editMode='seance-new'; editKey=null;
+  const tL = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
   document.getElementById('panel-title').textContent = 'Nouvelle séance';
-  document.getElementById('btn-reset-week').style.display = 'none';
+  document.getElementById('btn-reset').style.display = 'none';
   document.getElementById('panel-body').innerHTML =
-    '<div class="field-group"><label class="field-label">Clé (sans espaces)</label>'
-    +'<input class="field-input" id="es-new-key" placeholder="ma_seance"></div>'
-    +'<div class="field-group"><label class="field-label">Label (nom affiché)</label>'
-    +'<input class="field-input" id="es-label" placeholder="ex: 6x1000m Halage R=2min"></div>'
-    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">'
-    +'<div class="field-group"><label class="field-label">Catégorie</label>'
-    +'<input class="field-input" id="es-cat" placeholder="ex: Seuil"></div>'
-    +'<div class="field-group"><label class="field-label">RPE</label>'
-   +'<input class="field-input" id="es-rpe" placeholder="ex: 7/10"></div></div>'
-+ [0,1,2].map(i =>
-  '<span class="block-sep" style="background:'+tSeps[i]+';border-color:'+tSepB[i]+';color:'+tCols[i]+'">'+tLabels[i]+'</span>'
-  +'<div class="field-group"><label class="field-label">Variante '+tLabels[i]+'</label>'
-  +'<input class="field-input" id="es-terrain-'+i+'" placeholder="ex: 6×1000m R=2\' Halage"></div>'
-).join('')
-+'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
-    +'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
-    +'<input class="field-input" id="es-volume" placeholder="ex: 3 reprise · 6 standard · 8 si forme"></div>'
-    +'<div class="field-group"><label class="field-label">Notes coach</label>'
-    +'<textarea class="field-textarea" id="es-notes" rows="3"></textarea></div>';
+    `<div class="field-group"><label class="field-label">Clé (sans espaces)</label><input class="field-input" id="se-key" placeholder="ma_seance"></div>`
+    +`<div class="field-group"><label class="field-label">Label</label><input class="field-input" id="se-l" placeholder="6×1000m Halage R=2'"></div>`
+    +`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem">`
+    +`<div class="field-group"><label class="field-label">Catégorie</label><input class="field-input" id="se-c" placeholder="Seuil"></div>`
+    +`<div class="field-group"><label class="field-label">RPE</label><input class="field-input" id="se-rpe" placeholder="7/10"></div>`
+    +`<div class="field-group"><label class="field-label">RPE num</label><input type="number" class="field-input" id="se-rn" value="7" min="1" max="10"></div></div>`
+    +`<div class="field-group"><label class="field-label">Durée (min)</label><input type="number" class="field-input" id="se-d" value="50"></div>`
+    +[0,1,2].map(i=>`<div class="field-group"><label class="field-label">${tL[i]}</label><input class="field-input" id="se-t${i}" placeholder="—"></div>`).join('')
+    +`<div class="field-group"><label class="field-label">Volume</label><input class="field-input" id="se-v" placeholder="3 reprise · 6 standard"></div>`
+    +`<div class="field-group"><label class="field-label">Notes</label><textarea class="field-textarea" id="se-n" rows="2"></textarea></div>`;
   document.getElementById('edit-panel').classList.add('open');
   document.getElementById('panel-overlay').style.display='block';
 }
 
-function saveSeance(){
-  if(!editingSeanceKey) return;
-  const tFields = ['route','piste','trail'];
-  if(editingSeanceKey === '__new__'){
-    const key = (document.getElementById('es-new-key').value||'').trim().replace(/\s+/g,'_');
-    if(!key){ toast('La clé est obligatoire','error'); return; }
-    if(localSeances[key]){ toast('Cette clé existe déjà','error'); return; }
-    const sd = {
-      label:  document.getElementById('es-label').value.trim(),
-      cat:    document.getElementById('es-cat').value.trim(),
-      rpe:    document.getElementById('es-rpe').value.trim(),
-      volume: document.getElementById('es-volume').value.trim(),
-      notes:  document.getElementById('es-notes').value.trim(),
-    };
-    for(let i=0;i<3;i++) sd[tFields[i]] = document.getElementById('es-terrain-'+i).value.trim();
-    localSeances[key] = sd;
-  } else {
-    const key = editingSeanceKey;
-    localSeances[key].label  = document.getElementById('es-label').value.trim();
-    localSeances[key].cat    = document.getElementById('es-cat').value.trim();
-    localSeances[key].rpe    = document.getElementById('es-rpe').value.trim();
-    localSeances[key].volume = document.getElementById('es-volume').value.trim();
-    localSeances[key].notes  = document.getElementById('es-notes').value.trim();
-    for(let i=0;i<3;i++) localSeances[key][tFields[i]] = document.getElementById('es-terrain-'+i).value.trim();
-  }
-  editingSeanceKey = null;
-  saveLocal();
-  buildSeancesGrid();
-  closePanel();
-  toast('Séance mise à jour — pensez à Publier ✓','success');
+// ══════════════════════════════════════════════════
+// CALENDRIER & INFOS
+// ══════════════════════════════════════════════════
+function buildCalList(){
+  const el = document.getElementById('cal-list');
+  if(!el) return;
+  el.innerHTML = L.calFixed.map((c,i)=>`
+    <div style="display:flex;gap:.6rem;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:.75rem;font-weight:600;min-width:90px">${c.date||''}</span>
+      <span style="font-size:.75rem;flex:1">${c.titre||c.title||''}</span>
+      <button class="btn-sm danger" onclick="L.calFixed.splice(${i},1);saveLocal();buildCalList()">✕</button>
+    </div>`).join('');
+}
+function addCalEvent(){
+  const d=document.getElementById('new-cal-date').value, t=document.getElementById('new-cal-titre').value.trim();
+  if(!d||!t){toast('Date et titre requis','error');return;}
+  L.calFixed.push({date:d,titre:t,type:document.getElementById('new-cal-type').value,description:document.getElementById('new-cal-desc').value.trim(),id:'cal_'+Date.now()});
+  saveLocal(); buildCalList(); toast('Sortie ajoutée','success');
+  document.getElementById('new-cal-titre').value=''; document.getElementById('new-cal-desc').value='';
 }
 
-// ════════════════════════════════════════════════
-// CONFIG GITHUB
-// ════════════════════════════════════════════════
+function buildInfosList(){
+  const el = document.getElementById('infos-list');
+  if(!el) return;
+  el.innerHTML = L.infosClub.map((m,i)=>`
+    <div style="display:flex;gap:.6rem;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:.6rem;padding:.15rem .4rem;border-radius:3px;background:${m.type==='urgent'?'rgba(192,64,64,.1)':'rgba(42,93,160,.1)'};color:${m.type==='urgent'?'var(--rouge)':'var(--blue)'};font-weight:700">${m.type}</span>
+      <div style="flex:1"><div style="font-size:.78rem;font-weight:700">${m.titre||''}</div><div style="font-size:.7rem;color:var(--muted)">${m.texte||''}</div></div>
+      <button class="btn-sm danger" onclick="L.infosClub.splice(${i},1);saveLocal();buildInfosList()">✕</button>
+    </div>`).join('');
+}
+function addInfo(){
+  const t=document.getElementById('new-info-titre').value.trim();
+  if(!t){toast('Titre requis','error');return;}
+  L.infosClub.push({id:'msg_'+Date.now(),titre:t,texte:document.getElementById('new-info-texte').value.trim(),type:document.getElementById('new-info-type').value,dateFin:document.getElementById('new-info-fin').value||''});
+  saveLocal(); buildInfosList(); toast('Message ajouté','success');
+  document.getElementById('new-info-titre').value=''; document.getElementById('new-info-texte').value='';
+}
+
+// ══════════════════════════════════════════════════
+// CALCULATEUR ADMIN
+// ══════════════════════════════════════════════════
+function buildCalcAdmin(){
+  const form = document.getElementById('calc-textes-form');
+  if(form){
+    const fields = [['intro','Introduction'],['rpe_titre','Titre RPE'],['rpe_texte','Texte RPE'],['ua_titre','Titre UA'],['ua_texte','Texte UA'],['bloc_titre','Titre Bloc'],['bloc_texte','Texte Bloc']];
+    form.innerHTML = fields.map(([k,l])=>`<div class="field-group"><label class="field-label">${l}</label><textarea class="field-textarea" rows="2" oninput="L.calcTextes['${k}']=this.value;saveLocal()">${L.calcTextes[k]||''}</textarea></div>`).join('');
+  }
+  const sForm = document.getElementById('calc-seuils-form');
+  if(sForm){
+    sForm.innerHTML = L.chargeSeuils.map((s,i)=>`
+      <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem;flex-wrap:wrap">
+        <div style="width:20px;height:20px;border-radius:50%;background:${s.couleur};flex-shrink:0"></div>
+        <input class="field-input" style="width:120px" value="${s.label}" oninput="L.chargeSeuils[${i}].label=this.value;saveLocal()">
+        <span style="font-size:.65rem;color:var(--muted)">UA max</span>
+        <input type="number" class="field-input" style="width:80px" value="${s.max}" oninput="L.chargeSeuils[${i}].max=parseInt(this.value)||0;saveLocal()" ${i===L.chargeSeuils.length-1?'disabled':''}>
+        <input class="field-input" style="flex:1;min-width:150px" value="${s.description||''}" placeholder="Description" oninput="L.chargeSeuils[${i}].description=this.value;saveLocal()">
+      </div>`).join('');
+  }
+}
+
+// ══════════════════════════════════════════════════
+// PANEL SAVE
+// ══════════════════════════════════════════════════
+function closePanel(){
+  document.getElementById('edit-panel').classList.remove('open');
+  document.getElementById('panel-overlay').style.display='none';
+  editMode=null; editKey=null;
+}
+
+function saveItem(){
+  if(editMode==='week'){
+    const idx = L.programme.findIndex(x=>x.s===editKey);
+    if(idx===-1) return;
+    L.programme[idx].m = document.getElementById('pw-m').value;
+    L.programme[idx].j = document.getElementById('pw-j').value;
+    L.programme[idx].wr = document.getElementById('pw-wr').value;
+    L.programme[idx].wt = document.getElementById('pw-wt').value;
+    L.programme[idx].ua = parseInt(document.getElementById('pw-ua').value)||0;
+    L.programme[idx].d = document.getElementById('pw-d').checked?1:0;
+    L.programme[idx].n = document.getElementById('pw-n').value.trim();
+    saveLocal(); buildAdminProg(); closePanel(); toast('Semaine S'+editKey+' mise à jour','success');
+  }
+  else if(editMode==='seance'){
+    const s = L.seances[editKey];
+    s.l = document.getElementById('se-l').value.trim();
+    s.c = document.getElementById('se-c').value.trim();
+    s.rpe = document.getElementById('se-rpe').value.trim();
+    s.rn = parseInt(document.getElementById('se-rn').value)||0;
+    s.d = parseInt(document.getElementById('se-d').value)||0;
+    s.r = document.getElementById('se-t0').value.trim();
+    s.p = document.getElementById('se-t1').value.trim();
+    s.t = document.getElementById('se-t2').value.trim();
+    s.v = document.getElementById('se-v').value.trim();
+    s.n = document.getElementById('se-n').value.trim();
+    saveLocal(); buildSeancesList(); closePanel(); toast('Séance mise à jour','success');
+  }
+  else if(editMode==='seance-new'){
+    const k = (document.getElementById('se-key').value||'').trim().replace(/\s+/g,'_');
+    if(!k){toast('Clé obligatoire','error');return;}
+    if(L.seances[k]){toast('Clé existante','error');return;}
+    L.seances[k] = {
+      l:document.getElementById('se-l').value.trim(),
+      c:document.getElementById('se-c').value.trim(),
+      rpe:document.getElementById('se-rpe').value.trim(),
+      rn:parseInt(document.getElementById('se-rn').value)||0,
+      d:parseInt(document.getElementById('se-d').value)||0,
+      lieu:'halage',
+      r:document.getElementById('se-t0').value.trim()||'—',
+      p:document.getElementById('se-t1').value.trim()||'—',
+      t:document.getElementById('se-t2').value.trim()||'—',
+      v:document.getElementById('se-v').value.trim(),
+      n:document.getElementById('se-n').value.trim()
+    };
+    saveLocal(); buildSeancesList(); closePanel(); toast('Séance créée','success');
+  }
+}
+
+function resetItem(){
+  if(editMode==='week') resetWeek(editKey);
+  closePanel();
+}
+
+// ══════════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════════
 function loadConfig(){
   const cfg = JSON.parse(localStorage.getItem('ab-admin-github')||'{}');
   if(cfg.owner) document.getElementById('cfg-owner').value = cfg.owner;
-  if(cfg.repo)  document.getElementById('cfg-repo').value  = cfg.repo;
+  if(cfg.repo) document.getElementById('cfg-repo').value = cfg.repo;
   if(cfg.token) document.getElementById('cfg-token').value = cfg.token;
 }
-
 function saveConfig(){
-  const cfg = {
-    owner: document.getElementById('cfg-owner').value.trim(),
-    repo:  document.getElementById('cfg-repo').value.trim(),
-    token: document.getElementById('cfg-token').value.trim(),
-  };
-  localStorage.setItem('ab-admin-github', JSON.stringify(cfg));
-  toast('Configuration enregistrée ✓','success');
+  localStorage.setItem('ab-admin-github',JSON.stringify({
+    owner:document.getElementById('cfg-owner').value.trim(),
+    repo:document.getElementById('cfg-repo').value.trim(),
+    token:document.getElementById('cfg-token').value.trim()
+  }));
+  toast('Configuration sauvegardée','success');
 }
 
-async function testConnection(){
-  const cfg = JSON.parse(localStorage.getItem('ab-admin-github')||'{}');
-  if(!cfg.owner||!cfg.repo||!cfg.token){ toast('Configurez GitHub d\'abord','error'); return; }
-  try {
-    const r = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}`, {
-      headers:{'Authorization':'token '+cfg.token,'Accept':'application/vnd.github.v3+json'}
-    });
-    if(r.ok) toast('✓ Connexion GitHub réussie !','success');
-    else toast('Erreur GitHub : '+r.status+' — vérifiez token et dépôt','error');
-  } catch(e){ toast('Erreur réseau : '+e.message,'error'); }
-}
+// ══════════════════════════════════════════════════
+// PUBLISH
+// ══════════════════════════════════════════════════
+function openPublish(){ document.getElementById('pub-overlay').classList.add('open'); }
+function closePub(){ document.getElementById('pub-overlay').classList.remove('open'); document.getElementById('pub-progress').style.display='none'; }
 
-// ════════════════════════════════════════════════
-// PUBLICATION GITHUB
-// ════════════════════════════════════════════════
-function openPublishModal(){
-  const cfg = JSON.parse(localStorage.getItem('ab-admin-github')||'{}');
-  document.getElementById('gh-steps-config').style.display = (cfg.owner&&cfg.repo&&cfg.token)?'none':'block';
-  document.getElementById('progress-bar').style.display='none';
-  document.getElementById('publish-status').textContent='';
-  document.getElementById('confirm-publish-btn').disabled=false;
-  document.getElementById('gh-modal-overlay').classList.add('open');
-}
-
-function closePublishModal(){
-  document.getElementById('gh-modal-overlay').classList.remove('open');
-}
-
-function setProgress(pct, msg){
-  document.getElementById('progress-bar').style.display='block';
-  document.getElementById('progress-fill').style.width=pct+'%';
-  document.getElementById('publish-status').textContent=msg;
-}
-
-// Génère le contenu de data.js à partir des données locales modifiées
-function generateDataJs(){
-  // On prend le data.js original et on remplace les sections programme et calFixed
-  const progJson = JSON.stringify(localProgramme, null, 2);
-  const calJson  = JSON.stringify(localCalFixed, null, 2);
-
-  // Reconstruct data.js with updated values
-  // We'll fetch the current data.js content and replace the arrays
-  return null; // handled async in doPublish
+function replaceJsConst(src,name,json){
+  const re = new RegExp('(const\\s+'+name+'\\s*=\\s*)([\\s\\S]*?)(;\\s*(?:\\/\\/|const\\s|$))');
+  return src.replace(re, '$1'+json+'$3');
 }
 
 async function doPublish(){
   const cfg = JSON.parse(localStorage.getItem('ab-admin-github')||'{}');
-  if(!cfg.owner||!cfg.repo||!cfg.token){
-    toast('Configurez GitHub dans l\'onglet Configuration','error');
-    closePublishModal();
-    return;
-  }
+  if(!cfg.owner||!cfg.repo||!cfg.token){toast('Configurez GitHub dans Config','error');closePub();return;}
+  document.getElementById('pub-btn').disabled=true;
+  document.getElementById('pub-progress').style.display='block';
+  const bar = document.getElementById('pub-bar'), msg = document.getElementById('pub-msg');
 
-  document.getElementById('confirm-publish-btn').disabled=true;
-
-  try {
-    // Step 1: Get current data.js from GitHub
-    setProgress(15, '📥 Récupération de data.js depuis GitHub...');
+  try{
+    bar.style.width='15%'; msg.textContent='📥 Récupération data.js…';
+    const headers = {'Authorization':'token '+cfg.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
     const fileUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/data.js`;
-    const headers = {
-      'Authorization':'token '+cfg.token,
-      'Accept':'application/vnd.github.v3+json',
-      'Content-Type':'application/json'
-    };
-    const getResp = await fetch(fileUrl, {headers});
-    if(!getResp.ok) throw new Error(`Impossible de récupérer data.js (${getResp.status})`);
-    const fileData = await getResp.json();
-    const sha = fileData.sha;
-    let currentContent = atob(fileData.content.replace(/\n/g,''));
+    const r1 = await fetch(fileUrl,{headers});
+    if(!r1.ok) throw new Error('Impossible de récupérer data.js ('+r1.status+')');
+    const fd = await r1.json();
 
-    setProgress(40, '✏️ Application des modifications...');
+    bar.style.width='40%'; msg.textContent='✏️ Application des modifications…';
+    let content = decodeURIComponent(escape(atob(fd.content.replace(/\n/g,''))));
+    content = replaceJsConst(content,'programme',JSON.stringify(L.programme,null,2));
+    content = replaceJsConst(content,'seancesData',JSON.stringify(L.seances,null,2));
+    content = replaceJsConst(content,'calFixed',JSON.stringify(L.calFixed,null,2));
+    content = replaceJsConst(content,'infosClub',JSON.stringify(L.infosClub,null,2));
+    content = replaceJsConst(content,'calculateurTextes',JSON.stringify(L.calcTextes,null,2));
+    content = replaceJsConst(content,'chargeHebdoSeuils',JSON.stringify(L.chargeSeuils,null,2));
 
-    // Replace programme array in data.js
-    currentContent = replaceJsConst(currentContent, 'programme', JSON.stringify(localProgramme, null, 2));
-    // Replace calFixed array in data.js
-    currentContent = replaceJsConst(currentContent, 'calFixed', JSON.stringify(localCalFixed, null, 2));
-    // Replace seancesData in data.js
-    currentContent = replaceJsConst(currentContent, 'seancesData', JSON.stringify(localSeances, null, 2));
-    // Replace infosClub in data.js
-    if(localInfosClub)    currentContent = replaceJsConst(currentContent, 'infosClub',           JSON.stringify(localInfosClub, null, 2));
-    // Replace calculateurTextes in data.js
-    if(localCalcTextes)   currentContent = replaceJsConst(currentContent, 'calculateurTextes',   JSON.stringify(localCalcTextes, null, 2));
-    // Replace chargeHebdoSeuils in data.js
-    if(localChargeSeuils) currentContent = replaceJsConst(currentContent, 'chargeHebdoSeuils',   JSON.stringify(localChargeSeuils, null, 2));
-
-    setProgress(65, '📤 Envoi vers GitHub...');
-
-    // Step 2: Push updated data.js
+    bar.style.width='65%'; msg.textContent='📤 Envoi vers GitHub…';
     const now = new Date().toLocaleString('fr-FR');
-    const pushResp = await fetch(fileUrl, {
-      method:'PUT',
-      headers,
-      body: JSON.stringify({
-        message: `[Admin] Mise à jour programme & calendrier — ${now}`,
-        content: btoa(unescape(encodeURIComponent(currentContent))),
-        sha: sha
-      })
-    });
+    const r2 = await fetch(fileUrl,{method:'PUT',headers,body:JSON.stringify({message:`[Admin] MAJ — ${now}`,content:btoa(unescape(encodeURIComponent(content))),sha:fd.sha})});
+    if(!r2.ok) throw new Error((await r2.json()).message||r2.status);
 
-    if(!pushResp.ok){
-      const err = await pushResp.json();
-      throw new Error(err.message || pushResp.status);
-    }
-
-    // Mise à jour de index.html pour casser le cache de data.js
-    setProgress(85, '\uD83D\uDD04 Mise \u00E0 jour du cache...');
-    try {
+    bar.style.width='85%'; msg.textContent='🔄 Cache busting…';
+    try{
       const idxUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/index.html`;
-      const idxGet = await fetch(idxUrl, {headers});
-      if(idxGet.ok){
-        const idxData = await idxGet.json();
-        let idxContent = decodeURIComponent(escape(atob(idxData.content.replace(/\n/g,''))));
-        idxContent = idxContent.replace(/data\.js\?v=\d+/, 'data.js?v='+Date.now());
-        await fetch(idxUrl, {method:'PUT', headers, body: JSON.stringify({
-          message: '[Admin] Cache bust',
-          content: btoa(unescape(encodeURIComponent(idxContent))),
-          sha: idxData.sha,
-        })});
+      const r3 = await fetch(idxUrl,{headers});
+      if(r3.ok){
+        const id = await r3.json();
+        let ic = decodeURIComponent(escape(atob(id.content.replace(/\n/g,''))));
+        ic = ic.replace(/data\.js\?v=\d+/,'data.js?v='+Date.now()).replace(/data\.js(?!\?)/,'data.js?v='+Date.now());
+        await fetch(idxUrl,{method:'PUT',headers,body:JSON.stringify({message:`[Admin] cache bust — ${now}`,content:btoa(unescape(encodeURIComponent(ic))),sha:id.sha})});
       }
-    } catch(e){ console.warn('Cache bust failed:', e); }
+    }catch(e){}
 
-    setProgress(100, '\u2705 Publi\u00E9 avec succ\u00E8s ! Le site sera mis \u00E0 jour dans 1-2 minutes.');
-
-    // Clear pending
-    localStorage.removeItem('ab-admin-pending');
-    pendingChanges = false;
-    localProgramme = JSON.parse(JSON.stringify(localProgramme));
-    localCalFixed  = JSON.parse(JSON.stringify(localCalFixed));
-    localSeances   = JSON.parse(JSON.stringify(localSeances));
-    updateStatusBar();
-    buildProgTable();
-    buildCalList();
-    if(document.getElementById('tab-seances').classList.contains('active')) buildSeancesGrid();
-
-    setTimeout(closePublishModal, 3000);
-
-  } catch(e){
-    setProgress(0, '');
-    document.getElementById('publish-status').textContent = '❌ Erreur : '+e.message;
-    document.getElementById('publish-status').style.color='var(--rouge)';
-    document.getElementById('confirm-publish-btn').disabled=false;
-    console.error(e);
+    bar.style.width='100%'; msg.textContent='✅ Publié avec succès !';
+    toast('Publication réussie','success');
+    setTimeout(closePub,2000);
+  }catch(e){
+    msg.textContent='❌ Erreur : '+e.message;
+    toast('Erreur : '+e.message,'error');
   }
+  document.getElementById('pub-btn').disabled=false;
 }
 
-// Replace a JS const array/object in source text
-function replaceJsConst(source, name, newValue){
-  // Find "const name = " then find the matching bracket
-  const marker = `const ${name} = `;
-  const startIdx = source.indexOf(marker);
-  if(startIdx === -1) return source;
-  const valueStart = startIdx + marker.length;
-  const openCh = source[valueStart];
-  const closeCh = openCh === '[' ? ']' : '}';
-  let depth = 0, i = valueStart;
-  while(i < source.length){
-    if(source[i]===openCh) depth++;
-    else if(source[i]===closeCh){ depth--; if(depth===0){i++;break;} }
-    i++;
-  }
-  // Skip semicolon
-  if(source[i]===';') i++;
-  return source.slice(0, startIdx) + marker + newValue + ';\n' + source.slice(i);
+// ══════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════
+function initApp(){
+  getLocal(); buildAdminProg(); loadConfig(); updateStatus();
 }
-
-// ════════════════════════════════════════════════
-// TOAST
-// ════════════════════════════════════════════════
-let toastTimer;
-function toast(msg, type='success'){
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'show '+type;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>el.className='', 3500);
-}
+if(localStorage.getItem('ab-auth')==='1') initApp();
 </script>
 </body>
 </html>
