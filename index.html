@@ -220,29 +220,54 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
   <div id="acc-objectifs" style="max-width:680px;margin-bottom:1.5rem"></div>
 </div>
 
- <!-- ═══ PHILOSOPHIE ═══ -->
+ <!-- ═══ PHILOSOPHIE & MÉTHODE ═══ -->
 <div class="page" id="philosophie">
-  <div class="sec-eye">Notre Approche</div>
-  <div class="sec-title">Le ressenti <em>plutôt que la vitesse</em></div>
-  
-  <div style="background:var(--surface); padding:1.8rem; border-radius:14px; border:1.5px solid var(--border); box-shadow:0 2px 8px rgba(27,58,107,.05); max-width:850px; line-height:1.7">
-    <h3 style="color:var(--navy); margin-bottom:0.8rem">Pourquoi s'entraîner au ressenti (RPE) ?</h3>
-    <p style="margin-bottom:1.2rem">Au sein de l'AB Running, nous croyons que l'entraînement doit s'adapter à l'humain, et non l'inverse. Le <strong>RPE (Échelle d'Effort Perçu)</strong> est notre indicateur clé car il tient compte de votre état global à l'instant T :</p>
-    
-    <ul style="margin-left:1.5rem; margin-bottom:1.5rem; color:var(--text)">
-      <li style="margin-bottom:0.5rem"><strong>Vie quotidienne :</strong> Fatigue au travail, manque de sommeil ou stress.</li>
-      <li style="margin-bottom:0.5rem"><strong>Santé :</strong> Petits bobos, début de rhume ou convalescence.</li>
-      <li style="margin-bottom:0.5rem"><strong>Physiologie :</strong> Changements après une grossesse ou impact du cycle menstruel sur l'énergie.</li>
-    </ul>
+  <div class="sec-eye">L'esprit du club</div>
+  <div class="sec-title">On court <em>au feeling</em> !</div>
+  <p class="sec-intro">À l'AB Running, on n'est pas des machines. On veut progresser ensemble, mais sans oublier que la course doit rester un plaisir. Voici comment on gère nos séances pour que tout le monde y trouve son compte, peu importe son niveau. 🤝</p>
 
-    <p style="margin-bottom:1.5rem">C'est une approche <strong>bienveillante et inclusive</strong> : peu importe votre forme, vous réalisez la séance qui <em>vous</em> correspond aujourd'hui, sans vous mettre dans le rouge inutilement.</p>
-
-    <h3 style="color:var(--navy); margin-bottom:0.8rem">Et pour les fans de VMA ?</h3>
-    <p style="margin-bottom:1.2rem">La VMA reste un outil utile, mais pas une prison. Sur nos séances de type <strong>3x1000m</strong> ou lors de nos répétitions au seuil, vous constaterez que la répétition des efforts et la <strong>data de votre montre</strong> révèlent naturellement votre vitesse de référence. Pas besoin de tests épuisants, votre niveau se dessine au fil de vos progrès réels.</p>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem">
     
-    <div style="background:var(--surface2); padding:1.2rem; border-left:4px solid var(--blue); font-style:italic; border-radius:4px; font-size:0.9rem; color:var(--navy)">
-      "Notre objectif est de maintenir un lien social fort et de veiller à la santé durable de tous nos coureurs amateurs."
+    <!-- LE RPE -->
+    <div style="background:var(--surface); padding:1.5rem; border-radius:14px; border:1px solid var(--border); box-shadow:0 4px 12px rgba(27,58,107,0.05)">
+      <h3 style="color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem">🎯 Le RPE : C'était comment ?</h3>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem">Le RPE (*Effort Perçu*), c'est une note de <strong>1 à 10</strong> que tu donnes à ta séance 1 minute après l'arrivée. Ça reflète ta fatigue, ton souffle et ton mental du jour.</p>
+      
+      <div style="font-size:0.8rem; line-height:1.4">
+        <div style="padding:0.4rem; background:rgba(74,138,90,0.1); border-radius:6px; margin-bottom:0.3rem"><strong>🟢 1-2 : Très facile</strong> (Comme marcher)</div>
+        <div style="padding:0.4rem; background:rgba(123,195,229,0.1); border-radius:6px; margin-bottom:0.3rem"><strong>🔵 3-4 : Facile</strong> (Allure de conversation)</div>
+        <div style="padding:0.4rem; background:rgba(212,137,58,0.1); border-radius:6px; margin-bottom:0.3rem"><strong>🟡 5-6 : Modéré</strong> (Respiration contrôlée)</div>
+        <div style="padding:0.4rem; background:rgba(42,93,160,0.1); border-radius:6px; margin-bottom:0.3rem"><strong>🔵 7-8 : Difficile</strong> (Parler devient compliqué)</div>
+        <div style="padding:0.4rem; background:rgba(192,64,64,0.1); border-radius:6px;"><strong>🔴 9-10 : Très difficile</strong> (Effort maximal)</div>
+      </div>
     </div>
+
+    <!-- L'UA -->
+    <div style="background:var(--surface); padding:1.5rem; border-radius:14px; border:1px solid var(--border); box-shadow:0 4px 12px rgba(27,58,107,0.05)">
+      <h3 style="color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem">📊 L'UA : Ta dose de sport</h3>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem">L'UA (*Unité Arbitraire*) permet de mesurer la charge réelle de ton entraînement. C'est un calcul tout bête :[cite: 4]</p>
+      
+      <div style="background:var(--surface2); padding:1rem; border-radius:8px; text-align:center; margin-bottom:1rem">
+        <code style="font-size:1.1rem; color:var(--blue); font-weight:800">RPE × Durée (min) = UA</code>
+      </div>
+
+      <p style="font-size:0.8rem; margin-bottom:1rem"><strong>Exemple :</strong> 45 min de footing ressenti à 7/10 = <strong>315 UA</strong>.[cite: 4]</p>
+      
+      <div style="border-top:1px solid var(--border); padding-top:1rem">
+        <h4 style="font-size:0.8rem; color:var(--navy); margin-bottom:0.5rem">À quoi ça nous sert ? 💡</h4>
+        <ul style="font-size:0.75rem; color:var(--muted); padding-left:1rem">
+          <li><strong>Progresser :</strong> On grimpe par paliers, tranquillement.[cite: 4]</li>
+          <li><strong>Se protéger :</strong> On évite d'en faire trop d'un coup pour ne pas se blesser.</li>
+          <li><strong>Se comprendre :</strong> Si tu as une semaine chargée au boulot, on baisse les UA !</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:2rem; padding:1.5rem; background:linear-gradient(135deg, var(--navy), var(--blue)); border-radius:14px; color:#fff">
+    <h3 style="font-size:1rem; margin-bottom:0.5rem">🤝 Pourquoi c'est cool pour le club ?</h3>
+    <p style="font-size:0.85rem; opacity:0.9">Peu importe si tu cours vite ou moins vite : si on fait tous une séance à <strong>RPE 7</strong>, on partage le même effort, ensemble. C'est ça l'esprit AB Running : chacun son allure, mais tout le monde dans le même bateau ! ⛵✨</p>
   </div>
 </div>
 
