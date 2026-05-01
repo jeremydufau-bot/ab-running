@@ -1859,6 +1859,64 @@ const calFixed = [
     "desc": "Bivouac 2 jours. Larrau → Iraty. Nuit en cabane. Inscription via boîte à idées."
   }
 ];
+// ── DESCRIPTIONS DES PHASES ──
+const phaseMusculaireDesc = {
+  fondamental: {
+    titre: "Phase fondamentale — Sept à Nov",
+    desc: "Objectif : apprendre les mouvements, construire une base solide.",
+    duree: "45 min",
+    freq: "2×/sem"
+  },
+  force: {
+    titre: "Phase force — Déc à Fév",
+    desc: "Objectif : développer la force maximale des membres inférieurs.",
+    duree: "55–60 min",
+    freq: "2×/sem"
+  },
+  specifique: {
+    titre: "Phase spécifique — Mars à Mai",
+    desc: "Objectif : transférer la force en puissance trail.",
+    duree: "50 min",
+    freq: "1–2×/sem"
+  },
+  competition: {
+    titre: "Phase compétition — Juin à Août",
+    desc: "Objectif : entretien des acquis sans créer de fatigue.",
+    duree: "30–40 min",
+    freq: "1×/sem"
+  }
+};
+
+// ── CIRCUITS D'EXERCICES ──
+const circuits = {
+  fondamental: {
+    corpo: [
+      {
+        bloc: "Exemple de bloc d'activation",
+        exos: [
+          { id: "glute_bridge", dose: "3×15" },
+          { id: "planche", dose: "3×40 sec" }
+        ]
+      }
+    ],
+    elastiques: [],
+    salle: []
+  },
+  force: { corpo: [], elastiques: [], salle: [] },
+  specifique: { corpo: [], elastiques: [], salle: [] },
+  competition: {
+    corpo: [
+      {
+        bloc: "Entretien léger",
+        exos: [
+          { id: "squat_pc", dose: "3×10" }
+        ]
+      }
+    ],
+    elastiques: [],
+    salle: []
+  }
+};
 
 const exos = {
   // ─── JAMBES ───
