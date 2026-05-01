@@ -126,6 +126,7 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
     <button class="tab" onclick="showTab('tab-cal',this)">🗓 Calendrier</button>
     <button class="tab" onclick="showTab('tab-infos',this)">📢 Infos Club</button>
     <button class="tab" onclick="showTab('tab-calc',this)">📊 Calculateur</button>
+    <button class="tab" onclick="showTab('tab-obj',this)">🏆 Objectifs</button>
     <button class="tab" onclick="showTab('tab-config',this)">⚙️ Config</button>
   </div>
 
@@ -198,6 +199,22 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
     <div id="calc-seuils-form" style="max-width:600px"></div>
   </div>
 
+  <!-- TAB OBJECTIFS -->
+<div class="admin-page" id="tab-obj">
+  <h2 style="font-size:1rem;color:var(--navy);margin-bottom:1rem">Objectifs de la saison</h2>
+  <div id="obj-list" style="margin-bottom:1rem"></div>
+  <div class="block-sep">Ajouter un objectif</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;max-width:500px">
+    <div class="field-group"><label class="field-label">Semaine (S1 à S52)</label><input type="number" class="field-input" id="new-obj-s" min="1" max="52"></div>
+    <div class="field-group"><label class="field-label">Date de la course</label><input type="date" class="field-input" id="new-obj-date"></div>
+    <div class="field-group" style="grid-column:1/-1"><label class="field-label">Nom de la course</label><input class="field-input" id="new-obj-nom" placeholder="Ex: Marathon de Paris..."></div>
+    <div class="field-group" style="grid-column:1/-1"><label class="field-label">Type</label>
+      <select class="field-select" id="new-obj-type"><option value="route">Route</option><option value="trail">Trail</option><option value="cross">Cross</option></select>
+    </div>
+  </div>
+  <button class="btn-sm" onclick="addObj()" style="margin-top:.5rem">Ajouter</button>
+</div>
+  
   <!-- TAB CONFIG -->
   <div class="admin-page" id="tab-config">
     <h2 style="font-size:1rem;color:var(--navy);margin-bottom:1rem">Configuration GitHub</h2>
@@ -272,6 +289,7 @@ function getLocal(){
   if(!L.infosClub) L.infosClub = JSON.parse(JSON.stringify(infosClub));
   if(!L.calcTextes) L.calcTextes = JSON.parse(JSON.stringify(typeof calculateurTextes!=='undefined'?calculateurTextes:{}));
   if(!L.chargeSeuils) L.chargeSeuils = JSON.parse(JSON.stringify(chargeHebdoSeuils));
+  if(!L.objectifs) L.objectifs = JSON.parse(JSON.stringify(typeof objectifs!=='undefined'?objectifs:[]));
 }
 function saveLocal(){
   L.savedAt = new Date().toISOString();
@@ -282,7 +300,8 @@ function updateStatus(){
   const changed = JSON.stringify(L.programme)!==JSON.stringify(programme) ||
                   JSON.stringify(L.seances)!==JSON.stringify(seancesData) ||
                   JSON.stringify(L.calFixed)!==JSON.stringify(calFixed) ||
-                  JSON.stringify(L.infosClub)!==JSON.stringify(infosClub);
+                  JSON.stringify(L.infosClub)!==JSON.stringify(infosClub)||
+                  JSON.stringify(L.objectifs)!==JSON.stringify(objectifs);
   document.getElementById('status-dot').className = 'status-dot'+(changed?' warn':'');
   const t = L.savedAt ? new Date(L.savedAt).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) : '';
   document.getElementById('status-text').textContent = changed ? `⚠️ Modifications non publiées${t?' — '+t:''}` : 'Prêt — aucune modification';
@@ -309,6 +328,7 @@ function showTab(id,btn){
   if(id==='tab-cal') buildCalList();
   if(id==='tab-infos') buildInfosList();
   if(id==='tab-calc') buildCalcAdmin();
+  if(id==='tab-obj') buildObjList();
 }
 
 // ══════════════════════════════════════════════════
@@ -524,7 +544,31 @@ function addInfo(){
   saveLocal(); buildInfosList(); toast('Message ajouté','success');
   document.getElementById('new-info-titre').value=''; document.getElementById('new-info-texte').value='';
 }
+// ══════════════════════════════════════════════════
+function buildObjList(){
+  const el = document.getElementById('obj-list');
+  if(!el) return;
+  el.innerHTML = L.objectifs.map((o,i)=>`
+    <div style="display:flex;gap:.6rem;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:.75rem;font-weight:600;min-width:40px;color:var(--navy)">S${o.s||''}</span>
+      <span style="font-size:.75rem;min-width:80px;color:var(--muted)">${o.date||''}</span>
+      <span style="font-size:.75rem;flex:1;font-weight:700">${o.nom||''}</span>
+      <span style="font-size:.65rem;text-transform:uppercase;color:var(--blue);min-width:50px">${o.type||''}</span>
+      <button class="btn-sm danger" onclick="L.objectifs.splice(${i},1);saveLocal();buildObjList()">✕</button>
+    </div>`).join('');
+}
 
+function addObj(){
+  const s = parseInt(document.getElementById('new-obj-s').value);
+  const d = document.getElementById('new-obj-date').value;
+  const n = document.getElementById('new-obj-nom').value.trim();
+  if(!s || !d || !n){ toast('Semaine, date et nom requis','error'); return; }
+  L.objectifs.push({s:s, nom:n, date:d, type:document.getElementById('new-obj-type').value});
+  L.objectifs.sort((a,b) => new Date(a.date) - new Date(b.date)); // Trie par date chrono
+  saveLocal(); buildObjList(); toast('Objectif ajouté','success');
+  document.getElementById('new-obj-nom').value='';
+}
+  
 // ══════════════════════════════════════════════════
 // CALCULATEUR ADMIN
 // ══════════════════════════════════════════════════
@@ -661,6 +705,7 @@ async function doPublish(){
     content = replaceJsConst(content,'infosClub',JSON.stringify(L.infosClub,null,2));
     content = replaceJsConst(content,'calculateurTextes',JSON.stringify(L.calcTextes,null,2));
     content = replaceJsConst(content,'chargeHebdoSeuils',JSON.stringify(L.chargeSeuils,null,2));
+    content = replaceJsConst(content,'objectifs',JSON.stringify(L.objectifs,null,2));
 
     bar.style.width='65%'; msg.textContent='📤 Envoi vers GitHub…';
     const now = new Date().toLocaleString('fr-FR');
