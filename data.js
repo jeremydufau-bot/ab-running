@@ -8,6 +8,13 @@ const infosClub = [
     "texte": "",
     "type": "info",
     "dateFin": ""
+  },
+  {
+    "id": "msg_1777665830842",
+    "titre": "Apéritif premier mardi du mois !",
+    "texte": "",
+    "type": "info",
+    "dateFin": "2026-05-06"
   }
 ];
 
