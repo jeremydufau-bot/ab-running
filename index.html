@@ -192,7 +192,7 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
   <nav id="mainNav">
     <button class="active" onclick="showPage('accueil',this)">Accueil</button>
     <button onclick="showPage('programme',this)">Programme</button>
-    <button onclick="showPage('philosophie',this)">Philosophie</button>
+    <button onclick="showPage('philosophie',this)">Philosophie & Méthode</button>
     <button onclick="showPage('renforcement',this)">Renforcement</button>
     <button onclick="showPage('routines',this)">Routines Matin</button>
   </nav>
@@ -229,16 +229,16 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
   <!-- POURQUOI LE RESSENTI -->
   <div style="margin-bottom:2rem">
     <h3 style="color:var(--navy); margin-bottom:0.8rem; font-size:1.1rem">🌍 L'inclusion par l'effort plutôt que la vitesse</h3>
-    <p style="font-size:0.9rem; margin-bottom:1rem; line-height:1.7">Dans notre groupe, on a des fusées qui préparent des chronos et des coureurs qui sont là pour le plaisir et la santé[cite: 9]. Si on séparait tout le monde par la vitesse, on perdrait l'esprit club[cite: 9]. Avec notre méthode, on est <strong>réunis par l'intensité</strong> : si on demande un effort à 7/10, celui qui court à 10km/h et celui qui court à 16km/h partagent exactement la même zone de difficulté. On ne court pas à la même allure, mais on partage la même séance.[cite: 9]</p>
+    <p style="font-size:0.9rem; margin-bottom:1rem; line-height:1.7">Dans notre groupe, on a des fusées qui préparent des chronos et des coureurs qui sont là pour le plaisir et la santé. Si on séparait tout le monde par la vitesse, on perdrait l'esprit club. Avec notre méthode, on est <strong>réunis par l'intensité</strong> : si on demande un effort à 7/10, celui qui court à 10km/h et celui qui court à 16km/h partagent exactement la même zone de difficulté. On ne court pas à la même allure, mais on partage la même séance.</p>
 
     <h3 style="color:var(--navy); margin-bottom:0.8rem; font-size:1.1rem">🧬 Physiologie : Brisons les tabous de la "méforme"</h3>
     <p style="font-size:0.9rem; margin-bottom:0.5rem; line-height:1.7">Il est scientifiquement normal de ne pas avoir les mêmes capacités chaque jour. De nombreux facteurs invisibles influencent vos performances :</p>
     <ul style="margin-left:1.5rem; font-size:0.85rem; color:var(--text); line-height:1.6; margin-bottom:1rem">
-      <li style="margin-bottom:0.4rem"><strong>Hormones et cycle féminin :</strong> Les variations (règles, cycle menstruel, post-grossesse) impactent directement la température corporelle, la respiration et l'énergie[cite: 9]. Courir à 10 km/h peut être très facile en début de cycle et devenir un vrai combat juste avant les règles[cite: 9]. C'est une réalité physiologique, pas un manque de volonté !</li>
-      <li style="margin-bottom:0.4rem"><strong>La fatigue nerveuse :</strong> Le cerveau gère le stress du travail, le manque de sommeil et l'effort physique avec le même "réservoir"[cite: 9]. Une journée épuisante au bureau diminue votre capacité à recruter vos muscles le soir[cite: 9].</li>
+      <li style="margin-bottom:0.4rem"><strong>Hormones et cycle féminin :</strong> Les variations (règles, cycle menstruel, post-grossesse) impactent directement la température corporelle, la respiration et l'énergie. Courir à 10 km/h peut être très facile en début de cycle et devenir un vrai combat juste avant les règles. C'est une réalité physiologique, pas un manque de volonté !</li>
+      <li style="margin-bottom:0.4rem"><strong>La fatigue nerveuse :</strong> Le cerveau gère le stress du travail, le manque de sommeil et l'effort physique avec le même "réservoir". Une journée épuisante au bureau diminue votre capacité à recruter vos muscles le soir.</li>
     </ul>
     <div style="background:rgba(123,195,229,0.15); border-left:4px solid var(--blue); padding:0.8rem 1rem; border-radius:4px; font-size:0.85rem; color:var(--navy); font-weight:600">
-      💡 Déculpabilisez ! En parler n'est pas un aveu de faiblesse, c'est une donnée technique[cite: 9]. Ajuster son effort en fonction de sa fatigue ou de son cycle, c'est s'entraîner intelligemment pour durer.[cite: 9]
+      💡 Déculpabilisez ! En parler n'est pas un aveu de faiblesse, c'est une donnée technique. Ajuster son effort en fonction de sa fatigue ou de son cycle, c'est s'entraîner intelligemment pour durer.
     </div>
   </div>
 
@@ -248,31 +248,62 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
     <!-- LE RPE -->
     <div style="background:var(--surface); padding:1.5rem; border-radius:14px; border:1px solid var(--border); box-shadow:0 4px 12px rgba(27,58,107,0.05)">
       <h3 style="color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem">🎯 Le RPE (Effort Perçu)</h3>
-      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem">C'est une note de <strong>1 à 10</strong> donnée 1 minute après l'arrivée. Ça reflète ta fatigue musculaire, ton souffle et ton mental du jour.[cite: 4]</p>
+      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem">C'est une note de <strong>1 à 10</strong> donnée 1 minute après l'arrivée. Ça reflète ta fatigue musculaire, ton souffle et ton mental du jour.</p>
       
       <div style="font-size:0.75rem; line-height:1.4">
         <div style="padding:0.5rem; background:rgba(74,138,90,0.1); border-radius:6px; margin-bottom:0.4rem">
           <strong style="font-size:0.8rem; color:var(--mousse)">🟢 1-2 : Très facile</strong><br>
-          <span style="color:var(--muted)">Récupération active. "Je pourrais faire ça toute la journée."</span>[cite: 4]
+          <span style="color:var(--muted)">Récupération active. "Je pourrais faire ça toute la journée."</span>
         </div>
         <div style="padding:0.5rem; background:rgba(123,195,229,0.1); border-radius:6px; margin-bottom:0.4rem">
           <strong style="font-size:0.8rem; color:var(--sky)">🔵 3-4 : Facile (Endurance)</strong><br>
-          <span style="color:var(--muted)">Allure footing. Conversation totalement fluide.</span>[cite: 4]
+          <span style="color:var(--muted)">Allure footing. Conversation totalement fluide.</span>
         </div>
         <div style="padding:0.5rem; background:rgba(212,137,58,0.1); border-radius:6px; margin-bottom:0.4rem">
           <strong style="font-size:0.8rem; color:#b56a10">🟡 5-6 : Modéré (Allure Marathon)</strong><br>
-          <span style="color:var(--muted)">Respiration rythmée, on sent qu'on travaille mais on gère.</span>[cite: 4]
+          <span style="color:var(--muted)">Respiration rythmée, on sent qu'on travaille mais on gère.</span>
         </div>
         <div style="padding:0.5rem; background:rgba(42,93,160,0.1); border-radius:6px; margin-bottom:0.4rem">
           <strong style="font-size:0.8rem; color:var(--navy)">🔵 7-8 : Difficile (Allure Semi / 10km)</strong><br>
-          <span style="color:var(--muted)">La parole est brève. Effort soutenu, concentration requise.</span>[cite: 4]
+          <span style="color:var(--muted)">La parole est brève. Effort soutenu, concentration requise.</span>
         </div>
         <div style="padding:0.5rem; background:rgba(192,64,64,0.1); border-radius:6px;">
           <strong style="font-size:0.8rem; color:var(--rouge)">🔴 9-10 : Très difficile (Allure 5km / Sprint)</strong><br>
-          <span style="color:var(--muted)">Souffle très court. On donne tout, on ne tient plus longtemps.</span>[cite: 4]
+          <span style="color:var(--muted)">Souffle très court. On donne tout, on ne tient plus longtemps.</span>
         </div>
       </div>
     </div>
+
+    <!-- L'UA -->
+    <div style="background:var(--surface); padding:1.5rem; border-radius:14px; border:1px solid var(--border); box-shadow:0 4px 12px rgba(27,58,107,0.05)">
+      <h3 style="color:var(--navy); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem">📊 L'UA (La Charge Réelle)</h3>
+      <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1rem">L'Unité Arbitraire permet de mesurer la fatigue totale infligée à ton corps. C'est un calcul tout simple :</p>
+      
+      <div style="background:var(--surface2); padding:1rem; border-radius:8px; text-align:center; margin-bottom:1rem">
+        <code style="font-size:1.1rem; color:var(--blue); font-weight:800">UA = RPE × Durée (min)</code>
+      </div>
+
+      <p style="font-size:0.8rem; margin-bottom:1rem"><strong>Exemple :</strong> 45 min de footing ressenti à 7/10 = <strong>315 UA</strong>.<br>
+      <em>(L'avantage : ça prouve que 30 min de côtes intenses fatiguent autant que 60 min de footing lent !)</em></p>
+      
+      <div style="border-top:1px solid var(--border); padding-top:1rem">
+        <h4 style="font-size:0.85rem; color:var(--navy); margin-bottom:0.5rem">Pourquoi le coach surveille vos UA ? 🧐</h4>
+        <ul style="font-size:0.8rem; color:var(--muted); padding-left:1.2rem; line-height:1.5">
+          <li><strong>Pour progresser :</strong> On augmente le total par petits paliers (10 à 15% max par semaine).</li>
+          <li><strong>Pour décharger :</strong> Certaines semaines, on baisse drastiquement les UA pour vous faire récupérer.</li>
+          <li><strong>Pour vous protéger :</strong> Un pic d'UA trop soudain = alerte blessure. On l'évite !</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONCLUSION / VMA -->
+  <div style="margin-top:2rem; padding:1.5rem; background:var(--surface2); border:1px solid var(--border); border-radius:14px;">
+    <h3 style="font-size:1rem; color:var(--navy); margin-bottom:0.5rem">⌚ Et la VMA (Vitesse Maximale Aérobie) ?</h3>
+    <p style="font-size:0.85rem; color:var(--text); line-height:1.6">On ne l'oublie pas, mais on la calcule sans se faire mal ! Fini le stress des tests de rentrée épuisants. En croisant votre RPE et les données de votre montre (rythme cardiaque, allure) lors de nos séances phares (comme les <strong>3x1000m</strong> ou les sorties au <strong>seuil</strong>), vos allures cibles de compétition se dessinent naturellement au fil des semaines. La data s'adapte à vous, pas l'inverse.</p>
+  </div>
+</div>
 
     <!-- L'UA -->
     <div style="background:var(--surface); padding:1.5rem; border-radius:14px; border:1px solid var(--border); box-shadow:0 4px 12px rgba(27,58,107,0.05)">
