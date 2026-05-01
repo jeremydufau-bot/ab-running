@@ -1,55 +1,33 @@
-# AB Running Loisir — Site v3 (Saison 2026-2027)
-
-## Vue d'ensemble
-
-Site de la section Running Loisir de l'Aviron Bayonnais Athlétisme (FFA).
-
-**Refonte v3** : passage du système niveaux ski (🟢🔵🔴) au **système d'équivalence terrain** (Route / Piste / Trail). L'auto-régulation se fait par **RPE** (effort ressenti) et modulation du volume (reprise / standard / forme).
+# AB Running Loisir — v4
 
 ## Architecture
 
-| Fichier | Rôle |
-|---------|------|
-| `index.html` | Interface publique (accueil, programme 52 sem, calculateur, terrains, muscu) |
-| `app.js` | Logique frontend (rendu, navigation, calcul charge, modal détail) |
-| `data.js` | Données : 80 séances, programme 52 sem, 7 objectifs, seuils, calendrier, circuits |
-| `admin.html` | Interface coach (édition programme, séances, calendrier, publication GitHub) |
-| `logo_ab.avif` | Logo Aviron Bayonnais |
+4 fichiers, ~2000 lignes au total :
 
-## Données clés (data.js)
+| Fichier | Lignes | Rôle |
+|---------|--------|------|
+| `data.js` | 562 | Bibliothèque 80 séances, programme 52 sem (compact), objectifs, seuils, calendrier, circuits PPG |
+| `index.html` | 726 | Interface publique (CSS + HTML + JS fusionné) : accueil, programme, calculateur, renforcement |
+| `admin.html` | 701 | Interface coach : édition programme/séances/calendrier/infos, publication GitHub |
+| `logo_ab.avif` | — | Logo Aviron Bayonnais |
 
-### seancesData (80 séances)
-Chaque séance a 3 variantes terrain :
-- **Route** : halage, intramuros, plage
-- **Piste** : stade, 400m
-- **Trail** : Chiberta, sentiers, côtes
+## Format compact data.js
 
-Plus : RPE, catégorie, volume/modulation, notes coach.
+Chaque séance : `{l:label, c:cat, rpe:display, rn:numeric, d:durée_min, lieu, r:route, p:piste, t:trail, v:volume, n:notes}`
 
-### programme (52 semaines, S1 = 31 août 2026)
-Tronc commun mardi/jeudi + sortie WE en 2 variantes (Route ou Trail).
-Chaque semaine pointe vers des clés de `seancesData`.
+Programme : `{s:sem, p:phase, m:mardi_key, j:jeudi_key, wr:we_route_key, wt:we_trail_key, ua, d:décharge, n:notes}`
 
-### objectifsCalendrier (7 objectifs)
-Repères saison : Marathon La Rochelle (S13), France de Cross (S27), Semi Saint-Sébastien (S33), Marathon Biarritz (S35), Euskal Raid (S36), Trails Pays Basque (S44).
+Tout est dérivé des clés — pas de duplication titre/terrain/label.
 
-### chargeHebdoSeuils (7 seuils)
-De "Récupération" (≤280 UA) à "Surcharge" (>1050 UA).
+## Principes
 
-## Philosophie
-
-- **RPE individualise** : chacun dose son effort. Pas de vitesse prescrite.
-- **UA mesure la charge** : RPE × durée en minutes. Permet le suivi hebdomadaire.
-- **Terrain apporte la variété** : même séance, 3 façons de la vivre.
-- **PPG exclusivement en côtes** : principe physiologique non-négociable.
-- **Modulation du volume** : reprise / standard / forme — l'athlète choisit.
-
-## Palette AB
-
-- Sky blue : `#7BC3E5`
-- Navy : `#1B3A6B`
-- Mousse : `#4A8A5A`
+- RPE individualise l'effort (échelle 1-10)
+- UA = RPE × durée (min) — mesure la charge
+- 3 variantes terrain par séance (route/piste/trail)
+- Modulation volume : reprise / standard / forme
+- PPG exclusivement en côtes (physiologique)
+- Δ% inter-semaines pour gérer la charge progressive
 
 ## Déploiement
 
-Fichiers statiques (HTML + JS). Pas de backend. Publication via GitHub Pages depuis l'admin.
+Fichiers statiques. GitHub Pages. L'admin publie data.js modifié via l'API GitHub.

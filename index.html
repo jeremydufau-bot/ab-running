@@ -129,28 +129,6 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
 .obj-date{font-size:.68rem;color:var(--muted)}
 .obj-countdown{text-align:right;font-size:.7rem;font-weight:700}
 
-/* ── CALCULATEUR ── */
-.calc-explainer{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:.8rem}
-.calc-explainer h3{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
-.calc-explainer p{font-size:.8rem;color:var(--muted);line-height:1.6}
-.calc-sem{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem}
-.calc-sem-hdr{background:var(--surface2);padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
-.calc-sem-title{font-size:.78rem;font-weight:700;color:var(--navy)}
-.calc-sem-title small{font-weight:400;color:var(--muted);display:block;font-size:.68rem}
-.calc-total{font-size:1rem;font-weight:800;color:var(--navy)}
-.calc-badge{display:inline-block;padding:.15rem .45rem;border-radius:4px;font-size:.62rem;font-weight:700;color:#fff;margin-left:.4rem}
-.calc-table{width:100%;border-collapse:collapse}
-.calc-table th{font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.4rem .6rem;text-align:left}
-.calc-table td{padding:.35rem .6rem;border-top:1px solid var(--border)}
-.calc-table td:first-child{font-size:.76rem;color:var(--text);font-weight:500;min-width:80px}
-.calc-input{width:80px;padding:.3rem .5rem;border:1px solid var(--border);border-radius:5px;font-family:'Lora',serif;font-size:.82rem;text-align:center}
-.calc-ua{font-size:.82rem;font-weight:700;color:var(--muted)}
-.seuil-row{display:flex;gap:.6rem;align-items:center;padding:.35rem 0}
-.seuil-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
-.seuil-range{font-size:.72rem;color:var(--muted);min-width:90px}
-.seuil-label{font-size:.75rem;font-weight:700;color:var(--text);min-width:100px}
-.seuil-desc{font-size:.7rem;color:var(--muted)}
-
 /* ── INFOS CLUB BANNER ── */
 .infos-club-card{background:rgba(123,195,229,.08);border:1px solid rgba(123,195,229,.2);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:.6rem}
 .ic-title{font-size:.82rem;font-weight:700;color:var(--navy)}
@@ -160,13 +138,40 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
 
 /* ── RENFORCEMENT ── */
 .exo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.8rem}
-.exo-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;transition:.12s}
+.exo-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;transition:.12s;cursor:pointer}
 .exo-card:hover{border-color:var(--light);box-shadow:0 2px 8px rgba(74,122,204,.1)}
 .exo-emoji{font-size:1.4rem;margin-bottom:.3rem}
 .exo-nom{font-size:.82rem;font-weight:700;color:var(--navy)}
 .exo-muscles{font-size:.68rem;color:var(--muted);margin-bottom:.3rem}
 .exo-desc{font-size:.74rem;color:var(--text);line-height:1.5;margin-bottom:.3rem}
 .exo-prog{font-size:.68rem;color:var(--blue);line-height:1.5}
+.circuit-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:.8rem}
+.circuit-block-head{background:var(--surface2);padding:.6rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.circuit-block-head h3{font-size:.82rem;font-weight:700;color:var(--navy)}
+.circuit-block-head .meta{font-size:.65rem;color:var(--muted)}
+.circuit-exo{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid rgba(27,58,107,.05);cursor:pointer;transition:.08s}
+.circuit-exo:last-child{border-bottom:none}
+.circuit-exo:hover{background:rgba(123,195,229,.04)}
+.circuit-exo-name{font-size:.78rem;font-weight:600;color:var(--text)}
+.circuit-exo-sub{font-size:.65rem;color:var(--muted)}
+.circuit-exo-dose{font-size:.72rem;font-weight:600;color:var(--blue);text-align:right;white-space:nowrap}
+.eq-tag{font-size:.58rem;padding:.1rem .35rem;border-radius:3px;font-weight:600}
+.eq-corpo{background:rgba(74,138,90,.1);color:var(--mousse)}
+.eq-elastiques{background:rgba(192,64,64,.1);color:var(--rouge)}
+.eq-salle{background:rgba(27,58,107,.1);color:var(--navy)}
+.lib-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem;cursor:pointer;transition:.12s}
+.lib-card:hover{border-color:var(--light);box-shadow:0 2px 8px rgba(74,122,204,.1)}
+.lib-card-cat{font-size:.58rem;font-weight:700;padding:.12rem .4rem;border-radius:3px;display:inline-block;margin-bottom:.3rem}
+.lib-card-name{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:.15rem}
+.lib-card-desc{font-size:.68rem;color:var(--muted);margin-bottom:.3rem}
+.lib-card-equips{display:flex;gap:.3rem;flex-wrap:wrap}
+.routine-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.routine-hdr{padding:.6rem 1rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--border);background:var(--surface2)}
+.routine-exo{padding:.5rem 1rem;border-bottom:1px solid rgba(27,58,107,.05);cursor:pointer;transition:.08s}
+.routine-exo:last-child{border-bottom:none}
+.routine-exo:hover{background:rgba(123,195,229,.04)}
+.routine-exo-nom{font-size:.78rem;font-weight:600;color:var(--text)}
+.routine-exo-dose{font-size:.68rem;color:var(--blue);font-weight:600}
 
 /* ── RESPONSIVE ── */
 @media(max-width:700px){
@@ -187,8 +192,8 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
   <nav id="mainNav">
     <button class="active" onclick="showPage('accueil',this)">Accueil</button>
     <button onclick="showPage('programme',this)">Programme</button>
-    <button onclick="showPage('calculateur',this)">Calculateur</button>
     <button onclick="showPage('renforcement',this)">Renforcement</button>
+    <button onclick="showPage('routines',this)">Routines Matin</button>
   </nav>
 </header>
 
@@ -259,32 +264,63 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
   </div>
 </div>
 
-<!-- ═══ CALCULATEUR ═══ -->
-<div class="page" id="calculateur">
-  <div class="sec-eye">Outil personnel</div>
-  <div class="sec-title">Calculateur <em>de charge</em></div>
-  <div id="calc-intro"></div>
-  <div id="calc-explainers" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem;margin-bottom:1.5rem"></div>
-  <div class="sec-eye">Seuils de charge hebdomadaire</div>
-  <div id="calc-seuils" style="max-width:600px;margin-bottom:1.5rem"></div>
-  <div class="sec-eye">Planifier vos 4 semaines</div>
-  <div id="calc-weeks"></div>
-</div>
-
 <!-- ═══ RENFORCEMENT ═══ -->
 <div class="page" id="renforcement">
   <div class="sec-eye">Préparation physique</div>
   <div class="sec-title">Renforcement <em>& PPG</em></div>
   <p class="sec-intro">PPG exclusivement en côtes (principe physiologique). Séances de renforcement à faire en dehors des séances club ou >6h après.</p>
-  <div>
-    <div class="ctrl-label">Équipement</div>
-    <div class="ctrl-bar" id="equip-btns">
-      <button class="btn active" onclick="setEquip('corpo',this)">🤸 Corps</button>
-      <button class="btn" onclick="setEquip('elastiques',this)">🔴 Élastiques</button>
-      <button class="btn" onclick="setEquip('salle',this)">🏋️ Salle</button>
+
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.2rem">
+    <div>
+      <div class="ctrl-label">Phase de saison</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setPhaseMuscu('fondamental',this)">🧱 Fondamental</button>
+        <button class="btn" onclick="setPhaseMuscu('force',this)">💪 Force</button>
+        <button class="btn" onclick="setPhaseMuscu('specifique',this)">🎯 Spécifique</button>
+        <button class="btn" onclick="setPhaseMuscu('competition',this)">🏆 Compétition</button>
+      </div>
+    </div>
+    <div>
+      <div class="ctrl-label">Équipement</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setMusEquip('corpo',this)">🤸 Corps</button>
+        <button class="btn" onclick="setMusEquip('elastiques',this)">🔴 Élastiques</button>
+        <button class="btn" onclick="setMusEquip('salle',this)">🏋️ Salle</button>
+      </div>
     </div>
   </div>
-  <div id="exo-grid" class="exo-grid"></div>
+
+  <div id="phaseMusculaire" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem"></div>
+  <div id="circuitDisplay"></div>
+
+  <div class="divider"></div>
+  <div class="sec-eye">Bibliothèque complète</div>
+  <div class="sec-title" style="font-size:1.3rem">Tous les <em>exercices</em></div>
+  <div class="ctrl-bar" style="margin-bottom:.8rem">
+    <button class="btn active" onclick="filterExoCat('all',this)">Tout</button>
+    <button class="btn" onclick="filterExoCat('jambes',this)">🦵 Jambes</button>
+    <button class="btn" onclick="filterExoCat('fessiers',this)">🍑 Fessiers</button>
+    <button class="btn" onclick="filterExoCat('gainage',this)">🧱 Gainage</button>
+    <button class="btn" onclick="filterExoCat('mollets',this)">👟 Mollets</button>
+    <button class="btn" onclick="filterExoCat('pliometrie',this)">⚡ Pliométrie</button>
+    <button class="btn" onclick="filterExoCat('etirements',this)">🌿 Étirements</button>
+  </div>
+  <div id="exoGrid" class="exo-grid"></div>
+</div>
+
+<!-- ═══ ROUTINES MATIN ═══ -->
+<div class="page" id="routines">
+  <div class="sec-eye">Chaque matin</div>
+  <div class="sec-title">Routines <em>réveil musculaire</em></div>
+  <p class="sec-intro">7 routines thématiques (une par jour). 10-15 minutes au réveil, sans matériel ou avec élastiques. Objectif : prévention, mobilité, activation — pas de fatigue.</p>
+  <div>
+    <div class="ctrl-label">Version</div>
+    <div class="ctrl-bar">
+      <button class="btn active" onclick="setReveilEquip('corpo',this)">🤸 Corps</button>
+      <button class="btn" onclick="setReveilEquip('elastiques',this)">🔴 Élastiques</button>
+    </div>
+  </div>
+  <div id="routinesGrid" style="display:grid;gap:.8rem;margin-top:1rem"></div>
 </div>
 
 <!-- ═══ MODAL ═══ -->
@@ -345,7 +381,6 @@ function fmtRange(lundi){
 let curWE = 0; // 0=Route, 1=Trail
 let curPhase = '';
 let curTerrain = 0; // 0=Route, 1=Piste, 2=Trail (for modal)
-let curEquip = 'corpo';
 
 // ══════════════════════════════════════════════════
 // NAV
@@ -357,8 +392,8 @@ function showPage(id, btn){
   if(btn) btn.classList.add('active');
   if(id==='accueil') renderAccueil();
   if(id==='programme') buildProg();
-  if(id==='calculateur') renderCalc();
-  if(id==='renforcement') renderExos();
+  if(id==='renforcement'){ renderMuscu(); renderExoLibrary(); }
+  if(id==='routines') renderRoutines();
 }
 function closeModal(){ document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
@@ -605,115 +640,140 @@ function switchT(t){
 }
 
 // ══════════════════════════════════════════════════
-// CALCULATEUR
-// ══════════════════════════════════════════════════
-function renderCalc(){
-  // Intro
-  const intro = document.getElementById('calc-intro');
-  if(intro && calculateurTextes){
-    intro.innerHTML = `<div class="calc-explainer" style="margin-bottom:1.5rem"><p style="font-size:.88rem;line-height:1.75;white-space:pre-line">${calculateurTextes.intro||''}</p></div>`;
-  }
-  // Explainers
-  const expl = document.getElementById('calc-explainers');
-  if(expl && calculateurTextes){
-    const t = calculateurTextes;
-    expl.innerHTML = `
-      <div class="calc-explainer"><h3>💪 ${t.rpe_titre||''}</h3><p>${t.rpe_texte||''}</p></div>
-      <div class="calc-explainer"><h3>📊 ${t.ua_titre||''}</h3><p>${t.ua_texte||''}</p></div>
-      <div class="calc-explainer"><h3>🧱 ${t.bloc_titre||''}</h3><p>${t.bloc_texte||''}</p></div>`;
-  }
-  // Seuils
-  const seuilsEl = document.getElementById('calc-seuils');
-  if(seuilsEl){
-    seuilsEl.innerHTML = chargeHebdoSeuils.map((s,i)=>{
-      const prev = i>0?chargeHebdoSeuils[i-1].max:0;
-      const range = s.max>=9999?`> ${prev} UA`:`${prev}–${s.max} UA`;
-      return `<div class="seuil-row"><div class="seuil-dot" style="background:${s.couleur}"></div><div class="seuil-range">${range}</div><div class="seuil-label">${s.label}</div><div class="seuil-desc">${s.description}</div></div>`;
-    }).join('');
-  }
-  // 4 semaines
-  const wEl = document.getElementById('calc-weeks');
-  if(wEl && !wEl.dataset.init){
-    const jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
-    const titres = ['S1 — Base','S2 — Montée','S3 — Pic','S4 — Récup'];
-    const subs = ['charge modérée','+10 à 15%','+20 à 25% — la plus dure','−40% — assimilation'];
-    wEl.innerHTML = [0,1,2,3].map(w=>`
-      <div class="calc-sem">
-        <div class="calc-sem-hdr">
-          <div class="calc-sem-title">${titres[w]}<small>${subs[w]}</small></div>
-          <div><span class="calc-total" id="tot-${w}">0 UA</span><span class="calc-badge" id="bdg-${w}" style="background:var(--muted)">—</span></div>
-        </div>
-        <table class="calc-table"><thead><tr><th>Jour</th><th style="width:100px">Durée (min)</th><th style="width:100px">RPE (1-10)</th><th style="width:70px;text-align:right">UA</th></tr></thead>
-        <tbody>${jours.map((j,d)=>`<tr><td>${j}</td><td><input type="number" min="0" max="300" step="5" class="calc-input" data-w="${w}" data-d="${d}" data-f="dur" oninput="calcUp(${w})" placeholder="0"></td><td><input type="number" min="0" max="10" step="1" class="calc-input" data-w="${w}" data-d="${d}" data-f="rpe" oninput="calcUp(${w})" placeholder="0"></td><td style="text-align:right"><span class="calc-ua" id="cua-${w}-${d}">0</span></td></tr>`).join('')}</tbody></table>
-      </div>`).join('');
-    wEl.dataset.init='1';
-  }
-  for(let w=0;w<4;w++) calcUp(w);
-}
-
-function calcUp(w){
-  let total=0;
-  for(let d=0;d<7;d++){
-    const dur = parseFloat(document.querySelector(`[data-w="${w}"][data-d="${d}"][data-f="dur"]`)?.value)||0;
-    const rpe = parseFloat(document.querySelector(`[data-w="${w}"][data-d="${d}"][data-f="rpe"]`)?.value)||0;
-    const ua = Math.round(dur*rpe);
-    const el = document.getElementById(`cua-${w}-${d}`);
-    if(el){ el.textContent=ua; el.style.color=ua>0?'var(--navy)':'var(--muted)'; }
-    total+=ua;
-  }
-  const totEl = document.getElementById(`tot-${w}`);
-  const bdgEl = document.getElementById(`bdg-${w}`);
-  if(totEl) totEl.textContent = total+' UA';
-  if(bdgEl){
-    if(total===0){ bdgEl.textContent='—'; bdgEl.style.background='var(--muted)'; }
-    else{
-      const s = chargeHebdoSeuils.find(x=>total<=x.max)||chargeHebdoSeuils[chargeHebdoSeuils.length-1];
-      bdgEl.textContent=s.label; bdgEl.style.background=s.couleur;
-    }
-  }
-}
-
-// ══════════════════════════════════════════════════
 // RENFORCEMENT
 // ══════════════════════════════════════════════════
-function setEquip(eq,btn){
-  curEquip=eq;
+let curMusPhase = 'fondamental';
+let curMusEquip = 'corpo';
+let curExoFilter = 'all';
+
+function setPhaseMuscu(p,btn){
+  curMusPhase=p;
   btn.parentElement.querySelectorAll('.btn').forEach(b=>b.classList.toggle('active',b===btn));
-  renderExos();
+  renderMuscu();
+}
+function setMusEquip(e,btn){
+  curMusEquip=e;
+  btn.parentElement.querySelectorAll('.btn').forEach(b=>b.classList.toggle('active',b===btn));
+  renderMuscu();
 }
 
-function renderExos(){
-  const el = document.getElementById('exo-grid');
-  if(!el || typeof circuits==='undefined') return;
-  // Collect all exercises from circuits
-  const allExos = [];
-  Object.values(circuits).forEach(phase=>{
-    if(!phase.blocs) return;
-    phase.blocs.forEach(bloc=>{
-      bloc.exercices.forEach(ex=>{
-        if(!allExos.find(e=>e.nom===ex.nom)){
-          if(!ex.equips || ex.equips.includes(curEquip)){
-            allExos.push(ex);
-          }
-        }
-      });
-    });
-  });
-
-  if(!allExos.length){
-    el.innerHTML = '<p style="color:var(--muted);padding:1rem">Aucun exercice pour cet équipement.</p>';
-    return;
+function renderMuscu(){
+  const pd = typeof phaseMusculaireDesc!=='undefined' ? phaseMusculaireDesc[curMusPhase] : null;
+  const phEl = document.getElementById('phaseMusculaire');
+  if(phEl && pd){
+    phEl.innerHTML = `<strong style="color:var(--navy)">${pd.titre}</strong>
+      <span style="display:inline-block;margin-left:.8rem;font-size:.72rem;color:var(--blue)">⏱ ${pd.duree}</span>
+      <span style="display:inline-block;margin-left:.5rem;font-size:.72rem;color:var(--mousse)">📅 ${pd.freq}</span>
+      <br><span style="font-size:.82rem;color:var(--muted)">${pd.desc}</span>`;
   }
+  const container = document.getElementById('circuitDisplay');
+  if(!container || typeof circuits==='undefined') return;
+  const circuit = circuits[curMusPhase] && circuits[curMusPhase][curMusEquip];
+  if(!circuit){ container.innerHTML='<p style="color:var(--muted)">Pas de circuit pour cette combinaison.</p>'; return; }
 
-  el.innerHTML = allExos.map(ex=>`
-    <div class="exo-card">
-      <div class="exo-emoji">${ex.emoji||'💪'}</div>
-      <div class="exo-nom">${ex.nom}</div>
-      <div class="exo-muscles">${ex.muscles||''}</div>
-      <div class="exo-desc">${ex.description||''}</div>
-      ${ex.progressions?`<div class="exo-prog">${ex.progressions.map(p=>'→ '+p).join('<br>')}</div>`:''}
-    </div>
-  `).join('');
+  container.innerHTML = circuit.map(bloc=>`
+    <div class="circuit-block">
+      <div class="circuit-block-head"><h3>${bloc.bloc}</h3><span class="meta">${bloc.exos.length} exercices</span></div>
+      ${bloc.exos.map(e=>{
+        const ex = typeof exos!=='undefined' ? exos[e.id] : null;
+        if(!ex) return '';
+        const eqLabels = {corpo:'🤸 Corps',elastiques:'🔴 Élastiques',salle:'🏋️ Salle'};
+        return `<div class="circuit-exo" onclick="openExoModal('${e.id}')">
+          <div><div class="circuit-exo-name">${ex.emoji} ${ex.nom}</div><div class="circuit-exo-sub">${ex.muscles}</div></div>
+          <div style="text-align:right"><div class="circuit-exo-dose">${e.dose}</div><span class="eq-tag eq-${ex.equips[0]}">${eqLabels[ex.equips[0]]||''}</span></div>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+}
+
+function filterExoCat(cat,btn){
+  curExoFilter=cat;
+  btn.parentElement.querySelectorAll('.btn').forEach(b=>b.classList.toggle('active',b===btn));
+  renderExoLibrary();
+}
+
+function renderExoLibrary(){
+  const grid = document.getElementById('exoGrid');
+  if(!grid || typeof exos==='undefined') return;
+  const catBg = {jambes:'rgba(27,58,107,.12)',fessiers:'rgba(196,90,74,.12)',gainage:'rgba(74,138,90,.12)',mollets:'rgba(74,122,204,.12)',pliometrie:'rgba(122,106,154,.12)',etirements:'rgba(74,138,90,.1)'};
+  const catCol = {jambes:'var(--light)',fessiers:'#E08070',gainage:'var(--mousse)',mollets:'var(--sky)',pliometrie:'#B8A8D4',etirements:'var(--mousse)'};
+  const catLbl = {jambes:'🦵 Jambes',fessiers:'🍑 Fessiers',gainage:'🧱 Gainage',mollets:'👟 Mollets',pliometrie:'⚡ Pliométrie',etirements:'🌿 Étirements'};
+  const eqIcons = {corpo:'🤸',elastiques:'🔴',salle:'🏋️'};
+  const filtered = Object.entries(exos).filter(([id,ex])=>curExoFilter==='all'||ex.cat===curExoFilter);
+
+  grid.innerHTML = filtered.map(([id,ex])=>`
+    <div class="lib-card" onclick="openExoModal('${id}')">
+      <div class="lib-card-cat" style="background:${catBg[ex.cat]||'var(--border)'};color:${catCol[ex.cat]||'var(--muted)'}">${catLbl[ex.cat]||ex.cat}</div>
+      <div class="lib-card-name">${ex.emoji} ${ex.nom}</div>
+      <div class="lib-card-desc">${ex.muscles}</div>
+      <div class="lib-card-equips">${ex.equips.map(e=>`<span class="eq-tag eq-${e}">${eqIcons[e]||''} ${e==='corpo'?'Corps':e==='elastiques'?'Élastiques':'Salle'}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+function openExoModal(id){
+  const ex = typeof exos!=='undefined' ? exos[id] : null;
+  if(!ex) return;
+  const eqFull = {corpo:'🤸 Poids du corps',elastiques:'🔴 Élastiques / kettlebell',salle:'🏋️ Salle avec barres'};
+  document.getElementById('mTitle').textContent = `${ex.emoji} ${ex.nom}`;
+  document.getElementById('mBody').innerHTML = `
+    <h4>Muscles ciblés</h4><p>${ex.muscles}</p>
+    <h4>Équipement</h4><p>${ex.equips.map(e=>eqFull[e]||e).join('<br>')}</p>
+    <h4>Description technique</h4><p style="line-height:1.7">${ex.description}</p>
+    <h4>Erreurs à éviter</h4><p style="color:var(--rouge)">${ex.erreurs}</p>
+    <h4>Progression</h4><ul style="padding-left:1.2rem">${ex.progressions.map(p=>`<li style="margin-bottom:.2rem">${p}</li>`).join('')}</ul>`;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+// ══════════════════════════════════════════════════
+// ROUTINES MATIN
+// ══════════════════════════════════════════════════
+let curReveilEquip = 'corpo';
+
+function setReveilEquip(eq,btn){
+  curReveilEquip=eq;
+  btn.parentElement.querySelectorAll('.btn').forEach(b=>b.classList.toggle('active',b===btn));
+  renderRoutines();
+}
+
+function renderRoutines(){
+  const grid = document.getElementById('routinesGrid');
+  if(!grid || typeof routinesReveil==='undefined') return;
+  const routines = routinesReveil[curReveilEquip];
+  if(!routines){ grid.innerHTML='<p style="color:var(--muted)">Pas de routine pour cet équipement.</p>'; return; }
+
+  grid.innerHTML = joursReveil.map((jour,i)=>{
+    const exos = routines[i];
+    if(!exos) return '';
+    return `<div class="routine-card">
+      <div class="routine-hdr">
+        <span style="font-size:1.5rem">${joursEmoji[i]}</span>
+        <div>
+          <div style="font-size:.85rem;font-weight:800;color:var(--navy)">${jour}</div>
+          <div style="font-size:.68rem;color:var(--muted)">${joursFocus[i]}</div>
+        </div>
+        <span style="margin-left:auto;font-size:.65rem;color:var(--muted)">${exos.length} exercices · ~12 min</span>
+      </div>
+      ${exos.map((ex,j)=>`<div class="routine-exo" onclick="openRoutineExo(${i},${j})">
+        <div class="routine-exo-nom">${ex.nom}</div>
+        <div class="routine-exo-dose">${ex.dose}</div>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+
+function openRoutineExo(jourIdx,exIdx){
+  const routines = routinesReveil[curReveilEquip];
+  if(!routines || !routines[jourIdx]) return;
+  const ex = routines[jourIdx][exIdx];
+  if(!ex) return;
+  document.getElementById('mTitle').textContent = `${joursEmoji[jourIdx]} ${ex.nom}`;
+  document.getElementById('mBody').innerHTML = `
+    <div style="display:inline-block;background:rgba(27,58,107,.1);border:1px solid rgba(27,58,107,.25);border-radius:4px;padding:.2rem .7rem;font-size:.72rem;font-weight:700;color:var(--light);margin-bottom:1rem">${joursReveil[jourIdx]} · ${joursFocus[jourIdx]}</div>
+    <h4>Dosage</h4><p>${ex.dose}</p>
+    <h4>Comment faire</h4><p style="line-height:1.7">${ex.desc}</p>`;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
 }
 
 // ══════════════════════════════════════════════════
