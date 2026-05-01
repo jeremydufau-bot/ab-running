@@ -555,7 +555,7 @@ if(localStorage.getItem('ab-admin-session')==='true'){
 // Seul "Publier" écrit sur GitHub
 let localProgramme = null;
 let localCalFixed = null;
-let localNiveaux = null;
+let localSeances = null;
 let localInfosClub = null;
 let localCalcTextes = null;
 let localDifficulte = null;
@@ -568,18 +568,16 @@ function getLocal(){
     const d = JSON.parse(stored);
     localProgramme    = d.programme;
     localCalFixed     = d.calFixed;
-    localNiveaux      = d.niveaux        || JSON.parse(JSON.stringify(niveauxData));
+    localSeances      = d.seances        || JSON.parse(JSON.stringify(seancesData));
     localInfosClub    = d.infosClub      || (typeof infosClub !== 'undefined' ? JSON.parse(JSON.stringify(infosClub)) : []);
     localCalcTextes   = d.calcTextes     || (typeof calculateurTextes !== 'undefined' ? JSON.parse(JSON.stringify(calculateurTextes)) : {});
-    localDifficulte   = d.difficulte     || (typeof difficulteNiveaux !== 'undefined' ? JSON.parse(JSON.stringify(difficulteNiveaux)) : []);
     localChargeSeuils = d.chargeSeuils   || (typeof chargeHebdoSeuils !== 'undefined' ? JSON.parse(JSON.stringify(chargeHebdoSeuils)) : []);
   } else {
     localProgramme    = JSON.parse(JSON.stringify(programme));
     localCalFixed     = JSON.parse(JSON.stringify(calFixed));
-    localNiveaux      = JSON.parse(JSON.stringify(niveauxData));
+    localSeances      = JSON.parse(JSON.stringify(seancesData));
     localInfosClub    = (typeof infosClub !== 'undefined')         ? JSON.parse(JSON.stringify(infosClub)) : [];
     localCalcTextes   = (typeof calculateurTextes !== 'undefined') ? JSON.parse(JSON.stringify(calculateurTextes)) : {};
-    localDifficulte   = (typeof difficulteNiveaux !== 'undefined') ? JSON.parse(JSON.stringify(difficulteNiveaux)) : [];
     localChargeSeuils = (typeof chargeHebdoSeuils !== 'undefined') ? JSON.parse(JSON.stringify(chargeHebdoSeuils)) : [];
   }
 }
@@ -588,10 +586,9 @@ function saveLocal(){
   localStorage.setItem('ab-admin-pending', JSON.stringify({
     programme:    localProgramme,
     calFixed:     localCalFixed,
-    niveaux:      localNiveaux,
+    seances:      localSeances,
     infosClub:    localInfosClub,
     calcTextes:   localCalcTextes,
-    difficulte:   localDifficulte,
     chargeSeuils: localChargeSeuils,
     savedAt:      new Date().toISOString()
   }));
@@ -624,7 +621,7 @@ function initApp(){
     const d = JSON.parse(pending);
     pendingChanges = (JSON.stringify(d.programme) !== JSON.stringify(programme) ||
                       JSON.stringify(d.calFixed) !== JSON.stringify(calFixed) ||
-                      JSON.stringify(d.niveaux) !== JSON.stringify(niveauxData));
+                      JSON.stringify(d.seances) !== JSON.stringify(seancesData));
   }
   buildProgTable();
   buildCalList();
@@ -733,7 +730,7 @@ function buildProgTable(){
     const o = orig.find(x=>x.sem===s.sem) || s;
     const mardiChanged = JSON.stringify(s.mardi) !== JSON.stringify(o.mardi);
     const jeudiChanged = JSON.stringify(s.jeudi) !== JSON.stringify(o.jeudi);
-    const wkndChanged = (s.g0!==o.g0)||(s.g1!==o.g1)||(s.g2!==o.g2);
+    const wkndChanged = JSON.stringify(s.we_route)!==JSON.stringify(o.we_route) || JSON.stringify(s.we_trail)!==JSON.stringify(o.we_trail);
     const anyChanged = mardiChanged||jeudiChanged||wkndChanged;
     const bg = phaseColors[s.phaseClass]||'rgba(27,58,107,.08)';
     const col = phaseTextColors[s.phaseClass]||'#1b3a6b';
@@ -816,7 +813,7 @@ function seancePicker(seanceId, jourid){
     {label:'\uD83C\uDFC3 Sortie', fn: k => ['sortie_longue','sortie_recup','allure_marathon','allure_semi','ppg_seance'].includes(k)},
     {label:'\uD83D\uDCE6 Autres', fn: k => true},
   ];
-  const keys = Object.keys(localNiveaux);
+  const keys = Object.keys(localSeances);
   const used = new Set();
   let html = '<option value="">\u2014 Choisir depuis la biblioth\u00E8que \u2014</option>';
   for(const cat of cats){
@@ -825,7 +822,7 @@ function seancePicker(seanceId, jourid){
     html += '<optgroup label="'+cat.label+'">';
     grp.forEach(k => {
       used.add(k);
-      const lbl = (localNiveaux[k].label || k).substring(0,60);
+      const lbl = (localSeances[k].label || k).substring(0,60);
       html += '<option value="'+k+'">'+lbl+'</option>';
     });
     html += '</optgroup>';
@@ -836,33 +833,34 @@ function seancePicker(seanceId, jourid){
 function applySeancePicker(jourid, seanceId){
   const key = document.getElementById(seanceId).value;
   if(!key) return;
-  const niv = localNiveaux[key];
-  if(!niv) return;
-  document.getElementById('p-'+jourid+'-titre').value = niv.label || key;
-  const lines = [
-    '\uD83D\uDFE2 D\u00E9butant : '+niv.reps[0]+' r\u00E9p \u00B7 R='+niv.recup[0]+' \u00B7 '+niv.allure[0],
-    '\uD83D\uDD35 Interm\u00E9diaire : '+niv.reps[1]+' r\u00E9p \u00B7 R='+niv.recup[1]+' \u00B7 '+niv.allure[1],
-    '\uD83D\uDD34 Confirm\u00E9 : '+niv.reps[2]+' r\u00E9p \u00B7 R='+niv.recup[2]+' \u00B7 '+niv.allure[2],
-  ];
-  if(niv.notes) lines.push('\uD83D\uDCA1 '+niv.notes);
-  document.getElementById('p-'+jourid+'-detail').value = lines.join('\n');
+  const sd = localSeances[key];
+  if(!sd) return;
+  document.getElementById('p-'+jourid+'-titre').value = sd.label || key;
   showNivPreview(jourid, key);
 }
 
 function showNivPreview(jourid, key){
   const el = document.getElementById('niv-preview-'+jourid);
-  if(!el || !localNiveaux[key]) return;
-  const niv = localNiveaux[key];
-  const cols = ['#3d8b5c','#2351a0','#c04040'];
-  const lbls = ['\uD83D\uDFE2 D\u00E9b','\uD83D\uDD35 Inter','\uD83D\uDD34 Conf'];
+  if(!el || !localSeances[key]) return;
+  const sd = localSeances[key];
+  const tFields = ['route','piste','trail'];
+  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+  const tCols = ['#2351a0','#3d8b5c','#c04040'];
   el.innerHTML = '<div style="background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:8px;padding:.6rem .9rem;margin-bottom:.6rem">'
-    +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.4rem">Niveaux</div>'
-    +[0,1,2].map(i => '<div style="display:flex;gap:.5rem;font-size:.74rem;margin-bottom:.15rem">'
-      +'<span style="font-family:\'Lora\',serif;font-size:.63rem;font-weight:700;color:'+cols[i]+';min-width:65px">'+lbls[i]+'</span>'
-      +'<span>'+niv.reps[i]+'</span>'
-      +'<span style="color:var(--muted)">\u00B7 R='+niv.recup[i]+'</span>'
-      +'<span style="color:var(--muted);font-size:.68rem">\u00B7 '+niv.allure[i]+'</span>'
-      +'</div>').join('')
+    +'<div style="display:flex;gap:.8rem;align-items:center;margin-bottom:.4rem">'
+    +'<span style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue)">Variantes terrain</span>'
+    +'<span style="font-size:.7rem;color:#8b6508;background:rgba(184,134,11,.15);padding:.15rem .4rem;border-radius:4px;font-weight:700">RPE '+sd.rpe+'</span>'
+    +'<span style="font-size:.68rem;color:var(--muted)">'+sd.cat+'</span>'
+    +'</div>'
+    +[0,1,2].map(i => {
+      const v = sd[tFields[i]];
+      return '<div style="display:flex;gap:.5rem;font-size:.74rem;margin-bottom:.2rem;align-items:baseline">'
+        +'<span style="font-family:\'Lora\',serif;font-size:.63rem;font-weight:700;color:'+tCols[i]+';min-width:70px">'+tLabels[i]+'</span>'
+        +'<span style="color:'+(v && v!=='—'?'var(--text)':'var(--muted)')+'">'+(v||'—')+'</span>'
+        +'</div>';
+    }).join('')
+    +(sd.volume?'<div style="font-size:.72rem;color:#8b6508;margin-top:.3rem">📊 '+sd.volume+'</div>':'')
+    +(sd.notes?'<div style="font-size:.7rem;color:var(--muted);font-style:italic;margin-top:.2rem">💡 '+sd.notes+'</div>':'')
     +'</div>';
 }
 
@@ -891,7 +889,7 @@ function openPanel(sem){
     +'<div class="field-group"><label class="field-label">Terrain</label>'
     +'<select class="field-select" id="p-mardi-terrain">'+terrainOpts(s.mardi.terrain)+'</select></div>'
     +'<div class="field-group"><label class="field-label">Description <span style="font-weight:400;color:var(--muted)">(modifiable)</span></label>'
-    +'<textarea class="field-textarea" id="p-mardi-detail" rows="4">'+s.mardi.detail+'</textarea></div>'
+    +'<textarea class="field-textarea" id="p-mardi-detail" rows="4">'+(s.mardi.detail||((localSeances[s.mardi.key]||{}).notes||''))+'</textarea></div>'
     +'<span class="block-sep" style="background:rgba(74,138,90,.06);border-color:rgba(74,138,90,.15);color:var(--mousse)">\uD83D\uDCC5 JEUDI</span>'
     +'<div class="field-group">'
     +'<label class="field-label">S\u00E9ance depuis la biblioth\u00E8que <span style="font-weight:400;color:var(--muted)">(remplit le titre et la description)</span></label>'
@@ -903,14 +901,12 @@ function openPanel(sem){
     +'<div class="field-group"><label class="field-label">Terrain</label>'
     +'<select class="field-select" id="p-jeudi-terrain">'+terrainOpts(s.jeudi.terrain)+'</select></div>'
     +'<div class="field-group"><label class="field-label">Description <span style="font-weight:400;color:var(--muted)">(modifiable)</span></label>'
-    +'<textarea class="field-textarea" id="p-jeudi-detail" rows="4">'+s.jeudi.detail+'</textarea></div>'
-    +'<span class="block-sep" style="background:rgba(27,58,107,.04)">\uD83C\uDFC3 WEEKEND (par profil)</span>'
-    +'<div class="field-group"><label class="field-label">Route \uD83C\uDFC3</label>'
-    +'<input class="field-input" id="p-g0" value="'+(s.g0||'').replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">Trail loisir \uD83C\uDF3F</label>'
-    +'<input class="field-input" id="p-g1" value="'+(s.g1||'').replace(/"/g,'&quot;')+'"></div>'
-    +'<div class="field-group"><label class="field-label">Trail montagne \uD83C\uDFD4</label>'
-    +'<input class="field-input" id="p-g2" value="'+(s.g2||'').replace(/"/g,'&quot;')+'"></div>'
+    +'<textarea class="field-textarea" id="p-jeudi-detail" rows="4">'+(s.jeudi.detail||((localSeances[s.jeudi.key]||{}).notes||''))+'</textarea></div>'
+    +'<span class="block-sep" style="background:rgba(27,58,107,.04)">\uD83C\uDFC3 SORTIE WEEKEND</span>'
+    +'<div class="field-group"><label class="field-label">🛣️ Route</label>'
+    +'<input class="field-input" id="p-we-route" value="'+((s.we_route&&s.we_route.titre)||'—').replace(/"/g,'&quot;')+'"></div>'
+    +'<div class="field-group"><label class="field-label">🌲 Trail</label>'
+    +'<input class="field-input" id="p-we-trail" value="'+((s.we_trail&&s.we_trail.titre)||'—').replace(/"/g,'&quot;')+'"></div>'
     +'<div class="field-group"><label class="field-label" style="display:flex;align-items:center;gap:.5rem;cursor:pointer">'
     +'<input type="checkbox" id="p-decharge" '+(s.decharge?'checked':'')+'>Semaine de d\u00E9charge</label></div>';
 
@@ -931,13 +927,14 @@ function saveWeek(){
   if(idx===-1) return;
   localProgramme[idx].mardi.titre   = document.getElementById('p-mardi-titre').value.trim();
   localProgramme[idx].mardi.terrain = document.getElementById('p-mardi-terrain').value;
-  localProgramme[idx].mardi.detail  = document.getElementById('p-mardi-detail').value.trim();
+  if(localProgramme[idx].mardi.detail !== undefined) localProgramme[idx].mardi.detail = document.getElementById('p-mardi-detail').value.trim();
   localProgramme[idx].jeudi.titre   = document.getElementById('p-jeudi-titre').value.trim();
   localProgramme[idx].jeudi.terrain = document.getElementById('p-jeudi-terrain').value;
-  localProgramme[idx].jeudi.detail  = document.getElementById('p-jeudi-detail').value.trim();
-  localProgramme[idx].g0 = document.getElementById('p-g0').value.trim();
-  localProgramme[idx].g1 = document.getElementById('p-g1').value.trim();
-  localProgramme[idx].g2 = document.getElementById('p-g2').value.trim();
+  if(localProgramme[idx].jeudi.detail !== undefined) localProgramme[idx].jeudi.detail = document.getElementById('p-jeudi-detail').value.trim();
+  const weRouteVal = document.getElementById('p-we-route').value.trim();
+  const weTrailVal = document.getElementById('p-we-trail').value.trim();
+  localProgramme[idx].we_route = {key: weRouteVal, titre: weRouteVal};
+  localProgramme[idx].we_trail = {key: weTrailVal, titre: weTrailVal};
   localProgramme[idx].decharge = document.getElementById('p-decharge').checked;
   saveLocal();
   buildProgTable();
@@ -1145,8 +1142,7 @@ function renderCalcAdmin(){
     }
   });
 
-  // Seuils difficulté séance
-  renderDifficulteList();
+  // (difficulteNiveaux supprimé — système ski retiré)
   // Seuils charge hebdo
   renderChargeHebdoList();
 }
@@ -1217,97 +1213,99 @@ function filterSeances(val){
 }
 
 function buildSeancesGrid(){
-  if(!localNiveaux) return;
+  if(!localSeances) return;
   const list = document.getElementById('seances-list');
   if(!list) return;
-  const cols = ['#3d8b5c','#2351a0','#c04040'];
-  const lbls = ['Debutant','Intermediaire','Confirme'];
-  const emojis = ['Green','Blue','Red'];
+  const tFields = ['route','piste','trail'];
+  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+  const tCols = ['#2351a0','#3d8b5c','#c04040'];
 
-  list.innerHTML = Object.entries(localNiveaux).map(([key, niv]) => {
-    const label = niv.label || key;
-    const notes = niv.notes || '';
+  list.innerHTML = Object.entries(localSeances).map(([key, sd]) => {
+    const label = sd.label || key;
+    const notes = sd.notes || '';
     return '<div class="seance-lib-card" data-key="'+key+'" data-label="'+label.replace(/"/g,"'")+'" style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:.4rem">'
       +'<div style="background:var(--surface2);padding:.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap">'
       +'<div><span style="font-family:\'Lora\',serif;font-size:.78rem;font-weight:800;color:var(--ab-blue)">'+label+'</span>'
-      +'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--muted);margin-left:.5rem;background:rgba(27,58,107,.07);padding:.1rem .4rem;border-radius:3px">'+key+'</span></div>'
-      +'<button class="btn-edit-row" onclick="openSeanceEdit(\''+key+'\')">&#x270F;&#xFE0F; Modifier</button>'
+      +'<span style="font-family:\'Lora\',serif;font-size:.58rem;color:var(--muted);margin-left:.5rem;background:rgba(27,58,107,.07);padding:.1rem .4rem;border-radius:3px">'+key+'</span>'
+      +'<span style="font-size:.65rem;color:#8b6508;background:rgba(184,134,11,.15);padding:.1rem .35rem;border-radius:3px;margin-left:.4rem;font-weight:700">RPE '+(sd.rpe||'—')+'</span>'
+      +'<span style="font-size:.6rem;color:var(--muted);margin-left:.4rem">'+(sd.cat||'')+'</span>'
+      +'</div>'
+      +'<button class="btn-edit-row" onclick="openSeanceEdit(\''+key+'\')">✏️ Modifier</button>'
       +'</div>'
       +'<div style="padding:.65rem 1rem">'
-      +'<div style="display:grid;grid-template-columns:115px 1fr 1fr 2fr;gap:.3rem;margin-bottom:.25rem">'
-      +'<div></div>'
-      +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">R&#233;p.</div>'
-      +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">R&#233;cup</div>'
-      +'<div style="font-family:\'Lora\',serif;font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase">Allure</div>'
-      +'</div>'
-      +[0,1,2].map(i =>
-        '<div style="display:grid;grid-template-columns:115px 1fr 1fr 2fr;gap:.3rem;margin-bottom:.2rem;align-items:baseline">'
-        +'<span style="font-family:\'Lora\',serif;font-size:.65rem;font-weight:700;color:'+cols[i]+'">'+lbls[i]+'</span>'
-        +'<span style="font-size:.77rem">'+(niv.reps[i]||'&mdash;')+'</span>'
-        +'<span style="font-size:.77rem;color:var(--muted)">'+(niv.recup[i]||'&mdash;')+'</span>'
-        +'<span style="font-size:.74rem;color:var(--muted)">'+(niv.allure[i]||'&mdash;')+'</span>'
-        +'</div>'
-      ).join('')
-      +(notes?'<div style="margin-top:.4rem;padding:.3rem .6rem;background:rgba(212,137,58,.06);border-left:3px solid var(--ocre);font-size:.72rem;color:var(--muted)">'+notes+'</div>':'')
+      +[0,1,2].map(i => {
+        const v = sd[tFields[i]];
+        return '<div style="display:flex;gap:.5rem;font-size:.76rem;margin-bottom:.2rem;align-items:baseline">'
+          +'<span style="font-family:\'Lora\',serif;font-size:.65rem;font-weight:700;color:'+tCols[i]+';min-width:75px">'+tLabels[i]+'</span>'
+          +'<span style="color:'+(v&&v!=='—'?'var(--text)':'var(--muted)')+'">'+(v||'—')+'</span>'
+          +'</div>';
+      }).join('')
+      +(sd.volume?'<div style="margin-top:.3rem;font-size:.7rem;color:#8b6508">📊 '+sd.volume+'</div>':'')
+      +(notes?'<div style="margin-top:.3rem;padding:.3rem .6rem;background:rgba(212,137,58,.06);border-left:3px solid var(--ocre);font-size:.72rem;color:var(--muted)">💡 '+notes+'</div>':'')
       +'</div></div>';
   }).join('');
 }
 
 function openSeanceEdit(key){
   editingSeanceKey = key;
-  const niv = localNiveaux[key];
-  if(!niv) return;
-  const label = niv.label || key;
-  const cols = ['#3d8b5c','#2351a0','#c04040'];
-  const seps = ['rgba(74,138,90,.06)','rgba(27,58,107,.05)','rgba(192,64,64,.05)'];
-  const sepB = ['rgba(74,138,90,.2)','rgba(27,58,107,.12)','rgba(192,64,64,.15)'];
-  const nivN = ['&#x1F7E2; D&#233;butant','&#x1F535; Interm&#233;diaire','&#x1F534; Confirm&#233;'];
+  const sd = localSeances[key];
+  if(!sd) return;
+  const label = sd.label || key;
+  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+  const tFields = ['route','piste','trail'];
+  const tCols = ['#2351a0','#3d8b5c','#c04040'];
+  const tSeps = ['rgba(27,58,107,.05)','rgba(74,138,90,.06)','rgba(192,64,64,.05)'];
+  const tSepB = ['rgba(27,58,107,.12)','rgba(74,138,90,.2)','rgba(192,64,64,.15)'];
   document.getElementById('panel-title').textContent = label.substring(0,45);
   document.getElementById('btn-reset-week').style.display = 'none';
   document.getElementById('panel-body').innerHTML =
-    '<div class="field-group"><label class="field-label">Cl&#233;</label>'
+    '<div class="field-group"><label class="field-label">Clé</label>'
     +'<div style="font-family:\'Lora\',serif;font-size:.75rem;font-weight:700;color:var(--ab-blue);background:rgba(27,58,107,.06);padding:.4rem .7rem;border-radius:6px">'+key+'</div></div>'
-    +'<div class="field-group"><label class="field-label">Label (nom affich&#233;)</label>'
-    +'<input class="field-input" id="es-label" value="'+(niv.label||label).replace(/"/g,'&quot;')+'"></div>'
+    +'<div class="field-group"><label class="field-label">Label (nom affiché)</label>'
+    +'<input class="field-input" id="es-label" value="'+(sd.label||label).replace(/"/g,'&quot;')+'"></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">'
+    +'<div class="field-group"><label class="field-label">Catégorie</label>'
+    +'<input class="field-input" id="es-cat" value="'+(sd.cat||'').replace(/"/g,'&quot;')+'"></div>'
+    +'<div class="field-group"><label class="field-label">RPE</label>'
+    +'<input class="field-input" id="es-rpe" value="'+(sd.rpe||'').replace(/"/g,'&quot;')+'"></div></div>'
     +[0,1,2].map(i =>
-      '<span class="block-sep" style="background:'+seps[i]+';border-color:'+sepB[i]+';color:'+cols[i]+'">'+nivN[i]+'</span>'
-      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">'
-      +'<div class="field-group"><label class="field-label">R&#233;p&#233;titions</label>'
-      +'<input class="field-input" id="es-reps-'+i+'" value="'+(niv.reps[i]||'').replace(/"/g,'&quot;')+'"></div>'
-      +'<div class="field-group"><label class="field-label">R&#233;cup&#233;ration</label>'
-      +'<input class="field-input" id="es-recup-'+i+'" value="'+(niv.recup[i]||'').replace(/"/g,'&quot;')+'"></div></div>'
-      +'<div class="field-group"><label class="field-label">Allure / Intensit&#233;</label>'
-      +'<input class="field-input" id="es-allure-'+i+'" value="'+(niv.allure[i]||'').replace(/"/g,'&quot;')+'"></div>'
+      '<span class="block-sep" style="background:'+tSeps[i]+';border-color:'+tSepB[i]+';color:'+tCols[i]+'">'+tLabels[i]+'</span>'
+      +'<div class="field-group"><label class="field-label">Variante '+tLabels[i]+'</label>'
+      +'<input class="field-input" id="es-terrain-'+i+'" value="'+(sd[tFields[i]]||'—').replace(/"/g,'&quot;')+'"></div>'
     ).join('')
+    +'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
+    +'<input class="field-input" id="es-volume" value="'+(sd.volume||'').replace(/"/g,'&quot;')+'"></div>'
     +'<div class="field-group"><label class="field-label">Notes coach</label>'
-    +'<textarea class="field-textarea" id="es-notes" rows="3">'+(niv.notes||'')+'</textarea></div>';
+    +'<textarea class="field-textarea" id="es-notes" rows="3">'+(sd.notes||'')+'</textarea></div>';
   document.getElementById('edit-panel').classList.add('open');
   document.getElementById('panel-overlay').style.display='block';
 }
 
 function openNewSeance(){
   editingSeanceKey = '__new__';
-  const cols = ['#3d8b5c','#2351a0','#c04040'];
-  const seps = ['rgba(74,138,90,.06)','rgba(27,58,107,.05)','rgba(192,64,64,.05)'];
-  const sepB = ['rgba(74,138,90,.2)','rgba(27,58,107,.12)','rgba(192,64,64,.15)'];
-  const nivN = ['&#x1F7E2; D&#233;butant','&#x1F535; Interm&#233;diaire','&#x1F534; Confirm&#233;'];
-  document.getElementById('panel-title').textContent = 'Nouvelle s\u00E9ance';
+  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+  const tCols = ['#2351a0','#3d8b5c','#c04040'];
+  const tSeps = ['rgba(27,58,107,.05)','rgba(74,138,90,.06)','rgba(192,64,64,.05)'];
+  const tSepB = ['rgba(27,58,107,.12)','rgba(74,138,90,.2)','rgba(192,64,64,.15)'];
+  document.getElementById('panel-title').textContent = 'Nouvelle séance';
   document.getElementById('btn-reset-week').style.display = 'none';
   document.getElementById('panel-body').innerHTML =
-    '<div class="field-group"><label class="field-label">Cl&#233; (sans espaces)</label>'
+    '<div class="field-group"><label class="field-label">Clé (sans espaces)</label>'
     +'<input class="field-input" id="es-new-key" placeholder="ma_seance"></div>'
-    +'<div class="field-group"><label class="field-label">Label (nom affich&#233;)</label>'
+    +'<div class="field-group"><label class="field-label">Label (nom affiché)</label>'
     +'<input class="field-input" id="es-label" placeholder="ex: 6x1000m Halage R=2min"></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">'
+    +'<div class="field-group"><label class="field-label">Catégorie</label>'
+    +'<input class="field-input" id="es-cat" placeholder="ex: Seuil"></div>'
+    +'<div class="field-group"><label class="field-label">RPE</label>'
+    +'<input class="field-input" id="es-rpe" placeholder="ex: 7/10"></div></div>'
     +[0,1,2].map(i =>
-      '<span class="block-sep" style="background:'+seps[i]+';border-color:'+sepB[i]+';color:'+cols[i]+'">'+nivN[i]+'</span>'
-      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">'
-      +'<div class="field-group"><label class="field-label">R&#233;p&#233;titions</label>'
-      +'<input class="field-input" id="es-reps-'+i+'" placeholder="ex: 4x"></div>'
-      +'<div class="field-group"><label class="field-label">R&#233;cup&#233;ration</label>'
-      +'<input class="field-input" id="es-recup-'+i+'" placeholder="ex: 2min"></div></div>'
-      +'<div class="field-group"><label class="field-label">Allure / Intensit&#233;</label>'
-      +'<input class="field-input" id="es-allure-'+i+'" placeholder="ex: allure seuil"></div>'
+      '<span class="block-sep" style="background:'+tSeps[i]+';border-color:'+tSepB[i]+';color:'+tCols[i]+'">'+tLabels[i]+'</span>'
+      +'<div class="field-group"><label class="field-label">Variante '+tLabels[i]+'</label>'
+      +'<input class="field-input" id="es-terrain-'+i+'" placeholder="ex: 6×1000m R=2' Halage"></div>'
     ).join('')
+    +'<div class="field-group"><label class="field-label">Volume / Modulation</label>'
+    +'<input class="field-input" id="es-volume" placeholder="ex: 3 reprise · 6 standard · 8 si forme"></div>'
     +'<div class="field-group"><label class="field-label">Notes coach</label>'
     +'<textarea class="field-textarea" id="es-notes" rows="3"></textarea></div>';
   document.getElementById('edit-panel').classList.add('open');
@@ -1316,32 +1314,34 @@ function openNewSeance(){
 
 function saveSeance(){
   if(!editingSeanceKey) return;
+  const tFields = ['route','piste','trail'];
   if(editingSeanceKey === '__new__'){
     const key = (document.getElementById('es-new-key').value||'').trim().replace(/\s+/g,'_');
-    if(!key){ toast('La cl\u00E9 est obligatoire','error'); return; }
-    if(localNiveaux[key]){ toast('Cette cl\u00E9 existe d\u00E9j\u00E0','error'); return; }
-    localNiveaux[key] = {
-      label: document.getElementById('es-label').value.trim(),
-      reps:  [0,1,2].map(i=>document.getElementById('es-reps-'+i).value.trim()),
-      recup: [0,1,2].map(i=>document.getElementById('es-recup-'+i).value.trim()),
-      allure:[0,1,2].map(i=>document.getElementById('es-allure-'+i).value.trim()),
-      notes: document.getElementById('es-notes').value.trim(),
+    if(!key){ toast('La clé est obligatoire','error'); return; }
+    if(localSeances[key]){ toast('Cette clé existe déjà','error'); return; }
+    const sd = {
+      label:  document.getElementById('es-label').value.trim(),
+      cat:    document.getElementById('es-cat').value.trim(),
+      rpe:    document.getElementById('es-rpe').value.trim(),
+      volume: document.getElementById('es-volume').value.trim(),
+      notes:  document.getElementById('es-notes').value.trim(),
     };
+    for(let i=0;i<3;i++) sd[tFields[i]] = document.getElementById('es-terrain-'+i).value.trim();
+    localSeances[key] = sd;
   } else {
     const key = editingSeanceKey;
-    localNiveaux[key].label = document.getElementById('es-label').value.trim();
-    localNiveaux[key].notes = document.getElementById('es-notes').value.trim();
-    for(let i=0;i<3;i++){
-      localNiveaux[key].reps[i]   = document.getElementById('es-reps-'+i).value.trim();
-      localNiveaux[key].recup[i]  = document.getElementById('es-recup-'+i).value.trim();
-      localNiveaux[key].allure[i] = document.getElementById('es-allure-'+i).value.trim();
-    }
+    localSeances[key].label  = document.getElementById('es-label').value.trim();
+    localSeances[key].cat    = document.getElementById('es-cat').value.trim();
+    localSeances[key].rpe    = document.getElementById('es-rpe').value.trim();
+    localSeances[key].volume = document.getElementById('es-volume').value.trim();
+    localSeances[key].notes  = document.getElementById('es-notes').value.trim();
+    for(let i=0;i<3;i++) localSeances[key][tFields[i]] = document.getElementById('es-terrain-'+i).value.trim();
   }
   editingSeanceKey = null;
   saveLocal();
   buildSeancesGrid();
   closePanel();
-  toast('S\u00E9ance mise \u00E0 jour \u2014 pensez \u00E0 Publier \u2713','success');
+  toast('Séance mise à jour — pensez à Publier ✓','success');
 }
 
 // ════════════════════════════════════════════════
@@ -1440,14 +1440,12 @@ async function doPublish(){
     currentContent = replaceJsConst(currentContent, 'programme', JSON.stringify(localProgramme, null, 2));
     // Replace calFixed array in data.js
     currentContent = replaceJsConst(currentContent, 'calFixed', JSON.stringify(localCalFixed, null, 2));
-    // Replace niveauxData in data.js
-    currentContent = replaceJsConst(currentContent, 'niveauxData', JSON.stringify(localNiveaux, null, 2));
+    // Replace seancesData in data.js
+    currentContent = replaceJsConst(currentContent, 'seancesData', JSON.stringify(localSeances, null, 2));
     // Replace infosClub in data.js
     if(localInfosClub)    currentContent = replaceJsConst(currentContent, 'infosClub',           JSON.stringify(localInfosClub, null, 2));
     // Replace calculateurTextes in data.js
     if(localCalcTextes)   currentContent = replaceJsConst(currentContent, 'calculateurTextes',   JSON.stringify(localCalcTextes, null, 2));
-    // Replace difficulteNiveaux in data.js
-    if(localDifficulte)   currentContent = replaceJsConst(currentContent, 'difficulteNiveaux',   JSON.stringify(localDifficulte, null, 2));
     // Replace chargeHebdoSeuils in data.js
     if(localChargeSeuils) currentContent = replaceJsConst(currentContent, 'chargeHebdoSeuils',   JSON.stringify(localChargeSeuils, null, 2));
 
@@ -1494,7 +1492,7 @@ async function doPublish(){
     pendingChanges = false;
     localProgramme = JSON.parse(JSON.stringify(localProgramme));
     localCalFixed  = JSON.parse(JSON.stringify(localCalFixed));
-    localNiveaux   = JSON.parse(JSON.stringify(localNiveaux));
+    localSeances   = JSON.parse(JSON.stringify(localSeances));
     updateStatusBar();
     buildProgTable();
     buildCalList();

@@ -106,32 +106,17 @@ function estimateSessionCharge(titre, options){
 
   const ua = ua_seance + ua_echauff + ua_ppg;
 
-  const niveaux = (typeof difficulteNiveaux !== 'undefined' && difficulteNiveaux.length)
-    ? difficulteNiveaux
-    : [
-        { key:'vert',   label:'Vert — Facile',         couleur:'#2E8B3E', ua_max:280 },
-        { key:'bleu',   label:'Bleu — Modéré',         couleur:'#3A7BBF', ua_max:380 },
-        { key:'orange', label:'Orange — Soutenu',      couleur:'#E67E22', ua_max:480 },
-        { key:'rouge',  label:'Rouge — Difficile',     couleur:'#C0392B', ua_max:600 },
-        { key:'noir',   label:'Noir — Très difficile', couleur:'#1A1A1A', ua_max:9999 }
-      ];
-  const niv = niveaux.find(n => ua <= n.ua_max) || niveaux[niveaux.length-1];
-
+  // Plus de pastille ski : on retourne juste la charge brute.
+  // Le RPE individualise l'effort, l'UA mesure la charge.
   return {
-    ua, rpe, duree: duree_seance,
-    diff_key:   niv.key,
-    diff_label: niv.label,
-    diff_color: niv.couleur
+    ua, rpe, duree: duree_seance
   };
 }
 
-// Rendu d'une indication de difficulté (texte coloré simple, pédagogique)
+// Rendu UA simple (plus de pastille ski — auto-régulation par RPE)
 function diffBadge(ch){
-  return `<span class="diff-pill diff-${ch.diff_key}">
-    <span class="diff-dot diff-${ch.diff_key}"></span>
-    ${ch.diff_label}
-  </span>
-  <span class="ua-badge" title="Charge estimée : RPE ${ch.rpe} × durée incluant échauff + PPG">${ch.ua} UA</span>`;
+  if(!ch || typeof ch.ua === 'undefined') return '';
+  return `<span class="ua-badge" title="Charge estimée : RPE ${ch.rpe} × durée incluant échauff + PPG">${ch.ua} UA</span>`;
 }
 
 // ══════════════════════════════════════════════
@@ -146,7 +131,7 @@ function showPage(id,btn){
   // Refresh pages that depend on dynamic data
   if(id==='calendrier') renderCal();
   if(id==='suggestions') renderSuggestions();
-  if(id==='accueil'){ renderAccueilGrid(); renderAccueilEvents(); }
+  if(id==='accueil'){ renderAccueilGrid(); renderAccueilEvents(); renderObjectifsAccueil(); }
   if(id==='calculateur') renderCalculateur();
   if(id==='terrains') renderTerrains();
 }
@@ -162,9 +147,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 // ══════════════════════════════════════════════
 // PROGRAMME — État
 // ══════════════════════════════════════════════
-let currentLevel = 0;
+// 0 = Route, 1 = Piste, 2 = Trail (équivalence terrain)
+let currentTerrain = 0;
 let currentPhase = '';
-let currentNiveau = 0; // 0=débutant 1=intermédiaire 2=confirmé
+// Compatibilité legacy : currentLevel garde le sens "type de sortie WE" (0=Route, 1=Trail)
+let currentLevel = 0;
 
 
 
@@ -172,8 +159,9 @@ function setLevel(lvl, btn){
   currentLevel = lvl;
   document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  const labels = ['Weekend · Route 🏃','Weekend · Trail loisir 🌿','Weekend · Trail montagne 🏔'];
-  document.getElementById('col-weekend-label').textContent = labels[lvl];
+  const labels = ['Weekend · Route 🏃','Weekend · Trail 🌿'];
+  const lblEl = document.getElementById('col-weekend-label');
+  if(lblEl) lblEl.textContent = labels[lvl] || labels[0];
   buildTable();
 }
 function setPhase(ph, btn){
@@ -182,85 +170,97 @@ function setPhase(ph, btn){
   btn.classList.add('active');
   buildTable();
 }
-function setNiveau(n, btn){
-  currentNiveau = n;
-  document.querySelectorAll('.niveau-sel-btn').forEach((b,i)=>{
-    b.classList.remove('active','niv0','niv1','niv2');
-    if(i===n){ b.classList.add('active','niv'+n); }
+function setTerrain(t, btn){
+  currentTerrain = t;
+  document.querySelectorAll('.terrain-sel-btn').forEach((b,i)=>{
+    b.classList.remove('active','terrain0','terrain1','terrain2');
+    if(i===t){ b.classList.add('active','terrain'+t); }
   });
   buildTable();
 }
+// Alias pour compatibilité avec d'éventuels appels existants
+function setNiveau(n, btn){ return setTerrain(n, btn); }
 
 function terrainTag(t){
   const d = terrainLabel[t] || {icon:'📍',label:t,cls:'tag-blue'};
   return `<span class="terrain-tag tag ${d.cls}" title="${d.label}">${d.icon} ${d.label}</span>`;
 }
 
-// Données de niveau par type de séance
-function getNiveauBlock(titre){
-  // Detect type from title
-  const t = titre.toLowerCase();
-  if(/30"\/30"|30'30|30s.30s/.test(t)) return niveauxData['3030'];
-  const m = t.match(/(\d+)×(\d+)min|(\d+)min/);
-  if(m){
-    const mins = m[2]||m[3];
-    if(mins && niveauxData[mins+'min']) return niveauxData[mins+'min'];
+// Récupère les données d'une séance soit par sa clé (depuis programme.mardi.key)
+// soit en fallback par détection sur le titre.
+function getSeanceByKey(key){
+  if(!key || key === '—') return null;
+  return (typeof seancesData !== 'undefined' && seancesData[key]) || null;
+}
+
+function getSeanceBlock(seance){
+  // seance peut être un objet {key, titre, terrain} ou juste un titre (legacy)
+  if(typeof seance === 'object' && seance && seance.key){
+    const data = getSeanceByKey(seance.key);
+    if(data) return data;
   }
-  if(/30s/.test(t)) return niveauxData['30s'];
-  if(/1min30|1'30/.test(t)) return niveauxData['1min30'];
-  if(/2min/.test(t)) return niveauxData['2min'];
-  if(/1min/.test(t)) return niveauxData['1min'];
-  if(/côte|cote/.test(t)) return niveauxData['cote'];
-  if(/fartlek/.test(t)) return niveauxData['fartlek'];
+  // Fallback sur détection par titre (anciennes données)
+  const t = (typeof seance === 'string' ? seance : (seance && seance.titre) || '').toLowerCase();
+  if(/30"\/30"|30'30|30s.30s/.test(t)) return seancesData['3030'];
+  if(/30s/.test(t)) return seancesData['30s'];
+  if(/1min30|1'30/.test(t)) return seancesData['1min30'];
+  if(/2min/.test(t)) return seancesData['2min'];
+  if(/1min/.test(t)) return seancesData['1min'];
+  if(/côte|cote/.test(t)) return seancesData['cote'];
+  if(/fartlek/.test(t)) return seancesData['fartlek'];
   return null;
 }
 
+// Alias legacy
+function getNiveauBlock(titre){ return getSeanceBlock(titre); }
+
 function buildTable(){
   const tbody = document.getElementById('progBody');
-  const gKeys = ['g0','g1','g2'];
+  if(!tbody) return;
   const rows = programme.filter(s => !currentPhase || s.phaseClass === currentPhase);
-  const nLabels = ['🟢 Débutant','🔵 Intermédiaire','🔴 Confirmé'];
 
   tbody.innerHTML = rows.map(s => {
     const ph = phaseLabels[s.phaseClass] || {label:s.phase,cls:'phase-base'};
-    const wknd = s[gKeys[currentLevel]] || '—';
-    const isEvent = s.event;
-    const dc = s.decharge;
-
-    const mardiKey = `${s.sem}_mardi`;
-    const jeudiKey = `${s.sem}_jeudi`;
+    // Sortie WE selon currentLevel : 0=Route, 1=Trail
+    const weObj = currentLevel === 1 ? s.we_trail : s.we_route;
+    const wknd = (weObj && weObj.titre && weObj.titre !== '—') ? weObj.titre : '—';
+    const isObj = !!s.objectif;
+    const dc = !!s.decharge;
     const mardi = s.mardi;
     const jeudi = s.jeudi;
 
-    // Niveau detail for current session type
-    const niv = niveauxData['cote']; // placeholder, shown in detail
-    const nivBadge = `<span class="niveau-badge niv-${currentNiveau}">${nLabels[currentNiveau]}</span>`;
+    // Pour chaque séance : RPE depuis seancesData
+    const mData = getSeanceByKey(mardi.key);
+    const jData = getSeanceByKey(jeudi.key);
+    const mRpe = mData ? mData.rpe : '';
+    const jRpe = jData ? jData.rpe : '';
 
-    return `<tr class="${dc?'decharge':''} ${isEvent?'has-event':''}" onclick="openDetail(${s.sem})">
+    return `<tr class="${dc?'decharge':''} ${isObj?'has-objectif':''}" onclick="openDetail(${s.sem})">
       <td>
         <div class="sem-num">S${s.sem}</div>
         <div class="mois-lbl">${s.mois}</div>
       </td>
       <td>
         <span class="phase-badge ${ph.cls}">${ph.label}</span>
-        ${dc?'<span class="decharge-badge">🟢 Décharge</span>':''}
-        ${isEvent?`<div style="font-size:.68rem;color:var(--ab-blue);font-weight:600;margin-top:.2rem">📌 ${s.event}</div>`:''}
+        ${dc?'<span class="decharge-badge">🌙 Décharge</span>':''}
+        ${isObj?`<div style="font-size:.7rem;color:#B8860B;font-weight:700;margin-top:.25rem">${s.objectif}</div>`:''}
       </td>
       <td>
         <div class="seance-titre">${mardi.titre}</div>
         <div class="seance-meta">
           ${terrainTag(mardi.terrain)}
-          ${diffBadge(estimateSessionCharge(mardi.titre, {decharge:dc}))}
+          ${mRpe?`<span class="rpe-pill">RPE ${mRpe}</span>`:''}
         </div>
       </td>
       <td>
         <div class="seance-titre">${jeudi.titre}</div>
         <div class="seance-meta">
           ${terrainTag(jeudi.terrain)}
-          ${diffBadge(estimateSessionCharge(jeudi.titre, {decharge:dc}))}
+          ${jRpe?`<span class="rpe-pill">RPE ${jRpe}</span>`:''}
         </div>
       </td>
       <td style="color:var(--muted);font-size:.78rem;line-height:1.5">${wknd}</td>
+      <td style="text-align:center;font-weight:700;color:var(--ab-blue)">${s.ua}</td>
     </tr>`;
   }).join('');
 }
@@ -269,8 +269,11 @@ buildTable();
 // ══════════════════════════════════════════════
 // ACCUEIL — 3 semaines dynamiques
 // ══════════════════════════════════════════════
-let accLevel = 0;   // 0=Route 1=Trail loisir 2=Trail montagne
-let accNiveau = 0;  // 0=Débutant 1=Intermédiaire 2=Confirmé
+// État accueil : terrain de pratique principal (sortie WE)
+let accLevel = 0;   // 0=Route, 1=Trail
+let accTerrain = 0; // 0=Route, 1=Piste, 2=Trail (pour les variantes de séance)
+// Alias legacy
+let accNiveau = 0;
 
 function setAccLevel(lvl, btn){
   accLevel = lvl;
@@ -280,14 +283,17 @@ function setAccLevel(lvl, btn){
   });
   renderAccueilGrid();
 }
-function setAccNiveau(n, btn){
-  accNiveau = n;
-  document.querySelectorAll('.acc-niv-btn').forEach((b,i) => {
+function setAccTerrain(t, btn){
+  accTerrain = t;
+  accNiveau = t; // alias
+  document.querySelectorAll('.acc-terrain-btn').forEach((b,i) => {
     b.classList.remove('active');
-    b.classList.toggle('active', i === n);
+    b.classList.toggle('active', i === t);
   });
   renderAccueilGrid();
 }
+// Alias legacy
+function setAccNiveau(n, btn){ return setAccTerrain(n, btn); }
 
 // S1 = semaine contenant le 1er septembre de la saison
 function getSemaineSaison(){
@@ -315,8 +321,10 @@ function mainDetail(text){
   return (idx === -1 ? text : text.substring(0, idx)).trim();
 }
 
-// Extrait la prescription PPG pour un niveau donné
+// Legacy — conservé mais le nouveau programme ne contient plus de PPG inline.
+// La PPG est gérée via les notes coach et l'onglet PPG dédié.
 function ppgForLevel(text, nLvl){
+  if(!text) return '';
   const idx = text.indexOf(' | 🏋 PPG');
   if(idx === -1) return '';
   const ppgRaw = text.substring(idx + ' | 🏋 PPG'.length + 1);
@@ -325,14 +333,29 @@ function ppgForLevel(text, nLvl){
   return m ? m[1].replace(/\s*·\s*$/, '').trim() : '';
 }
 
-// Prescription de répétitions selon niveau
-function nivDetails(titre, nLvl){
-  const nd = getNiveauBlock(titre);
-  if(!nd) return '';
-  const cols = ['var(--mousse)','var(--ab-blue2)','var(--rouge)'];
-  return `<div style="font-family:'Lora',serif;font-size:.7rem;color:${cols[nLvl]};font-weight:700;margin-top:.3rem">
-    ${nd.reps[nLvl]} rép · récup ${nd.recup[nLvl]} · ${nd.allure[nLvl]}
+// Prescription selon le terrain choisi (Route / Piste / Trail)
+function terrainDetails(seance, tIdx){
+  const sd = (typeof seance === 'object' && seance && seance.key)
+    ? getSeanceByKey(seance.key)
+    : getSeanceBlock(seance);
+  if(!sd) return '';
+  const tFields = ['route','piste','trail'];
+  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+  const cols = ['var(--ab-blue2)','var(--mousse)','var(--rouge)'];
+  const variante = sd[tFields[tIdx]] || '—';
+  if(variante === '—'){
+    return `<div style="font-family:'Lora',serif;font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">
+      ${tLabels[tIdx]} : pas de variante adaptée pour cette séance
+    </div>`;
+  }
+  return `<div style="font-family:'Lora',serif;font-size:.7rem;color:${cols[tIdx]};font-weight:700;margin-top:.3rem">
+    ${tLabels[tIdx]} · ${variante}
   </div>`;
+}
+// Alias legacy
+function nivDetails(titre, nLvl){
+  // Si on nous passe un objet (nouveau format), on l'utilise; sinon fallback titre
+  return terrainDetails(titre, nLvl);
 }
 
 function renderAccueilInit(){
@@ -343,16 +366,15 @@ function renderAccueilInit(){
   document.getElementById('acc-saison-lbl').textContent = 'Saison '+saisonAnnee+'–'+(saisonAnnee+1)+' · S1 = semaine du 1er septembre';
   renderAccueilGrid();
   renderAccueilEvents();
+  renderObjectifsAccueil();
 }
 
 function renderAccueilGrid(){
   const { semNum, lundiAuj } = getSemaineSaison();
-  const gKeys = ['g0','g1','g2'];
-  const gLabels = ['Route 🏃','Trail loisir 🌿','Trail montagne 🏔'];
+  const gLabels = ['🛣️ Route','🌲 Trail'];
   const weekLabels = ['Cette semaine','Semaine prochaine','Dans 2 semaines'];
-  const nivColors = ['var(--mousse)','var(--ab-blue2)','var(--rouge)'];
-  const nivLabels = ['🟢 Débutant','🔵 Intermédiaire','🔴 Confirmé'];
   const grid = document.getElementById('acc-grid');
+  if(!grid) return;
   grid.innerHTML = '';
 
   for(let i = 0; i < 3; i++){
@@ -363,17 +385,17 @@ function renderAccueilGrid(){
     const jeudi = new Date(+lundiSem + 3*86400000);
     const isCur = i === 0;
 
-    if(!base || sn < 1 || sn > 48){
+    if(!base || sn < 1 || sn > 52){
       grid.innerHTML += `<div class="card" style="opacity:.4">
         <span style="font-family:'Lora',serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">${weekLabels[i]} · S${sn}</span>
         <p style="font-size:.82rem;color:var(--muted);margin-top:.4rem">Hors saison.</p>
       </div>`; continue;
     }
 
-    // Apply overrides (same as programme page)
     const s_mardi = base.mardi;
     const s_jeudi = base.jeudi;
-    const wkndVal = base[gKeys[accLevel]] || '—';
+    const weObj = accLevel === 1 ? base.we_trail : base.we_route;
+    const wkndVal = (weObj && weObj.titre && weObj.titre !== '—') ? weObj.titre : '—';
 
     const ph = phaseLabels[base.phaseClass] || {label:base.phase,cls:'phase-base'};
     const tM = terrainLabel[s_mardi.terrain] || {icon:'📍',label:s_mardi.terrain};
@@ -381,12 +403,11 @@ function renderAccueilGrid(){
     const fmtM = mardi.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
     const fmtJ = jeudi.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
 
-    const detM = mainDetail(s_mardi.detail);
-    const detJ = mainDetail(s_jeudi.detail);
-    const ppgM = ppgForLevel(s_mardi.detail, accNiveau);
-    const ppgJ = ppgForLevel(s_jeudi.detail, accNiveau);
-    const modM = '';
-    const modJ = '';
+    const sdM = getSeanceByKey(s_mardi.key);
+    const sdJ = getSeanceByKey(s_jeudi.key);
+    const rpeM = sdM ? sdM.rpe : '';
+    const rpeJ = sdJ ? sdJ.rpe : '';
+    const isObj = !!base.objectif;
 
     const hdrBg = isCur ? 'var(--ab-blue)' : 'var(--surface2)';
     const snCol = isCur ? 'var(--ab-sky)' : 'var(--ab-blue)';
@@ -406,34 +427,34 @@ function renderAccueilGrid(){
         </div>
         <div style="display:flex;align-items:center;gap:.35rem;flex-wrap:wrap">
           <span class="phase-badge ${ph.cls}">${ph.label}</span>
-          ${base.decharge?'<span class="decharge-badge">🟢 Décharge</span>':''}
-          ${base.event?`<span style="font-family:'Lora',serif;font-size:.57rem;font-weight:700;color:${isCur?'rgba(255,255,255,.8)':'var(--ab-blue2)'}">📌 ${base.event}</span>`:''}
+          ${base.decharge?'<span class="decharge-badge">🌙 Décharge</span>':''}
+          ${isObj?`<span style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;color:${isCur?'#FFD700':'#B8860B'}">${base.objectif}</span>`:''}
         </div>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr">
         <div style="padding:.95rem 1.2rem;border-right:1px solid var(--border)">
           <div style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.3rem">📅 ${fmtM}</div>
-          <div style="font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_mardi.titre}${modM}</div>
+          <div style="font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_mardi.titre}</div>
           <span class="tag tag-sky" style="font-size:.56rem">${tM.icon} ${tM.label}</span>
           <span class="tag tag-blue" style="font-size:.56rem">18h15 · La Floride</span>
-          ${nivDetails(s_mardi.titre, accNiveau)}
-          <div style="font-size:.73rem;color:var(--muted);line-height:1.65;margin-top:.4rem">${detM.length>120?detM.substring(0,120)+'…':detM}</div>
-          ${ppgM?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgM.length>100?ppgM.substring(0,100)+'…':ppgM}</div>`:''}
+          ${rpeM?`<span class="tag" style="font-size:.56rem;background:rgba(184,134,11,.15);color:#8b6508">RPE ${rpeM}</span>`:''}
+          ${terrainDetails(s_mardi, accTerrain)}
+          ${sdM && sdM.notes ? `<div style="font-size:.7rem;color:var(--muted);font-style:italic;line-height:1.55;margin-top:.4rem">💡 ${sdM.notes}</div>`:''}
         </div>
         <div style="padding:.95rem 1.2rem">
           <div style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mousse);margin-bottom:.3rem">📅 ${fmtJ}</div>
-          <div style="font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_jeudi.titre}${modJ}</div>
+          <div style="font-family:'Lora',serif;font-size:.82rem;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:.3rem">${s_jeudi.titre}</div>
           <span class="tag tag-green" style="font-size:.56rem">${tJ.icon} ${tJ.label}</span>
           <span class="tag tag-sky" style="font-size:.56rem">18h15 · La Floride</span>
-          ${nivDetails(s_jeudi.titre, accNiveau)}
-          <div style="font-size:.73rem;color:var(--muted);line-height:1.65;margin-top:.4rem">${detJ.length>120?detJ.substring(0,120)+'…':detJ}</div>
-          ${ppgJ?`<div style="margin-top:.4rem;padding:.4rem .6rem;background:rgba(27,58,107,.04);border:1px solid rgba(27,58,107,.1);border-radius:6px;font-size:.7rem;color:var(--ab-blue2)"><span style="font-family:'Lora',serif;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);display:block;margin-bottom:.15rem">🏋 PPG ${nivLabels[accNiveau]}</span>${ppgJ.length>100?ppgJ.substring(0,100)+'…':ppgJ}</div>`:''}
+          ${rpeJ?`<span class="tag" style="font-size:.56rem;background:rgba(184,134,11,.15);color:#8b6508">RPE ${rpeJ}</span>`:''}
+          ${terrainDetails(s_jeudi, accTerrain)}
+          ${sdJ && sdJ.notes ? `<div style="font-size:.7rem;color:var(--muted);font-style:italic;line-height:1.55;margin-top:.4rem">💡 ${sdJ.notes}</div>`:''}
         </div>
       </div>
 
       <div style="padding:.5rem 1.2rem;border-top:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
-        <span style="font-size:.72rem;color:var(--muted);font-family:'Lora',serif">🏃 ${gLabels[accLevel]} — ${wkndVal}</span>
+        <span style="font-size:.72rem;color:var(--muted);font-family:'Lora',serif">🏃 Sortie WE ${gLabels[accLevel]} — ${wkndVal}</span>
         <button onclick="openDetail(${sn})" style="background:none;border:none;font-family:'Lora',serif;font-size:.65rem;font-weight:700;color:var(--ab-blue2);cursor:pointer;letter-spacing:.04em">Détail complet →</button>
       </div>
     </div>`;
@@ -470,6 +491,42 @@ function renderAccueilEvents(){
         <div class="cal-event-desc">${fmtD} · <span style="color:var(--ab-light);font-weight:600">${dLbl}</span></div>
       </div>
       <span class="cal-event-type ${typeCls[e.type]||'type-social'}">${typeLabel[e.type]||e.type}</span>
+    </div>`;
+  }).join('');
+}
+
+
+// ══════════════════════════════════════════════
+// CALENDRIER DES OBJECTIFS — Saison 2026-2027
+// ══════════════════════════════════════════════
+function renderObjectifsAccueil(){
+  const el = document.getElementById('acc-objectifs');
+  if(!el) return;
+  if(typeof objectifsCalendrier === 'undefined' || !objectifsCalendrier.length){
+    el.innerHTML = '';
+    return;
+  }
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = objectifsCalendrier
+    .map(o => ({...o, _d: new Date(o.date+'T12:00:00')}))
+    .sort((a,b) => a._d - b._d);
+
+  el.innerHTML = upcoming.map(o => {
+    const passe = o._d < today;
+    const dLeft = Math.round((o._d - today)/86400000);
+    const dLbl = passe ? 'Passé' : (dLeft===0 ? "Aujourd'hui !" : dLeft===1 ? 'Demain' : `Dans ${dLeft} j`);
+    const fmtD = o._d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long',year:'numeric'});
+    const typeColor = {route:'var(--ab-blue)', trail:'var(--mousse)', cross:'var(--rouge)'}[o.type] || 'var(--ab-blue)';
+    return `<div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:${passe?'rgba(0,0,0,.03)':'var(--surface)'};border:1px solid ${passe?'var(--border)':typeColor};border-radius:8px;opacity:${passe?'.5':'1'}">
+      <div style="font-size:1.4rem">${o.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'Lora',serif;font-size:.85rem;font-weight:700;color:var(--text);line-height:1.3">S${o.sem} — ${o.nom}</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:.2rem">${fmtD}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Lora',serif;font-size:.7rem;font-weight:700;color:${passe?'var(--muted)':typeColor}">${dLbl}</div>
+        <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.15rem">${o.type}</div>
+      </div>
     </div>`;
   }).join('');
 }
@@ -545,65 +602,103 @@ function formatDetailAndPPG(text, nLvl){
 function openDetail(sem){
   const s = programme.find(x=>x.sem===sem);
   if(!s) return;
-  const gKeys = ['g0','g1','g2'];
-  const wknd = s[gKeys[currentLevel]] || '—';
   const mardi = s.mardi;
   const jeudi = s.jeudi;
-  const nLvl = currentNiveau;
+  const weObj = currentLevel === 1 ? s.we_trail : s.we_route;
+  const wknd = (weObj && weObj.titre && weObj.titre !== '—') ? weObj.titre : '—';
+  const tIdx = currentTerrain;
+  const tFields = ['route','piste','trail'];
+  const tLabels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
 
-  function niveauSection(seance){
-    const nd = getNiveauBlock(seance.titre);
-    if(!nd) return '';
+  function seanceSection(seance){
+    const sd = getSeanceByKey(seance.key);
+    if(!sd) return '';
     return `
-      <div style="background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);border-radius:8px;padding:.8rem;margin-top:.6rem">
-        <div style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:.5rem">R\u{E9}p\u{E9}titions &amp; intensit\u{E9} par niveau</div>
-        <div class="niveau-tabs">
-          <button class="niveau-tab ${nLvl===0?'active':''}" onclick="switchNivTab(0,this)">\u{1F7E2} D\u{E9}butant</button>
-          <button class="niveau-tab ${nLvl===1?'active':''}" onclick="switchNivTab(1,this)">\u{1F535} Interm.</button>
-          <button class="niveau-tab ${nLvl===2?'active':''}" onclick="switchNivTab(2,this)">\u{1F534} Confirm\u{E9}</button>
+      <div style="background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.1);border-radius:8px;padding:.9rem;margin-top:.6rem">
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;flex-wrap:wrap">
+          <span style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ab-blue)">Variantes terrain</span>
+          <span style="font-size:.7rem;color:#8b6508;background:rgba(184,134,11,.15);padding:.2rem .5rem;border-radius:4px;font-weight:700">RPE ${sd.rpe}</span>
+          <span style="font-size:.7rem;color:var(--muted)">${sd.cat}</span>
         </div>
-        <div class="niveau-block ${nLvl===0?'active':''}" data-niv="0">
-          <strong style="font-size:.82rem;color:var(--text)">${nd.reps[0]}</strong>
-          <span style="font-size:.78rem;color:var(--muted)"> reps \u{B7} Récup <strong>${nd.recup[0]}</strong> \u{B7} ${nd.allure[0]}</span>
-          <div style="font-size:.74rem;color:var(--mousse);margin-top:.25rem">\u{1F4A1} Technique et r\u{E9}cup compl\u{E8}te. Si fatigue : -2 r\u{E9}p\u{E9}titions.</div>
+        <div class="terrain-tabs" style="display:flex;gap:.4rem;margin-bottom:.6rem;flex-wrap:wrap">
+          <button class="terrain-tab ${tIdx===0?'active':''}" onclick="switchTerrainTab(0,this)" style="padding:.35rem .7rem;border-radius:6px;border:1px solid ${tIdx===0?'var(--ab-blue)':'var(--border)'};background:${tIdx===0?'var(--ab-blue)':'transparent'};color:${tIdx===0?'#fff':'var(--text)'};font-family:'Lora',serif;font-size:.72rem;font-weight:600;cursor:pointer">🛣️ Route</button>
+          <button class="terrain-tab ${tIdx===1?'active':''}" onclick="switchTerrainTab(1,this)" style="padding:.35rem .7rem;border-radius:6px;border:1px solid ${tIdx===1?'var(--mousse)':'var(--border)'};background:${tIdx===1?'var(--mousse)':'transparent'};color:${tIdx===1?'#fff':'var(--text)'};font-family:'Lora',serif;font-size:.72rem;font-weight:600;cursor:pointer">🏟️ Piste</button>
+          <button class="terrain-tab ${tIdx===2?'active':''}" onclick="switchTerrainTab(2,this)" style="padding:.35rem .7rem;border-radius:6px;border:1px solid ${tIdx===2?'var(--rouge)':'var(--border)'};background:${tIdx===2?'var(--rouge)':'transparent'};color:${tIdx===2?'#fff':'var(--text)'};font-family:'Lora',serif;font-size:.72rem;font-weight:600;cursor:pointer">🌲 Trail</button>
         </div>
-        <div class="niveau-block ${nLvl===1?'active':''}" data-niv="1">
-          <strong style="font-size:.82rem;color:var(--text)">${nd.reps[1]}</strong>
-          <span style="font-size:.78rem;color:var(--muted)"> reps \u{B7} Récup <strong>${nd.recup[1]}</strong> \u{B7} ${nd.allure[1]}</span>
-          <div style="font-size:.74rem;color:var(--ab-blue);margin-top:.25rem">\u{1F4A1} R\u{E9}gularit\u{E9} sur toutes les r\u{E9}p\u{E9}titions. La derni\u{E8}re = la premi\u{E8}re.</div>
+        ${[0,1,2].map(t => {
+          const v = sd[tFields[t]];
+          const isActive = t === tIdx;
+          const isAvail = v && v !== '—';
+          return `<div class="terrain-block ${isActive?'active':''}" data-terrain="${t}" style="display:${isActive?'block':'none'};padding:.6rem .8rem;background:${isAvail?'rgba(123,195,229,.08)':'rgba(0,0,0,.04)'};border:1px solid ${isAvail?'rgba(123,195,229,.25)':'rgba(0,0,0,.08)'};border-radius:6px">
+            <div style="font-size:.78rem;color:var(--text);font-weight:600;line-height:1.5">${isAvail ? v : `${tLabels[t]} : pas de variante adaptée pour cette séance`}</div>
+          </div>`;
+        }).join('')}
+        <div style="margin-top:.6rem;padding:.5rem .7rem;background:rgba(255,243,205,.4);border-left:3px solid #B8860B;border-radius:4px">
+          <div style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8b6508;margin-bottom:.2rem">📊 Volume / Modulation</div>
+          <div style="font-size:.76rem;color:var(--text)">${sd.volume}</div>
         </div>
-        <div class="niveau-block ${nLvl===2?'active':''}" data-niv="2">
-          <strong style="font-size:.82rem;color:var(--text)">${nd.reps[2]}</strong>
-          <span style="font-size:.78rem;color:var(--muted)"> reps \u{B7} Récup <strong>${nd.recup[2]}</strong> \u{B7} ${nd.allure[2]}</span>
-          <div style="font-size:.74rem;color:var(--rouge);margin-top:.25rem">\u{26A1} Volume \u{E9}lev\u{E9} \u{2014} bien s'\u{E9}chauffer, \u{E9}couter les sensations.</div>
-        </div>
+        ${sd.notes?`<div style="margin-top:.5rem;font-size:.74rem;color:var(--muted);line-height:1.6;font-style:italic">💡 ${sd.notes}</div>`:''}
       </div>`;
   }
 
-  document.getElementById('mTitle').innerHTML = `Semaine ${s.sem} \u{2014} ${s.mois} \u{B7} ${s.phase}`;
+  document.getElementById('mTitle').innerHTML = `Semaine ${s.sem} — ${s.mois} · ${s.phase}`;
   document.getElementById('mBody').innerHTML = `
-    ${s.event?`<div style="background:rgba(27,58,107,.07);border:1px solid rgba(27,58,107,.12);border-radius:6px;padding:.6rem 1rem;margin-bottom:.8rem;font-family:'Lora',serif;font-size:.74rem;font-weight:700;color:var(--ab-blue2)">\u{1F4CC} ${s.event}</div>`:''}
-    ${s.decharge?`<div style="background:rgba(74,138,90,.08);border:1px solid rgba(74,138,90,.2);border-radius:6px;padding:.5rem 1rem;margin-bottom:.8rem;font-family:'Lora',serif;font-size:.72rem;color:var(--mousse)">\u{1F7E2} Semaine de d\u{E9}charge \u{2014} volume -35%, pas d'intensit\u{E9} haute.</div>`:''}
-    <h4>\u{1F4C5} Mardi \u{2014} ${mardi.titre}</h4>
+    ${s.objectif?`<div style="background:rgba(255,215,0,.15);border:1px solid rgba(184,134,11,.4);border-radius:8px;padding:.7rem 1.1rem;margin-bottom:.9rem;font-family:'Lora',serif;font-size:.85rem;font-weight:700;color:#8b6508">${s.objectif}</div>`:''}
+    ${s.decharge?`<div style="background:rgba(74,138,90,.08);border:1px solid rgba(74,138,90,.2);border-radius:6px;padding:.5rem 1rem;margin-bottom:.8rem;font-family:'Lora',serif;font-size:.72rem;color:var(--mousse)">🌙 Semaine de décharge — volume réduit, intensité maintenue mais moindre.</div>`:''}
+    ${s.notes?`<div style="background:rgba(27,58,107,.04);border-left:3px solid var(--ab-blue);padding:.5rem 1rem;margin-bottom:.8rem;font-size:.78rem;color:var(--text);font-style:italic">${s.notes}</div>`:''}
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.5rem">
+      <h4>📅 Mardi — ${mardi.titre}</h4>
+      <span style="font-family:'Lora',serif;font-size:.7rem;color:var(--muted)">UA semaine totale : <strong style="color:var(--ab-blue)">${s.ua}</strong></span>
+    </div>
     <p style="margin-top:.25rem">${terrainTag(mardi.terrain)}</p>
-    ${formatDetailAndPPG(mardi.detail, nLvl)}
-    ${niveauSection(mardi)}
-    <h4 style="margin-top:1.2rem">\u{1F4C5} Jeudi \u{2014} ${jeudi.titre}</h4>
+    ${seanceSection(mardi)}
+
+    <h4 style="margin-top:1.4rem">📅 Jeudi — ${jeudi.titre}</h4>
     <p style="margin-top:.25rem">${terrainTag(jeudi.terrain)}</p>
-    ${formatDetailAndPPG(jeudi.detail, nLvl)}
-    ${niveauSection(jeudi)}
-    <h4 style="margin-top:1.2rem">\u{1F3C3} Weekend \u{2014} ${['Route \u{1F3C3}','Trail loisir \u{1F33F}','Trail montagne \u{1F3D4}'][currentLevel]}</h4>
-    <p style="font-size:.85rem;color:var(--muted)">${wknd}</p>
+    ${seanceSection(jeudi)}
+
+    <h4 style="margin-top:1.4rem">🏃 Sortie weekend</h4>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
+      <div style="flex:1;min-width:200px;padding:.7rem .9rem;background:${currentLevel===0?'rgba(27,58,107,.08)':'rgba(0,0,0,.03)'};border:1px solid ${currentLevel===0?'var(--ab-blue)':'var(--border)'};border-radius:6px">
+        <div style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ab-blue);margin-bottom:.25rem">🛣️ Route</div>
+        <div style="font-size:.8rem;color:var(--text);font-weight:600">${(s.we_route && s.we_route.titre) || '—'}</div>
+      </div>
+      <div style="flex:1;min-width:200px;padding:.7rem .9rem;background:${currentLevel===1?'rgba(74,138,90,.1)':'rgba(0,0,0,.03)'};border:1px solid ${currentLevel===1?'var(--mousse)':'var(--border)'};border-radius:6px">
+        <div style="font-family:'Lora',serif;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mousse);margin-bottom:.25rem">🌲 Trail</div>
+        <div style="font-size:.8rem;color:var(--text);font-weight:600">${(s.we_trail && s.we_trail.titre) || '—'}</div>
+      </div>
+    </div>
   `;
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
 
-function switchNivTab(n, btn){
+function switchTerrainTab(t, btn){
+  currentTerrain = t;
   const modal = document.getElementById('mBody');
-  modal.querySelectorAll('.niveau-tab').forEach((b,i)=>b.classList.toggle('active',i===n));
-  modal.querySelectorAll('.niveau-block').forEach(b=>b.classList.toggle('active',+b.dataset.niv===n));
+  modal.querySelectorAll('.terrain-tab').forEach((b,i) => {
+    b.classList.toggle('active', i===t);
+    // Reapply inline styles
+    const colors = ['var(--ab-blue)','var(--mousse)','var(--rouge)'];
+    if(i === t){
+      b.style.background = colors[i];
+      b.style.color = '#fff';
+      b.style.borderColor = colors[i];
+    } else {
+      b.style.background = 'transparent';
+      b.style.color = 'var(--text)';
+      b.style.borderColor = 'var(--border)';
+    }
+  });
+  modal.querySelectorAll('.terrain-block').forEach(b => {
+    const isActive = +b.dataset.terrain === t;
+    b.style.display = isActive ? 'block' : 'none';
+    b.classList.toggle('active', isActive);
+  });
 }
+// Alias legacy
+function switchNivTab(n, btn){ return switchTerrainTab(n, btn); }
 
 
 // ══════════════════════════════════════════════

@@ -1,115 +1,55 @@
-# AB Running Loisir — Aviron Bayonnais Athlétisme
+# AB Running Loisir — Site v3 (Saison 2026-2027)
 
-Site de la section Running Loisir du club AB Athlétisme — affilié FFA.
+## Vue d'ensemble
 
-## Structure
+Site de la section Running Loisir de l'Aviron Bayonnais Athlétisme (FFA).
 
-- **`index.html`** — page publique
-- **`admin.html`** — espace coach (édition, publication GitHub)
-- **`data.js`** — toutes les données modifiables
-- **`app.js`** — logique JavaScript (rendering, calculateur, difficulté)
-- **`logo_ab.avif`** — logo du club
+**Refonte v3** : passage du système niveaux ski (🟢🔵🔴) au **système d'équivalence terrain** (Route / Piste / Trail). L'auto-régulation se fait par **RPE** (effort ressenti) et modulation du volume (reprise / standard / forme).
 
-## Programme 52 semaines — Saison 2025/2026
+## Architecture
 
-Construit selon le *Guide de l'Entraîneur AB Running Loisir* et la méthode Foster (UA/RPE).
+| Fichier | Rôle |
+|---------|------|
+| `index.html` | Interface publique (accueil, programme 52 sem, calculateur, terrains, muscu) |
+| `app.js` | Logique frontend (rendu, navigation, calcul charge, modal détail) |
+| `data.js` | Données : 80 séances, programme 52 sem, 7 objectifs, seuils, calendrier, circuits |
+| `admin.html` | Interface coach (édition programme, séances, calendrier, publication GitHub) |
+| `logo_ab.avif` | Logo Aviron Bayonnais |
 
-### Architecture annuelle
+## Données clés (data.js)
 
-| Période | Phase | Thème | UA sem. moy. |
-|---|---|---|---|
-| Sept | Reprise | Foncier doux | ~790 |
-| Oct | Foncier | Endurance + côtes | ~835 |
-| Nov | VMA courte | 30/30, fractions 400m | ~870 |
-| Déc | VMA longue + trêve | 1000m, pyramide | ~970 |
-| Janv | Seuil | Tempo, 1000-2000m | ~750 |
-| Fév | Seuil+ | Allure objectif | ~870 |
-| Mars | Spécifique route | Allures marathon/semi | ~855 |
-| Avril | Compétitions route | Affûtage + semi | ~520 |
-| Mai | Transition trail | Dénivelé, excentrique | ~830 |
-| Juin | Trail compétition | Trail des Colombes | ~640 |
-| Juillet | Relâche Fêtes | Fêtes de Bayonne | ~540 |
-| Août | Pré-reprise | Retour progressif | ~650 |
+### seancesData (80 séances)
+Chaque séance a 3 variantes terrain :
+- **Route** : halage, intramuros, plage
+- **Piste** : stade, 400m
+- **Trail** : Chiberta, sentiers, côtes
 
-### Règle PPG (spécificité AB)
+Plus : RPE, catégorie, volume/modulation, notes coach.
 
-**La PPG n'est JAMAIS faite sur séances plat (halage, piste, intramuros, Chiberta, plage).**
+### programme (52 semaines, S1 = 31 août 2026)
+Tronc commun mardi/jeudi + sortie WE en 2 variantes (Route ou Trail).
+Chaque semaine pointe vers des clés de `seancesData`.
 
-Raison biomécanique : pré-fatiguer les quadriceps/mollets avant un fractionné plat :
-- Détruit la raideur tendineuse nécessaire au rebond de foulée → risque de blessure (périostite, tendinopathie d'Achille)
-- Épuise le glycogène intramusculaire → impossible d'atteindre sa VMA
+### objectifsCalendrier (7 objectifs)
+Repères saison : Marathon La Rochelle (S13), France de Cross (S27), Semi Saint-Sébastien (S33), Marathon Biarritz (S35), Euskal Raid (S36), Trails Pays Basque (S44).
 
-**La PPG est INTÉGRÉE sur les séances côte** (Floride, Voulgre, VW, VVF, escaliers, Girouettes, Douves, montagne).
+### chargeHebdoSeuils (7 seuils)
+De "Récupération" (≤280 UA) à "Surcharge" (>1050 UA).
 
-Raison : en côte, la vitesse est lente et les chocs articulaires minimes. La fatigue musculaire déjà installée permet de recruter les fibres profondes quand on enchaîne avec 8-10 squats en haut. C'est un **entraînement en contraste** — spécificité trail parfaite.
+## Philosophie
 
-Dans le programme, on voit bien le pattern : toutes les séances côte se terminent par `🏋 PPG en haut de côte — ...`, et les séances plat se terminent par `⚡ Pas de PPG — on protège la foulée et le glycogène pour la qualité.`
+- **RPE individualise** : chacun dose son effort. Pas de vitesse prescrite.
+- **UA mesure la charge** : RPE × durée en minutes. Permet le suivi hebdomadaire.
+- **Terrain apporte la variété** : même séance, 3 façons de la vivre.
+- **PPG exclusivement en côtes** : principe physiologique non-négociable.
+- **Modulation du volume** : reprise / standard / forme — l'athlète choisit.
 
-### Bloc 3:1
+## Palette AB
 
-Chaque mois suit le schéma guide :
-- **S1-S2-S3** : montée progressive (650 / 750 / 900 UA cibles)
-- **S4 décharge** : -40% pour surcompensation (≤ 500 UA)
+- Sky blue : `#7BC3E5`
+- Navy : `#1B3A6B`
+- Mousse : `#4A8A5A`
 
-15 semaines de décharge réparties sur l'année.
+## Déploiement
 
-### Règles d'or respectées
-
-✅ Jamais plus de 1050 UA sur une semaine
-✅ Jamais 2 séances Rouge/Noir dans la même semaine
-✅ Décharges en Vert/Bleu (≤ 500 UA)
-✅ Affûtages 2 semaines avant semi-marathon et Trail des Colombes
-✅ Trêve Noël (S16-17) et Fêtes de Bayonne (S44) intégrés culturellement
-
-### Événements marqués dans le programme
-
-- **S17** 🎄 Trêve de Noël
-- **S32** 🏁 Semi-Marathon
-- **S41** 🏔 Trail des Colombes
-- **S44** 🎊 Fêtes de Bayonne
-- **S52** 🏆 Bilan de saison
-
-## Fonctionnalités
-
-### Pages publiques
-
-- **🏠 Accueil** — hero + bandeau Infos Club + 3 prochaines semaines
-- **📅 Programme** — 52 semaines avec pastilles difficulté type piste de ski
-- **📊 Calculateur** — 4 semaines vierges pour tester sa charge hebdo (RPE × durée)
-- **🗓 Sorties** — calendrier + sorties membres
-- **🗺 Terrains** — les lieux d'entraînement
-- **💡 Idées** — boîte à propositions
-- **💪 Renforcement** — séances PPG vendredi
-- **🌅 Routines** — routines matin
-- **ℹ️ Infos** — infos pratiques
-
-### Pastilles de difficulté (5 niveaux, type piste de ski)
-
-Calculées automatiquement à partir du titre de séance :
-
-| Pastille | Niveau | UA |
-|---|---|---|
-| 🟢 Vert | Facile | ≤ 280 |
-| 🔵 Bleu | Modéré | ≤ 380 |
-| 🟠 Orange | Soutenu | ≤ 480 |
-| 🔴 Rouge | Difficile | ≤ 600 |
-| ⚫ Noir | Très difficile | > 600 |
-
-Les séances en décharge sont automatiquement plafonnées à Vert/Bleu.
-
-### Admin — 6 onglets
-
-| Onglet | Fonction |
-|---|---|
-| 📅 Programme | Modifier les 52 semaines |
-| 📋 Séances | Bibliothèque des types |
-| 📢 Infos club | Messages bandeau accueil |
-| 📊 Calculateur | Textes RPE/UA + seuils |
-| 🗓 Calendrier | Sorties et événements |
-| ⚙️ Configuration | Connexion GitHub |
-
-Le bouton **📤 Publier** pousse toutes les modifications vers GitHub.
-
----
-
-*Saison 2025/2026 — Aviron Bayonnais Athlétisme — Affilié FFA*
+Fichiers statiques (HTML + JS). Pas de backend. Publication via GitHub Pages depuis l'admin.

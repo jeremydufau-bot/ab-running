@@ -381,6 +381,23 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);background:rgba(2
   font-style:italic;
 }
 
+.rpe-pill{
+  display:inline-flex;align-items:center;gap:.2rem;
+  font-family:'Lora',serif;font-size:.65rem;font-weight:700;
+  background:rgba(184,134,11,.15);color:#8b6508;
+  padding:.15rem .45rem;border-radius:4px;white-space:nowrap;
+}
+.terrain-sel-btn,.acc-terrain-btn{
+  font-family:'Lora',serif;font-size:.7rem;font-weight:500;
+  padding:.35rem .65rem;border-radius:7px;
+  border:1px solid var(--border);color:var(--muted);background:transparent;cursor:pointer;
+  transition:all .12s;
+}
+.terrain-sel-btn:hover,.acc-terrain-btn:hover{border-color:var(--ab-blue-light);color:var(--ab-navy);}
+.terrain-sel-btn.active,.acc-terrain-btn.active{background:rgba(42,93,160,.12);border-color:var(--ab-blue);color:var(--ab-navy);}
+.has-objectif td{background:rgba(255,215,0,.06) !important;}
+.has-objectif:hover td{background:rgba(255,215,0,.12) !important;}
+
 /* ══════════ LÉGENDE DIFFICULTÉ ══════════ */
 .legende-diff{
   margin:0 0 1.5rem;
@@ -972,24 +989,29 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);background:rgba(2
 
   <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.4rem;padding:.9rem 1.1rem;background:var(--surface2);border-radius:10px;border:1px solid var(--border)">
     <div>
-      <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem">Profil weekend</div>
+      <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem">Sortie weekend</div>
       <div style="display:flex;gap:.35rem;flex-wrap:wrap">
-        <button class="acc-sel-btn active" onclick="setAccLevel(0,this)">🏃 Route</button>
-        <button class="acc-sel-btn" onclick="setAccLevel(1,this)">🌿 Trail loisir</button>
-        <button class="acc-sel-btn" onclick="setAccLevel(2,this)">🏔 Trail montagne</button>
+        <button class="acc-sel-btn active" onclick="setAccLevel(0,this)">🛣️ Route</button>
+        <button class="acc-sel-btn" onclick="setAccLevel(1,this)">🌲 Trail</button>
       </div>
     </div>
     <div>
-      <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem">Niveau séance</div>
+      <div style="font-family:'Lora',serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem">Variante terrain</div>
       <div style="display:flex;gap:.35rem;flex-wrap:wrap">
-        <button class="acc-niv-btn active" onclick="setAccNiveau(0,this)">🟢 Débutant</button>
-        <button class="acc-niv-btn" onclick="setAccNiveau(1,this)">🔵 Intermédiaire</button>
-        <button class="acc-niv-btn" onclick="setAccNiveau(2,this)">🔴 Confirmé</button>
+        <button class="acc-terrain-btn active" onclick="setAccTerrain(0,this)">🛣️ Route</button>
+        <button class="acc-terrain-btn" onclick="setAccTerrain(1,this)">🏟️ Piste</button>
+        <button class="acc-terrain-btn" onclick="setAccTerrain(2,this)">🌲 Trail</button>
       </div>
     </div>
   </div>
 
   <div id="acc-grid" style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem"></div>
+
+  <div class="divider"></div>
+  <div class="sec-eye" style="margin-top:0">Calendrier des objectifs</div>
+  <div class="sec-title" style="font-size:1.6rem">Objectifs <em>saison 2026-2027</em></div>
+  <p style="font-size:.82rem;color:var(--muted);max-width:680px;margin-bottom:.8rem">Repères pour la dynamique annuelle. Chacun gère son calendrier perso — ces dates structurent les blocs d'entraînement.</p>
+  <div id="acc-objectifs" style="display:flex;flex-direction:column;gap:.5rem;max-width:680px;margin-bottom:1.5rem"></div>
 
   <div class="divider"></div>
   <div class="sec-eye" style="margin-top:0">Agenda</div>
@@ -1002,38 +1024,34 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);background:rgba(2
 <div class="page" id="programme">
   <div class="sec-eye">Saison complète</div>
   <div class="sec-title">Programme <em>annuel</em></div>
-  <p class="sec-intro">48 semaines, mardi + jeudi soir. Séances communes adaptées à 3 niveaux. Chaque séance est notée selon son niveau de difficulté (inspiration piste de ski). Cliquez sur une semaine pour le détail complet.</p>
+  <p class="sec-intro">52 semaines, mardi + jeudi soir. Tronc commun — chaque séance existe en variante Route, Piste et Trail. L'auto-régulation se fait par le <strong>RPE</strong> (effort ressenti) et la modulation du volume (reprise / standard / forme). Cliquez sur une semaine pour le détail complet.</p>
 
-  <!-- Légende difficulté + explication pédagogique -->
+  <!-- Explication RPE / UA / Terrain -->
   <div class="legende-diff">
     <div style="display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;margin-bottom:.6rem">
-      <span class="legende-diff-title" style="margin:0">Difficulté de la séance :</span>
-      <span class="diff-pill diff-vert"><span class="diff-dot diff-vert"></span>Vert</span>
-      <span class="diff-pill diff-bleu"><span class="diff-dot diff-bleu"></span>Bleu</span>
-      <span class="diff-pill diff-orange"><span class="diff-dot diff-orange"></span>Orange</span>
-      <span class="diff-pill diff-rouge"><span class="diff-dot diff-rouge"></span>Rouge</span>
-      <span class="diff-pill diff-noir"><span class="diff-dot diff-noir"></span>Noir</span>
+      <span class="legende-diff-title" style="margin:0">Comment lire le programme :</span>
+      <span class="rpe-pill" style="font-size:.72rem">RPE 7/10</span>
+      <span class="ua-badge" style="font-size:.72rem">650 UA</span>
     </div>
     <div style="font-size:.8rem;color:var(--muted);line-height:1.6;font-style:italic">
-      L'indicateur de couleur et la charge en UA vous aident à situer la difficulté de chaque séance. Pour comprendre le <strong style="color:var(--ab-navy);font-style:normal">RPE</strong> et les <strong style="color:var(--ab-navy);font-style:normal">UA</strong>, consultez la page <a href="#" onclick="showPage('calculateur',document.querySelectorAll('nav button')[2]);return false" style="color:var(--ab-blue);text-decoration:underline">Calculateur</a> — l'approche est indicative et sert à vous approprier vos ressentis.
+      Le <strong style="color:var(--ab-navy);font-style:normal">RPE</strong> (échelle 1-10) mesure votre effort ressenti — c'est vous qui dosez. Les <strong style="color:var(--ab-navy);font-style:normal">UA</strong> (Unités Arbitraires = RPE × durée en min) permettent de suivre la charge hebdomadaire. Pour en savoir plus, consultez la page <a href="#" onclick="showPage('calculateur',document.querySelectorAll('nav button')[2]);return false" style="color:var(--ab-blue);text-decoration:underline">Calculateur</a>.
     </div>
   </div>
 
   <div class="programme-controls">
     <div class="ctrl-group">
-      <div class="ctrl-label">Profil weekend</div>
+      <div class="ctrl-label">Sortie weekend</div>
       <div class="level-btns">
-        <button class="level-btn active" onclick="setLevel(0,this)">🏃 Route</button>
-        <button class="level-btn" onclick="setLevel(1,this)">🌿 Trail loisir</button>
-        <button class="level-btn" onclick="setLevel(2,this)">🏔 Trail montagne</button>
+        <button class="level-btn active" onclick="setLevel(0,this)">🛣️ Route</button>
+        <button class="level-btn" onclick="setLevel(1,this)">🌲 Trail</button>
       </div>
     </div>
     <div class="ctrl-group">
-      <div class="ctrl-label">Niveau séance</div>
-      <div class="niveau-btns">
-        <button class="niveau-sel-btn active" onclick="setNiveau(0,this)">🟢 Débutant</button>
-        <button class="niveau-sel-btn" onclick="setNiveau(1,this)">🔵 Intermédiaire</button>
-        <button class="niveau-sel-btn" onclick="setNiveau(2,this)">🔴 Confirmé</button>
+      <div class="ctrl-label">Variante terrain</div>
+      <div class="terrain-btns">
+        <button class="terrain-sel-btn active" onclick="setTerrain(0,this)">🛣️ Route</button>
+        <button class="terrain-sel-btn" onclick="setTerrain(1,this)">🏟️ Piste</button>
+        <button class="terrain-sel-btn" onclick="setTerrain(2,this)">🌲 Trail</button>
       </div>
     </div>
     <div class="ctrl-group">
@@ -1058,6 +1076,7 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);background:rgba(2
           <th>Mardi — Séance</th>
           <th>Jeudi — Séance</th>
           <th id="col-weekend-label">Weekend · Route</th>
+          <th style="width:65px;text-align:center">UA</th>
         </tr>
       </thead>
       <tbody id="progBody"></tbody>
@@ -1267,20 +1286,16 @@ nav button.active{color:#fff;border-bottom-color:var(--ab-sky);background:rgba(2
     </div>
     <div class="info-card">
       <div class="info-card-icon">📊</div>
-      <h3>Niveaux de difficulté</h3>
-      <p>Les séances sont notées selon leur charge :<br><br>
-      <strong style="color:var(--d-vert)">🟢 Vert</strong> — facile, récup<br>
-      <strong style="color:var(--d-bleu)">🔵 Bleu</strong> — modéré<br>
-      <strong style="color:var(--d-orange)">🟠 Orange</strong> — soutenu<br>
-      <strong style="color:var(--d-rouge)">🔴 Rouge</strong> — difficile<br>
-      <strong style="color:var(--d-noir)">⚫ Noir</strong> — très difficile</p>
+      <h3>RPE et UA</h3>
+      <p>Chaque séance indique un <strong>RPE</strong> (effort ressenti, 1 à 10) — c'est vous qui dosez en fonction de vos sensations.<br><br>
+      Les <strong>UA</strong> (Unités Arbitraires) = RPE × durée en minutes. Cet indicateur permet de suivre la charge hebdomadaire et d'ajuster le volume semaine après semaine.</p>
     </div>
     <div class="info-card">
       <div class="info-card-icon">👥</div>
-      <h3>3 profils weekend</h3>
-      <p><strong style="color:var(--text)">Route</strong> : semi/marathon<br>
-      <strong style="color:var(--text)">Trail loisir</strong> : condition physique<br>
-      <strong style="color:var(--text)">Trail montagne</strong> : D+, Pyrénées</p>
+      <h3>Tronc commun + 2 sorties WE</h3>
+      <p>Mardi et jeudi : séance commune identique — chacun choisit sa variante terrain (Route, Piste, Trail).<br><br>
+      <strong style="color:var(--text)">🛣️ Route</strong> : semi/marathon, halage<br>
+      <strong style="color:var(--text)">🌲 Trail</strong> : Chiberta, Douves, sentiers</p>
     </div>
     <div class="info-card">
       <div class="info-card-icon">🤝</div>
