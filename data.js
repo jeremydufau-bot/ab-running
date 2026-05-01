@@ -10,13 +10,6 @@ const infosClub = [
     "dateFin": ""
   },
   {
-    "id": "msg_1777651331447",
-    "titre": "RPE et UA qu'est ce que c'est",
-    "texte": "test",
-    "type": "info",
-    "dateFin": ""
-  },
-  {
     "id": "msg_1777651430693",
     "titre": "RPE et UA qu'est ce que c'est ?",
     "texte": "Le RPE (Rating of Perceived Exertion, ou Effort Perçu) est une note de 1 à 10 que tu donnes à ta séance, une minute après l'avoir terminée. Cette note reflète le ressenti global : facilité respiratoire, fatigue musculaire, difficulté mentale.\n\n1-2 : très facile, comme marcher\n3-4 : facile, allure de conversation\n5-6 : modéré, respiration contrôlée\n7-8 : difficile, parler devient compliqué\n9-10 : très difficile, effort maximal\n\nL'UA (Unité Arbitraire) est une mesure de la charge réelle d'une séance. C'est un simple calcul : UA = RPE × Durée (en minutes).\n\nExemple : une séance de 45 minutes ressentie à 7/10 représente 315 UA.\n\nL'intérêt ? Une semaine avec beaucoup d'UA = charge élevée, une semaine légère = UA bas. En suivant ton total hebdomadaire, tu peux progresser par paliers sans tomber dans le surentraînement.",
