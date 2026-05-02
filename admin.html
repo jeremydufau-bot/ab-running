@@ -412,10 +412,7 @@ function openWeekEdit(sn){
       html += `<optgroup label="${cat.l}">`;
       grp.forEach(k=>{ used.add(k); html += `<option value="${k}" ${k===cur?'selected':''}>${(L.seances[k].l||k).substring(0,55)}</option>`; });
       html += '</optgroup>';
-    updateSeancePreview('pw-m');
-    updateSeancePreview('pw-j');
-    updateSeancePreview('pw-wr');
-    updateSeancePreview('pw-wt');
+
     }
     // On englobe tout dans une div pour la mise en page
 return `
@@ -442,6 +439,10 @@ return `
 
   document.getElementById('edit-panel').classList.add('open');
   document.getElementById('panel-overlay').style.display='block';
+  updateSeancePreview('pw-m');
+  updateSeancePreview('pw-j');
+  updateSeancePreview('pw-wr');
+  updateSeancePreview('pw-wt');
 }
 
 function resetWeek(sn){
