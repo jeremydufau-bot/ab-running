@@ -15,13 +15,6 @@ const infosClub = [
     "texte": "",
     "type": "info",
     "dateFin": "2026-05-06"
-  },
-  {
-    "id": "msg_1777734964891",
-    "titre": "Méthode Foster",
-    "texte": "",
-    "type": "info",
-    "dateFin": ""
   }
 ];
 
