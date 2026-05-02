@@ -403,7 +403,7 @@ function openWeekEdit(sn){
       grp.forEach(k=>{ used.add(k); html += `<option value="${k}" ${k===cur?'selected':''}>${(L.seances[k].l||k).substring(0,55)}</option>`; });
       html += '</optgroup>';
     }
-    return `<select class="field-select" id="${id}">${html}</select>`;
+    return `<select class="field-select" id="${id}" onchange="autoCalcWeekUA()">${html}</select>`;
   };
 
   document.getElementById('panel-body').innerHTML =
@@ -429,7 +429,27 @@ function resetWeek(sn){
   L.programme[idx] = JSON.parse(JSON.stringify(orig));
   saveLocal(); buildAdminProg(); toast('S'+sn+' réinitialisée','success');
 }
+function autoCalcWeekUA() {
+  // Fonction utilitaire pour calculer la charge (RPE * Durée) d'une séance via l'ID de son select
+  const getCharge = (elementId) => {
+    const key = document.getElementById(elementId).value;
+    const seance = L.seances[key];
+    return seance ? (seance.rn || 0) * (seance.d || 0) : 0;
+  };
 
+  // On récupère la charge des 3 sorties de la semaine
+  const uaMardi = getCharge('pw-m');
+  const uaJeudi = getCharge('pw-j');
+  
+  // Pour le weekend, on se base par défaut sur la sortie Route pour le calcul 
+  // (la sortie Trail a généralement une charge très similaire)
+  const uaWeekend = getCharge('pw-wr');
+
+  // On fait la somme et on met à jour le champ de saisie
+  const totalUA = uaMardi + uaJeudi + uaWeekend;
+  document.getElementById('pw-ua').value = totalUA;
+}
+  
 // ══════════════════════════════════════════════════
 // SÉANCES BIBLIOTHÈQUE
 // ══════════════════════════════════════════════════
