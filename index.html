@@ -410,6 +410,440 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
   <div id="routinesGrid" style="display:grid;gap:.8rem;margin-top:1rem"></div>
 </div>
 
+<!-- ══════════════════ MÉTHODE FOSTER ══════════════════ -->
+<style>
+/* ── FOSTER PAGE ── */
+.foster-tabs{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.foster-tab{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--muted);font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;
+  padding:.5rem 1rem;border-radius:8px;cursor:pointer;transition:all .18s;
+  letter-spacing:.03em;
+}
+.foster-tab:hover{border-color:var(--ab-light);color:var(--ab-blue);}
+.foster-tab.active{background:var(--ab-blue);color:#fff;border-color:var(--ab-blue);}
+
+.foster-panel{display:none;animation:fadeup .3s ease;}
+.foster-panel.active{display:block;}
+
+.foster-formula{
+  background:var(--ab-blue);border-radius:14px;padding:1.5rem 2rem;
+  text-align:center;margin-bottom:1.5rem;
+}
+.foster-formula-main{
+  font-family:'Bebas Neue',sans-serif;font-size:2.2rem;
+  color:#fff;letter-spacing:.05em;line-height:1.2;
+}
+.foster-formula-main .foster-highlight{color:var(--ab-sky);}
+.foster-formula-sub{font-family:'Syne',sans-serif;font-size:.68rem;color:rgba(255,255,255,.55);margin-top:.3rem;letter-spacing:.08em;}
+
+.foster-slider-row{display:flex;align-items:center;gap:12px;margin-bottom:.6rem;}
+.foster-slider-label{font-family:'Syne',sans-serif;font-size:.74rem;font-weight:700;color:var(--muted);min-width:85px;}
+.foster-slider-val{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--ab-blue);min-width:40px;text-align:right;}
+.foster-slider{flex:1;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--border);outline:none;}
+.foster-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--ab-blue);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 6px rgba(27,58,107,.3);}
+
+.foster-zone-label{font-family:'Syne',sans-serif;font-size:.72rem;color:var(--muted);margin-left:97px;margin-bottom:1rem;font-style:italic;}
+
+.foster-equiv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;}
+.foster-equiv{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem;text-align:center;}
+.foster-equiv-val{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;}
+.foster-equiv-label{font-family:'Syne',sans-serif;font-size:.62rem;color:var(--muted);margin-top:.2rem;letter-spacing:.08em;text-transform:uppercase;}
+.foster-equiv-note{font-size:.72rem;color:var(--muted);margin-top:.15rem;}
+
+.foster-insight{
+  background:rgba(122,174,224,.1);border:1px solid rgba(122,174,224,.25);
+  border-radius:10px;padding:1rem 1.2rem;
+  font-size:.82rem;color:var(--ab-blue2);line-height:1.7;
+  font-family:'Syne',sans-serif;font-weight:600;
+}
+.foster-insight.danger{background:rgba(192,64,64,.08);border-color:rgba(192,64,64,.2);color:var(--rouge);}
+.foster-insight.success{background:rgba(74,138,90,.08);border-color:rgba(74,138,90,.2);color:var(--mousse);}
+.foster-insight.warning{background:rgba(212,137,58,.08);border-color:rgba(212,137,58,.2);color:#8a5010;}
+
+/* Semaine */
+.foster-week{display:grid;grid-template-columns:55px repeat(7,1fr) 70px;gap:4px;align-items:center;margin-bottom:.4rem;}
+.foster-day{
+  text-align:center;border-radius:8px;padding:6px 2px;
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  min-height:34px;display:flex;align-items:center;justify-content:center;
+}
+.foster-day-hdr{font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;color:var(--muted);text-align:center;letter-spacing:.08em;text-transform:uppercase;}
+.foster-week-total{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--ab-blue);text-align:center;}
+.foster-week-label{font-family:'Syne',sans-serif;font-size:.6rem;color:var(--muted);font-weight:700;}
+
+.foster-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1rem 0;}
+.foster-metric{background:var(--ab-blue);border-radius:12px;padding:.9rem;text-align:center;}
+.foster-metric-name{font-family:'Syne',sans-serif;font-size:.55rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;}
+.foster-metric-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--ab-sky);line-height:1;margin-top:.15rem;}
+
+.foster-preset-btns{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem;}
+.foster-preset{
+  background:var(--surface);border:1px solid var(--border);
+  font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;
+  padding:.4rem .9rem;border-radius:6px;cursor:pointer;color:var(--muted);
+  transition:all .15s;
+}
+.foster-preset:hover{border-color:var(--ab-light);color:var(--ab-blue);}
+
+/* ACWR */
+.foster-acwr-bar{height:24px;border-radius:12px;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;margin:1rem 0 .4rem;}
+.foster-acwr-zone{position:absolute;top:0;height:100%;}
+.foster-acwr-marker{position:absolute;top:-3px;width:4px;height:30px;background:var(--ab-blue);border-radius:2px;transition:left .3s;box-shadow:0 1px 4px rgba(27,58,107,.4);}
+.foster-acwr-labels{display:flex;justify-content:space-between;font-family:'Syne',sans-serif;font-size:.55rem;color:var(--muted);font-weight:700;}
+
+/* Zones RPE */
+.foster-rpe-zone{display:flex;align-items:center;gap:10px;padding:.55rem 0;border-bottom:1px solid var(--border);}
+.foster-rpe-zone:last-child{border-bottom:none;}
+.foster-rpe-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+.foster-rpe-num{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;min-width:35px;color:var(--ab-blue);}
+.foster-rpe-desc{font-size:.82rem;color:var(--muted);line-height:1.5;}
+
+.foster-vs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;}
+.foster-vs-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:1.3rem;text-align:center;
+}
+.foster-vs-speed{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--ab-blue);line-height:1;}
+.foster-vs-rpe{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:var(--ab-light);margin-top:.3rem;}
+.foster-vs-who{font-size:.72rem;color:var(--muted);margin-top:.1rem;}
+
+.foster-text-block{margin-top:1.8rem;}
+.foster-text-title{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:800;color:var(--ab-blue);margin-bottom:.4rem;}
+.foster-text-body{font-size:.84rem;color:var(--muted);line-height:1.8;}
+
+.foster-source{
+  margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);
+  font-family:'Syne',sans-serif;font-size:.6rem;color:var(--muted);line-height:1.6;
+  letter-spacing:.02em;
+}
+
+@media(max-width:700px){
+  .foster-formula-main{font-size:1.6rem;}
+  .foster-equiv-grid{grid-template-columns:1fr;}
+  .foster-week{grid-template-columns:40px repeat(7,1fr) 50px;gap:2px;}
+  .foster-day{font-size:.85rem;padding:4px 1px;}
+  .foster-metrics{grid-template-columns:1fr;}
+  .foster-vs{grid-template-columns:1fr;}
+}
+</style>
+
+<div class="page" id="foster">
+  <div class="sec-eye">La science derrière notre méthode</div>
+  <div class="sec-title">Méthode <em>Foster</em></div>
+  <p class="sec-intro">Dr. Carl Foster, Université du Wisconsin — la méthode utilisée par plus de 950 études scientifiques, et par AB Running pour vous faire progresser sans vous blesser. Voici comment ça marche, en détail.</p>
+
+  <div class="foster-tabs">
+    <button class="foster-tab active" onclick="fosterTab('calc',this)">🧮 Calculateur UA</button>
+    <button class="foster-tab" onclick="fosterTab('week',this)">📅 Semaine type</button>
+    <button class="foster-tab" onclick="fosterTab('acwr',this)">📈 Ratio aigu / chronique</button>
+    <button class="foster-tab" onclick="fosterTab('why',this)">🎯 Pourquoi le RPE ?</button>
+  </div>
+
+  <!-- ═══ ONGLET 1 : CALCULATEUR ═══ -->
+  <div class="foster-panel active" id="fp-calc">
+
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">RPE</span>
+      <input type="range" min="1" max="10" value="7" step="1" class="foster-slider" id="f-rpe-slider" oninput="fosterCalc()">
+      <span class="foster-slider-val" id="f-rpe-v">7</span>
+    </div>
+    <div class="foster-zone-label" id="f-rpe-zone">Difficile — allure semi / 10km</div>
+
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">Durée (min)</span>
+      <input type="range" min="10" max="120" value="45" step="5" class="foster-slider" id="f-dur-slider" oninput="fosterCalc()">
+      <span class="foster-slider-val" id="f-dur-v">45</span>
+    </div>
+
+    <div class="foster-formula">
+      <div class="foster-formula-main"><span id="fc-rpe">7</span> × <span id="fc-dur">45</span> = <span class="foster-highlight" id="fc-ua">315</span> UA</div>
+      <div class="foster-formula-sub">RPE × DURÉE (MIN) = CHARGE DE LA SÉANCE</div>
+    </div>
+
+    <div class="foster-equiv-grid">
+      <div class="foster-equiv">
+        <div class="foster-equiv-label">Équivalent footing lent</div>
+        <div class="foster-equiv-val" id="fc-easy" style="color:var(--mousse)">105 min</div>
+        <div class="foster-equiv-note">à RPE 3</div>
+      </div>
+      <div class="foster-equiv">
+        <div class="foster-equiv-label">Équivalent sprint</div>
+        <div class="foster-equiv-val" id="fc-hard" style="color:var(--rouge)">32 min</div>
+        <div class="foster-equiv-note">à RPE 10</div>
+      </div>
+    </div>
+
+    <div class="foster-insight">
+      💡 C'est la force de la méthode : 30 min de côtes intenses fatiguent autant que 60 min de footing lent. Le corps ne compte pas les kilomètres — il compte la charge.
+    </div>
+  </div>
+
+  <!-- ═══ ONGLET 2 : SEMAINE TYPE ═══ -->
+  <div class="foster-panel" id="fp-week">
+
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">
+      Exemple d'une semaine d'entraînement AB Running. Les jours de repos (UA = 0) font baisser la <strong style="color:var(--text)">monotonie</strong> — c'est voulu. Une monotonie trop haute (> 2.0) signifie que les séances se ressemblent trop : le corps ne récupère pas.
+    </p>
+
+    <div class="foster-week" style="margin-bottom:0">
+      <span></span>
+      <span class="foster-day-hdr">Lun</span>
+      <span class="foster-day-hdr">Mar</span>
+      <span class="foster-day-hdr">Mer</span>
+      <span class="foster-day-hdr">Jeu</span>
+      <span class="foster-day-hdr">Ven</span>
+      <span class="foster-day-hdr">Sam</span>
+      <span class="foster-day-hdr">Dim</span>
+      <span></span>
+    </div>
+    <div id="f-week-display"></div>
+
+    <div class="foster-metrics" id="f-week-metrics"></div>
+    <div id="f-week-insight"></div>
+
+    <div class="foster-preset-btns">
+      <button class="foster-preset" onclick="fosterWeek('normal')">✅ Semaine normale</button>
+      <button class="foster-preset" onclick="fosterWeek('decharge')">🟢 Décharge</button>
+      <button class="foster-preset" onclick="fosterWeek('overload')">🔴 Surcharge (danger)</button>
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">📐 Les 3 indicateurs du coach</div>
+      <div class="foster-text-body">
+        <strong style="color:var(--ab-blue)">Charge totale</strong> — la somme des UA de la semaine. On vise une progression de 10-15% max par semaine, avec des semaines de décharge régulières.<br><br>
+        <strong style="color:var(--ab-blue)">Monotonie</strong> — mesure la variabilité des charges sur la semaine (moyenne ÷ écart-type). Une monotonie > 2.0 = danger : les séances sont trop similaires, le corps s'use sans récupérer. C'est pour ça qu'on alterne jours de repos et jours d'effort.<br><br>
+        <strong style="color:var(--ab-blue)">Strain</strong> — charge × monotonie. Le Strain reflète la contrainte réelle sur l'organisme. Les travaux de Foster ont montré que 89% des maladies et blessures chez les athlètes s'expliquent par un pic de Strain dans les 10 jours précédents.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ONGLET 3 : ACWR ═══ -->
+  <div class="foster-panel" id="fp-acwr">
+
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">
+      Le <strong style="color:var(--text)">ratio aigu / chronique (ACWR)</strong> compare la charge de cette semaine à la moyenne des 4 dernières. C'est l'outil qui justifie nos semaines de décharge et la règle des +15% max.
+    </p>
+
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">Cette semaine</span>
+      <input type="range" min="200" max="1200" value="750" step="50" class="foster-slider" id="f-acute-slider" oninput="fosterACWR()">
+      <span class="foster-slider-val" id="f-acute-v">750</span>
+    </div>
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">Moy. 4 sem.</span>
+      <input type="range" min="200" max="1200" value="700" step="50" class="foster-slider" id="f-chronic-slider" oninput="fosterACWR()">
+      <span class="foster-slider-val" id="f-chronic-v">700</span>
+    </div>
+
+    <div class="foster-formula">
+      <div class="foster-formula-main">ACWR = <span id="fa-acute">750</span> ÷ <span id="fa-chronic">700</span> = <span class="foster-highlight" id="fa-ratio">1.07</span></div>
+      <div class="foster-formula-sub">CHARGE SEMAINE ÷ MOYENNE 4 SEMAINES</div>
+    </div>
+
+    <div style="position:relative">
+      <div class="foster-acwr-bar">
+        <div class="foster-acwr-zone" style="left:0;width:25%;background:rgba(122,174,224,.25)"></div>
+        <div class="foster-acwr-zone" style="left:25%;width:31%;background:rgba(74,138,90,.2)"></div>
+        <div class="foster-acwr-zone" style="left:56%;width:13%;background:rgba(212,137,58,.2)"></div>
+        <div class="foster-acwr-zone" style="left:69%;width:31%;background:rgba(192,64,64,.2)"></div>
+        <div class="foster-acwr-marker" id="f-acwr-marker" style="left:42%"></div>
+      </div>
+      <div class="foster-acwr-labels">
+        <span>0.4</span><span>0.8</span><span>1.0</span><span>1.3</span><span>1.5</span><span>2.0</span>
+      </div>
+    </div>
+
+    <div id="f-acwr-insight" class="foster-insight success" style="margin-top:1rem">
+      ✅ Zone optimale : progression maîtrisée, risque de blessure faible.
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">🔑 Comment lire le ratio</div>
+      <div class="foster-text-body">
+        <strong style="color:var(--ab-light)">< 0.8</strong> — Désentraînement. Vous en faites moins que d'habitude. Risque de perte de condition physique.<br>
+        <strong style="color:var(--mousse)">0.8 – 1.3</strong> — Zone optimale. Le corps s'adapte, vous progressez en sécurité.<br>
+        <strong style="color:#b56a10">1.3 – 1.5</strong> — Attention. L'augmentation est rapide. On surveille les signaux de fatigue.<br>
+        <strong style="color:var(--rouge)">1.5+</strong> — Danger. Pic de charge brutal. Risque de blessure multiplié. C'est exactement ce qu'on évite avec les semaines de décharge.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ONGLET 4 : POURQUOI LE RPE ═══ -->
+  <div class="foster-panel" id="fp-why">
+
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">
+      Pourquoi on ne sépare pas le groupe par la vitesse — et pourquoi le ressenti est le meilleur outil pour <strong style="color:var(--text)">tous les niveaux</strong>.
+    </p>
+
+    <div style="margin-bottom:1.5rem">
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#4a8a5a"></div><div class="foster-rpe-num">1-2</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Très facile</strong> — Récupération active. "Je pourrais faire ça toute la journée."</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#5dca85"></div><div class="foster-rpe-num">3-4</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Facile</strong> — Endurance fondamentale. Conversation totalement fluide.</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#efac27"></div><div class="foster-rpe-num">5-6</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Modéré</strong> — Allure marathon. On travaille mais on gère.</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#e07030"></div><div class="foster-rpe-num">7-8</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Difficile</strong> — Allure semi / 10km. La parole est brève.</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#c03030"></div><div class="foster-rpe-num">9-10</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Très difficile</strong> — Allure 5km / sprint. On ne tient plus longtemps.</div></div>
+    </div>
+
+    <div class="foster-vs">
+      <div class="foster-vs-card">
+        <div class="foster-vs-speed">10 km/h</div>
+        <div class="foster-vs-rpe">RPE 7/10</div>
+        <div class="foster-vs-who">Coureur débutant</div>
+      </div>
+      <div class="foster-vs-card">
+        <div class="foster-vs-speed">16 km/h</div>
+        <div class="foster-vs-rpe">RPE 7/10</div>
+        <div class="foster-vs-who">Coureur confirmé</div>
+      </div>
+    </div>
+
+    <div class="foster-insight">
+      🤝 Même effort perçu, même zone de travail, même séance. Le RPE réunit le groupe par l'intensité ressentie, pas par la vitesse. C'est ça, courir au feeling.
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">⏱ Le moment clé : 30 minutes après</div>
+      <div class="foster-text-body">
+        Le RPE se donne <strong style="color:var(--text)">30 minutes après la fin de la séance</strong>. Pourquoi ? Juste après l'effort, on surestime souvent à cause de la fatigue du dernier exercice. À 30 minutes, le corps a eu le temps d'intégrer la séance dans sa globalité — c'est la note la plus fiable. C'est le protocole exact validé par la recherche.
+      </div>
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">🧠 Ce que le RPE capte et que la montre ne voit pas</div>
+      <div class="foster-text-body">
+        Stress au travail, manque de sommeil, cycle hormonal, chaleur, altitude, alimentation — <strong style="color:var(--text)">tout cela influence votre capacité du jour</strong>. Votre montre GPS et votre cardio ne le savent pas. Votre corps, oui.<br><br>
+        Le RPE est le seul indicateur qui intègre <strong style="color:var(--text)">tous ces facteurs en un seul chiffre</strong>. C'est pour ça qu'il est utilisé par les équipes professionnelles dans tous les sports — du football aux sports de combat, en passant par l'athlétisme.
+      </div>
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">🔬 Validé par la science</div>
+      <div class="foster-text-body">
+        La méthode session-RPE a été proposée par le Dr. Carl Foster de l'Université du Wisconsin-La Crosse en 2001. Depuis, plus de 950 études l'ont citée et 36 ont validé sa fiabilité — chez les hommes et les femmes, chez les enfants, les adolescents et les adultes, à tous les niveaux de pratique. Elle peut être utilisée seule pour surveiller la charge d'entraînement.
+      </div>
+    </div>
+  </div>
+
+  <div class="foster-source">
+    📚 Source : Foster C. et al. (2001). A new approach to monitoring exercise training. <em>J Strength Cond Res</em>. · Haddad M. et al. (2017). Session-RPE Method for Training Load Monitoring. <em>Front. Neurosci.</em>
+  </div>
+</div>
+
+<!-- ═══ FOSTER JS ═══ -->
+<script>
+// ── Tabs ──
+function fosterTab(id,btn){
+  document.querySelectorAll('.foster-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.foster-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('fp-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Zones RPE ──
+const fosterZones={
+  1:'Très facile — récupération active',2:'Très facile — récupération active',
+  3:'Facile — endurance, conversation fluide',4:'Facile — endurance, conversation fluide',
+  5:'Modéré — allure marathon',6:'Modéré — allure marathon',
+  7:'Difficile — allure semi / 10km',8:'Difficile — allure semi / 10km',
+  9:'Très difficile — allure 5km / sprint',10:'Très difficile — on donne tout'
+};
+
+// ── Calculateur ──
+function fosterCalc(){
+  const rpe=+document.getElementById('f-rpe-slider').value;
+  const dur=+document.getElementById('f-dur-slider').value;
+  const ua=rpe*dur;
+  document.getElementById('f-rpe-v').textContent=rpe;
+  document.getElementById('f-dur-v').textContent=dur;
+  document.getElementById('fc-rpe').textContent=rpe;
+  document.getElementById('fc-dur').textContent=dur;
+  document.getElementById('fc-ua').textContent=ua;
+  document.getElementById('f-rpe-zone').textContent=fosterZones[rpe]||'';
+  document.getElementById('fc-easy').textContent=Math.round(ua/3)+' min';
+  document.getElementById('fc-hard').textContent=Math.round(ua/10)+' min';
+}
+
+// ── Semaine ──
+const fosterPresets={
+  normal:[0,420,0,380,0,0,300],
+  decharge:[0,240,0,200,0,0,180],
+  overload:[0,520,200,480,0,250,400]
+};
+
+function fosterDayColor(v){
+  if(v===0) return {bg:'var(--surface)',c:'var(--muted)'};
+  if(v<200) return {bg:'rgba(74,138,90,.12)',c:'var(--mousse)'};
+  if(v<350) return {bg:'rgba(122,174,224,.15)',c:'var(--ab-blue2)'};
+  if(v<450) return {bg:'rgba(212,137,58,.12)',c:'#8a5010'};
+  return {bg:'rgba(192,64,64,.12)',c:'var(--rouge)'};
+}
+
+function fosterWeek(key){
+  const days=fosterPresets[key];
+  const total=days.reduce((a,b)=>a+b,0);
+  const mean=total/7;
+  const sd=Math.sqrt(days.reduce((s,d)=>s+Math.pow(d-mean,2),0)/7);
+  const mono=sd>0?(mean/sd):0;
+  const strain=Math.round(total*mono);
+
+  let html='<div class="foster-week"><span class="foster-week-label">UA</span>';
+  days.forEach(d=>{
+    const col=fosterDayColor(d);
+    html+=`<div class="foster-day" style="background:${col.bg};color:${col.c}">${d||'—'}</div>`;
+  });
+  html+=`<div class="foster-week-total">${total}</div></div>`;
+  document.getElementById('f-week-display').innerHTML=html;
+
+  const monoColor=mono>2?'var(--rouge)':'var(--ab-sky)';
+  const strainColor=strain>3000?'var(--rouge)':'var(--ab-sky)';
+  document.getElementById('f-week-metrics').innerHTML=`
+    <div class="foster-metric"><div class="foster-metric-name">Charge totale</div><div class="foster-metric-val">${total}</div></div>
+    <div class="foster-metric"><div class="foster-metric-name">Monotonie</div><div class="foster-metric-val" style="color:${monoColor}">${mono.toFixed(1)}</div></div>
+    <div class="foster-metric"><div class="foster-metric-name">Strain</div><div class="foster-metric-val" style="color:${strainColor}">${strain}</div></div>`;
+
+  let insight='';
+  if(mono>2) insight='<div class="foster-insight danger">⚠️ Monotonie > 2.0 — les séances se ressemblent trop. Il faut varier l\'intensité (jours faciles vs jours durs) pour réduire le risque de surentraînement et de maladie.</div>';
+  else if(total>1050) insight='<div class="foster-insight warning">⚠️ Charge totale élevée (> 1050 UA). Surveiller les signaux de fatigue — la semaine suivante devrait être une décharge.</div>';
+  else if(mono<1) insight='<div class="foster-insight success">✅ Bonne variation entre jours d\'effort et jours de repos. Le corps récupère et s\'adapte. C\'est exactement ce qu\'on vise.</div>';
+  else insight='<div class="foster-insight">✅ Monotonie correcte. Le ratio jours intenses / jours de repos est équilibré.</div>';
+  document.getElementById('f-week-insight').innerHTML=insight;
+}
+
+// ── ACWR ──
+function fosterACWR(){
+  const acute=+document.getElementById('f-acute-slider').value;
+  const chronic=+document.getElementById('f-chronic-slider').value;
+  const ratio=chronic>0?(acute/chronic):0;
+  document.getElementById('f-acute-v').textContent=acute;
+  document.getElementById('f-chronic-v').textContent=chronic;
+  document.getElementById('fa-acute').textContent=acute;
+  document.getElementById('fa-chronic').textContent=chronic;
+  document.getElementById('fa-ratio').textContent=ratio.toFixed(2);
+
+  // Position du marqueur (0.4 à 2.0 → 0% à 100%)
+  const pct=Math.min(Math.max((ratio-0.4)/1.6*100,0),100);
+  document.getElementById('f-acwr-marker').style.left='calc('+pct+'% - 2px)';
+
+  const el=document.getElementById('f-acwr-insight');
+  if(ratio<0.8){
+    el.className='foster-insight';
+    el.innerHTML='🔵 Zone de désentraînement — la charge est trop faible par rapport à l\'habitude. Risque de perte de condition.';
+  } else if(ratio<=1.3){
+    el.className='foster-insight success';
+    el.innerHTML='✅ Zone optimale — progression maîtrisée, risque de blessure faible.';
+  } else if(ratio<=1.5){
+    el.className='foster-insight warning';
+    el.innerHTML='⚠️ Attention — augmentation rapide de la charge. Ne pas dépasser +15% par semaine.';
+  } else {
+    el.className='foster-insight danger';
+    el.innerHTML='🔴 Danger — pic de charge brutal. Risque de blessure multiplié. Réduire immédiatement.';
+  }
+}
+
+// ── Init ──
+if(document.getElementById('f-week-display')) fosterWeek('normal');
+if(document.getElementById('f-acwr-marker')) fosterACWR();
+</script>
 <!-- ═══ MODAL ═══ -->
 <div id="overlay" onclick="if(event.target===this)closeModal()">
   <div id="modal">
