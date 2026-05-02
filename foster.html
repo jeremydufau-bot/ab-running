@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Running — Méthode Foster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="logo_ab.avif" alt="AB" class="logo">
+  <span class="site-name">AB Running</span>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="programme.html">Programme</a>
+    <a href="philosophie.html">Philosophie & Méthode</a>
+    <a class="active" href="foster.html">Méthode Foster</a>
+    <a href="renforcement.html">Renforcement</a>
+    <a href="routines.html">Routines Matin</a>
+  </nav>
+</header>
+
+<div class="page" id="foster">
+    <div class="sec-title">Méthode <em>Foster</em></div>
+  <p class="sec-intro">Dr. Carl Foster, Université du Wisconsin — la méthode utilisée dans plus de 950 études scientifiques. Voici comment ça marche, en détail.</p>
+
+  <div class="foster-tabs">
+    <button class="foster-tab active" onclick="fosterTab('calc',this)">🧮 Calculateur UA</button>
+    <button class="foster-tab" onclick="fosterTab('week',this)">📅 Semaine type</button>
+    <button class="foster-tab" onclick="fosterTab('acwr',this)">📈 Ratio aigu / chronique</button>
+    <button class="foster-tab" onclick="fosterTab('why',this)">🎯 Pourquoi le RPE ?</button>
+  </div>
+
+  <!-- ═══ ONGLET 1 : CALCULATEUR ═══ -->
+  <div class="foster-panel active" id="fp-calc">
+
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">RPE</span>
+      <input type="range" min="1" max="10" value="7" step="1" class="foster-slider" id="f-rpe-slider" oninput="fosterCalc()">
+      <span class="foster-slider-val" id="f-rpe-v">7</span>
+    </div>
+    <div class="foster-zone-label" id="f-rpe-zone">Difficile — allure semi / 10km</div>
+
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">Durée (min)</span>
+      <input type="range" min="10" max="120" value="45" step="5" class="foster-slider" id="f-dur-slider" oninput="fosterCalc()">
+      <span class="foster-slider-val" id="f-dur-v">45</span>
+    </div>
+
+    <div class="foster-formula">
+      <div class="foster-formula-main"><span id="fc-rpe">7</span> × <span id="fc-dur">45</span> = <span class="foster-highlight" id="fc-ua">315</span> UA</div>
+      <div class="foster-formula-sub">RPE × DURÉE (MIN) = CHARGE DE LA SÉANCE</div>
+    </div>
+
+    <div class="foster-equiv-grid">
+      <div class="foster-equiv">
+        <div class="foster-equiv-label">Équivalent footing lent</div>
+        <div class="foster-equiv-val" id="fc-easy" style="color:var(--mousse)">105 min</div>
+        <div class="foster-equiv-note">à RPE 3</div>
+      </div>
+      <div class="foster-equiv">
+        <div class="foster-equiv-label">Équivalent sprint</div>
+        <div class="foster-equiv-val" id="fc-hard" style="color:var(--rouge)">32 min</div>
+        <div class="foster-equiv-note">à RPE 10</div>
+      </div>
+    </div>
+
+    <div class="foster-insight">
+      💡 C'est la force de la méthode : 30 min de côtes intenses fatiguent autant que 60 min de footing lent. Le corps ne compte pas les kilomètres — il compte la charge.
+    </div>
+  </div>
+
+  <!-- ═══ ONGLET 2 : SEMAINE TYPE ═══ -->
+  <div class="foster-panel" id="fp-week">
+
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">
+      Exemple d'une semaine d'entraînement avec deux séances, le mardi et le jeudi. Les jours de repos (UA = 0) font baisser la <strong style="color:var(--text)">monotonie</strong> — c'est voulu. Une monotonie trop haute (> 2.0) signifie que les séances se ressemblent trop : le corps ne récupère pas.
+    </p>
+
+    <div class="foster-week" style="margin-bottom:0">
+      <span></span>
+      <span class="foster-day-hdr">Lun</span>
+      <span class="foster-day-hdr">Mar</span>
+      <span class="foster-day-hdr">Mer</span>
+      <span class="foster-day-hdr">Jeu</span>
+      <span class="foster-day-hdr">Ven</span>
+      <span class="foster-day-hdr">Sam</span>
+      <span class="foster-day-hdr">Dim</span>
+      <span></span>
+    </div>
+    <div id="f-week-display"></div>
+
+    <div class="foster-metrics" id="f-week-metrics"></div>
+    <div id="f-week-insight"></div>
+
+    <div class="foster-preset-btns">
+      <button class="foster-preset" onclick="fosterWeek('normal')">✅ Semaine normale</button>
+      <button class="foster-preset" onclick="fosterWeek('decharge')">🟢 Décharge</button>
+      <button class="foster-preset" onclick="fosterWeek('overload')">🔴 Surcharge (danger)</button>
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">📐 Les 3 indicateurs du coach</div>
+      <div class="foster-text-body">
+        <strong style="color:var(--blue)">Charge totale</strong> — la somme des UA de la semaine. Une progression de 10-15% max par semaine est visée, avec des semaines de décharge régulières.<br><br>
+        <strong style="color:var(--blue)">Monotonie</strong> — mesure la variabilité des charges sur la semaine (moyenne ÷ écart-type). Une monotonie > 2.0 = danger : les séances sont trop similaires, le corps s'use sans récupérer. C'est pour ça qu'on alterne jours de repos et jours d'effort.<br><br>
+        <strong style="color:var(--blue)">Strain</strong> — charge × monotonie. Le Strain reflète la contrainte réelle sur l'organisme. Les travaux de Foster ont montré que 89% des maladies et blessures chez les athlètes s'expliquent par un pic de Strain dans les 10 jours précédents.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ONGLET 3 : ACWR ═══ -->
+  <div class="foster-panel" id="fp-acwr">
+
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">
+      Le <strong style="color:var(--text)">ratio aigu / chronique (ACWR)</strong> compare la charge de cette semaine à la moyenne des 4 dernières. C'est l'outil qui justifie les semaines de décharge et la règle des +15% max.
+    </p>
+
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">Cette semaine</span>
+      <input type="range" min="200" max="1200" value="750" step="50" class="foster-slider" id="f-acute-slider" oninput="fosterACWR()">
+      <span class="foster-slider-val" id="f-acute-v">750</span>
+    </div>
+    <div class="foster-slider-row">
+      <span class="foster-slider-label">Moy. 4 sem.</span>
+      <input type="range" min="200" max="1200" value="700" step="50" class="foster-slider" id="f-chronic-slider" oninput="fosterACWR()">
+      <span class="foster-slider-val" id="f-chronic-v">700</span>
+    </div>
+
+    <div class="foster-formula">
+      <div class="foster-formula-main">ACWR = <span id="fa-acute">750</span> ÷ <span id="fa-chronic">700</span> = <span class="foster-highlight" id="fa-ratio">1.07</span></div>
+      <div class="foster-formula-sub">CHARGE SEMAINE ÷ MOYENNE 4 SEMAINES</div>
+    </div>
+
+    <div style="position:relative">
+      <div class="foster-acwr-bar">
+        <div class="foster-acwr-zone" style="left:0;width:25%;background:rgba(122,174,224,.25)"></div>
+        <div class="foster-acwr-zone" style="left:25%;width:31%;background:rgba(74,138,90,.2)"></div>
+        <div class="foster-acwr-zone" style="left:56%;width:13%;background:rgba(212,137,58,.2)"></div>
+        <div class="foster-acwr-zone" style="left:69%;width:31%;background:rgba(192,64,64,.2)"></div>
+        <div class="foster-acwr-marker" id="f-acwr-marker" style="left:42%"></div>
+      </div>
+      <div class="foster-acwr-labels">
+        <span>0.4</span><span>0.8</span><span>1.0</span><span>1.3</span><span>1.5</span><span>2.0</span>
+      </div>
+    </div>
+
+    <div id="f-acwr-insight" class="foster-insight success" style="margin-top:1rem">
+      ✅ Zone optimale : progression maîtrisée, risque de blessure faible.
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">🔑 Comment lire le ratio</div>
+      <div class="foster-text-body">
+        <strong style="color:var(--light)">< 0.8</strong> — Désentraînement. Vous en faites moins que d'habitude. Risque de perte de condition physique.<br>
+        <strong style="color:var(--mousse)">0.8 – 1.3</strong> — Zone optimale. Le corps s'adapte, vous progressez en sécurité.<br>
+        <strong style="color:#b56a10">1.3 – 1.5</strong> — Attention. L'augmentation est rapide. On surveille les signaux de fatigue.<br>
+        <strong style="color:var(--rouge)">1.5+</strong> — Danger. Pic de charge brutal. Risque de blessure multiplié. C'est exactement ce qu'on évite avec les semaines de décharge.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ONGLET 4 : POURQUOI LE RPE ═══ -->
+  <div class="foster-panel" id="fp-why">
+
+    <p style="font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">
+      Pourquoi on ne sépare pas le groupe par la vitesse — et pourquoi le ressenti est le meilleur outil pour <strong style="color:var(--text)">tous les niveaux</strong>.
+    </p>
+
+    <div style="margin-bottom:1.5rem">
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#4a8a5a"></div><div class="foster-rpe-num">1-2</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Très facile</strong> — Récupération active. "Je pourrais faire ça toute la journée."</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#5dca85"></div><div class="foster-rpe-num">3-4</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Facile</strong> — Endurance fondamentale. Conversation totalement fluide.</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#efac27"></div><div class="foster-rpe-num">5-6</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Modéré</strong> — Allure marathon. On travaille mais on gère.</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#e07030"></div><div class="foster-rpe-num">7-8</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Difficile</strong> — Allure semi / 10km. La parole est brève.</div></div>
+      <div class="foster-rpe-zone"><div class="foster-rpe-dot" style="background:#c03030"></div><div class="foster-rpe-num">9-10</div><div class="foster-rpe-desc"><strong style="color:var(--text)">Très difficile</strong> — Allure 5km / sprint. On ne tient plus longtemps.</div></div>
+    </div>
+
+    <div class="foster-vs">
+      <div class="foster-vs-card">
+        <div class="foster-vs-speed">10 km/h</div>
+        <div class="foster-vs-rpe">RPE 7/10</div>
+        <div class="foster-vs-who">Coureur débutant</div>
+      </div>
+      <div class="foster-vs-card">
+        <div class="foster-vs-speed">16 km/h</div>
+        <div class="foster-vs-rpe">RPE 7/10</div>
+        <div class="foster-vs-who">Coureur confirmé</div>
+      </div>
+    </div>
+
+    <div class="foster-insight">
+      🤝 Même effort perçu, même zone de travail, même séance. Le RPE réunit le groupe par l'intensité ressentie, pas par la vitesse. C'est ça, courir au feeling.
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">⏱ Le moment clé : 30 minutes après</div>
+      <div class="foster-text-body">
+        Le RPE se donne <strong style="color:var(--text)">30 minutes après la fin de la séance</strong>. Pourquoi ? Juste après l'effort, on surestime souvent à cause de la fatigue du dernier exercice. À 30 minutes, le corps a eu le temps d'intégrer la séance dans sa globalité — c'est la note la plus fiable. C'est le protocole exact validé par la recherche.
+      </div>
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">🧠 Ce que le RPE capte et que la montre ne voit pas</div>
+      <div class="foster-text-body">
+        Stress au travail, manque de sommeil, cycle hormonal, chaleur, altitude, alimentation — <strong style="color:var(--text)">tout cela influence votre capacité du jour</strong>. Votre montre GPS et votre cardio ne le savent pas. Votre corps, oui.<br><br>
+        Le RPE est le seul indicateur qui intègre <strong style="color:var(--text)">tous ces facteurs en un seul chiffre</strong>. C'est pour ça qu'il est utilisé par les équipes professionnelles dans tous les sports — du football aux sports de combat, en passant par l'athlétisme.
+      </div>
+    </div>
+
+    <div class="foster-text-block">
+      <div class="foster-text-title">🔬 Validé par la science</div>
+      <div class="foster-text-body">
+        La méthode session-RPE a été proposée par le Dr. Carl Foster de l'Université du Wisconsin-La Crosse en 2001. Depuis, plus de 950 études l'ont citée et 36 ont validé sa fiabilité — chez les hommes et les femmes, chez les enfants, les adolescents et les adultes, à tous les niveaux de pratique. Elle peut être utilisée seule pour surveiller la charge d'entraînement.
+      </div>
+    </div>
+  </div>
+
+  <div class="foster-source">
+    📚 Source : Foster C. et al. (2001). A new approach to monitoring exercise training. <em>J Strength Cond Res</em>. · Haddad M. et al. (2017). Session-RPE Method for Training Load Monitoring. <em>Front. Neurosci.</em>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

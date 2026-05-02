@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AB Running — Accueil</title>
+<title>AB Running — Routines Matin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -14,34 +14,27 @@
   <img src="logo_ab.avif" alt="AB" class="logo">
   <span class="site-name">AB Running</span>
   <nav>
-    <a class="active" href="index.html">Accueil</a>
+    <a href="index.html">Accueil</a>
     <a href="programme.html">Programme</a>
     <a href="philosophie.html">Philosophie & Méthode</a>
     <a href="foster.html">Méthode Foster</a>
     <a href="renforcement.html">Renforcement</a>
-    <a href="routines.html">Routines Matin</a>
+    <a class="active" href="routines.html">Routines Matin</a>
   </nav>
 </header>
 
-<div class="page" id="accueil">
-  <div id="infosClubZone"></div>
-  <div class="sec-eye">Semaine en cours</div>
-  <div class="sec-title" id="acc-title">Programme <em>cette semaine</em></div>
-  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem">
-    <div>
-      <div class="ctrl-label">Sortie weekend</div>
-      <div class="ctrl-bar">
-        <button class="btn active" onclick="setWE(0,this)">🛣️ Route</button>
-        <button class="btn" onclick="setWE(1,this)">🌲 Trail</button>
-      </div>
+<div class="page" id="routines">
+  <div class="sec-eye">Chaque matin</div>
+  <div class="sec-title">Routines <em>réveil musculaire</em></div>
+  <p class="sec-intro">7 routines thématiques (une par jour). 10-15 minutes au réveil, sans matériel ou avec élastiques. Objectif : prévention, mobilité, activation — pas de fatigue.</p>
+  <div>
+    <div class="ctrl-label">Version</div>
+    <div class="ctrl-bar">
+      <button class="btn active" onclick="setReveilEquip('corpo',this)">🤸 Corps</button>
+      <button class="btn" onclick="setReveilEquip('elastiques',this)">🔴 Élastiques</button>
     </div>
   </div>
-  <div id="acc-grid"></div>
-
-  <div class="divider"></div>
-  <div class="sec-eye">Saison 2026-2027</div>
-  <div class="sec-title" style="font-size:1.4rem">Objectifs <em>repères</em></div>
-  <div id="acc-objectifs" style="max-width:680px;margin-bottom:1.5rem"></div>
+  <div id="routinesGrid" style="display:grid;gap:.8rem;margin-top:1rem"></div>
 </div>
 
 <!-- Modal -->

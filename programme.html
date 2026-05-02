@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Running — Programme 52 semaines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="logo_ab.avif" alt="AB" class="logo">
+  <span class="site-name">AB Running</span>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a class="active" href="programme.html">Programme</a>
+    <a href="philosophie.html">Philosophie & Méthode</a>
+    <a href="foster.html">Méthode Foster</a>
+    <a href="renforcement.html">Renforcement</a>
+    <a href="routines.html">Routines Matin</a>
+  </nav>
+</header>
+
+<div class="page" id="programme">
+  <div class="sec-eye">Saison complète</div>
+  <div class="sec-title">Programme <em>52 semaines</em></div>
+  <p class="sec-intro">Tronc commun mardi + jeudi. Chaque séance existe en variante Route, Piste, Trail. Auto-régulation par RPE et modulation du volume. Cliquez sur une semaine pour le détail.</p>
+
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.2rem">
+    <div>
+      <div class="ctrl-label">Sortie weekend</div>
+      <div class="ctrl-bar" id="we-btns">
+        <button class="btn active" onclick="setWE(0,this)">🛣️ Route</button>
+        <button class="btn" onclick="setWE(1,this)">🌲 Trail</button>
+      </div>
+    </div>
+    <div>
+      <div class="ctrl-label">Phase</div>
+      <div class="ctrl-bar" id="phase-btns">
+        <button class="btn active" onclick="setPhase('',this)">Tout</button>
+        <button class="btn" onclick="setPhase('rep',this)">Reprise</button>
+        <button class="btn" onclick="setPhase('base',this)">Base</button>
+        <button class="btn" onclick="setPhase('dev',this)">Développement</button>
+        <button class="btn" onclick="setPhase('force',this)">Cross</button>
+        <button class="btn" onclick="setPhase('precomp',this)">Spécifique</button>
+        <button class="btn" onclick="setPhase('recup',this)">Récup</button>
+        <button class="btn" onclick="setPhase('event',this)">Compétition</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="prog-wrap">
+    <table class="prog-table">
+      <thead><tr>
+        <th style="width:60px">Sem</th>
+        <th>Phase</th>
+        <th>Mardi</th>
+        <th>Jeudi</th>
+        <th id="col-we">Weekend · Route</th>
+        <th style="width:55px;text-align:center">UA</th>
+        <th style="width:50px;text-align:center">Δ%</th>
+      </tr></thead>
+      <tbody id="progBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="overlay" onclick="if(event.target===this)closeModal()">
+  <div id="modal">
+    <div class="modal-hdr">
+      <h3 id="mTitle"></h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

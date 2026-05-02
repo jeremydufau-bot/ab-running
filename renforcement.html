@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Running — Renforcement & PPG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="logo_ab.avif" alt="AB" class="logo">
+  <span class="site-name">AB Running</span>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="programme.html">Programme</a>
+    <a href="philosophie.html">Philosophie & Méthode</a>
+    <a href="foster.html">Méthode Foster</a>
+    <a class="active" href="renforcement.html">Renforcement</a>
+    <a href="routines.html">Routines Matin</a>
+  </nav>
+</header>
+
+<div class="page" id="renforcement">
+  <div class="sec-eye">Préparation physique</div>
+  <div class="sec-title">Renforcement <em>& PPG</em></div>
+  <p class="sec-intro">PPG exclusivement en côtes (principe physiologique). Séances de renforcement à faire en dehors des séances club ou >6h après.</p>
+
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.2rem">
+    <div>
+      <div class="ctrl-label">Phase de saison</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setPhaseMuscu('fondamental',this)">🧱 Fondamental</button>
+        <button class="btn" onclick="setPhaseMuscu('force',this)">💪 Force</button>
+        <button class="btn" onclick="setPhaseMuscu('specifique',this)">🎯 Spécifique</button>
+        <button class="btn" onclick="setPhaseMuscu('competition',this)">🏆 Compétition</button>
+      </div>
+    </div>
+    <div>
+      <div class="ctrl-label">Équipement</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setMusEquip('corpo',this)">🤸 Corps</button>
+        <button class="btn" onclick="setMusEquip('elastiques',this)">🔴 Élastiques</button>
+        <button class="btn" onclick="setMusEquip('salle',this)">🏋️ Salle</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="phaseMusculaire" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem"></div>
+  <div id="circuitDisplay"></div>
+
+  <div class="divider"></div>
+  <div class="sec-eye">Bibliothèque complète</div>
+  <div class="sec-title" style="font-size:1.3rem">Tous les <em>exercices</em></div>
+  <div class="ctrl-bar" style="margin-bottom:.8rem">
+    <button class="btn active" onclick="filterExoCat('all',this)">Tout</button>
+    <button class="btn" onclick="filterExoCat('jambes',this)">🦵 Jambes</button>
+    <button class="btn" onclick="filterExoCat('fessiers',this)">🍑 Fessiers</button>
+    <button class="btn" onclick="filterExoCat('gainage',this)">🧱 Gainage</button>
+    <button class="btn" onclick="filterExoCat('mollets',this)">👟 Mollets</button>
+    <button class="btn" onclick="filterExoCat('pliometrie',this)">⚡ Pliométrie</button>
+    <button class="btn" onclick="filterExoCat('etirements',this)">🌿 Étirements</button>
+  </div>
+  <div id="exoGrid" class="exo-grid"></div>
+</div>
+
+<!-- Modal -->
+<div id="overlay" onclick="if(event.target===this)closeModal()">
+  <div id="modal">
+    <div class="modal-hdr">
+      <h3 id="mTitle"></h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
