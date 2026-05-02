@@ -352,57 +352,47 @@ nav button.active{background:rgba(123,195,229,.2);border-color:var(--sky);color:
 </div>
 
 <!-- ═══ RENFORCEMENT ═══ -->
-<div class="page" id="muscu">
-  <div class="sec-eye">Séance vendredi</div>
-  <div class="sec-title">Renforcement <em>musculaire</em></div>
-  <p class="sec-intro">45–60 min chaque vendredi. Les exercices s'adaptent à l'équipement disponible et à la phase de saison. Cliquez sur n'importe quel exercice pour voir la description complète, les variantes et les progressions. C'est la meilleure assurance blessure du programme.</p>
+<div class="page" id="renforcement">
+  <div class="sec-eye">Préparation physique</div>
+  <div class="sec-title">Renforcement <em>& PPG</em></div>
+  <p class="sec-intro">PPG exclusivement en côtes (principe physiologique). Séances de renforcement à faire en dehors des séances club ou >6h après.</p>
 
-  <div style="margin-bottom:2.5rem">
-    <div style="font-family:'Syne',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:1rem">Équipement disponible :</div>
-    <div style="display:flex;gap:.7rem;flex-wrap:wrap">
-      <button class="eq-btn active" onclick="setEquip('corpo',this)">
-        <span style="font-size:1.1rem">🏠</span> Poids du corps
-        <span style="display:block;font-size:.62rem;opacity:.7;font-weight:400;margin-top:.1rem">Rien du tout</span>
-      </button>
-      <button class="eq-btn" onclick="setEquip('elastiques',this)">
-        <span style="font-size:1.1rem">🔴</span> Corps + Élastiques
-        <span style="display:block;font-size:.62rem;opacity:.7;font-weight:400;margin-top:.1rem">+ poids cheville, KB léger</span>
-      </button>
-      <button class="eq-btn" onclick="setEquip('salle',this)">
-        <span style="font-size:1.1rem">🏋️</span> Salle complète
-        <span style="display:block;font-size:.62rem;opacity:.7;font-weight:400;margin-top:.1rem">Barres, poids, machines</span>
-      </button>
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.2rem">
+    <div>
+      <div class="ctrl-label">Phase de saison</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setPhaseMuscu('fondamental',this)">🧱 Fondamental</button>
+        <button class="btn" onclick="setPhaseMuscu('force',this)">💪 Force</button>
+        <button class="btn" onclick="setPhaseMuscu('specifique',this)">🎯 Spécifique</button>
+        <button class="btn" onclick="setPhaseMuscu('competition',this)">🏆 Compétition</button>
+      </div>
+    </div>
+    <div>
+      <div class="ctrl-label">Équipement</div>
+      <div class="ctrl-bar">
+        <button class="btn active" onclick="setMusEquip('corpo',this)">🤸 Corps</button>
+        <button class="btn" onclick="setMusEquip('elastiques',this)">🔴 Élastiques</button>
+        <button class="btn" onclick="setMusEquip('salle',this)">🏋️ Salle</button>
+      </div>
     </div>
   </div>
 
-  <div style="margin-bottom:2.5rem">
-    <div style="font-family:'Syne',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ab-blue);margin-bottom:1rem">Phase de saison :</div>
-    <div style="display:flex;gap:.7rem;flex-wrap:wrap">
-      <button class="phase-eq-btn active" onclick="setPhaseMuscu('fondamental',this)">🌱 Fondamental<span style="display:block;font-size:.62rem;opacity:.7;font-weight:400">Sept–Nov · 2×/sem</span></button>
-      <button class="phase-eq-btn" onclick="setPhaseMuscu('force',this)">⚒️ Force<span style="display:block;font-size:.62rem;opacity:.7;font-weight:400">Déc–Fév · 2×/sem</span></button>
-      <button class="phase-eq-btn" onclick="setPhaseMuscu('specifique',this)">🎯 Spécifique<span style="display:block;font-size:.62rem;opacity:.7;font-weight:400">Mars–Mai · 1-2×/sem</span></button>
-      <button class="phase-eq-btn" onclick="setPhaseMuscu('competition',this)">🏁 Compétition<span style="display:block;font-size:.62rem;opacity:.7;font-weight:400">Juin–Août · 1×/sem</span></button>
-    </div>
-  </div>
-
-  <div id="phaseMusculaire" style="background:rgba(27,58,107,.05);border:1px solid rgba(27,58,107,.12);border-radius:10px;padding:1.5rem;margin-bottom:2.5rem;font-size:.87rem;line-height:1.8;color:var(--muted)"></div>
+  <div id="phaseMusculaire" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin-bottom:1rem"></div>
   <div id="circuitDisplay"></div>
 
   <div class="divider"></div>
-  <div class="sec-eye" style="margin-top:0">Bibliothèque complète</div>
-  <div class="sec-title" style="font-size:1.6rem">Tous les <em>exercices</em></div>
-  <p style="color:var(--muted);font-size:.88rem;margin-bottom:2rem;max-width:600px">Cliquez sur un exercice pour voir la description détaillée, les muscles ciblés, la technique et les progressions avec équipement.</p>
-
-  <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem" id="filterBtns">
-    <button class="filter-btn active" onclick="filterExos('all',this)">Tous</button>
-    <button class="filter-btn" onclick="filterExos('jambes',this)">🦵 Jambes</button>
-    <button class="filter-btn" onclick="filterExos('fessiers',this)">🍑 Fessiers / Hanches</button>
-    <button class="filter-btn" onclick="filterExos('gainage',this)">🧱 Gainage</button>
-    <button class="filter-btn" onclick="filterExos('mollets',this)">👟 Mollets / Chevilles</button>
-    <button class="filter-btn" onclick="filterExos('pliometrie',this)">⚡ Pliométrie</button>
-    <button class="filter-btn" onclick="filterExos('etirements',this)">🌿 Étirements</button>
+  <div class="sec-eye">Bibliothèque complète</div>
+  <div class="sec-title" style="font-size:1.3rem">Tous les <em>exercices</em></div>
+  <div class="ctrl-bar" style="margin-bottom:.8rem">
+    <button class="btn active" onclick="filterExoCat('all',this)">Tout</button>
+    <button class="btn" onclick="filterExoCat('jambes',this)">🦵 Jambes</button>
+    <button class="btn" onclick="filterExoCat('fessiers',this)">🍑 Fessiers</button>
+    <button class="btn" onclick="filterExoCat('gainage',this)">🧱 Gainage</button>
+    <button class="btn" onclick="filterExoCat('mollets',this)">👟 Mollets</button>
+    <button class="btn" onclick="filterExoCat('pliometrie',this)">⚡ Pliométrie</button>
+    <button class="btn" onclick="filterExoCat('etirements',this)">🌿 Étirements</button>
   </div>
-  <div id="exoGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem"></div>
+  <div id="exoGrid" class="exo-grid"></div>
 </div>
 
 <!-- ═══ ROUTINES MATIN ═══ -->
