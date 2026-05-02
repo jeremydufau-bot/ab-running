@@ -82,6 +82,16 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
 .panel-btn.cancel{background:transparent;border:1px solid var(--border);color:var(--muted)}
 .panel-btn.reset{background:transparent;border:1px solid rgba(192,64,64,.3);color:var(--rouge)}
 
+.seance-preview {
+  background-color: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+  
 /* Toast */
 #toast{position:fixed;top:1rem;right:1rem;z-index:300;display:flex;flex-direction:column;gap:.3rem}
 .toast-item{padding:.6rem 1rem;border-radius:8px;font-size:.76rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,.15);animation:slideIn .3s}
@@ -385,6 +395,10 @@ function openWeekEdit(sn){
   if(!w) return;
   document.getElementById('panel-title').textContent = `Semaine ${sn} — ${w.p}`;
   document.getElementById('btn-reset').style.display = JSON.stringify(w)!==JSON.stringify(programme.find(x=>x.s===sn))?'block':'none';
+  updateSeancePreview('pw-m');
+  updateSeancePreview('pw-j');
+  updateSeancePreview('pw-wr');
+  updateSeancePreview('pw-wt');
 
   const picker = (id,cur)=>{
     let html = '<option value="—">— Repos —</option>';
@@ -457,7 +471,56 @@ function autoCalcWeekUA() {
   const totalUA = uaMardi + uaJeudi + uaWeekend;
   document.getElementById('pw-ua').value = totalUA;
 }
+
+function handleSeanceChange(elementId) {
+  // 1. Mise à jour de l'aperçu
+  updateSeancePreview(elementId);
+  // 2. Recalcul de l'UA
+  autoCalcWeekUA();
+}
+
+function updateSeancePreview(elementId) {
+  const selectElement = document.getElementById(elementId);
+  const previewDiv = document.getElementById(`preview-${elementId}`);
   
+  // Sécurité
+  if (!selectElement || !previewDiv) return;
+
+  const key = selectElement.value;
+  
+  // Si c'est un repos ou une clé invalide
+  if (!key || key === '—' || !L.seances[key]) {
+    previewDiv.style.display = 'none';
+    previewDiv.innerHTML = '';
+    return;
+  }
+
+  const s = L.seances[key];
+  
+  // Construction du HTML calqué sur tes variables existantes
+  const html = `
+    <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px; font-size: 0.95em;">
+      <strong style="color: var(--navy);">${s.l || key}</strong>
+      <span style="background: rgba(27,58,107,.06); padding: 2px 6px; border-radius: 4px; color: var(--muted); font-size: 0.85em;">${key}</span>
+      <span style="background: rgba(184,134,11,.12); padding: 2px 6px; border-radius: 4px; color: var(--gold); font-weight: bold; font-size: 0.85em;">RPE ${s.rpe || '—'}</span>
+      <span style="color: var(--muted); font-size: 0.9em;">${s.c || ''}</span>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 60px 1fr; gap: 6px 12px; font-size: 0.9em; margin-bottom: 12px;">
+      ${s.r && s.r !== '—' ? `<span style="color: var(--blue); font-weight: bold;">🛣️ Route</span><span>${s.r}</span>` : ''}
+      ${s.p && s.p !== '—' ? `<span style="color: var(--mousse); font-weight: bold;">🏟️ Piste</span><span>${s.p}</span>` : ''}
+      ${s.t && s.t !== '—' ? `<span style="color: var(--rouge); font-weight: bold;">🌲 Trail</span><span>${s.t}</span>` : ''}
+    </div>
+    
+    <div style="font-size: 0.85em; border-top: 1px solid var(--border); padding-top: 8px;">
+      ${s.v ? `<div style="color: var(--gold); margin-bottom: 4px;">📊 ${s.v}</div>` : ''}
+      ${s.n ? `<div style="color: var(--muted); font-style: italic;">💡 ${s.n}</div>` : ''}
+    </div>
+  `;
+  
+  previewDiv.innerHTML = html;
+  previewDiv.style.display = 'block';
+}
 // ══════════════════════════════════════════════════
 // SÉANCES BIBLIOTHÈQUE
 // ══════════════════════════════════════════════════
