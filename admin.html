@@ -403,7 +403,15 @@ function openWeekEdit(sn){
       grp.forEach(k=>{ used.add(k); html += `<option value="${k}" ${k===cur?'selected':''}>${(L.seances[k].l||k).substring(0,55)}</option>`; });
       html += '</optgroup>';
     }
-    return `<select class="field-select" id="${id}" onchange="autoCalcWeekUA()">${html}</select>`;
+    // On englobe tout dans une div pour la mise en page
+return `
+  <div class="select-with-preview">
+    <select class="field-select" id="${id}" onchange="handleSeanceChange('${id}')">
+      ${html}
+    </select>
+    <div id="preview-${id}" class="seance-preview" style="display: none;"></div>
+  </div>
+`;
   };
 
   document.getElementById('panel-body').innerHTML =
