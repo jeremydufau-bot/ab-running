@@ -15,6 +15,13 @@ const infosClub = [
     "texte": "",
     "type": "info",
     "dateFin": "2026-05-06"
+  },
+  {
+    "id": "msg_1777734964891",
+    "titre": "Méthode Foster",
+    "texte": "",
+    "type": "info",
+    "dateFin": ""
   }
 ];
 
@@ -108,7 +115,7 @@ const seancesData = {
     "c": "VMA courte",
     "rpe": "8-9",
     "rn": 9,
-    "d": 40,
+    "d": 70,
     "lieu": "halage",
     "r": "10×30\"/30\" Halage",
     "p": "10×100m/100m piste",
