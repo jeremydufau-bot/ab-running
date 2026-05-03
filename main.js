@@ -21,6 +21,26 @@ function objForSem(n){
   const o = objectifs.find(x=>x.s===n);
   return o ? `🏆 ${o.nom}` : '';
 }
+// --- NOUVEAU : Fonction de calcul de la charge globale (Socle + Qualité) ---
+function getUAReel(w, isTrail = false) {
+  if(!w) return 0;
+  const mData = sd(w.m), jData = sd(w.j);
+  const weKey = isTrail ? w.wt : w.wr;
+  const weData = sd(weKey);
+  
+  const socleLundi = socleConfig.lundi.dur * socleConfig.lundi.rpe;
+  const socleMercredi = socleConfig.mercredi.dur * socleConfig.mercredi.rpe;
+  const uaMardi = mData ? (mData.rn * mData.d) : 0;
+  const uaJeudi = jData ? (jData.rn * jData.d) : 0;
+  
+  let uaWE = 0;
+  if (weData) {
+    uaWE = weData.rn * weData.d;
+  } else {
+    uaWE = isTrail ? (socleConfig.weTrail.dur * socleConfig.weTrail.rpe) : (socleConfig.weRoute.dur * socleConfig.weRoute.rpe);
+  }
+  return socleLundi + uaMardi + socleMercredi + uaJeudi + uaWE;
+}
 
 function getCurrentSem(){
   const today = new Date(); today.setHours(0,0,0,0);
@@ -202,10 +222,17 @@ function buildProg(){
     const weLbl = weData?weData.l:(weKey==='—'?'—':weKey);
     const obj = objForSem(w.s);
 
+// --- NOUVEAU CALCUL (Prend en compte le socle et la vraie charge S-1) ---
+    const isTrail = (curWE === 1);
+    const uaReel = getUAReel(w, isTrail);
+    w.ua = uaReel; // Met à jour l'objet pour que la modale "Détail" affiche aussi le bon total
+
     const prev = programme.find(x=>x.s===w.s-1);
+    const prevUAReel = prev ? getUAReel(prev, isTrail) : 0; // Recalcule la charge S-1 même si elle est masquée par un filtre
+    
     let delta = '';
-    if(prev && prev.ua>0){
-      const d = Math.round((w.ua-prev.ua)/prev.ua*100);
+    if(prev && prevUAReel > 0){
+      const d = Math.round((uaReel - prevUAReel) / prevUAReel * 100);
       const col = d>15?'#C04040':d>10?'#D4893A':d>5?'#2A5DA0':d<-5?'#4A8A5A':'#6B7A9A';
       const arr = d>5?'↑':d<-5?'↓':'=';
       delta = `<span style="color:${col};font-weight:700">${arr}${d>0?'+':''}${d}%</span>`;
