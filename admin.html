@@ -464,19 +464,34 @@ function buildAdminProg(){
     });
   }
 
-  document.getElementById('admin-prog-body').innerHTML = rows.map(w=>{
+document.getElementById('admin-prog-body').innerHTML = rows.map(w=>{
     const mD = L.seances[w.m], jD = L.seances[w.j];
     const mRpe = mD?mD.rn:0, jRpe = jD?jD.rn:0;
     const mDur = mD?mD.d:0, jDur = jD?jD.d:0;
     const uaClub = mRpe*mDur + jRpe*jDur;
-    const uaTotal = w.ua; // stored total includes socle
+    
+    // --- NOUVEAU CALCUL EN TEMPS RÉEL (SOCLE INCLUS) ---
+    // On va chercher la charge des sorties weekend depuis les données de base (si elles existent)
+    const weR = L.seances[w.wr];
+    const weT = L.seances[w.wt];
+    // On calcule la charge du weekend (on prend la route par défaut, ou le trail si défini et prioritaire)
+    // Note : tu peux affiner cette logique si tu veux que le tableau affiche une moyenne ou la route spécifiquement
+    const uaWE = (weR ? (weR.rn * weR.d) : socle.weRoute); 
+    
+    // On additionne tout : Lundi + Mardi + Mercredi + Jeudi + Weekend
+    const uaReel = socle.lundi + (mRpe * mDur) + socle.mercredi + (jRpe * jDur) + uaWE;
+    
+    // On s'assure de mettre à jour la valeur dans l'objet pour les calculs suivants (important pour le delta)
+    w.ua = uaReel; 
+
     const orig = programme.find(x=>x.s===w.s);
     const changed = orig && JSON.stringify(w)!==JSON.stringify(orig);
     const prev = L.programme.find(x=>x.s===w.s-1);
     let delta = '';
     if(prev && prev.ua>0){
-      const d = Math.round((w.ua-prev.ua)/prev.ua*100);
-      const col = d>15?'var(--rouge)':d>5?'var(--ocre)':d<-5?'var(--mousse)':'var(--muted)';
+      // Le calcul se fait maintenant sur la nouvelle charge réelle (uaReel)
+      const d = Math.round((uaReel-prev.ua)/prev.ua*100);
+      const col = d>15?'var(--rouge)':d>10?'var(--ocre)':d>5?'var(--blue)':d<-5?'var(--mousse)':'var(--muted)';
       delta = `<span style="color:${col};font-weight:700">${d>0?'+':''}${d}%</span>`;
     }
     const d = new Date(+S1+(w.s-1)*7*864e5);
