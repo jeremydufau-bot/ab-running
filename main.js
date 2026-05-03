@@ -153,8 +153,8 @@ function renderAccueil(){
           ${jData&&jData.n?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${jData.n}</div>`:''}
         </div>
       </div>
-      <div class="acc-foot">
-        <span style="font-size:.72rem;color:#6B7A9A">🏃 WE ${['Route','Trail'][curWE]} — ${weLbl} · <span class="ua-badge" style="color:#1A2540;font-weight:700">${w.ua} UA</span></span>
+        <div class="acc-foot">
+        <span style="font-size:.72rem;color:#6B7A9A">🏃 WE ${['Route','Trail'][curWE]} — ${weLbl} · <span class="ua-badge" style="color:#1A2540;font-weight:700">${getUAReel(w, curWE === 1)} UA</span></span>
         <button class="detail-btn" onclick="openDetail(${sn})">Détail →</button>
       </div>
     </div>`;
