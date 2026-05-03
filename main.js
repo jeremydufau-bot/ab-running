@@ -134,7 +134,7 @@ function renderAccueil(){
         </div>
       </div>
       <div class="acc-foot">
-        <span style="font-size:.72rem;color:var(--muted)">🏃 WE ${['Route','Trail'][curWE]} — ${weLbl} · <span class="ua-badge">${w.ua} UA</span></span>
+        <span style="font-size:.72rem;color:#6B7A9A">🏃 WE ${['Route','Trail'][curWE]} — ${weLbl} · <span class="ua-badge" style="color:#1A2540;font-weight:700">${w.ua} UA</span></span>
         <button class="detail-btn" onclick="openDetail(${sn})">Détail →</button>
       </div>
     </div>`;
@@ -206,7 +206,7 @@ function buildProg(){
     let delta = '';
     if(prev && prev.ua>0){
       const d = Math.round((w.ua-prev.ua)/prev.ua*100);
-      const col = d>5?'var(--rouge)':d<-5?'var(--mousse)':'var(--muted)';
+      const col = d>15?'#C04040':d>10?'#D4893A':d>5?'#2A5DA0':d<-5?'#4A8A5A':'#6B7A9A';
       const arr = d>5?'↑':d<-5?'↓':'=';
       delta = `<span style="color:${col};font-weight:700">${arr}${d>0?'+':''}${d}%</span>`;
     }
@@ -227,8 +227,8 @@ function buildProg(){
         <div class="s-meta">${jData?tTag(jData.lieu):''} ${jData?`<span class="rpe-pill">RPE ${jData.rpe}</span>`:''}</div>
       </td>
       <td style="font-size:.76rem;color:var(--muted)">${weLbl}</td>
-      <td style="text-align:center"><span class="ua-badge">${w.ua}</span></td>
-      <td style="text-align:center;font-size:.72rem">${delta||'—'}</td>
+      <td style="text-align:center"><span class="ua-badge" style="color:#1A2540;font-weight:700">${w.ua}</span></td>
+      <td style="text-align:center;font-size:.72rem">${delta||'<span style="color:#6B7A9A">—</span>'}</td>
     </tr>`;
   }).join('');
 }
@@ -273,7 +273,12 @@ function openDetail(sn){
     ${w.n?`<div class="info-box blue">${w.n}</div>`:''}
     <div style="display:flex;justify-content:space-between;align-items:center">
       <h4>📅 Mardi — ${mData?mData.l:'Repos'}</h4>
-      <span class="ua-badge">UA semaine : ${w.ua}</span>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <span class="ua-badge" style="color:#1A2540;font-weight:700">UA semaine : ${w.ua}</span>
+      </div>
+    </div>
+    <div style="background:rgba(27,58,107,.04);border-radius:6px;padding:.4rem .6rem;margin-bottom:.6rem;font-size:.68rem;color:#6B7A9A">
+      ℹ️ Ce total inclut le socle hebdomadaire (renfo lundi + footing mercredi + sortie WE).
     </div>
     ${seanceBlock(mData)}
     <h4>📅 Jeudi — ${jData?jData.l:'Repos'}</h4>

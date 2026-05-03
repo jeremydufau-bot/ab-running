@@ -148,10 +148,113 @@ body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:1
         <option value="">Toutes les phases</option>
       </select>
     </div>
+
+    <!-- SOCLE HEBDOMADAIRE -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.2rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="document.getElementById('socle-body').style.display=document.getElementById('socle-body').style.display==='none'?'block':'none';this.querySelector('.chevron').textContent=document.getElementById('socle-body').style.display==='none'?'▸':'▾'">
+        <div>
+          <span style="font-size:.72rem;font-weight:700;color:var(--navy)">📊 Socle hebdomadaire (Méthode Foster)</span>
+          <span id="socle-total-badge" style="margin-left:.5rem;font-size:.68rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;background:rgba(27,58,107,.08);color:var(--navy)"></span>
+        </div>
+        <span class="chevron" style="font-size:.8rem;color:var(--muted)">▾</span>
+      </div>
+      <div id="socle-body" style="margin-top:.8rem">
+        <p style="font-size:.72rem;color:var(--muted);margin-bottom:.8rem;line-height:1.5">
+          Le calcul Foster intègre <strong>tous les jours de la semaine</strong> pour éviter l'hypersensibilité des pourcentages.
+          Les séances club (mardi/jeudi) s'ajoutent à ce socle de base. Ajustez les curseurs pour simuler l'évolution saisonnière.
+        </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+          <!-- LUNDI -->
+          <div style="padding:.6rem;background:var(--surface2);border-radius:8px;border:1px solid var(--border)">
+            <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:.4rem">🏋️ Lundi — Renforcement</div>
+            <div style="display:flex;gap:.6rem;align-items:center">
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">Durée (min)</label>
+                <input type="range" min="30" max="90" value="60" id="socle-lun-dur" oninput="updateSocle()" style="width:100%">
+                <span id="socle-lun-dur-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">60</span>
+              </div>
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">RPE</label>
+                <input type="range" min="2" max="7" value="4" id="socle-lun-rpe" oninput="updateSocle()" style="width:100%">
+                <span id="socle-lun-rpe-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">4</span>
+              </div>
+              <div style="text-align:center;min-width:55px">
+                <div style="font-size:.55rem;color:var(--muted)">UA</div>
+                <div id="socle-lun-ua" style="font-size:.9rem;font-weight:800;color:var(--navy)">240</div>
+              </div>
+            </div>
+          </div>
+          <!-- MERCREDI -->
+          <div style="padding:.6rem;background:var(--surface2);border-radius:8px;border:1px solid var(--border)">
+            <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mousse);margin-bottom:.4rem">🏃 Mercredi — Footing récup</div>
+            <div style="display:flex;gap:.6rem;align-items:center">
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">Durée (min)</label>
+                <input type="range" min="30" max="70" value="50" id="socle-mer-dur" oninput="updateSocle()" style="width:100%">
+                <span id="socle-mer-dur-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">50</span>
+              </div>
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">RPE</label>
+                <input type="range" min="2" max="5" value="3" id="socle-mer-rpe" oninput="updateSocle()" style="width:100%">
+                <span id="socle-mer-rpe-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">3</span>
+              </div>
+              <div style="text-align:center;min-width:55px">
+                <div style="font-size:.55rem;color:var(--muted)">UA</div>
+                <div id="socle-mer-ua" style="font-size:.9rem;font-weight:800;color:var(--mousse)">150</div>
+              </div>
+            </div>
+          </div>
+          <!-- WEEKEND ROUTE -->
+          <div style="padding:.6rem;background:var(--surface2);border-radius:8px;border:1px solid var(--border)">
+            <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:.4rem">🛣️ Weekend — Sortie Route</div>
+            <div style="display:flex;gap:.6rem;align-items:center">
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">Durée (min)</label>
+                <input type="range" min="45" max="180" value="60" step="5" id="socle-wer-dur" oninput="updateSocle()" style="width:100%">
+                <span id="socle-wer-dur-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">60</span>
+              </div>
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">RPE</label>
+                <input type="range" min="3" max="7" value="4" id="socle-wer-rpe" oninput="updateSocle()" style="width:100%">
+                <span id="socle-wer-rpe-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">4</span>
+              </div>
+              <div style="text-align:center;min-width:55px">
+                <div style="font-size:.55rem;color:var(--muted)">UA</div>
+                <div id="socle-wer-ua" style="font-size:.9rem;font-weight:800;color:var(--blue)">240</div>
+              </div>
+            </div>
+          </div>
+          <!-- WEEKEND TRAIL -->
+          <div style="padding:.6rem;background:var(--surface2);border-radius:8px;border:1px solid var(--border)">
+            <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mousse);margin-bottom:.4rem">🌲 Weekend — Sortie Trail</div>
+            <div style="display:flex;gap:.6rem;align-items:center">
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">Durée (min)</label>
+                <input type="range" min="60" max="300" value="90" step="5" id="socle-wet-dur" oninput="updateSocle()" style="width:100%">
+                <span id="socle-wet-dur-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">90</span>
+              </div>
+              <div style="flex:1">
+                <label style="font-size:.6rem;color:var(--muted)">RPE</label>
+                <input type="range" min="3" max="7" value="4" id="socle-wet-rpe" oninput="updateSocle()" style="width:100%">
+                <span id="socle-wet-rpe-v" style="font-size:.72rem;font-weight:700;color:var(--navy)">4</span>
+              </div>
+              <div style="text-align:center;min-width:55px">
+                <div style="font-size:.55rem;color:var(--muted)">UA</div>
+                <div id="socle-wet-ua" style="font-size:.9rem;font-weight:800;color:var(--mousse)">360</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:.6rem;padding:.5rem .8rem;background:rgba(27,58,107,.05);border-radius:6px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.68rem;color:var(--muted)">Socle hors club (Lundi + Mercredi + Weekend) :</span>
+          <span id="socle-hors-club" style="font-size:.82rem;font-weight:800;color:var(--navy)">—</span>
+        </div>
+      </div>
+    </div>
     <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
       <table class="admin-table">
         <thead><tr>
-          <th>Sem</th><th>Phase</th><th>Mardi</th><th>RPE</th><th>Jeudi</th><th>RPE</th><th>UA</th><th>Δ%</th><th></th>
+          <th>Sem</th><th>Phase</th><th>Mardi</th><th>RPE</th><th>Jeudi</th><th>RPE</th><th>Club</th><th>Total</th><th>Δ%</th><th></th>
         </tr></thead>
         <tbody id="admin-prog-body"></tbody>
       </table>
@@ -349,6 +452,7 @@ function buildAdminProg(){
   const rows = L.programme.filter(w=>!filter||(phaseMap[w.p]&&phaseMap[w.p].c===filter));
   const MOIS = ['Janv','Févr','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'];
   const S1 = new Date(2026,7,31);
+  const socle = getSocleUA();
 
   // Populate phase filter
   const sel = document.getElementById('phase-filter');
@@ -364,14 +468,15 @@ function buildAdminProg(){
     const mD = L.seances[w.m], jD = L.seances[w.j];
     const mRpe = mD?mD.rn:0, jRpe = jD?jD.rn:0;
     const mDur = mD?mD.d:0, jDur = jD?jD.d:0;
-    const uaCalc = mRpe*mDur + jRpe*jDur;
+    const uaClub = mRpe*mDur + jRpe*jDur;
+    const uaTotal = w.ua; // stored total includes socle
     const orig = programme.find(x=>x.s===w.s);
     const changed = orig && JSON.stringify(w)!==JSON.stringify(orig);
     const prev = L.programme.find(x=>x.s===w.s-1);
     let delta = '';
     if(prev && prev.ua>0){
       const d = Math.round((w.ua-prev.ua)/prev.ua*100);
-      const col = d>5?'var(--rouge)':d<-5?'var(--mousse)':'var(--muted)';
+      const col = d>15?'var(--rouge)':d>5?'var(--ocre)':d<-5?'var(--mousse)':'var(--muted)';
       delta = `<span style="color:${col};font-weight:700">${d>0?'+':''}${d}%</span>`;
     }
     const d = new Date(+S1+(w.s-1)*7*864e5);
@@ -382,6 +487,7 @@ function buildAdminProg(){
       <td style="text-align:center;font-size:.82rem;font-weight:700;color:${mRpe>=8?'var(--rouge)':mRpe>=6?'var(--navy)':'var(--mousse)'}">${mRpe||'—'}</td>
       <td style="font-size:.75rem">${jD?jD.l:'—'}</td>
       <td style="text-align:center;font-size:.82rem;font-weight:700;color:${jRpe>=8?'var(--rouge)':jRpe>=6?'var(--navy)':'var(--mousse)'}">${jRpe||'—'}</td>
+      <td style="text-align:center;font-size:.72rem;color:var(--muted)">${uaClub}</td>
       <td style="text-align:center;font-weight:700;color:var(--navy)">${w.ua}</td>
       <td style="text-align:center;font-size:.72rem">${delta||'—'}</td>
       <td><button class="btn-sm" onclick="openWeekEdit(${w.s})">✏️</button>${changed?`<button class="btn-sm danger" style="margin-left:.2rem" onclick="resetWeek(${w.s})">↺</button>`:''}</td>
@@ -433,7 +539,8 @@ return `
     +'<span class="block-sep">🏃 SORTIE WEEKEND</span>'
     +`<div class="field-group"><label class="field-label">🛣️ Route</label>${picker('pw-wr',w.wr)}</div>`
     +`<div class="field-group"><label class="field-label">🌲 Trail</label>${picker('pw-wt',w.wt)}</div>`
-    +`<div class="field-group"><label class="field-label">UA semaine (manuel)</label><input type="number" class="field-input" id="pw-ua" value="${w.ua}"></div>`
+    +`<div class="field-group"><label class="field-label">UA semaine (auto-calculé)</label><input type="number" class="field-input" id="pw-ua" value="${w.ua}" style="font-weight:700"></div>`
+    +`<div id="pw-preview" style="background:rgba(27,58,107,.04);border:1px solid var(--border);border-radius:8px;padding:.7rem;margin-bottom:.8rem"></div>`
     +`<div class="field-group"><label class="field-label" style="display:flex;align-items:center;gap:.5rem;cursor:pointer"><input type="checkbox" id="pw-d" ${w.d?'checked':''}> Semaine de décharge</label></div>`
     +`<div class="field-group"><label class="field-label">Notes coach</label><textarea class="field-textarea" id="pw-n" rows="2">${w.n||''}</textarea></div>`;
 
@@ -443,6 +550,7 @@ return `
   updateSeancePreview('pw-j');
   updateSeancePreview('pw-wr');
   updateSeancePreview('pw-wt');
+  autoCalcWeekUA();
 }
 
 function resetWeek(sn){
@@ -453,24 +561,131 @@ function resetWeek(sn){
   saveLocal(); buildAdminProg(); toast('S'+sn+' réinitialisée','success');
 }
 function autoCalcWeekUA() {
-  // Fonction utilitaire pour calculer la charge (RPE * Durée) d'une séance via l'ID de son select
   const getCharge = (elementId) => {
-    const key = document.getElementById(elementId).value;
+    const el = document.getElementById(elementId);
+    if(!el) return 0;
+    const key = el.value;
     const seance = L.seances[key];
     return seance ? (seance.rn || 0) * (seance.d || 0) : 0;
   };
 
-  // On récupère la charge des 3 sorties de la semaine
   const uaMardi = getCharge('pw-m');
   const uaJeudi = getCharge('pw-j');
-  
-  // Pour le weekend, on se base par défaut sur la sortie Route pour le calcul 
-  // (la sortie Trail a généralement une charge très similaire)
-  const uaWeekend = getCharge('pw-wr');
-
-  // On fait la somme et on met à jour le champ de saisie
-  const totalUA = uaMardi + uaJeudi + uaWeekend;
+  const socle = getSocleUA();
+  const totalUA = socle.lundi + uaMardi + socle.mercredi + uaJeudi + socle.weekend;
   document.getElementById('pw-ua').value = totalUA;
+
+  // Update live preview
+  updateWeekPreview(uaMardi, uaJeudi, socle);
+}
+
+// ══════════════════════════════════════════════════
+// SOCLE HEBDOMADAIRE
+// ══════════════════════════════════════════════════
+function getSocleFromUI(){
+  return {
+    lundi:    { dur: +(document.getElementById('socle-lun-dur')?.value||60), rpe: +(document.getElementById('socle-lun-rpe')?.value||4) },
+    mercredi: { dur: +(document.getElementById('socle-mer-dur')?.value||50), rpe: +(document.getElementById('socle-mer-rpe')?.value||3) },
+    weRoute:  { dur: +(document.getElementById('socle-wer-dur')?.value||60), rpe: +(document.getElementById('socle-wer-rpe')?.value||4) },
+    weTrail:  { dur: +(document.getElementById('socle-wet-dur')?.value||90), rpe: +(document.getElementById('socle-wet-rpe')?.value||4) }
+  };
+}
+
+function getSocleUA(){
+  const cfg = getSocleFromUI();
+  return {
+    lundi:    cfg.lundi.dur * cfg.lundi.rpe,
+    mercredi: cfg.mercredi.dur * cfg.mercredi.rpe,
+    weRoute:  cfg.weRoute.dur * cfg.weRoute.rpe,
+    weTrail:  cfg.weTrail.dur * cfg.weTrail.rpe,
+    weekend:  cfg.weRoute.dur * cfg.weRoute.rpe // default to route
+  };
+}
+
+function updateSocle(){
+  const cfg = getSocleFromUI();
+  // Update display values
+  document.getElementById('socle-lun-dur-v').textContent = cfg.lundi.dur;
+  document.getElementById('socle-lun-rpe-v').textContent = cfg.lundi.rpe;
+  document.getElementById('socle-lun-ua').textContent = cfg.lundi.dur * cfg.lundi.rpe;
+  document.getElementById('socle-mer-dur-v').textContent = cfg.mercredi.dur;
+  document.getElementById('socle-mer-rpe-v').textContent = cfg.mercredi.rpe;
+  document.getElementById('socle-mer-ua').textContent = cfg.mercredi.dur * cfg.mercredi.rpe;
+  document.getElementById('socle-wer-dur-v').textContent = cfg.weRoute.dur;
+  document.getElementById('socle-wer-rpe-v').textContent = cfg.weRoute.rpe;
+  document.getElementById('socle-wer-ua').textContent = cfg.weRoute.dur * cfg.weRoute.rpe;
+  document.getElementById('socle-wet-dur-v').textContent = cfg.weTrail.dur;
+  document.getElementById('socle-wet-rpe-v').textContent = cfg.weTrail.rpe;
+  document.getElementById('socle-wet-ua').textContent = cfg.weTrail.dur * cfg.weTrail.rpe;
+
+  const horsClub = cfg.lundi.dur*cfg.lundi.rpe + cfg.mercredi.dur*cfg.mercredi.rpe + cfg.weRoute.dur*cfg.weRoute.rpe;
+  document.getElementById('socle-hors-club').textContent = horsClub + ' UA (route) / ' + (cfg.lundi.dur*cfg.lundi.rpe + cfg.mercredi.dur*cfg.mercredi.rpe + cfg.weTrail.dur*cfg.weTrail.rpe) + ' UA (trail)';
+  document.getElementById('socle-total-badge').textContent = 'Socle route : ' + horsClub + ' UA';
+
+  // Save to localStorage
+  localStorage.setItem('ab-admin-socle', JSON.stringify(cfg));
+
+  // Refresh if edit panel is open
+  if(document.getElementById('pw-ua')) autoCalcWeekUA();
+}
+
+function loadSocle(){
+  const saved = localStorage.getItem('ab-admin-socle');
+  if(saved){
+    const cfg = JSON.parse(saved);
+    if(cfg.lundi) { document.getElementById('socle-lun-dur').value = cfg.lundi.dur; document.getElementById('socle-lun-rpe').value = cfg.lundi.rpe; }
+    if(cfg.mercredi) { document.getElementById('socle-mer-dur').value = cfg.mercredi.dur; document.getElementById('socle-mer-rpe').value = cfg.mercredi.rpe; }
+    if(cfg.weRoute) { document.getElementById('socle-wer-dur').value = cfg.weRoute.dur; document.getElementById('socle-wer-rpe').value = cfg.weRoute.rpe; }
+    if(cfg.weTrail) { document.getElementById('socle-wet-dur').value = cfg.weTrail.dur; document.getElementById('socle-wet-rpe').value = cfg.weTrail.rpe; }
+  }
+  updateSocle();
+}
+
+function updateWeekPreview(uaMardi, uaJeudi, socle){
+  const el = document.getElementById('pw-preview');
+  if(!el) return;
+  const total = socle.lundi + uaMardi + socle.mercredi + uaJeudi + socle.weekend;
+  const sn = editKey;
+  const prev = L.programme.find(x=>x.s===sn-1);
+  let deltaHtml = '';
+  if(prev && prev.ua>0){
+    const d = Math.round((total-prev.ua)/prev.ua*100);
+    const col = d>15?'var(--rouge)':d>10?'var(--ocre)':d>5?'var(--blue)':d<-5?'var(--mousse)':'var(--muted)';
+    const icon = d>10?'⚠️':d>5?'📈':d<-5?'📉':'✅';
+    deltaHtml = `<span style="color:${col};font-weight:700;font-size:.85rem">${icon} ${d>0?'+':''}${d}% vs S${sn-1}</span>`;
+    if(d>10) deltaHtml += `<div style="font-size:.62rem;color:var(--rouge);margin-top:.2rem">Attention : progression > 10%. Règle d'or = +10% max.</div>`;
+  }
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.3rem;text-align:center;margin-bottom:.5rem">
+      <div style="padding:.3rem;background:rgba(27,58,107,.04);border-radius:4px">
+        <div style="font-size:.5rem;color:var(--muted);text-transform:uppercase">Lun</div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--navy)">${socle.lundi}</div>
+      </div>
+      <div style="padding:.3rem;background:rgba(42,93,160,.08);border-radius:4px;border:1.5px solid var(--sky)">
+        <div style="font-size:.5rem;color:var(--blue);text-transform:uppercase;font-weight:700">Mar ★</div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--navy)">${uaMardi}</div>
+      </div>
+      <div style="padding:.3rem;background:rgba(27,58,107,.04);border-radius:4px">
+        <div style="font-size:.5rem;color:var(--muted);text-transform:uppercase">Mer</div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--mousse)">${socle.mercredi}</div>
+      </div>
+      <div style="padding:.3rem;background:rgba(42,93,160,.08);border-radius:4px;border:1.5px solid var(--sky)">
+        <div style="font-size:.5rem;color:var(--blue);text-transform:uppercase;font-weight:700">Jeu ★</div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--navy)">${uaJeudi}</div>
+      </div>
+      <div style="padding:.3rem;background:rgba(27,58,107,.04);border-radius:4px">
+        <div style="font-size:.5rem;color:var(--muted);text-transform:uppercase">WE</div>
+        <div style="font-size:.75rem;font-weight:700;color:var(--navy)">${socle.weekend}</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <span style="font-size:.65rem;color:var(--muted)">Charge totale semaine :</span>
+        <span style="font-size:1rem;font-weight:800;color:var(--navy);margin-left:.3rem">${total} UA</span>
+      </div>
+      ${deltaHtml}
+    </div>
+  `;
 }
 
 function handleSeanceChange(elementId) {
@@ -798,6 +1013,9 @@ async function doPublish(){
     content = replaceJsConst(content,'calculateurTextes',JSON.stringify(L.calcTextes,null,2));
     content = replaceJsConst(content,'chargeHebdoSeuils',JSON.stringify(L.chargeSeuils,null,2));
     content = replaceJsConst(content,'objectifs',JSON.stringify(L.objectifs,null,2));
+    // Publish socle config
+    const socleData = getSocleFromUI();
+    content = replaceJsConst(content,'socleConfig',JSON.stringify(socleData,null,2));
 
     bar.style.width='65%'; msg.textContent='📤 Envoi vers GitHub…';
     const now = new Date().toLocaleString('fr-FR');
@@ -830,7 +1048,7 @@ async function doPublish(){
 // INIT
 // ══════════════════════════════════════════════════
 function initApp(){
-  getLocal(); buildAdminProg(); loadConfig(); updateStatus();
+  getLocal(); loadSocle(); buildAdminProg(); loadConfig(); updateStatus();
 }
 if(localStorage.getItem('ab-auth')==='1') initApp();
 </script>

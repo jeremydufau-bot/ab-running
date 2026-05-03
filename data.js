@@ -73,6 +73,14 @@ const chargeHebdoSeuils = [
   }
 ];
 
+// Socle hebdomadaire — jours hors club intégrés au calcul Foster
+const socleConfig = {
+  lundi:    { label:"Renforcement musculaire", dur:60,  rpe:4 },
+  mercredi: { label:"Footing récupération",    dur:50,  rpe:3 },
+  weRoute:  { label:"Sortie longue route",     dur:60,  rpe:4 },
+  weTrail:  { label:"Sortie longue trail",     dur:90,  rpe:4 }
+};
+
 const terrainLabel = {
   halage:{icon:'🏞️',label:'Halage Adour',cls:'tag-sky'},
   stades:{icon:'🏟️',label:'Stade / Piste',cls:'tag-blue'},
