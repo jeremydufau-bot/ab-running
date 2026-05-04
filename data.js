@@ -89,7 +89,7 @@ const terrainLabel = {
   chiberta:{icon:'🌲',label:'Forêt Chiberta',cls:'tag-green'},
   floride:{icon:'⛰️',label:'Côte La Floride',cls:'tag-rouge'},
   voulgre:{icon:'⛰️',label:'Côte du Voulgre',cls:'tag-rouge'},
-  vw:{icon:'⛰️',label:'Côte VW Anglet',cls:'tag-rouge'},
+  vw:{icon:'⛰️',label:'Côte VW',cls:'tag-rouge'},
   vvf:{icon:'⛰️',label:'Côte VVF Anglet',cls:'tag-rouge'},
   escaliers:{icon:'🪜',label:'Escaliers Biarritz',cls:'tag-rouge'},
   girouettes:{icon:'🌿',label:'Parc Girouettes',cls:'tag-green'},
