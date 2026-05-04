@@ -82,7 +82,7 @@ const socleConfig = {
 };
 
 const terrainLabel = {
-  halage:{icon:'🏞️',label:'Halage Adour',cls:'tag-sky'},
+  halage:{icon:'🏞️',label:'Halage',cls:'tag-sky'},
   stades:{icon:'🏟️',label:'Stade / Piste',cls:'tag-blue'},
   intramuros:{icon:'🏘️',label:'Intra-muros',cls:'tag-blue'},
   plage:{icon:'🏖️',label:'Plage',cls:'tag-ocre'},
