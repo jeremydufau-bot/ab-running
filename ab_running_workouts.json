@@ -1,0 +1,6176 @@
+[
+  {
+    "id_original": "S001",
+    "title": "2×(8×30\"/30\") R3'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Travail de puissance aérobie en double série. Récup trottinée entre reps (NE PAS s'arrêter). Le 3min entre séries permet de maintenir la qualité sur la 2e série. Allure VMA.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 49,
+    "totalUA": 392,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S002",
+    "title": "2×(10×30\"/30\") R3'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Volume intermédiaire 30/30. Double série de 10 répétitions avec 3min de récup entre blocs. Allure VMA. Récup active obligatoire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 53,
+    "totalUA": 424,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S003",
+    "title": "2×(12×30\"/30\") R3'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Volume élevé 30/30 pour confirmés. 24 répétitions totales. Séance de référence VMA — tenir l'allure identique sur toutes les reps. Allure VMA proche.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 57,
+    "totalUA": 513,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S004",
+    "title": "2×(6×30\"/30\") R1'30\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Version courte du 30/30 en double série. Récup de seulement 1min30 entre séries — plus exigeant. Idéal quand le temps est limité. Allure Z4-VMA.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 44,
+    "totalUA": 308,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 90,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S005",
+    "title": "10×30\"/30\" (simple)",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Séance de référence VMA classique. Récup trottinée obligatoire — ne jamais s'arrêter. Allure VMA -10% à VMA. Séance neuromusculaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 40,
+    "totalUA": 320,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S006",
+    "title": "15×30\"/30\" (simple)",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Volume max en 30/30 pour confirmés. 15 répétitions continues avec récup trottinée. Allure VMA. Séance longue et exigeante.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 45,
+    "totalUA": 405,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 15,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S007",
+    "title": "2×(8×20\"/20\") R2'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Intervalles très courts en double série. Le repos de 2min entre séries permet de maintenir la qualité. Format plus doux que le 30/30 — adapté aux débutants. Allure VMA+.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 43,
+    "totalUA": 344,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 120,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 20,
+            "unit": "s",
+            "rest": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S008",
+    "title": "5×30\"/30\" + 8×1'/1' + 5×30\"/30\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Triple bloc symétrique courts/longs/courts. Les 30sec finaux sont les plus difficiles. Séance VMA complète qui sollicite plusieurs filières. Z4-Z5.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 60,
+    "totalUA": 540,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S009",
+    "title": "8×30\"/30\" R2' + 6×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Double bloc VMA — les 30/30 chauffent le système, les 1'/1' maintiennent la charge aérobie. Séance exigeante. Z4 sur les 1', Z5 sur les 30sec.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 52,
+    "totalUA": 468,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S010",
+    "title": "12×45\"/45\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Intervalles 45sec — durée intermédiaire entre 30sec et 1min. Travail à allure Z4-Z5. Idéal en terrain varié. Chaque effort doit ressembler au précédent.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 48,
+    "totalUA": 384,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S011",
+    "title": "6×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min version débutant. Récup trottinée active. Allure Z4 confort. Introduction au fractionné court pour les coureurs en progression.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S012",
+    "title": "10×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek structuré 10×1min/1min. Récup active obligatoire. La base du fractionné court — tenir l'allure sur toutes les reps. Z4-Z4+.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S013",
+    "title": "12×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Volume élevé 1min/1min pour confirmés. Tenir l'allure Z5 sur toutes les répétitions est l'objectif. Séance de référence VMA longue.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 54,
+    "totalUA": 486,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S014",
+    "title": "2×(6×1'/1') R2'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Double série 6×1'/1' avec 2min de récup. Le bloc de récup permet de maintenir la qualité sur la 2e série. Z4-Z5.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 56,
+    "totalUA": 448,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 120,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S015",
+    "title": "30\" R= 4'-3'-2' (récup décroissante)",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Séance spéciale à récup décroissante. Les derniers 30sec se font avec moins de récup — simulation fin de course. VMA sur tous les efforts.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 32,
+    "totalUA": 256,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S016",
+    "title": "5×45\"/45\" + 5×45\"/30\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Double bloc avec récup décroissante. Les 45\"/30\" sont plus difficiles car moins de récup. Simulation fin de course. Z4 sur bloc 1, Z4-Z5 sur bloc 2.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 46,
+    "totalUA": 414,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 45
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S051",
+    "title": "2×(8×200m) R3'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Travail de puissance aérobie sur piste en double série. 200m équivalent des 30sec route. Récup 1min30 trottinée entre reps, 3min entre séries. Allure VMA.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 70,
+    "totalUA": 560,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S052",
+    "title": "2×(10×200m) R3'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Volume intermédiaire 200m en double série. 20 répétitions totales avec 3min de récup inter-série. Allure VMA. Récup active entre chaque 200m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 79,
+    "totalUA": 632,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S053",
+    "title": "2×(12×200m) R3'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Volume élevé 200m pour confirmés. 24 répétitions totales. Tenir l'allure identique sur tous les 200m. Séance de référence piste VMA.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 88,
+    "totalUA": 792,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S054",
+    "title": "2×(6×200m) R1'30\"",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Version courte en double série avec récup courte entre séries. Récup inter-série réduite à 1min30 — plus exigeant. Z4-VMA. Idéal temps limité.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 59,
+    "totalUA": 413,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 90,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S055",
+    "title": "10×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Séance de référence piste VMA classique. 200m ≈ 30-35sec d'effort. Récup 1min30 trottinée. Allure VMA -10% à VMA. Neuromusculaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 53,
+    "totalUA": 424,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S056",
+    "title": "15×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Volume max 200m pour confirmés. 15 répétitions continues avec récup 1min30. Allure VMA. Séance longue et très exigeante — régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 65,
+    "totalUA": 585,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 15,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S057",
+    "title": "2×(8×100m) R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "100m équivalent des 20sec route. Double série avec 2min de récup inter-série. Travail neuromusculaire. Allure VMA+. Format plus doux que les 200m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 120,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 100,
+            "unit": "m",
+            "rest": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S058",
+    "title": "5×200m + 8×400m + 5×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Triple bloc symétrique piste courts/longs/courts. 200m = VMA+, 400m = VMA. Les derniers 200m sont les plus difficiles. Séance VMA complète piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 88,
+    "totalUA": 792,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S059",
+    "title": "8×200m R2' + 6×400m R1'30\"",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Double bloc piste VMA — les 200m chauffent le système, les 400m maintiennent la charge aérobie. Séance exigeante. Allure VMA sur les 200m, VMA -5% sur les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 72,
+    "totalUA": 648,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S060",
+    "title": "12×300m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "300m équivalent des 45sec route. 12 répétitions avec 2min de récup. Travail à allure Z4-Z5. Idéal pour la progression entre 200m et 400m. Allure VMA -5%.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 68,
+    "totalUA": 544,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 300,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S061",
+    "title": "6×400m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste équivalent du 1min route. Version débutant avec 6 répétitions. La base du fractionné piste. Tenir l'allure sur toutes les reps. Allure Z4 confort.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 52,
+    "totalUA": 364,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S062",
+    "title": "10×400m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Séance reine de la piste. 10×400m avec 2min de récup. Allure VMA -10%. Tenir l'allure identique sur tous les 400m est l'objectif principal.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 66,
+    "totalUA": 528,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S063",
+    "title": "12×400m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Volume élevé 400m pour confirmés. Récup réduite à 1min30. Tenir l'allure Z5 sur toutes les répétitions. Séance de référence VMA longue piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 67,
+    "totalUA": 603,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S064",
+    "title": "2×(6×400m) R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Double série 6×400m avec 2min de récup inter-série. Le bloc de récup permet de maintenir la qualité sur la 2e série. Z4-Z5.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 69,
+    "totalUA": 552,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 120,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S065",
+    "title": "5×400m récup décroissante",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m avec récup décroissante. Simulation fin de course — les derniers 400m se font avec moins de récup. VMA sur tous les efforts.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 38,
+    "totalUA": 304,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S066",
+    "title": "5×300m + 5×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "Double bloc avec distances et récup décroissantes. Les 200m finaux sont plus difficiles car moins de récup. Simulation fin de course piste. Z4 puis Z4-Z5.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 42,
+    "totalUA": 378,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 300,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      },
+      {
+        "type": "rest_block",
+        "value": 120
+      },
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S017",
+    "title": "4×2' R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Transition vers le seuil — efforts de 2min à allure Z4 soutenue. Récup confort. Idéal pour les débutants découvrant les efforts plus longs. Rythme maintenu sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S018",
+    "title": "6×2' R2'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Volume intermédiaire 2min avec 2min de récup. Allure 85-90% FCmax. Transition vers le seuil — rythme à maintenir sur toutes les répétitions.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 54,
+    "totalUA": 432,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S019",
+    "title": "10×2' R2'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Volume élevé 2min pour confirmés. 90-93% FCmax. Séance longue et exigeante. Régulité de l'allure sur les 10 blocs est l'objectif principal.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 70,
+    "totalUA": 560,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S020",
+    "title": "3×3' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Introduction au travail seuil — efforts 3min à allure seuil doux. Peut parler par mots. Idéal débutants seuil. Allure Z3-Z4. Récup trottinée confort.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S021",
+    "title": "5×3' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Volume intermédiaire 3min. Allure seuil 80-85% FCmax. Introduction au travail seuil — peut parler par mots. Maintenir l'allure sur tous les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 60,
+    "totalUA": 480,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S022",
+    "title": "8×3' R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Volume élevé 3min avec récup réduite. Allure seuil 85-90% FCmax. Séance volume au seuil — si dégradation dès le 5e bloc : réduire à 6.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 74,
+    "totalUA": 592,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S023",
+    "title": "4×4' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 4min à allure seuil confort. Allure Z3-Z4. Récup trottinée confort. Bonne séance de progression après maîtrise des 3min. 80-85% FCmax.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 58,
+    "totalUA": 406,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S024",
+    "title": "6×4' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Volume 4min à allure seuil 85-88% FCmax. Séance exigeante. Tenir l'allure sur tous les blocs. Récup trottinée entre les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 72,
+    "totalUA": 576,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S025",
+    "title": "Pyramide 1'2'3'4'3'2'1' R=½ temps",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Pyramide classique — monter en intensité sur les longs, redescendre sur les courts. R = la moitié du temps de l'effort précédent. Z3 montée, Z4-Z5 au sommet.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 62,
+    "totalUA": 496,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          },
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          },
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 240
+          },
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          },
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S026",
+    "title": "Pyramide 1'2'4'6'4'2'1' R=½ temps",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Pyramide longue — le 6' est la clé. Gérer l'effort pour tenir la descente de la pyramide. Z3-Z4 sur les 4' et 6'. Séance complète.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 70,
+    "totalUA": 630,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          },
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 240
+          },
+          {
+            "stepReps": 1,
+            "value": 6,
+            "unit": "min",
+            "rest": 360
+          },
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 240
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          },
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S027",
+    "title": "Fartlek 3×(3'2'1') R2'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Pyramide inverse répétée — chaque série descend (3'/2'/1'). Les 1' finaux de chaque série sont vifs. Total effort ~18min. Z4 sur les 3', Z5 sur les 1'.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 142,
+    "totalUA": 1136,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 120,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 120
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          },
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S028",
+    "title": "Fartlek 10×2' R~1'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Fartlek régulier 2min — plus exigeant que le 10×1' car efforts plus longs. Récup trottinée obligatoire. Tenir la même allure sur toutes les répétitions. Z4.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 60,
+    "totalUA": 480,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S067",
+    "title": "4×600m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "600m équivalent des 2min route. Transition vers le seuil piste. Allure Z4 soutenue. Idéal pour la progression entre 400m et 1000m. 85-90% FCmax.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 50,
+    "totalUA": 350,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S068",
+    "title": "6×600m R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Volume intermédiaire 600m avec 2min de récup. Allure 85-90% FCmax. Tenir l'allure sur tous les 600m. Bonne séance de progression.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 56,
+    "totalUA": 448,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S069",
+    "title": "10×600m R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Volume élevé 600m pour confirmés. 90-93% FCmax. Séance longue et exigeante. Régulité sur les 10 blocs est l'objectif.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 74,
+    "totalUA": 592,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S070",
+    "title": "3×800m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "800m équivalent des 3min route. Introduction seuil piste. Allure seuil doux Z3-Z4. Peut parler par mots. Idéal débutants seuil piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 49,
+    "totalUA": 343,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S071",
+    "title": "5×800m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Volume intermédiaire 800m. Allure seuil 80-85% FCmax. Séance clé de développement aérobie piste. Maintenir l'allure sur tous les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 61,
+    "totalUA": 488,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S072",
+    "title": "8×800m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Volume élevé 800m avec récup réduite. Allure seuil 85-90% FCmax. Séance volume au seuil piste. Si dégradation dès le 5e : réduire à 6.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 76,
+    "totalUA": 608,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S073",
+    "title": "4×1000m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1000m équivalent des 4min route. Allure seuil confort Z3-Z4. Récup trottinée. Bonne séance de progression après maîtrise des 800m. 80-85% FCmax.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 58,
+    "totalUA": 406,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S074",
+    "title": "6×1000m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Volume 1000m à allure seuil 85-88% FCmax. Séance exigeante. Tenir l'allure sur tous les blocs. Récup trottinée entre les 1000m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 72,
+    "totalUA": 576,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S075",
+    "title": "Pyramide 400-800-1200-800-400m R=½ distance",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Pyramide piste en distances. Monter puis redescendre. Récup = moitié de la distance courue. Z3 montée, Z4-Z5 au sommet (1200m). Équivalent temps : pyramide 1'2'3'4'3'2'1'.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 74,
+    "totalUA": 592,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 200
+          },
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 400
+          },
+          {
+            "stepReps": 1,
+            "value": 1200,
+            "unit": "m",
+            "rest": 600
+          },
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 400
+          },
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S076",
+    "title": "Pyramide 400-800-1600-800-400m R=½ distance",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Pyramide longue piste — le 1600m est la clé. Gérer l'effort pour tenir la descente. Z3-Z4 sur les longs. Équivalent temps : pyramide 1'2'4'6'4'2'1'.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 79,
+    "totalUA": 711,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 200
+          },
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 400
+          },
+          {
+            "stepReps": 1,
+            "value": 1600,
+            "unit": "m",
+            "rest": 800
+          },
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 400
+          },
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S077",
+    "title": "3×(800+400+200m) R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Pyramide inverse répétée piste — chaque série descend (800/400/200m). Les 200m finaux de chaque série sont vifs. Équivalent 3×(3'2'1'). Z4-Z5.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 106,
+    "totalUA": 848,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "s",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "s",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "s",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S078",
+    "title": "10×600m R~1'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "Fartlek régulier piste 600m avec récup courte. Récup trottinée 1min. Plus exigeant que les 400m. Tenir la même allure sur toutes les répétitions. Z4.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 64,
+    "totalUA": 512,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S029",
+    "title": "2×12' R5'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Séance seuil pour débutants — 2 blocs de 12min avec 5min de récup. Allure seuil doux Z3. Introduction aux longs efforts continüs. Parole difficile mais possible.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 59,
+    "totalUA": 413,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 12,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S030",
+    "title": "3×15' R5'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Séance seuil longue. Tenir l'allure sur le 3e bloc est l'objectif. Si impossible : revenir à 2×15'. Allure seuil Z3-Z4. La plus exigeante mentalement.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 85,
+    "totalUA": 680,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 15,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S031",
+    "title": "3×15' R4'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Version confirmée du 3×15min avec récup réduite à 4min. Allure seuil+ Z4. Exigeant mentalement. Si dernière rép impossible : maintenir 2.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 83,
+    "totalUA": 747,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 15,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S032",
+    "title": "5×3' R1'30\"",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Séance volume au seuil avec récup courte de 1min30. Si dégradation dès le 5e bloc : réduire à 6. Allure seuil Z3-Z4. Récup active trottinée.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 52,
+    "totalUA": 364,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S033",
+    "title": "8×3' R1'30\"",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Volume élevé au seuil avec récup courte. Récup courte qui impose de gérer l'allure. Si dégradation dès le 5e bloc : réduire à 6. Allure seuil Z4.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 66,
+    "totalUA": 528,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S034",
+    "title": "20' continu",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil continu 20min. Allure EF rapide / seuil doux Z3. Introduction au tempo long. Parole très difficile mais rythme constant. Référence de progression.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 50,
+    "totalUA": 350,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 20,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S035",
+    "title": "2×20' R5'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Séance seuil longue en 2 blocs de 20min. Allure seuil Z3-Z4. Exigeante mentalement. Récup 5min active. Reproduire exactement l'allure du 1er bloc sur le 2e.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 75,
+    "totalUA": 600,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 20,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S036",
+    "title": "Fartlek 5'-10'-10' R=½ temps",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "3 blocs progressifs — le 5' sert d'activation, les deux 10' sont le cœur. Récup = environ la moitié du bloc précédent. Z3-Z4 sur les 10'.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 105,
+    "totalUA": 840,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S037",
+    "title": "Fartlek 3'6'6'3' R=½ temps",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Double sommet à 6' — montée et descente symétriques. Gérer le premier 6' pour tenir le second. Z3-Z4 sur les 6'. Seuil progressif.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 102,
+    "totalUA": 816,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 6,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 6,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S079",
+    "title": "2×3000m R5'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "3000m équivalent des 12min route. 2 blocs avec 5min de récup. Allure seuil doux Z3. Introduction seuil piste. Parole difficile mais possible.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 59,
+    "totalUA": 413,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S080",
+    "title": "3×4000m R5'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "4000m équivalent des 15min route. 3 blocs avec 5min de récup. Séance seuil longue piste. Tenir l'allure sur le 3e bloc est l'objectif. Z3-Z4.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 88,
+    "totalUA": 704,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S081",
+    "title": "3×4000m R4'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "Version confirmée du 3×4km avec récup réduite à 4min. Allure seuil+ Z4. Exigeant. Si dernière rép impossible : maintenir 2×4km.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 86,
+    "totalUA": 774,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S082",
+    "title": "5×1000m R1'30\"",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "1000m seuil avec récup courte 1min30. Si dégradation dès le 4e bloc : réduire. Allure seuil Z3-Z4. Tenir l'allure identique sur tous les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 58,
+    "totalUA": 406,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S083",
+    "title": "8×1000m R1'30\"",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "Volume élevé 1000m seuil avec récup courte. Récup courte qui impose de gérer l'allure. Si dégradation : réduire à 6. Allure seuil Z4.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 74,
+    "totalUA": 592,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S084",
+    "title": "5000m continu",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "5000m piste équivalent du 20min route. Allure seuil doux Z3. Rythme constant. Introduction au tempo long sur piste. Référence de progression.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 50,
+    "totalUA": 350,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S085",
+    "title": "2×5000m R5'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "Séance seuil longue piste : 2×5km avec 5min de récup active. Allure seuil Z3-Z4. Exigeante. Reproduire exactement l'allure du 1er bloc sur le 2e.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 75,
+    "totalUA": 600,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S086",
+    "title": "1500-3000-3000m R=½ distance",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "3 blocs progressifs piste : 1500m activation, 2×3000m cœur de séance. Récup = moitié distance. Z3-Z4 sur les 3000m. Équivalent 5'-10'-10'.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 141,
+    "totalUA": 1128,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 25,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 3000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S087",
+    "title": "800-2000-2000-800m R=½ distance",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "Double sommet 2000m piste. Montée et descente symétriques en distances. Gérer le 1er 2000m pour tenir le 2e. Z3-Z4. Équivalent Fartlek 3'6'6'3'.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 115,
+    "totalUA": 920,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "s",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 2000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S038",
+    "title": "45' allure marathon",
+    "category": "Allure Marathon",
+    "terrain": "Route",
+    "description": "Sortie allure marathon débutant. Allure marathon +15s/km. Pratiquer l'allure cible en conditions réelles. Gelées ou eau conseillés si >30min. Allure confort.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 6,
+    "totalDuration": 75,
+    "totalUA": 450,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S039",
+    "title": "1h15 allure marathon",
+    "category": "Allure Marathon",
+    "terrain": "Route",
+    "description": "Sortie allure marathon intermédiaire. Allure marathon +5s/km. Simulation course. Nutrition recommandée. Garder de l'énergie pour les 15 dernières minutes.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 105,
+    "totalUA": 735,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 75,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S040",
+    "title": "1h30 allure marathon exacte",
+    "category": "Allure Marathon",
+    "terrain": "Route",
+    "description": "Sortie allure marathon exacte. Allure cible marathon. Séance clé de préparation. Nutrition et hydratation identiques à la course. Régulité au km près.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 120,
+    "totalUA": 960,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S041",
+    "title": "3×8' allure marathon R3'",
+    "category": "Allure Marathon",
+    "terrain": "Route",
+    "description": "Simulation allure course en 3 blocs de 8min. Allure cible exacte. Récup 3min entre blocs. Reproduire exactement l'allure cible sur chaque bloc. Z4 cible.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 60,
+    "totalUA": 420,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 8,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S042",
+    "title": "4×8' allure marathon R3'",
+    "category": "Allure Marathon",
+    "terrain": "Route",
+    "description": "Volume élevé allure marathon en 4 blocs de 8min. Allure cible ou légèrement en dessous. Simulation complète. Nutrition entre les blocs si nécessaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 71,
+    "totalUA": 497,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 4,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 8,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S088",
+    "title": "3×1km allure marathon R3'",
+    "category": "Allure Marathon",
+    "terrain": "Piste",
+    "description": "3×1000m allure marathon sur piste. Récup 3min active. Idéal pour calibrer l'allure au chrono. Allure marathon +15s/km.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 6,
+    "totalDuration": 48,
+    "totalUA": 288,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S089",
+    "title": "4×2km allure marathon R3'",
+    "category": "Allure Marathon",
+    "terrain": "Piste",
+    "description": "4×2000m allure marathon sur piste. Récup 3min. Simulation allure marathon +5s/km. Bon outil de calibration du rythme course piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 71,
+    "totalUA": 497,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 4,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S090",
+    "title": "3×3km allure marathon R4'",
+    "category": "Allure Marathon",
+    "terrain": "Piste",
+    "description": "3×3000m allure marathon exacte sur piste. Récup 4min active. Séance clé de préparation marathon piste. Régulité au chrono près.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 74,
+    "totalUA": 592,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S091",
+    "title": "3×2000m allure marathon R3'",
+    "category": "Allure Marathon",
+    "terrain": "Piste",
+    "description": "Simulation allure course piste en 3 blocs de 2km. Allure cible exacte. Récup 3min entre blocs. Équivalent 3×8min route. Calibration précise.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 60,
+    "totalUA": 420,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2000,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S092",
+    "title": "4×2500m allure marathon R3'",
+    "category": "Allure Marathon",
+    "terrain": "Piste",
+    "description": "Volume élevé allure marathon piste. 4×2500m avec 3min de récup. Allure cible ou légèrement en dessous. Simulation complète sur piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 79,
+    "totalUA": 553,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 4,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2500,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S043",
+    "title": "6×30\" côte courte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côtes courtes explosives (type La Floride). Genoux hauts, bras actifs. Qualité > quantité. Départ arrêté autorisé. Allure explosif 7/10. Débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S044",
+    "title": "10×30\" côte courte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côtes courtes 30sec intermédiaire. Genoux hauts, bras actifs. Départ arrêté. Allure explosif 8/10. Descente trottinée. Séance neuromusculaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S045",
+    "title": "14×30\" côte courte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Volume max côtes 30sec pour confirmés. Max contrôlé. Si la puissance baisse, stopper la série. Descente rapide. Travail neuromusculaire pur.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 58,
+    "totalUA": 522,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 14,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S046",
+    "title": "5×1' côte VW",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte VW 1min. Soutenu 7/10. Maintenir la même allure sur toutes les répétitions. Descente marchée. Idéal pour travailler la puissance monter en douceur.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S047",
+    "title": "8×1' côte VW",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte VW 1min intermédiaire. Soutenu 8/10. Maintenir la même allure identique sur toutes les répétitions. Descente trottinée. Séance terrain clé.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S048",
+    "title": "10×1' côte VW",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Volume max côtes 1min confirmés. Soutenu 9/10. Descente rapide. Maintenir la même allure sur les 10 montées. Séance phare puissance montagne.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 55,
+    "totalUA": 495,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S049",
+    "title": "6×1'30\" côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 1min30. Soutenu contrôlé. Petits pas en descente, genoux fléchis. Allure effort 8/10. Séance phare trail. Focus sur la descente aussi.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 48,
+    "totalUA": 384,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S050",
+    "title": "6×2' côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 2min. Puissance maîtrisée. Focus sur descente technique : petits pas, genoux fléchis, regard loin. Séance phare trail. Allure puissance max.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 42,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S093",
+    "title": "6×30\" côte (talus / stade)",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 30sec sur talus ou dénivelé artificiel stade. Genoux hauts, bras actifs. Qualité > quantité. Allure explosif 7/10. Débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S094",
+    "title": "10×30\" côte (talus / stade)",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 30sec talus stade. Explosif 8/10. Descente trottinée. Séance neuromusculaire piste. Chaque montée doit ressembler à la précédente.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S095",
+    "title": "14×30\" côte (talus / stade)",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Volume max côtes 30sec confirmés piste/talus. Max contrôlé. Si puissance baisse, stopper. Descente rapide. Travail neuromusculaire pur.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 58,
+    "totalUA": 522,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 14,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S096",
+    "title": "5×1' talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côte 1min sur talus ou dénivelé du stade. Soutenu 7/10. Maintenir l'allure identique. Descente marchée. Idéal puissance montagne pour les débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S097",
+    "title": "8×1' talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côte 1min talus stade intermédiaire. Soutenu 8/10. Maintenir l'allure identique. Descente trottinée. Séance terrain clé sur piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S098",
+    "title": "10×1' talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Volume max côtes 1min confirmés piste. Soutenu 9/10. Descente rapide. Maintenir l'allure identique sur les 10 montées. Séance puissance piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 55,
+    "totalUA": 495,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S099",
+    "title": "6×1'30\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 1min30 talus stade. Soutenu contrôlé. Petits pas en descente, genoux fléchis. Allure effort 8/10. Séance puissance montagne intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 48,
+    "totalUA": 384,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S100",
+    "title": "6×2' talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 2min talus stade. Puissance maîtrisée. Focus descente technique. Allure puissance max. Équivalent côte Voulgre sur terrain plat avec dénivelé artificiel.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 42,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S101",
+    "title": "6×30\"/30\" (simple)",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fractionné 30/30 volume léger. Récup trottinée active obligatoire — ne jamais arrêter. Allure VMA. Séance neuromusculaire. 6 répétitions continues.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 36,
+    "totalUA": 252,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S102",
+    "title": "8×30\"/30\" (simple)",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fractionné 30/30 volume modéré. Récup trottinée active obligatoire. Allure VMA. Séance neuromusculaire. 8 répétitions continues.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 38,
+    "totalUA": 304,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S103",
+    "title": "12×30\"/30\" (simple)",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fractionné 30/30 volume élevé. Récup trottinée active obligatoire. Allure VMA. Séance neuromusculaire. 12 répétitions continues — régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 42,
+    "totalUA": 378,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S104",
+    "title": "8×45\"/45\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Intervalles 45sec — 8 répétitions. Durée intermédiaire entre 30sec et 1min. Récup trottinée 45sec. Travail Z4-Z5. Chaque effort doit ressembler au précédent.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S105",
+    "title": "10×45\"/45\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Intervalles 45sec — 10 répétitions. Durée intermédiaire entre 30sec et 1min. Récup trottinée 45sec. Travail Z4-Z5. Chaque effort doit ressembler au précédent.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 45,
+    "totalUA": 360,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S106",
+    "title": "15×45\"/45\"",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Intervalles 45sec volume très élevé — 15 répétitions. Récup trottinée 45sec. Travail Z4-Z5. Pour confirmés seulement — tenir l'allure identique sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 52,
+    "totalUA": 468,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 15,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S107",
+    "title": "4×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min — 4 répétitions. Récup trottinée active obligatoire. Allure Z4. Volume faible — idéal débutants et reprise.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 6,
+    "totalDuration": 38,
+    "totalUA": 228,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S108",
+    "title": "5×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min — 5 répétitions. Récup trottinée active obligatoire. Allure Z4. Volume faible — idéal débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 40,
+    "totalUA": 280,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S109",
+    "title": "7×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min — 7 répétitions. Récup trottinée active obligatoire. Allure Z4+. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 44,
+    "totalUA": 352,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S110",
+    "title": "8×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min — 8 répétitions. Récup trottinée active obligatoire. Allure Z4+. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 46,
+    "totalUA": 368,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S111",
+    "title": "9×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min — 9 répétitions. Récup trottinée active obligatoire. Allure Z4+. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 48,
+    "totalUA": 384,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 9,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S112",
+    "title": "11×1'/1'",
+    "category": "VMA Courte",
+    "terrain": "Route",
+    "description": "Fartlek 1min/1min — 11 répétitions. Récup trottinée active obligatoire. Allure Z4-Z5. Volume élevé — confirmés.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 52,
+    "totalUA": 468,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 11,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S113",
+    "title": "5×2' R2'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 2min — 5 répétitions avec 2min de récup. Transition vers le seuil. Allure 85-90% FCmax. Régulité sur les 5 blocs. Récup trottinée.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 50,
+    "totalUA": 350,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S114",
+    "title": "7×2' R2'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 2min — 7 répétitions avec 2min de récup. Transition vers le seuil. Allure 85-90% FCmax. Régulité sur les 7 blocs. Récup trottinée.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 58,
+    "totalUA": 464,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S115",
+    "title": "8×2' R2'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 2min — 8 répétitions avec 2min de récup. Transition vers le seuil. Allure 85-90% FCmax. Volume élevé — régulité sur les 8 blocs. Récup trottinée.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 62,
+    "totalUA": 496,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S116",
+    "title": "4×3' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 3min — 4 répétitions avec 3min de récup. Allure seuil Z3-Z4. Introduction au travail seuil. Peut parler par mots.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 54,
+    "totalUA": 378,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S117",
+    "title": "6×3' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 3min — 6 répétitions avec 3min de récup. Allure seuil Z4. Volume intermédiaire — maintenir l'allure identique sur tous les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 66,
+    "totalUA": 528,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S118",
+    "title": "7×3' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 3min — 7 répétitions avec 3min de récup. Allure seuil Z4. Volume intermédiaire — maintenir l'allure identique sur tous les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 72,
+    "totalUA": 576,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S119",
+    "title": "5×4' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 4min — 5 répétitions avec 3min de récup. Allure seuil 80-88% FCmax. Volume modéré. Récup trottinée entre les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 65,
+    "totalUA": 455,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S120",
+    "title": "7×4' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 4min — 7 répétitions avec 3min de récup. Allure seuil 80-88% FCmax. Volume élevé — régulité avant tout. Récup trottinée entre les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 79,
+    "totalUA": 632,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S121",
+    "title": "8×4' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 4min — 8 répétitions avec 3min de récup. Allure seuil 80-88% FCmax. Volume élevé — régulité avant tout. Récup trottinée entre les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 86,
+    "totalUA": 688,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S122",
+    "title": "3×5' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 5min — 3 répétitions avec 3min de récup. Séance clé marathon et trail. Allure seuil 80-88% FCmax. Régulité avant tout. Volume faible.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 54,
+    "totalUA": 378,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S123",
+    "title": "4×5' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 5min — 4 répétitions avec 3min de récup. Séance clé marathon et trail. Allure seuil 80-88% FCmax. Régulité avant tout. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 62,
+    "totalUA": 496,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S124",
+    "title": "5×5' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 5min — 5 répétitions avec 3min de récup. Séance clé marathon et trail. Allure seuil 80-88% FCmax. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 70,
+    "totalUA": 560,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S125",
+    "title": "6×5' R3'",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 5min — 6 répétitions avec 3min de récup. Séance marathon et trail exigeante. Allure seuil 80-88% FCmax. Volume élevé — séance exigeante.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 78,
+    "totalUA": 702,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S126",
+    "title": "4×1'30\" R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 1min30 — 4 répétitions avec 2min30 de récup. Durée idéale côtes VW et Voulgre. Allure 85-90% FCmax. Volume faible — débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 46,
+    "totalUA": 322,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S127",
+    "title": "5×1'30\" R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 1min30 — 5 répétitions avec 2min30 de récup. Durée idéale côtes VW et Voulgre. Allure 85-90% FCmax. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 50,
+    "totalUA": 400,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S128",
+    "title": "6×1'30\" R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 1min30 — 6 répétitions avec 2min30 de récup. Allure 85-90% FCmax. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 54,
+    "totalUA": 432,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S129",
+    "title": "7×1'30\" R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 1min30 — 7 répétitions avec 2min30 de récup. Allure 85-90% FCmax. Volume élevé — confirmés.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 58,
+    "totalUA": 522,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S130",
+    "title": "8×1'30\" R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Route",
+    "description": "Efforts 1min30 — 8 répétitions avec 2min30 de récup. Allure 85-90% FCmax. Volume élevé — confirmés.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 62,
+    "totalUA": 558,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S131",
+    "title": "4×3' R1'30\"",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil fractionné court — 4 blocs de 3min avec 1min30 de récup. Récup courte impose de gérer l'allure. Allure seuil Z3-Z4. Volume léger.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S132",
+    "title": "6×3' R1'30\"",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil fractionné court — 6 blocs de 3min avec 1min30 de récup. Récup courte impose de gérer l'allure. Allure seuil Z3-Z4. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 57,
+    "totalUA": 456,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S133",
+    "title": "7×3' R1'30\"",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil fractionné court — 7 blocs de 3min avec 1min30 de récup. Récup courte impose de gérer l'allure. Allure seuil Z4. Volume élevé.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 62,
+    "totalUA": 496,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S134",
+    "title": "2×10' R3'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil long — 2 blocs de 10min avec 3min de récup active. Allure seuil Z3-Z4. Introduction au tempo long — footing soutenu.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 53,
+    "totalUA": 371,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S135",
+    "title": "3×10' R4'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil long — 3 blocs de 10min avec 4min de récup active. Allure seuil Z3-Z4. Séance seuil structurée. Tenir l'allure sur le 3e bloc est l'objectif.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 68,
+    "totalUA": 544,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S136",
+    "title": "4×10' R4'",
+    "category": "Seuil",
+    "terrain": "Route",
+    "description": "Seuil long exigeant — 4 blocs de 10min avec 4min de récup active. Allure seuil Z4. Séance seuil exigeante — régulité sur les 4 blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 82,
+    "totalUA": 738,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 4,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S137",
+    "title": "8×45\" côte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côtes 45sec — 8 répétitions. Idéale côtes VW et La Floride. Explosif 7/10. Chaque montée doit ressembler à la précédente. Bras très actifs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S138",
+    "title": "10×45\" côte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côtes 45sec — 10 répétitions. Idéale côtes VW et La Floride. Explosif 8/10. Chaque montée doit ressembler à la précédente. Bras très actifs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 52,
+    "totalUA": 416,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S139",
+    "title": "12×45\" côte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côtes 45sec — 12 répétitions. Volume élevé. Explosif 8/10. Chaque montée doit ressembler à la précédente. Bras très actifs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 57,
+    "totalUA": 456,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S140",
+    "title": "15×45\" côte",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côtes 45sec volume très élevé — 15 répétitions. Pour confirmés seulement. Explosif 9/10. Si la puissance baisse, stopper. Bras très actifs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 64,
+    "totalUA": 576,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 15,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S141",
+    "title": "4×2' côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 2min — 4 répétitions. Puissance maîtrisée. Focus descente technique : petits pas, genoux fléchis. Volume faible — débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 38,
+    "totalUA": 266,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S142",
+    "title": "8×2' côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 2min — 8 répétitions. Puissance max. Focus descente technique : petits pas, genoux fléchis. Volume élevé — confirmés. Séance phare trail.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 46,
+    "totalUA": 414,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S143",
+    "title": "4×1'30\" côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 1min30 — 4 répétitions. Soutenu contrôlé. Petits pas en descente, genoux fléchis. Allure effort 7/10. Volume faible. Séance phare trail.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S144",
+    "title": "8×1'30\" côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 1min30 — 8 répétitions. Soutenu contrôlé. Petits pas en descente, genoux fléchis. Allure effort 8/10. Volume intermédiaire. Séance phare trail.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 54,
+    "totalUA": 432,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S145",
+    "title": "10×1'30\" côte Voulgre",
+    "category": "Côtes",
+    "terrain": "Route",
+    "description": "Côte Voulgre 1min30 — 10 répétitions. Soutenu. Petits pas en descente, genoux fléchis. Allure effort 9/10. Volume élevé — confirmés. Séance phare trail.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 60,
+    "totalUA": 540,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S201",
+    "title": "6×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "200m piste — 6 répétitions avec 1min30 de récup. 200m ≈ 30sec. Allure VMA. Volume léger. Néuromusculaire. Régulité sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 44,
+    "totalUA": 308,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S202",
+    "title": "8×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "200m piste — 8 répétitions avec 1min30 de récup. 200m ≈ 30sec. Allure VMA. Volume modéré. Néuromusculaire. Régulité sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 48,
+    "totalUA": 384,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S203",
+    "title": "12×200m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "200m piste — 12 répétitions avec 1min30 de récup. Allure VMA. Volume élevé — confirmés. Régulité avant tout — tenir l'allure identique sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 58,
+    "totalUA": 522,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 200,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S204",
+    "title": "8×300m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "300m piste — 8 répétitions avec 2min de récup. 300m ≈ 45sec. Allure Z4-Z5. Progression entre 200m et 400m. Régulité sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 56,
+    "totalUA": 392,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 300,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S205",
+    "title": "10×300m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "300m piste — 10 répétitions avec 2min de récup. 300m ≈ 45sec. Allure Z4-Z5. Volume intermédiaire. Régulité sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 62,
+    "totalUA": 496,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 300,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S206",
+    "title": "15×300m",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "300m piste — 15 répétitions avec 2min de récup. Volume très élevé. Allure Z4-Z5. Pour confirmés seulement. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 78,
+    "totalUA": 702,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 15,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 300,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S207",
+    "title": "4×400m R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste — 4 répétitions avec 2min de récup. Allure VMA -10%. Volume faible — débutants et reprise. Tenir l'allure identique sur tous les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 6,
+    "totalDuration": 44,
+    "totalUA": 264,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S208",
+    "title": "5×400m R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste — 5 répétitions avec 2min de récup. Allure VMA -10%. Volume faible — débutants. Tenir l'allure identique sur tous les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S209",
+    "title": "7×400m R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste — 7 répétitions avec 2min de récup. Allure VMA -10%. Volume intermédiaire. Tenir l'allure identique sur tous les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 55,
+    "totalUA": 440,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S210",
+    "title": "8×400m R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste — 8 répétitions avec 2min de récup. Allure VMA -10%. Volume intermédiaire. Tenir l'allure identique sur tous les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 59,
+    "totalUA": 472,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S211",
+    "title": "9×400m R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste — 9 répétitions avec 2min de récup. Allure VMA -10%. Volume intermédiaire. Tenir l'allure identique sur tous les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 62,
+    "totalUA": 496,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 9,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S212",
+    "title": "11×400m R2'",
+    "category": "VMA Courte",
+    "terrain": "Piste",
+    "description": "400m piste — 11 répétitions avec 2min de récup. Allure VMA -10%. Volume élevé — confirmés. Tenir l'allure identique sur tous les 400m.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 70,
+    "totalUA": 630,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 11,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 400,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S213",
+    "title": "5×600m R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "600m piste — 5 répétitions avec 2min de récup. 600m ≈ 2min. Allure Z4 soutenue, 85-90% FCmax. Progression entre 400m et 1000m. Régulité.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 52,
+    "totalUA": 364,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S214",
+    "title": "7×600m R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "600m piste — 7 répétitions avec 2min de récup. Allure Z4 soutenue, 85-90% FCmax. Volume élevé. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 61,
+    "totalUA": 488,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S215",
+    "title": "8×600m R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "600m piste — 8 répétitions avec 2min de récup. Allure Z4 soutenue, 85-90% FCmax. Volume élevé. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 65,
+    "totalUA": 520,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S216",
+    "title": "9×600m R2'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "600m piste — 9 répétitions avec 2min de récup. Allure Z4 soutenue, 85-90% FCmax. Volume très élevé — confirmés. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 70,
+    "totalUA": 560,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 9,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 600,
+            "unit": "m",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S217",
+    "title": "4×800m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "800m piste — 4 répétitions avec 3min de récup. 800m ≈ 3min. Allure seuil Z3-Z4. Introduction seuil piste. 80-85% FCmax.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 55,
+    "totalUA": 385,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S218",
+    "title": "6×800m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "800m piste — 6 répétitions avec 3min de récup. Allure seuil Z4. Volume intermédiaire — tenir l'allure identique. 80-85% FCmax.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 67,
+    "totalUA": 536,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S219",
+    "title": "7×800m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "800m piste — 7 répétitions avec 3min de récup. Allure seuil Z4. Volume intermédiaire — tenir l'allure identique sur tous les blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 73,
+    "totalUA": 584,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 800,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S220",
+    "title": "5×1000m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1000m piste — 5 répétitions avec 3min de récup. 1000m ≈ 4min. Allure seuil Z3-Z4, 80-88% FCmax. Volume modéré. Régulité.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 65,
+    "totalUA": 520,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S221",
+    "title": "7×1000m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1000m piste — 7 répétitions avec 3min de récup. Allure seuil Z4, 80-88% FCmax. Volume élevé — séance exigeante. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 79,
+    "totalUA": 711,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S222",
+    "title": "8×1000m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1000m piste — 8 répétitions avec 3min de récup. Allure seuil Z4, 80-88% FCmax. Volume très élevé — confirmés. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 86,
+    "totalUA": 774,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S223",
+    "title": "3×1000m R3'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1000m piste — 3 répétitions avec 3min de récup. Volume faible. Introduction aux longs efforts piste. Allure seuil Z3-Z4, 80-85% FCmax.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 51,
+    "totalUA": 357,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S224",
+    "title": "3×1500m R4'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1500m piste — 3 répétitions avec 4min de récup. 1500m ≈ 5-6min. Séance clé seuil piste. Allure 80-88% FCmax. Volume faible. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 60,
+    "totalUA": 420,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1500,
+            "unit": "m",
+            "rest": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S225",
+    "title": "4×1500m R4'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1500m piste — 4 répétitions avec 4min de récup. Allure 80-88% FCmax. Volume intermédiaire. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 70,
+    "totalUA": 560,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1500,
+            "unit": "m",
+            "rest": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S226",
+    "title": "5×1500m R4'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1500m piste — 5 répétitions avec 4min de récup. Allure 80-88% FCmax. Volume intermédiaire. Séance clé trail et marathon. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 80,
+    "totalUA": 640,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1500,
+            "unit": "m",
+            "rest": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S227",
+    "title": "6×1500m R4'",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "1500m piste — 6 répétitions avec 4min de récup. Allure 80-88% FCmax. Volume élevé — séance exigeante. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 90,
+    "totalUA": 810,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1500,
+            "unit": "m",
+            "rest": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S228",
+    "title": "4×500m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "500m piste — 4 répétitions avec 2min30 de récup. 500m ≈ 1min30. Allure Z4 soutenue, 85-90% FCmax. Volume faible. Régulité sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 500,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S229",
+    "title": "5×500m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "500m piste — 5 répétitions avec 2min30 de récup. 500m ≈ 1min30. Allure Z4 soutenue, 85-90% FCmax. Volume intermédiaire. Régulité.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 53,
+    "totalUA": 424,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 500,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S230",
+    "title": "6×500m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "500m piste — 6 répétitions avec 2min30 de récup. Allure Z4 soutenue, 85-90% FCmax. Volume intermédiaire. Régulité sur toutes les reps.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 57,
+    "totalUA": 456,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 500,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S231",
+    "title": "7×500m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "500m piste — 7 répétitions avec 2min30 de récup. Allure Z4 soutenue, 85-90% FCmax. Volume élevé — confirmés. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 62,
+    "totalUA": 558,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 500,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S232",
+    "title": "8×500m R2'30\"",
+    "category": "VMA Longue",
+    "terrain": "Piste",
+    "description": "500m piste — 8 répétitions avec 2min30 de récup. Allure Z4 soutenue, 85-90% FCmax. Volume très élevé — confirmés. Régulité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 66,
+    "totalUA": 594,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 500,
+            "unit": "m",
+            "rest": 150
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S233",
+    "title": "4×1000m R1'30\"",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "1000m seuil — 4 répétitions avec 1min30 de récup. Récup courte impose de gérer l'allure. Allure seuil Z3-Z4. Volume léger. Tenir l'allure identique.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 52,
+    "totalUA": 364,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S234",
+    "title": "6×1000m R1'30\"",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "1000m seuil — 6 répétitions avec 1min30 de récup. Récup courte impose de gérer l'allure. Allure seuil Z3-Z4. Volume intermédiaire. Tenir l'allure identique.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 63,
+    "totalUA": 504,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S235",
+    "title": "7×1000m R1'30\"",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "1000m seuil — 7 répétitions avec 1min30 de récup. Récup courte impose de gérer l'allure. Allure seuil Z4. Volume élevé. Tenir l'allure identique.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 69,
+    "totalUA": 552,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 7,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1000,
+            "unit": "m",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S236",
+    "title": "2×2500m R3'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "2500m seuil piste — 2 blocs avec 3min de récup. 2500m ≈ 10min. Allure seuil Z3-Z4. Introduction au tempo long sur piste.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 53,
+    "totalUA": 371,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 180,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2500,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S237",
+    "title": "3×2500m R4'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "2500m seuil piste — 3 blocs avec 4min de récup. Allure seuil Z3-Z4. Volume intermédiaire. Tenir l'allure sur le 3e bloc est l'objectif.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 68,
+    "totalUA": 544,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2500,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S238",
+    "title": "4×2500m R4'",
+    "category": "Seuil",
+    "terrain": "Piste",
+    "description": "2500m seuil piste — 4 blocs avec 4min de récup. Allure seuil Z4. Volume élevé — séance exigeante. Régulité sur les 4 blocs.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 82,
+    "totalUA": 738,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 4,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2500,
+            "unit": "m",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S239",
+    "title": "8×45\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 45sec talus stade — 8 répétitions. Explosif 7/10. Chaque montée doit ressembler à la précédente. Qualité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 48,
+    "totalUA": 336,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S240",
+    "title": "10×45\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 45sec talus stade — 10 répétitions. Explosif 8/10. Chaque montée doit ressembler à la précédente. Qualité avant tout.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 52,
+    "totalUA": 416,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S241",
+    "title": "12×45\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 45sec talus stade — 12 répétitions. Volume élevé. Explosif 8/10. Chaque montée doit ressembler à la précédente.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 57,
+    "totalUA": 456,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 12,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S242",
+    "title": "15×45\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 45sec talus stade — 15 répétitions. Volume très élevé. Pour confirmés seulement. Explosif 9/10. Si puissance baisse, stopper.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 64,
+    "totalUA": 576,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 15,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S243",
+    "title": "4×2' talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 2min talus stade — 4 répétitions. Puissance maîtrisée. Focus descente technique. Volume faible — débutants.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 38,
+    "totalUA": 266,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S244",
+    "title": "8×2' talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 2min talus stade — 8 répétitions. Puissance max. Focus descente technique. Volume élevé — confirmés.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 46,
+    "totalUA": 414,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S245",
+    "title": "4×1'30\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 1min30 talus stade — 4 répétitions. Soutenu contrôlé, petits pas descente. Allure effort 7/10. Volume faible.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 42,
+    "totalUA": 294,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S246",
+    "title": "8×1'30\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 1min30 talus stade — 8 répétitions. Soutenu contrôlé, petits pas descente. Allure effort 8/10. Volume intermédiaire.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 54,
+    "totalUA": 432,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 8,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "S247",
+    "title": "10×1'30\" talus stade",
+    "category": "Côtes",
+    "terrain": "Piste",
+    "description": "Côtes 1min30 talus stade — 10 répétitions. Soutenu. Petits pas descente, allure effort 9/10. Volume élevé — confirmés.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 60,
+    "totalUA": 540,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 10,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 90,
+            "unit": "s",
+            "rest": 90
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "M01",
+    "title": "2x(10x30\" D+)",
+    "category": "Puissance Montée",
+    "terrain": "Montagne",
+    "description": "Explosivité en côte raide — 2 séries de 10 répétitions de 30sec. Récup active entre reps (30sec trottinée), 3min de descente entre séries. Foulée haute, genoux levés, bras actifs. Terrain : pente > 10%. Séance neuromusculaire spécifique trail.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 32,
+    "totalUA": 256,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 2,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "s",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 30,
+            "unit": "s",
+            "rest": 30
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "M02",
+    "title": "4x6' Seuil Montagne",
+    "category": "Puissance Montée",
+    "terrain": "Montagne",
+    "description": "Seuil montagne — 4 répétitions de 6min en montée soutenue. Récup : descente trottinée 3min. Allure haute mais contrôlée, 75-85% FCmax. Maintenir la foulée courue le plus longtemps possible. Pente idéale 8-15%.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 66,
+    "totalUA": 462,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 4,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 6,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "M03",
+    "title": "Pyramide D+ 1'-2'-3'-2'-1'",
+    "category": "Puissance Montée",
+    "terrain": "Montagne",
+    "description": "Pyramide ascendante-descendante en montée : 1min / 2min / 3min / 2min / 1min. Récup descente trottinée ~3min entre chaque. Intensité croissante puis décroissante. Séance polyvalente pour travailler toutes les filières en montée.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 54,
+    "totalUA": 432,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 180
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 180
+          },
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 180
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 180
+          },
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "M04",
+    "title": "3x10' Power Hiking",
+    "category": "Puissance Montée",
+    "terrain": "Montagne",
+    "description": "Marche rapide avec bâtons — 3 blocs de 10min sur pente > 15%. Récup 4min descente marchée. Technique : bâtons synchronisés, pas courts, pression maximale. Spécifique ultra et courses à fort D+. Efficacité énergétique.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 6,
+    "totalDuration": 68,
+    "totalUA": 408,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 240,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 10,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "M05",
+    "title": "1x30' KV Simulation",
+    "category": "Puissance Montée",
+    "terrain": "Montagne",
+    "description": "Simulation Kilomètre Vertical — montée continue 30 à 40min sans arrêt à intensité max soutenue. Test d'endurance de force. Allure sur le fil, RPE 9/10. Pente idéale > 20%. Terminer debout. Séance signature préparations KV et Sky Race.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 9,
+    "totalDuration": 65,
+    "totalUA": 585,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 35,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "D01",
+    "title": "6x2' Descente Technique",
+    "category": "Technique Descente",
+    "terrain": "Montagne",
+    "description": "Descente technique rapide — 6 répétitions de 2min. Récup : remontée trottinée 3min. Focus pose de pied (avant-pied), lecture de trajectoire, centre de gravité bas. Progressif : commencer à 70%, finir à 90%. Préparation à la casse de fibre.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 60,
+    "totalUA": 420,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "D02",
+    "title": "5x(3' D+ / 2' D-)",
+    "category": "Technique Descente",
+    "terrain": "Montagne",
+    "description": "L'Ascenseur — 5 répétitions : 3min montée + 2min descente avec 2min de récup. Cardio haut en montée, appuis précis en descente. Travail de la transition montée/descente spécifique course de montagne.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 65,
+    "totalUA": 520,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 5,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 3,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "D03",
+    "title": "3x5' Descente Engagée",
+    "category": "Technique Descente",
+    "terrain": "Montagne",
+    "description": "Excentrique pur — 3 descentes engagées de 5min, récup 10min rando/marche. Intensité max pour induire la casse de fibre musculaire. À placer 3-4 semaines avant objectif descente. À proscrire à J-14.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 65,
+    "totalUA": 520,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 600,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 5,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "X01",
+    "title": "6x(2' D+ + 1' Plat)",
+    "category": "Spécificité Trail",
+    "terrain": "Montagne",
+    "description": "Relance Crête — 6 répétitions : 2min montée à bloc + 1min plat immédiatement après. Récup 2min descente. Apprendre à relancer sur le plat dès la fin d'une côte. Spécifique profils vallonnés et crêtes.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 60,
+    "totalUA": 480,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 6,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 2,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 1,
+            "unit": "min",
+            "rest": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "X02",
+    "title": "3x15' Terrain Vallonné",
+    "category": "Spécificité Trail",
+    "terrain": "Montagne",
+    "description": "Bloc seuil mixte — 3 blocs de 15min sur terrain naturel vallonné. Récup 5min. Tenir l'allure malgré les changements de pente. Allure seuil Z3-Z4. Ne pas s'arrêter dans les montées. Idéal sur parcours type course A objectif.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 85,
+    "totalUA": 595,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 3,
+        "interSerieRest": 300,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 15,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "X03",
+    "title": "45' Fartlek Montagne",
+    "category": "Spécificité Trail",
+    "terrain": "Montagne",
+    "description": "Fartlek montagne libre — 45min sur terrain naturel, effort au feeling selon le relief. Monter les bosses à bloc, récupérer dans les descentes et sur le plat. RPE moyen 7/10. Développe la lecture du terrain et la gestion de l'intensité au feeling.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 7,
+    "totalDuration": 75,
+    "totalUA": 525,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 45,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "X04",
+    "title": "3x(4' D- / 4' D+)",
+    "category": "Spécificité Trail",
+    "terrain": "Montagne",
+    "description": "Le Sablier — 3 répétitions : 4min descente rapide puis 4min montée directe sans récup interne. Récup 3min entre séries. Montrer se fait en état de fatigue neuromusculaire. Très spécifique fin de course de montagne.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 63,
+    "totalUA": 504,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 3,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 0
+          },
+          {
+            "stepReps": 1,
+            "value": 4,
+            "unit": "min",
+            "rest": 180
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "L01",
+    "title": "Rando-Course 2h30-4h Zone 2",
+    "category": "Volume Endurance",
+    "terrain": "Montagne",
+    "description": "Sortie longue endurance fondamentale — 2h30 à 4h en Zone 2 sur terrain montagneux. Mix course/marche selon la pente. Gestion nutrition/hydratation toutes les 45min. RPE 5/10, peut parler en phrase. Socle de toute préparation trail long. Volume > intensité.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 5,
+    "totalDuration": 210,
+    "totalUA": 1050,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 180,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "L02",
+    "title": "Boucle 25km / 1200D+",
+    "category": "Volume Endurance",
+    "terrain": "Montagne",
+    "description": "Sortie plaisir club — boucle 25km avec 1200m de D+. Pas de chrono, gestion libre. Cohésion de groupe, découverte de parcours. RPE 6/10, sortie récupération active post-semaine chargée. Idéale en groupe, allure du plus lent.",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 6,
+    "totalDuration": 210,
+    "totalUA": 1260,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 1,
+        "interSerieRest": 0,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 180,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id_original": "L03",
+    "title": "Week-end Choc S+D",
+    "category": "Volume Endurance",
+    "terrain": "Montagne",
+    "description": "Week-end choc — Samedi 2h + Dimanche 4h. Accumulation de fatigue en 48h. RPE 8 sur le Dimanche (jambes chargées du Samedi). Spécifique ultra et prépa long. Prévoir nutrition renforcée. Ne pas répéter > 1x/mois. UA calculée sur la journée Dimanche (la plus lourde).",
+    "warmupSec": 1200,
+    "cooldownSec": 600,
+    "rpe_foster": 8,
+    "totalDuration": 1830,
+    "totalUA": 14640,
+    "series": [
+      {
+        "type": "work",
+        "serieReps": 2,
+        "interSerieRest": 86400,
+        "innerReps": 1,
+        "steps": [
+          {
+            "stepReps": 1,
+            "value": 180,
+            "unit": "min",
+            "rest": 0
+          }
+        ]
+      }
+    ]
+  }
+]

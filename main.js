@@ -9,7 +9,14 @@ const MOIS = ['Janv','Févr','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oc
 
 function semDate(n){ return new Date(+S1 + (n-1)*7*864e5); }
 function semMois(n){ return MOIS[semDate(n).getMonth()]; }
+function semFmt(d){ return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0'); }
+function semRange(n){ const l=semDate(n); return semFmt(l)+' – '+semFmt(new Date(+l+6*864e5)); }
+function semRangeLun(n){ return semFmt(semDate(n)); }
+function semRangeDim(n){ return semFmt(new Date(+semDate(n)+6*864e5)); }
 function sd(k){ return (k && k!=='—' && seancesData[k]) || null; }
+function calcSeanceUA(s, defaultDur = 60){ return s ? (s.ua || (s.rn||0) * (s.d||defaultDur)) : 0; }
+function fmtDur(min){ const h=Math.floor(min/60),m=min%60; return m?`${h}h${String(m).padStart(2,'0')}`:`${h}h`; }
+function slSem(w){ return (typeof slProgression!=='undefined'&&w)?slProgression[w.s]||null:null; }
 function phCls(p){ const m = phaseMap[p]; return m ? 'ph-'+m.c : 'ph-base'; }
 function phLabel(p){ const m = phaseMap[p]; return m ? m.l : p; }
 function tTag(lieu){
@@ -21,23 +28,31 @@ function objForSem(n){
   const o = objectifs.find(x=>x.s===n);
   return o ? `🏆 ${o.nom}` : '';
 }
-// --- NOUVEAU : Fonction de calcul de la charge globale (Socle + Qualité) ---
 function getUAReel(w, isTrail = false) {
   if(!w) return 0;
   const mData = sd(w.m), jData = sd(w.j);
-  const weKey = isTrail ? w.wt : w.wr;
-  const weData = sd(weKey);
-  
-  const socleLundi = socleConfig.lundi.dur * socleConfig.lundi.rpe;
+  const socleLundi    = socleConfig.lundi.dur    * socleConfig.lundi.rpe;
   const socleMercredi = socleConfig.mercredi.dur * socleConfig.mercredi.rpe;
-  const uaMardi = mData ? (mData.rn * mData.d) : 0;
-  const uaJeudi = jData ? (jData.rn * jData.d) : 0;
-  
+  const uaMardi = calcSeanceUA(mData);
+  // Foster : samedi montagne remplace jeudi si UA plus haute (règle max)
+  const samData = w.sam ? sd(w.sam) : null;
+  const uaJeudi = Math.max(calcSeanceUA(jData), samData ? calcSeanceUA(samData) : 0);
   let uaWE = 0;
+  const sl = slSem(w);
+  const weKey  = isTrail ? w.wt : w.wr;
+  const weData = sd(weKey);
   if (weData) {
-    uaWE = weData.rn * weData.d;
+    // Sortie longue sur mesure : durée dynamique selon slProgression
+    if ((weKey === 'sortie_longue' || weKey === 'sl_sur_mesure') && sl) {
+      const dur = isTrail ? sl.dur_t : sl.dur_r;
+      uaWE = (weData.rn || 4) * dur;
+    } else {
+      uaWE = calcSeanceUA(weData, isTrail ? 90 : 60);
+    }
   } else {
-    uaWE = isTrail ? (socleConfig.weTrail.dur * socleConfig.weTrail.rpe) : (socleConfig.weRoute.dur * socleConfig.weRoute.rpe);
+    uaWE = isTrail
+      ? (socleConfig.weTrail.dur * socleConfig.weTrail.rpe)
+      : (socleConfig.weRoute.dur * socleConfig.weRoute.rpe);
   }
   return socleLundi + uaMardi + socleMercredi + uaJeudi + uaWE;
 }
@@ -63,17 +78,9 @@ function fmtRange(lundi){
 // ── STATE ──
 let curWE = 0;
 let curPhase = '';
-let curTerrain = 0;
-
 // ── MODAL ──
 function closeModal(){ document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
-function switchT(t){
-  curTerrain = t;
-  document.querySelectorAll('.terrain-tab').forEach(b=>b.classList.toggle('active',+b.dataset.t===t));
-  document.querySelectorAll('.terrain-content').forEach(b=>{b.classList.toggle('active',+b.dataset.t===t)});
-}
 
 // ══════════════════════════════════════════════════
 // ACCUEIL
@@ -109,16 +116,21 @@ function renderAccueil(){
     const isCur = i===0;
 
     if(!w || sn<1 || sn>52){
-      grid.innerHTML += `<div class="acc-card" style="opacity:.4"><div class="acc-hdr"><span>${wkLabels[i]} · S${sn} — Hors saison</span></div></div>`;
+      grid.innerHTML += `<div class="acc-card" style="opacity:.4"><div class="acc-hdr"><span>${wkLabels[i]} · ${semRange(sn)} — Hors saison</span></div></div>`;
       continue;
     }
 
     const mData = sd(w.m), jData = sd(w.j);
     const mRpe = mData?mData.rpe:'', jRpe = jData?jData.rpe:'';
     const mLieu = mData?mData.lieu:'halage', jLieu = jData?jData.lieu:'halage';
-    const weKey = curWE===1?w.wt:w.wr;
+    const isTrailAcc = curWE === 1;
+    const weKey  = isTrailAcc ? w.wt : w.wr;
     const weData = sd(weKey);
-    const weLbl = weData?weData.l:(weKey==='—'?'—':weKey);
+    let weLbl = weData ? weData.l : (weKey==='—'?'—':weKey||'—');
+    if (isTrailAcc && w.sam && w.sam !== '—') {
+      const samD = sd(w.sam);
+      weLbl = `${samD?`🏔 ${samD.l} · `:''}🌲 ${weLbl}`;
+    }
     const obj = objForSem(sn);
     const marFmt = new Date(+lundiSem+864e5).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
     const jeuFmt = new Date(+lundiSem+3*864e5).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
@@ -127,10 +139,9 @@ function renderAccueil(){
     <div class="acc-card ${isCur?'current':''}">
       <div class="acc-hdr ${isCur?'cur':''}">
         <div style="display:flex;align-items:center">
-          <span class="snum" style="color:${isCur?'var(--sky)':'var(--navy)'}">S${sn}</span>
+          <span class="snum" style="font-size:1rem;color:${isCur?'var(--sky)':'var(--navy)'}">${semRange(sn)}</span>
           <div>
             <div style="font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:${isCur?'rgba(255,255,255,.5)':'var(--muted)'}">${wkLabels[i]}</div>
-            <div style="font-size:.68rem;font-weight:600;color:${isCur?'rgba(255,255,255,.88)':'var(--text)'}">${fmtRange(lundiSem)}</div>
           </div>
         </div>
         <div style="display:flex;gap:.3rem;align-items:center;flex-wrap:wrap">
@@ -144,13 +155,13 @@ function renderAccueil(){
           <div class="acc-day-label mar">📅 ${marFmt}</div>
           <div class="s-titre">${mData?mData.l:'—'}</div>
           ${tTag(mLieu)} ${mRpe?`<span class="rpe-pill">RPE ${mRpe}</span>`:''}
-          ${mData&&mData.n?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${mData.n}</div>`:''}
+          ${mData&&mData.desc?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${mData.desc}</div>`:''}
         </div>
         <div class="acc-day">
           <div class="acc-day-label jeu">📅 ${jeuFmt}</div>
           <div class="s-titre">${jData?jData.l:'—'}</div>
           ${tTag(jLieu)} ${jRpe?`<span class="rpe-pill">RPE ${jRpe}</span>`:''}
-          ${jData&&jData.n?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${jData.n}</div>`:''}
+          ${jData&&jData.desc?`<div style="font-size:.68rem;color:var(--muted);font-style:italic;margin-top:.3rem">💡 ${jData.desc}</div>`:''}
         </div>
       </div>
         <div class="acc-foot">
@@ -175,7 +186,7 @@ function renderObjectifs(){
     return `<div class="obj-card ${passe?'past':''}">
       <div class="obj-icon">🏆</div>
       <div class="obj-info">
-        <div class="obj-nom">S${o.s} — ${o.nom}</div>
+        <div class="obj-nom">${semRange(o.s)} — ${o.nom}</div>
         <div class="obj-date">${d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long',year:'numeric'})}</div>
       </div>
       <div class="obj-countdown" style="color:${passe?'var(--muted)':tc}">${dLbl}<div style="font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">${o.type}</div></div>
@@ -217,29 +228,33 @@ function buildProg(){
 
   tbody.innerHTML = rows.map((w,i)=>{
     const mData = sd(w.m), jData = sd(w.j);
-    const weKey = curWE===1?w.wt:w.wr;
-    const weData = sd(weKey);
-    const weLbl = weData?weData.l:(weKey==='—'?'—':weKey);
-    const obj = objForSem(w.s);
-
-// --- NOUVEAU CALCUL (Prend en compte le socle et la vraie charge S-1) ---
     const isTrail = (curWE === 1);
+    const weKey  = isTrail ? w.wt : w.wr;
+    const weData = sd(weKey);
+    const obj    = objForSem(w.s);
+
+    let weLbl = weData ? weData.l : (weKey==='—' ? '—' : weKey||'—');
+    if (isTrail && w.sam && w.sam !== '—') {
+      const samD = sd(w.sam);
+      weLbl = `${samD?`🏔 ${samD.l} · `:''}🌲 ${weLbl}`;
+    }
+
+    // ── Calcul UA ──
     const uaReel = getUAReel(w, isTrail);
-    w.ua = uaReel; // Met à jour l'objet pour que la modale "Détail" affiche aussi le bon total
+    w.ua = uaReel;
 
     const prev = programme.find(x=>x.s===w.s-1);
-    const prevUAReel = prev ? getUAReel(prev, isTrail) : 0; // Recalcule la charge S-1 même si elle est masquée par un filtre
-    
+    const prevUAReel = prev ? getUAReel(prev, isTrail) : 0;
     let delta = '';
     if(prev && prevUAReel > 0){
       const d = Math.round((uaReel - prevUAReel) / prevUAReel * 100);
-      const col = d>15?'#C04040':d>10?'#D4893A':d>5?'#2A5DA0':d<-5?'#4A8A5A':'#6B7A9A';
+      const col = d>20?'#C04040':d>15?'#D4893A':d>5?'#2A5DA0':d<-5?'#4A8A5A':'#6B7A9A';
       const arr = d>5?'↑':d<-5?'↓':'=';
       delta = `<span style="color:${col};font-weight:700">${arr}${d>0?'+':''}${d}%</span>`;
     }
 
     return `<tr class="${w.d?'dec':''} ${obj?'has-obj':''}" onclick="openDetail(${w.s})" style="cursor:pointer">
-      <td><div class="sem-num">S${w.s}</div><div class="mois-lbl">${semMois(w.s)}</div></td>
+      <td><div class="sem-num">${semRangeLun(w.s)}</div><div class="mois-lbl">${semRangeDim(w.s)}</div></td>
       <td>
         <span class="ph ${phCls(w.p)}">${phLabel(w.p)}</span>
         ${w.d?'<span class="dech">🌙</span>':''}
@@ -263,6 +278,35 @@ function buildProg(){
 // ══════════════════════════════════════════════════
 // DETAIL MODAL
 // ══════════════════════════════════════════════════
+
+// Formate les blocs série v3 en chips lisibles
+function formatSeriesHtml(series) {
+  if (!series || !series.length) return '';
+  return series.map(bloc => {
+    if (bloc.type === 'rest_block') {
+      const dur = (bloc.value || 0) >= 60
+        ? Math.round(bloc.value / 60) + 'min'
+        : (bloc.value || 0) + 's';
+      return `<span style="font-size:.68rem;padding:.22rem .55rem;border-radius:4px;background:rgba(74,138,90,.1);color:var(--mousse);font-weight:600;white-space:nowrap">☕ ${dur}</span>`;
+    }
+    const unitLabel = { s: '"', min: "'", m: 'm', km: 'km' };
+    const steps = (bloc.steps || []).map(s => {
+      const eff  = s.value + (unitLabel[s.unit] || s.unit || '"');
+      const n    = (s.stepReps > 1) ? s.stepReps + '×' : '';
+      const rStr = s.rest ? '/r' + s.rest + '"' : '';
+      return `${n}${eff}${rStr}`;
+    }).join(', ');
+    const sr   = (bloc.serieReps || 1) > 1 ? `${bloc.serieReps}×` : '';
+    const ir   = (bloc.innerReps || 1) > 1 ? `${bloc.innerReps}×` : '';
+    const rest = bloc.interSerieRest
+      ? (bloc.interSerieRest >= 60
+          ? ` R${Math.round(bloc.interSerieRest / 60)}min`
+          : ` R${bloc.interSerieRest}s`)
+      : '';
+    return `<span style="font-size:.68rem;padding:.22rem .55rem;border-radius:4px;background:rgba(27,58,107,.08);color:var(--navy);font-weight:600;white-space:nowrap">${sr}(${ir}${steps})${rest}</span>`;
+  }).join('');
+}
+
 function openDetail(sn){
   const w = programme.find(x=>x.s===sn);
   if(!w) return;
@@ -271,28 +315,100 @@ function openDetail(sn){
 
   function seanceBlock(data){
     if(!data) return '<p style="color:var(--muted)">Repos / Pas de séance</p>';
-    const fields = ['r','p','t'], labels = ['🛣️ Route','🏟️ Piste','🌲 Trail'];
+    const hasV3     = Array.isArray(data.series) && data.series.length > 0;
+    const hasPiste  = data.piste  && data.piste  !== '—';
+    const hasHalage = data.halage && data.halage !== '—';
+    const isTrailOnly = ['montagne','douves','girouettes','Trail'].includes(data.lieu);
+    const isCote = ['vw','floride','voulgre','vvf','escaliers','plage','chiberta'].includes(data.lieu);
+    const isPiste = data.lieu === 'stades' || data.lieu === 'Piste';
+
+    // Structure v2 legacy (nb_series, etc.)
+    const hasStructure = data.nb_series || data.nb_repetition || data.effort;
+    const structureHtml = hasStructure ? `<div style="display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;margin-bottom:.5rem">
+      ${(data.nb_series||0)>1 ? `<span style="font-size:.68rem;background:rgba(27,58,107,.07);border-radius:4px;padding:.1rem .45rem;font-weight:600">${data.nb_series} séries</span>` : ''}
+      ${data.nb_repetition ? `<span style="font-size:.68rem;background:rgba(42,93,160,.09);border-radius:4px;padding:.1rem .45rem;font-weight:600">${data.nb_repetition}×${data.effort?'&nbsp;'+data.effort:''}</span>` : (data.effort ? `<span style="font-size:.68rem;background:rgba(42,93,160,.09);border-radius:4px;padding:.1rem .45rem">${data.effort}</span>` : '')}
+      ${data.recup_inter_rep  ? `<span style="font-size:.63rem;color:var(--muted)">r: ${data.recup_inter_rep}</span>`  : ''}
+      ${data.recup_inter_serie? `<span style="font-size:.63rem;color:var(--muted)">R: ${data.recup_inter_serie}</span>`: ''}
+      ${data.d ? `<span style="font-size:.63rem;color:var(--muted);margin-left:.2rem">⏱ ${data.d} min</span>` : ''}
+    </div>` : '';
+
+    // Bloc structure v3 (séries/étapes du planificateur)
+    const v3StructureHtml = hasV3 ? `<div style="margin-bottom:.6rem">
+      ${(data.warmupSec || data.cooldownSec) ? `<div style="font-size:.65rem;color:var(--muted);margin-bottom:.35rem">
+        🏃 Écht.&nbsp;${Math.round((data.warmupSec||0)/60)}&thinsp;min
+        &nbsp;·&nbsp;R.calme&nbsp;${Math.round((data.cooldownSec||0)/60)}&thinsp;min
+        ${data.d ? `&nbsp;·&nbsp;⏱&nbsp;${data.d}&thinsp;min` : ''}
+      </div>` : ''}
+      <div style="display:flex;flex-wrap:wrap;gap:.3rem">${formatSeriesHtml(data.series)}</div>
+    </div>` : '';
+
+    // Section terrain : v3 → chips série ; v2 → cases halage/piste
+    const terrainSection = hasV3 ? v3StructureHtml
+      : !isTrailOnly ? (() => {
+          if (isPiste) {
+            return hasPiste
+              ? `<div style="padding:.55rem .75rem;background:rgba(74,122,204,.06);border:1px solid var(--border);border-radius:6px;margin-bottom:.6rem"><div style="font-size:.55rem;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:.25rem">🏟️ Piste / Stade</div><div style="font-size:.78rem;font-weight:600;color:var(--text)">${data.piste}</div></div>`
+              : '';
+          }
+          const lbl1 = isCote
+            ? { icon:'📍', txt:(terrainLabel[data.lieu]?.label||'Terrain'), col:'var(--navy)' }
+            : { icon:'🏞️', txt:'Halage', col:'var(--navy)' };
+          return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.6rem">
+            <div style="padding:.55rem .75rem;background:rgba(27,58,107,.06);border:1px solid var(--border);border-radius:6px">
+              <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;color:${lbl1.col};margin-bottom:.25rem">${lbl1.icon} ${lbl1.txt}</div>
+              <div style="font-size:.78rem;font-weight:600;color:var(--text)">${hasHalage?data.halage:'—'}</div>
+            </div>
+            <div style="padding:.55rem .75rem;background:rgba(74,122,204,.06);border:1px solid var(--border);border-radius:6px">
+              <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:.25rem">🏟️ Piste / Stade</div>
+              <div style="font-size:.78rem;font-weight:600;color:var(--text)">${hasPiste?data.piste:'—'}</div>
+            </div>
+          </div>`;
+        })()
+      : '';
+
     return `
-      <div style="display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;margin-bottom:.4rem">
+      <div style="display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;margin-bottom:.6rem">
         ${tTag(data.lieu)} <span class="rpe-pill">RPE ${data.rpe}</span> <span style="font-size:.68rem;color:var(--muted)">${data.c}</span>
       </div>
-      <div class="terrain-tabs">
-        ${[0,1,2].map(i=>`<button class="terrain-tab ${i===curTerrain?'active':''}" data-t="${i}" onclick="switchT(${i})">${labels[i]}</button>`).join('')}
-      </div>
-      ${[0,1,2].map(i=>{
-        const v = data[fields[i]];
-        const avail = v && v!=='—';
-        return `<div class="terrain-content ${i===curTerrain?'active':''}" data-t="${i}">
-          ${avail?v:`${labels[i]} : pas de variante pour cette séance`}
-        </div>`;
-      }).join('')}
-      <div class="vol-box"><div class="vol-title">📊 Volume / Modulation</div><div class="vol-text">${data.v}</div></div>
-      ${data.n?`<div style="font-size:.74rem;color:var(--muted);font-style:italic;margin-top:.4rem">💡 ${data.n}</div>`:''}
+      ${structureHtml}
+      ${terrainSection}
+      ${data.desc?`<div style="font-size:.74rem;line-height:1.55;color:var(--text);background:rgba(27,58,107,.03);border-left:3px solid var(--border);padding:.5rem .7rem;border-radius:0 6px 6px 0;margin-bottom:.3rem">${data.desc}</div>`:''}
     `;
   }
 
-  document.getElementById('mTitle').textContent = `Semaine ${sn} — ${semMois(sn)} · ${w.p}`;
+  document.getElementById('mTitle').textContent = `${semRange(sn)} · ${w.p}`;
   const weR = sd(w.wr), weT = sd(w.wt);
+
+  const wrDesc = weR ? weR.l : '—';
+  const wrSub  = weR&&weR.halage&&weR.halage!=='—' ? weR.halage : '';
+
+  let wtHtml = '';
+  const detailSamData = w.sam && w.sam !== '—' ? sd(w.sam) : null;
+  if (detailSamData) {
+    wtHtml = `
+      <div style="flex:1;min-width:180px;padding:.6rem .8rem;background:rgba(74,138,90,.08);border:2px solid var(--mousse);border-radius:6px">
+        <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;color:var(--mousse);margin-bottom:.3rem">🌲 Weekend Trail — Sam + Dim</div>
+        <div style="display:flex;flex-direction:column;gap:.4rem">
+          <div style="padding:.4rem .6rem;background:rgba(0,0,0,.03);border-radius:4px;border-left:3px solid #D4893A">
+            <div style="font-size:.58rem;font-weight:700;color:#D4893A;text-transform:uppercase;margin-bottom:.1rem">🏔 Samedi — Montagne</div>
+            <div style="font-size:.76rem;font-weight:600">${detailSamData.l}</div>
+            ${detailSamData.desc?`<div style="font-size:.62rem;color:var(--muted);margin-top:.1rem">${detailSamData.desc.slice(0,100)}…</div>`:''}
+          </div>
+          <div style="padding:.4rem .6rem;background:rgba(0,0,0,.03);border-radius:4px;border-left:3px solid var(--mousse)">
+            <div style="font-size:.58rem;font-weight:700;color:var(--mousse);text-transform:uppercase;margin-bottom:.1rem">Dimanche — Sortie longue</div>
+            <div style="font-size:.76rem;font-weight:600">${weT?weT.l:'—'}</div>
+            ${weT&&weT.desc?`<div style="font-size:.62rem;color:var(--muted);margin-top:.1rem">${weT.desc.slice(0,80)}…</div>`:''}
+          </div>
+        </div>
+      </div>`;
+  } else {
+    wtHtml = `
+      <div style="flex:1;min-width:180px;padding:.6rem .8rem;background:${curWE===1?'rgba(74,138,90,.08)':'rgba(0,0,0,.02)'};border:1px solid ${curWE===1?'var(--mousse)':'var(--border)'};border-radius:6px">
+        <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;color:var(--mousse);margin-bottom:.2rem">🌲 Trail / Montagne</div>
+        <div style="font-size:.78rem;font-weight:600">${weT?weT.l:'—'}</div>
+        ${weT&&weT.desc?`<div style="font-size:.62rem;color:var(--muted);margin-top:.2rem">${weT.desc.slice(0,100)}${weT.desc.length>100?'…':''}</div>`:''}
+      </div>`;
+  }
 
   document.getElementById('mBody').innerHTML = `
     ${obj?`<div class="info-box gold">${obj}</div>`:''}
@@ -313,13 +429,12 @@ function openDetail(sn){
     <h4>🏃 Sortie weekend</h4>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem">
       <div style="flex:1;min-width:180px;padding:.6rem .8rem;background:${curWE===0?'rgba(27,58,107,.06)':'rgba(0,0,0,.02)'};border:1px solid ${curWE===0?'var(--blue)':'var(--border)'};border-radius:6px">
-        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:.2rem">🛣️ Route</div>
-        <div style="font-size:.78rem;font-weight:600">${weR?weR.l:'—'}</div>
+        <div style="font-size:.55rem;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:.2rem">🛣️ Route / Halage</div>
+        <div style="font-size:.78rem;font-weight:600">${wrDesc}</div>
+        ${wrSub?`<div style="font-size:.64rem;color:var(--muted);margin-top:.2rem">${wrSub}</div>`:''}
+        ${weR&&weR.desc&&!wrDur?`<div style="font-size:.62rem;color:var(--muted);margin-top:.2rem">${weR.desc.slice(0,80)}${weR.desc.length>80?'…':''}</div>`:''}
       </div>
-      <div style="flex:1;min-width:180px;padding:.6rem .8rem;background:${curWE===1?'rgba(74,138,90,.08)':'rgba(0,0,0,.02)'};border:1px solid ${curWE===1?'var(--mousse)':'var(--border)'};border-radius:6px">
-        <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;color:var(--mousse);margin-bottom:.2rem">🌲 Trail</div>
-        <div style="font-size:.78rem;font-weight:600">${weT?weT.l:'—'}</div>
-      </div>
+      ${wtHtml}
     </div>
   `;
   document.getElementById('overlay').classList.add('open');
@@ -525,8 +640,8 @@ function fosterWeek(key){
   html+=`<div class="foster-week-total">${total}</div></div>`;
   document.getElementById('f-week-display').innerHTML=html;
 
-  const monoColor=mono>2?'var(--rouge)':'var(--sky)';
-  const strainColor=strain>3000?'var(--rouge)':'var(--sky)';
+  const monoColor=mono>2?'var(--rouge)':'#1B3A6B';
+  const strainColor=strain>3000?'var(--rouge)':'#1B3A6B';
   document.getElementById('f-week-metrics').innerHTML=`
     <div class="foster-metric"><div class="foster-metric-name">Charge totale</div><div class="foster-metric-val">${total}</div></div>
     <div class="foster-metric"><div class="foster-metric-name">Monotonie</div><div class="foster-metric-val" style="color:${monoColor}">${mono.toFixed(1)}</div></div>
@@ -570,9 +685,58 @@ function fosterACWR(){
 }
 
 // ══════════════════════════════════════════════════
-// INIT — auto-render based on which page is loaded
+// LOADER
 // ══════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function(){
+function showLoader(){
+  let el = document.getElementById('page-loader');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'page-loader';
+    el.style.cssText = 'position:fixed;inset:0;background:rgba(242,245,250,.85);display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Lora,serif;font-size:.85rem;color:#1B3A6B;gap:.6rem';
+    el.innerHTML = '<div style="width:22px;height:22px;border:3px solid #7BC3E5;border-top-color:#1B3A6B;border-radius:50%;animation:spin .7s linear infinite"></div> Chargement…';
+    if(!document.getElementById('spin-style')){
+      const s = document.createElement('style');
+      s.id='spin-style';
+      s.textContent='@keyframes spin{to{transform:rotate(360deg)}}';
+      document.head.appendChild(s);
+    }
+    document.body.appendChild(el);
+  }
+  el.style.display = 'flex';
+}
+function hideLoader(){
+  const el = document.getElementById('page-loader');
+  if(el) el.style.display = 'none';
+}
+
+// ══════════════════════════════════════════════════
+// INIT — chargement Firebase puis rendu
+// ══════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', async function(){
+  const needsFirebase = document.getElementById('infosClubZone') ||
+                        document.getElementById('acc-grid')       ||
+                        document.getElementById('progBody');
+
+  if(needsFirebase && typeof fbLoadPageData !== 'undefined'){
+    showLoader();
+    try {
+      const data = await fbLoadPageData(
+        ['programme','seances','socle','infosClub','objectifs']
+      );
+      if(data.programme && data.programme.length)               programme   = data.programme;
+      // Fusion : v3 écrase les séances existantes mais conserve les entrées spéciales
+      // (sortie_longue, sortie_recup…) issues du fallback _seancesData_new.js
+      if(data.seances && Object.keys(data.seances).length)    seancesData = { ...seancesData, ...data.seances };
+      if(data.socle)                                            socleConfig = data.socle;
+      if(data.infosClub && data.infosClub.length)              infosClub   = data.infosClub;
+      if(data.objectifs && data.objectifs.length)              objectifs   = data.objectifs;
+    } catch(e){
+      console.error('Erreur chargement Firebase:', e);
+    } finally {
+      hideLoader();
+    }
+  }
+
   if(document.getElementById('infosClubZone')) renderInfosClub();
   if(document.getElementById('acc-grid')) renderAccueil();
   if(document.getElementById('progBody')) buildProg();

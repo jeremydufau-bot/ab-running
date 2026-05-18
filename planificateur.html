@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Running - Admin Séances</title>
+    <link rel="stylesheet" href="planificateur.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Créer une séance (AB Running)</h1>
+
+    <div class="info-card">
+        <div class="header-grid">
+            <div><label>Titre de la séance</label><input type="text" id="title" placeholder="ex: 2x(8x30/30) R3'"></div>
+            <div><label>Catégorie</label>
+                <select id="category">
+                    <option>VMA Courte</option>
+                    <option>VMA Longue</option>
+                    <option>Seuil</option>
+                    <option>Allure Marathon</option>
+                    <option>Allure Spécifique</option>
+                    <option>Côtes</option>
+                    <option>Puissance Montée</option>
+                    <option>Technique Descente</option>
+                    <option>Spécificité Trail</option>
+                    <option>Volume Endurance</option>
+                    <option>Sortie Longue</option>
+                    <option>Récupération</option>
+                    <option>Mixte</option>
+                    <option>Activation</option>
+                </select>
+            </div>
+            <div><label>Terrain</label>
+                <select id="terrain">
+                    <option value="Route">Route</option>
+                    <option value="Piste">Piste</option>
+                    <option value="Trail">Trail</option>
+                </select>
+            </div>
+        </div>
+        <textarea id="description" rows="2" placeholder="Consignes pour les licenciés..."></textarea>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 15px; margin-bottom: 20px; background: #fff3f3; padding: 15px; border-radius: 8px;">
+        <div><label>Échauffement (sec)</label><input type="number" id="warmupSec" value="1200" oninput="calculateAll()"></div>
+        <div><label>Retour calme (sec)</label><input type="number" id="cooldownSec" value="600" oninput="calculateAll()"></div>
+        <div>
+            <label>RPE Global (Foster): <span id="rpe-display" style="color:var(--primary)">7</span>/10</label>
+            <input type="range" id="rpeGlobal" min="1" max="10" value="7" oninput="document.getElementById('rpe-display').innerText=this.value; calculateAll()">
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <button class="btn-add-serie" onclick="addSerie()">+ Ajouter Bloc Travail</button>
+        <button class="btn-add-rest" onclick="addRestBlock()">+ Ajouter Repos Inter-Blocs</button>
+    </div>
+
+    <div id="main-container"></div>
+
+    <div class="stats-box">
+        <div style="text-align:center"><span>DURÉE TOTALE</span><span id="totalDuration" class="stat-value">0</span> min</div>
+        <div style="text-align:center"><span>DISTANCE EST.</span><span id="totalDistance" class="stat-value">0</span> km</div>
+        <div style="text-align:center"><span>CHARGE (UA)</span><span id="totalUA" class="stat-value">0</span></div>
+    </div>
+
+    <button id="btnSave" class="btn-save" onclick="saveWorkout()">Enregistrer dans Firebase</button>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBmKsHSsdBWIVjdO050VKUIWWT3-AG6l_U",
+        authDomain: "ab-running-e8c95.firebaseapp.com",
+        projectId: "ab-running-e8c95",
+        storageBucket: "ab-running-e8c95.firebasestorage.app",
+        messagingSenderId: "452828499029",
+        appId: "1:452828499029:web:61f0a592ccb3315fa398dc"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.saveWorkout = async function() {
+        const btn = document.getElementById('btnSave');
+        const title = document.getElementById('title').value;
+        if(!title) return alert("Donne un titre à la séance !");
+
+        btn.disabled = true;
+        btn.innerText = "Enregistrement...";
+
+        const workout = {
+            title: title,
+            category: document.getElementById('category').value,
+            terrain: document.getElementById('terrain').value,
+            description: document.getElementById('description').value,
+            warmupSec: parseInt(document.getElementById('warmupSec').value),
+            cooldownSec: parseInt(document.getElementById('cooldownSec').value),
+            rpe_foster: parseInt(document.getElementById('rpeGlobal').value),
+            totalDuration: parseInt(document.getElementById('totalDuration').innerText),
+            totalDistance: parseFloat(document.getElementById('totalDistance').innerText),
+            totalUA: parseInt(document.getElementById('totalUA').innerText),
+            createdAt: new Date().toISOString(),
+            series: []
+        };
+
+        document.querySelectorAll('.item-to-export').forEach(item => {
+            if(item.dataset.type === 'work') {
+                const steps = [];
+                item.querySelectorAll('.step-row').forEach(s => steps.push({
+                    stepReps: parseInt(s.querySelector('.step-reps').value),
+                    value: parseFloat(s.querySelector('.value').value),
+                    unit: s.querySelector('.unit').value,
+                    rest: parseInt(s.querySelector('.rest').value)
+                }));
+                workout.series.push({
+                    type: "work",
+                    serieReps: parseInt(item.querySelector('.serieReps').value),
+                    interSerieRest: parseInt(item.querySelector('.interSerieRest').value),
+                    innerReps: parseInt(item.querySelector('.innerReps').value),
+                    steps: steps
+                });
+            } else {
+                workout.series.push({
+                    type: "rest_block",
+                    value: parseInt(item.querySelector('.rest-val').value)
+                });
+            }
+        });
+
+        try {
+            const docRef = await addDoc(collection(db, "workouts"), workout);
+            alert("Séance enregistrée avec succès !");
+            location.reload(); 
+        } catch (e) {
+            console.error("Erreur Firebase:", e);
+            alert("Erreur lors de l'enregistrement.");
+        } finally {
+            btn.disabled = false;
+            btn.innerText = "Enregistrer dans Firebase";
+        }
+    };
+</script>
+
+<script>
+    // Logique de calcul (Speed base 4:00/km)
+    const SPEED_MS = 4.166;
+
+    function addSerie() {
+        const id = Date.now();
+        const html = `
+            <div class="serie-block item-to-export" data-type="work" id="item-${id}">
+                <div class="serie-header">
+                    <div style="width: 80px;"><label>Nb Séries</label><input type="number" class="serieReps" value="1" oninput="calculateAll()"></div>
+                    <div style="width: 130px;"><label>Repos Inter</label><input type="number" class="interSerieRest" value="180" oninput="calculateAll()"></div>
+                    <div style="flex-grow: 1;"><label>Répét. Internes</label><input type="number" class="innerReps" value="10" oninput="calculateAll()"></div>
+                    <button class="btn-remove" onclick="document.getElementById('item-${id}').remove(); calculateAll()">✕</button>
+                </div>
+                <div class="steps-list"></div>
+                <button onclick="addStepToSerie(${id})" style="background:var(--accent); color:white; font-size:0.7em;">+ Ajouter Segment</button>
+            </div>
+        `;
+        document.getElementById('main-container').insertAdjacentHTML('beforeend', html);
+        addStepToSerie(id);
+    }
+
+    function addRestBlock() {
+        const id = Date.now();
+        const html = `
+            <div class="rest-block item-to-export" data-type="rest" id="item-${id}">
+                <div style="font-weight:bold; color:var(--rest-color);">☕ REPOS INTER-BLOCS :</div>
+                <div style="width: 120px;"><input type="number" class="rest-val" value="300" oninput="calculateAll()"></div>
+                <span>secondes</span>
+                <button class="btn-remove" style="margin-left:auto" onclick="document.getElementById('item-${id}').remove(); calculateAll()">✕</button>
+            </div>
+        `;
+        document.getElementById('main-container').insertAdjacentHTML('beforeend', html);
+        calculateAll();
+    }
+
+    function addStepToSerie(serieId) {
+        const list = document.getElementById(`item-${serieId}`).querySelector('.steps-list');
+        const stepHtml = `
+            <div class="step-row">
+                <div><label>Nb</label><input type="number" class="step-reps" value="1" oninput="calculateAll()"></div>
+                <div><label>Effort</label><input type="number" class="value" value="30" oninput="calculateAll()"></div>
+                <div><label>Unité</label><select class="unit" onchange="calculateAll()"><option value="s">sec (")</option><option value="min">min (')</option><option value="m">m</option><option value="km">km</option></select></div>
+                <div><label>Récup (sec)</label><input type="number" class="rest" value="30" oninput="calculateAll()"></div>
+                <button style="background:none; color:red;" onclick="this.parentElement.remove(); calculateAll()">✕</button>
+            </div>
+        `;
+        list.insertAdjacentHTML('beforeend', stepHtml);
+        calculateAll();
+    }
+
+    function calculateAll() {
+        let warmupS = parseFloat(document.getElementById('warmupSec').value) || 0;
+        let cooldownS = parseFloat(document.getElementById('cooldownSec').value) || 0;
+        let rpe = parseInt(document.getElementById('rpeGlobal').value);
+        let totalS = warmupS + cooldownS;
+        let totalM = (warmupS + cooldownS) * 2.77;
+
+        document.querySelectorAll('.item-to-export').forEach(item => {
+            if(item.dataset.type === 'work') {
+                let sReps = parseFloat(item.querySelector('.serieReps').value) || 1;
+                let iReps = parseFloat(item.querySelector('.innerReps').value) || 1;
+                let sRest = parseFloat(item.querySelector('.interSerieRest').value) || 0;
+                let serieS = 0; let serieM = 0;
+                item.querySelectorAll('.step-row').forEach(step => {
+                    let n = parseFloat(step.querySelector('.step-reps').value) || 1;
+                    let val = parseFloat(step.querySelector('.value').value) || 0;
+                    const u = step.querySelector('.unit').value;
+                    let s, m;
+                    if      (u === 's')   { s = val;                    m = val * SPEED_MS; }
+                    else if (u === 'min') { s = val * 60;               m = val * 60 * SPEED_MS; }
+                    else if (u === 'm')   { s = val / SPEED_MS;         m = val; }
+                    else if (u === 'km')  { s = val * 1000 / SPEED_MS;  m = val * 1000; }
+                    else                  { s = val;                    m = val * SPEED_MS; }
+                    serieS += (s + parseFloat(step.querySelector('.rest').value || 0)) * n;
+                    serieM += m * n;
+                });
+                totalS += ((serieS * iReps) * sReps) + (sRest * (sReps - 1));
+                totalM += (serieM * iReps) * sReps;
+            } else {
+                totalS += parseFloat(item.querySelector('.rest-val').value) || 0;
+            }
+        });
+        let durMin = totalS / 60;
+        document.getElementById('totalDuration').innerText = Math.round(durMin);
+        document.getElementById('totalDistance').innerText = (totalM / 1000).toFixed(2);
+        document.getElementById('totalUA').innerText = Math.round(durMin * rpe);
+    }
+    window.onload = addSerie;
+</script>
+</body>
+</html>
